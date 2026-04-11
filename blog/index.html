@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexovent | Premium Insights & Digital Assets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; color: #111827; }
+        .glass-header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid #f3f4f6; }
+        .feature-card { border: 1px solid #f3f4f6; transition: all 0.5s ease; border-radius: 24px; }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); border-color: #3b82f6; }
+        #post-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 1000; overflow-y: auto; }
+        .article-content { max-width: 760px; margin: 0 auto; line-height: 1.9; font-size: 1.15rem; color: #374151; }
+        .article-content img { width: 100%; border-radius: 32px; margin: 2.5rem 0; }
+        .article-content h2 { font-size: 2rem; font-weight: 800; margin-top: 3rem; color: #111827; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="glass-header sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="/" class="text-2xl font-black tracking-tighter text-blue-600">NEXOVENT</a>
+            <div class="hidden md:flex space-x-10 text-sm font-bold text-gray-500 uppercase tracking-widest">
+                <a href="/" class="hover:text-blue-600 transition">Services</a>
+                <a href="/blog" class="text-blue-600">Blog</a>
+                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+            </div>
+            <a href="mailto:support@nexovent.tech" class="bg-blue-600 text-white px-7 py-3 rounded-full text-sm font-bold shadow-lg shadow-blue-200 hover:bg-black hover:shadow-none transition-all">Get in Touch</a>
+        </div>
+    </nav>
+
+    <div id="main-view">
+        <header class="py-24 bg-gradient-to-b from-blue-50/50 to-white">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <div class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-blue-700 bg-blue-100 rounded-full uppercase">Knowledge Hub</div>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-8 tracking-tight">The <span class="text-blue-600">Nexovent</span> Archive.</h1>
+                <p class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">Deep dives into Digital Monetization, AI Tools, and High-Performance Graphic Design.</p>
+            </div>
+        </header>
+
+        <section class="py-12 border-y border-gray-50">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div><h4 class="text-3xl font-extrabold text-gray-900">200k+</h4><p class="text-sm text-gray-400 font-bold uppercase">Reach</p></div>
+                <div><h4 class="text-3xl font-extrabold text-gray-900">100k+</h4><p class="text-sm text-gray-400 font-bold uppercase">Followers</p></div>
+                <div><h4 class="text-3xl font-extrabold text-gray-900">50+</h4><p class="text-sm text-gray-400 font-bold uppercase">Tools</p></div>
+                <div><h4 class="text-3xl font-extrabold text-gray-900">24/7</h4><p class="text-sm text-gray-400 font-bold uppercase">Support</p></div>
+            </div>
+        </section>
+
+        <main class="py-24 px-6 max-w-7xl mx-auto">
+            <div id="blogger-posts" class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <p class="text-center col-span-full py-20 text-gray-400 animate-pulse">Syncing with Blogger...</p>
+            </div>
+        </main>
+    </div>
+
+    <footer id="contact" class="bg-gray-950 text-white pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-16 mb-20">
+                <div class="col-span-2">
+                    <h3 class="text-3xl font-black mb-6 tracking-tighter text-blue-500 uppercase">Nexovent</h3>
+                    <p class="text-gray-400 text-lg max-w-md leading-relaxed">Building a digital ecosystem with professional assets, AI automation, and strategic content creation. Empowering the next generation of digital entrepreneurs.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Company</h4>
+                    <ul class="space-y-4 text-gray-400 font-medium">
+                        <li><a href="/" class="hover:text-blue-400 transition">About Us</a></li>
+                        <li><a href="/blog" class="hover:text-blue-400 transition">Latest News</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Projects</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Support</h4>
+                    <p class="text-gray-400 mb-4">Direct Inquiry:</p>
+                    <a href="mailto:support@nexovent.tech" class="text-lg font-bold text-blue-500 hover:underline">support@nexovent.tech</a>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                <p class="mb-4 md:mb-0">© 2026 nexovent.tech | All Rights Reserved.</p>
+                <div class="flex space-x-8">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="post-modal">
+        <nav class="glass-header sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+                <button onclick="closePost()" class="font-bold text-blue-600 flex items-center">
+                    <span class="mr-2 text-xl">←</span> Back
+                </button>
+                <div class="text-xl font-black text-gray-900 tracking-tighter uppercase">Nexovent</div>
+                <div class="w-10"></div> </div>
+        </nav>
+
+        <article class="py-20 px-6">
+            <div class="max-w-4xl mx-auto">
+                <h1 id="modal-title" class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-12 leading-tight tracking-tight"></h1>
+                <div id="modal-content" class="article-content"></div>
+                
+                <div class="mt-20 p-12 bg-blue-50 rounded-[40px] text-center">
+                    <h3 class="text-2xl font-bold mb-4">Liked this insight?</h3>
+                    <p class="text-gray-600 mb-8">Let's build something amazing together for your business.</p>
+                    <a href="mailto:support@nexovent.tech" class="bg-blue-600 text-white px-10 py-4 rounded-full font-bold inline-block">Work with Us</a>
+                </div>
+            </div>
+        </article>
+
+        <footer class="bg-gray-950 text-white pt-24 pb-12">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h3 class="text-2xl font-black mb-4 tracking-tighter text-blue-500">NEXOVENT</h3>
+                <p class="text-gray-500 text-sm mb-8">© 2026 nexovent.tech | Designed for Excellence.</p>
+                <button onclick="closePost()" class="text-blue-400 font-bold border border-blue-900/50 px-6 py-2 rounded-full hover:bg-blue-900/20">Back to Top</button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const blogURL = "https://earnguide1.blogspot.com";
+        const feedURL = `${blogURL}/feeds/posts/default?alt=json-in-script&callback=loadPosts`;
+        let allPosts = [];
+
+        function loadPosts(data) {
+            const container = document.getElementById('blogger-posts');
+            container.innerHTML = '';
+            allPosts = data.feed.entry || [];
+
+            allPosts.forEach((post, index) => {
+                container.innerHTML += `
+                    <div class="feature-card p-10 cursor-pointer flex flex-col" onclick="openPost(${index})">
+                        <div class="text-[10px] font-black tracking-[0.2em] text-blue-600 uppercase mb-6 bg-blue-50 inline-block px-3 py-1 rounded w-max">Insight</div>
+                        <h3 class="text-2xl font-bold text-gray-900 leading-tight mb-8 hover:text-blue-600 transition">${post.title.$t}</h3>
+                        <div class="mt-auto flex items-center font-bold text-sm text-gray-400">
+                            Read analysis <span class="ml-2 text-blue-600">→</span>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function openPost(index) {
+            const post = allPosts[index];
+            document.getElementById('modal-title').innerText = post.title.$t;
+            document.getElementById('modal-content').innerHTML = post.content.$t;
+            document.getElementById('main-view').style.display = 'none';
+            document.getElementById('post-modal').style.display = 'block';
+            window.scrollTo(0,0);
+        }
+
+        function closePost() {
+            document.getElementById('post-modal').style.display = 'none';
+            document.getElementById('main-view').style.display = 'block';
+        }
+
+        const script = document.createElement('script');
+        script.src = feedURL;
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
