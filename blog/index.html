@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexovent Blog | Clean & Professional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; }
+        .blog-card { 
+            background: #ffffff; border: 1px solid #f0f0f0; 
+            transition: all 0.3s ease; border-radius: 12px; 
+        }
+        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        
+        #post-modal { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: #ffffff; z-index: 1000; overflow-y: auto; 
+        }
+        .prose-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 2rem 0; }
+        .prose-content p { font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.5rem; color: #374151; }
+        .prose-content h2 { font-size: 1.875rem; font-weight: 700; margin: 2.5rem 0 1.25rem; }
+    </style>
+</head>
+<body class="antialiased">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="/" class="text-xl font-extrabold tracking-tight text-black">NEXOVENT</a>
+            <a href="/" class="text-sm font-semibold text-gray-500 hover:text-black transition">Home</a>
+        </div>
+    </nav>
+
+    <header class="py-16 px-6 max-w-5xl mx-auto border-b border-gray-50">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Writing & Insights</h1>
+        <p class="text-lg text-gray-500">Digital strategies and tools for the modern creator.</p>
+    </header>
+
+    <main class="py-12 px-6 max-w-5xl mx-auto">
+        <div id="blogger-posts" class="grid md:grid-cols-2 gap-8">
+            <p class="text-gray-400">Loading the latest stories...</p>
+        </div>
+    </main>
+
+    <div id="post-modal">
+        <div class="max-w-3xl mx-auto px-6 py-12">
+            <button onclick="closePost()" class="mb-8 flex items-center text-sm font-bold text-gray-400 hover:text-black transition">
+                <span class="mr-2">←</span> BACK TO BLOG
+            </button>
+            <h1 id="modal-title" class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-10 leading-tight tracking-tighter"></h1>
+            <div id="modal-content" class="prose-content"></div>
+            <div class="mt-20 pt-10 border-t border-gray-100 text-center">
+                <button onclick="closePost()" class="bg-black text-white px-8 py-3 rounded-full font-bold text-sm">Finish Reading</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const blogURL = "https://earnguide1.blogspot.com";
+        const feedURL = `${blogURL}/feeds/posts/default?alt=json-in-script&callback=loadPosts`;
+        let allPosts = [];
+
+        function loadPosts(data) {
+            const container = document.getElementById('blogger-posts');
+            container.innerHTML = '';
+            allPosts = data.feed.entry || [];
+
+            if (allPosts.length === 0) {
+                container.innerHTML = '<p class="text-gray-500">No articles found yet.</p>';
+                return;
+            }
+
+            allPosts.forEach((post, index) => {
+                const title = post.title.$t;
+                container.innerHTML += `
+                    <div class="blog-card p-8 cursor-pointer" onclick="openPost(${index})">
+                        <span class="text-xs font-bold uppercase tracking-widest text-blue-600 mb-3 block">Article</span>
+                        <h3 class="text-2xl font-bold text-gray-900 leading-snug hover:text-blue-600 transition">${title}</h3>
+                        <p class="mt-4 text-sm font-bold text-gray-400">Read more →</p>
+                    </div>`;
+            });
+        }
+
+        function openPost(index) {
+            const post = allPosts[index];
+            document.getElementById('modal-title').innerText = post.title.$t;
+            document.getElementById('modal-content').innerHTML = post.content.$t;
+            document.getElementById('post-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Stop scrolling background
+            window.scrollTo(0,0);
+        }
+
+        function closePost() {
+            document.getElementById('post-modal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Enable scrolling again
+        }
+
+        const script = document.createElement('script');
+        script.src = feedURL;
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
+
