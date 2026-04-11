@@ -6,7 +6,7 @@
     <title>Nexovent | Premium Digital Assets</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #050505; color: white; }
+        body { background-color: #050505; color: white; overflow-x: hidden; }
         .gradient-text {
             background: linear-gradient(90deg, #3b82f6, #2dd4bf);
             -webkit-background-clip: text;
@@ -17,73 +17,85 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
         }
+        /* Modal Style for Full Post */
+        #post-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #050505; z-index: 100;
+            overflow-y: auto; padding: 20px;
+        }
+        .post-content img { max-width: 100%; height: auto; border-radius: 15px; margin: 20px 0; }
+        .post-content p { margin-bottom: 15px; color: #ccc; line-height: 1.8; }
     </style>
 </head>
 <body>
-    <nav class="flex justify-between items-center p-6 border-b border-gray-900">
-        <div class="text-2xl font-black tracking-tighter gradient-text">NEXOVENT</div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium">
-            <a href="#" class="hover:text-blue-400 transition">Themes</a>
-            <a href="#" class="hover:text-blue-400 transition">AI Bots</a>
-            <a href="#blog" class="hover:text-blue-400 transition">Portfolio</a>
-        </div>
-        <a href="mailto:support@nexovent.tech" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-full text-sm font-bold transition">Contact Us</a>
-    </nav>
+    <div id="main-content">
+        <nav class="flex justify-between items-center p-6 border-b border-gray-900">
+            <div class="text-2xl font-black tracking-tighter gradient-text">NEXOVENT</div>
+            <a href="mailto:support@nexovent.tech" class="bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-bold">Contact Us</a>
+        </nav>
 
-    <section class="h-[70vh] flex flex-col justify-center items-center text-center px-4">
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
-            Building the <span class="gradient-text">Future</span> <br> of Tech Assets.
-        </h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10">
-            Professional Themes, AI Automation Bots, and Digital Strategies tailored for your business growth. No Copyright, Pure Excellence.
-        </p>
-        <div class="flex space-x-4">
-            <button class="bg-white text-black px-8 py-4 rounded-xl font-bold hover:scale-105 transition">View Projects</button>
-            <button class="border border-gray-700 px-8 py-4 rounded-xl font-bold hover:bg-gray-900 transition">Our Services</button>
-        </div>
-    </section>
+        <section class="h-[60vh] flex flex-col justify-center items-center text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">Building the <span class="gradient-text">Future</span></h1>
+            <p class="text-gray-400 max-w-2xl mb-10 text-lg">Professional Themes and Digital Assets. Explore our insights below.</p>
+        </section>
 
-    <section id="blog" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="mb-12">
-            <h2 class="text-3xl font-bold mb-2">Latest Articles</h2>
-            <p class="text-gray-500">Insights from our official blog</p>
-        </div>
-        <div id="blogger-posts" class="grid md:grid-cols-3 gap-8">
-            <p class="text-gray-600">Fetching latest insights...</p>
-        </div>
-    </section>
+        <section id="blog" class="py-20 px-6 max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8">Latest Articles</h2>
+            <div id="blogger-posts" class="grid md:grid-cols-3 gap-8">
+                <p class="text-gray-600">Loading tools and articles...</p>
+            </div>
+        </section>
 
-    <footer class="p-10 border-t border-gray-900 text-center">
-        <p class="text-gray-600 text-sm">© 2026 Nexovent.tech | All Rights Reserved. Designed by Ashish.</p>
-    </footer>
+        <footer class="p-10 border-t border-gray-900 text-center text-gray-600 text-sm">
+            © 2026 Nexovent.tech | All Rights Reserved.
+        </footer>
+    </div>
+
+    <div id="post-modal">
+        <div class="max-w-4xl mx-auto">
+            <button onclick="closePost()" class="mb-10 text-blue-500 font-bold text-lg">← Back to Home</button>
+            <h1 id="modal-title" class="text-4xl md:text-5xl font-extrabold mb-6"></h1>
+            <div id="modal-content" class="post-content text-lg"></div>
+            <button onclick="closePost()" class="mt-20 bg-gray-900 px-8 py-3 rounded-xl border border-gray-700">Close Article</button>
+        </div>
+    </div>
 
     <script>
-        // No API Key needed, using RSS Feed
         const blogURL = "https://earnguide1.blogspot.com";
         const feedURL = `${blogURL}/feeds/posts/default?alt=json-in-script&callback=loadPosts`;
+        let allPosts = [];
 
         function loadPosts(data) {
             const container = document.getElementById('blogger-posts');
             container.innerHTML = '';
-            const posts = data.feed.entry ? data.feed.entry.slice(0, 3) : [];
+            allPosts = data.feed.entry || [];
 
-            if (posts.length === 0) {
-                container.innerHTML = '<p class="text-gray-500">No posts found.</p>';
-                return;
-            }
-
-            posts.forEach(post => {
+            allPosts.forEach((post, index) => {
                 const title = post.title.$t;
-                const link = post.link.find(l => l.rel === 'alternate').href;
-                
                 const card = `
-                    <div class="glass-card p-8 rounded-3xl hover:border-blue-500/50 transition-all group">
-                        <h3 class="text-xl font-bold mb-6 group-hover:text-blue-400 transition">${title}</h3>
-                        <a href="${link}" target="_blank" class="inline-block bg-gray-900 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-blue-600 transition">Read More →</a>
+                    <div class="glass-card p-8 rounded-3xl hover:border-blue-500/50 transition-all cursor-pointer" onclick="openPost(${index})">
+                        <h3 class="text-xl font-bold mb-6">${title}</h3>
+                        <span class="text-blue-500 font-bold">Read Post →</span>
                     </div>
                 `;
                 container.innerHTML += card;
             });
+        }
+
+        function openPost(index) {
+            const post = allPosts[index];
+            document.getElementById('modal-title').innerText = post.title.$t;
+            document.getElementById('modal-content').innerHTML = post.content.$t;
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('post-modal').style.display = 'block';
+            window.scrollTo(0,0);
+        }
+
+        function closePost() {
+            document.getElementById('post-modal').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
         }
 
         const script = document.createElement('script');
