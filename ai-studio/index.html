@@ -1,67 +1,132 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexovent Studio | Mistral AI Pro</title>
+    <title>Nexovent AI Studio | Pro Prompt Lab</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #010204; color: #fff; }
-        .mistral-card { background: rgba(15, 15, 20, 0.95); border: 1px solid #222; backdrop-filter: blur(20px); }
-        .neon-text { color: #f5d0fe; text-shadow: 0 0 15px rgba(245, 208, 254, 0.4); }
-        .btn-mistral { background: linear-gradient(135deg, #7c3aed, #4f46e5); transition: 0.5s; font-weight: 800; border: none; }
-        .btn-mistral:hover { box-shadow: 0 0 40px rgba(124, 58, 237, 0.5); transform: translateY(-2px); }
-        .output-box { border-left: 4px solid #7c3aed; background: rgba(124, 58, 237, 0.05); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #010409; color: #e6edf3; display: flex; flex-col; min-h-screen; }
+        .glass-card { background: rgba(13, 17, 23, 0.85); backdrop-filter: blur(25px); border: 1px solid #30363d; }
+        .active-btn { background: linear-gradient(135deg, #7c3aed, #e879f9) !important; color: white !important; border-color: #e879f9 !important; box-shadow: 0 5px 20px rgba(124, 58, 237, 0.4); }
+        .gradient-text { background: linear-gradient(135deg, #e879f9 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .footer-bg { background: #010204; border-t: 1px solid #222; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center p-6 md:p-12">
+<body class="min-h-screen flex flex-col justify-between p-4 md:p-8">
 
-    <div class="max-w-3xl w-full space-y-10">
-        <div class="text-center space-y-2">
-            <h1 class="text-5xl font-800 tracking-tighter uppercase italic">Nexovent <span class="neon-text">Studio</span></h1>
-            <p class="text-gray-500 text-[10px] tracking-[0.5em] font-bold">POWERED BY MISTRAL LARGE AI</p>
+    <header class="max-w-7xl mx-auto w-full glass-card p-6 rounded-[30px] flex justify-between items-center mb-10 shadow-2xl">
+        <div class="flex items-center gap-3">
+            <i class="fa-solid fa-code text-3xl text-[#e879f9]"></i>
+            <h1 class="text-2xl font-800 tracking-tighter uppercase italic">Nexovent <span class="gradient-text">Studio</span></h1>
         </div>
+        <div class="text-[10px] font-black uppercase text-purple-400 bg-purple-400/10 px-4 py-2 rounded-full tracking-widest">Mistral Large AI Active</div>
+    </header>
 
-        <div class="mistral-card p-10 rounded-[50px] shadow-2xl space-y-8">
-            <textarea id="userInput" class="w-full h-40 bg-transparent text-3xl font-light placeholder-gray-800 outline-none resize-none border-none" placeholder="अपना विजन यहाँ लिखें..."></textarea>
-            
-            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4">
-                <div class="text-xs font-black uppercase tracking-widest text-purple-500">
-                    <i class="fa-solid fa-microchip mr-2"></i> Mistral Engine v1.0
+    <main class="flex-grow max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        
+        <aside class="space-y-6">
+            <div class="glass-card p-8 rounded-[40px] space-y-8">
+                <div>
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-5 flex items-center gap-2">
+                        <i class="fa-solid fa-microchip"></i> Select Target AI
+                    </h3>
+                    <div class="space-y-3">
+                        <button onclick="updateSettings('ai', 'Midjourney v6.0', this)" class="ai-btn active-btn w-full text-left p-4 rounded-xl border border-white/5 text-sm font-semibold transition-all">Midjourney 6.0 (HQ)</button>
+                        <button onclick="updateSettings('ai', 'DALL-E 3', this)" class="ai-btn w-full text-left p-4 rounded-xl border border-white/5 text-sm font-semibold transition-all">OpenAI DALL-E 3</button>
+                    </div>
                 </div>
-                <button id="igniteBtn" onclick="generateWithMistral()" class="btn-mistral w-full md:w-auto px-16 py-5 rounded-2xl text-lg uppercase tracking-widest text-white">
-                    IGNITE AI <i class="fa-solid fa-fire-lightning ml-2"></i>
-                </button>
-            </div>
-        </div>
 
-        <div id="resultArea" class="hidden mistral-card p-10 rounded-[50px] output-box">
-            <div class="flex justify-between items-center mb-6">
-                <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest">Masterpiece Prompt Engineering:</span>
-                <button onclick="copyText()" class="text-[10px] bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg transition-all font-bold">COPY</button>
+                <div>
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Aspect Ratio</h3>
+                    <div class="flex gap-2">
+                        <button onclick="updateSettings('ratio', '16:9', this)" class="ratio-btn active-btn flex-1 py-3 rounded-lg border border-white/5 text-xs font-bold">16:9</button>
+                        <button onclick="updateSettings('ratio', '1:1', this)" class="ratio-btn flex-1 py-3 rounded-lg border border-white/5 text-xs font-bold">1:1</button>
+                        <button onclick="updateSettings('ratio', '9:16', this)" class="ratio-btn flex-1 py-3 rounded-lg border border-white/5 text-xs font-bold">9:16</button>
+                    </div>
+                </div>
             </div>
-            <p id="outputText" class="text-xl text-gray-300 leading-relaxed italic font-light"></p>
+        </aside>
+
+        <section class="md:col-span-2 space-y-8">
+            <div class="glass-card p-10 rounded-[50px] space-y-8 relative overflow-hidden">
+                <textarea id="uInput" class="w-full h-44 bg-transparent text-3xl font-light placeholder-gray-800 outline-none resize-none leading-snug" placeholder="Describe your vision (e.g. A futuristic tiger)..."></textarea>
+                
+                <div class="flex justify-end pt-8 border-t border-white/5">
+                    <button id="masterBtn" onclick="igniteEngine()" class="w-full md:w-auto bg-white/5 hover:bg-white/10 px-12 py-5 rounded-2xl font-800 text-lg uppercase transition-all tracking-widest border border-gray-700 active-btn">
+                        GENERATE <i class="fa-solid fa-sparkles ml-2 text-yellow-400"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="outBox" class="hidden glass-card p-10 rounded-[50px] animate-in fade-in duration-700">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest">Masterpiece Prompt Result:</span>
+                    <button onclick="copyToClipboard()" class="text-xs text-gray-400 hover:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-copy"></i> Copy
+                    </button>
+                </div>
+                <p id="outText" class="text-xl md:text-2xl text-gray-100 font-light italic leading-relaxed"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-bg rounded-t-[40px] px-8 py-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="md:col-span-2 space-y-3">
+                <h1 class="text-xl font-800 uppercase text-white">Nexovent Studio</h1>
+                <p class="text-sm text-gray-500 max-w-sm">Crafting professional-grade AI prompts with Mistral Large for creators like you.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <h3 class="text-xs font-black uppercase text-gray-400 tracking-widest">Contact Support</h3>
+                <div class="text-sm text-gray-300 space-y-1">
+                    <p><i class="fa-solid fa-envelope mr-2 text-gray-600"></i> <a href="mailto:nexoventai@gmail.com" class="hover:text-white">nexoventai@gmail.com</a></p>
+                    <p><i class="fa-solid fa-location-dot mr-2 text-gray-600"></i> Pune, India</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-xs font-black uppercase text-gray-400 tracking-widest">Legal</h3>
+                <div class="text-sm text-gray-500 space-y-1">
+                    <p><a href="#" class="hover:text-white">Terms of Service</a></p>
+                    <p><a href="#" class="hover:text-white">Privacy Policy</a></p>
+                </div>
+            </div>
         </div>
-    </div>
+        <p class="text-[10px] text-gray-700 mt-10 text-center uppercase tracking-widest">&copy; 2024 Nexovent Tech. All rights reserved.</p>
+    </footer>
 
     <script>
-        // अपनी Mistral API Key यहाँ डालें
-        const MISTRAL_KEY = "OUjZmK9tvZ7toyDnOPkCJMqB3soCQBI4"; 
+        // Use the Mistral Key you generated
+        const MISTRAL_KEY = "OUjZmK9tvZ7toyDnOPkCJMqB3soCQBI4";
+        
+        let selectedAI = "Midjourney v6.0";
+        let selectedRatio = "16:9";
 
-        async function generateWithMistral() {
-            const input = document.getElementById('userInput').value.trim();
-            const btn = document.getElementById('igniteBtn');
-            const resArea = document.getElementById('resultArea');
-            const resText = document.getElementById('outputText');
+        function updateSettings(type, val, el) {
+            document.querySelectorAll('.' + type + '-btn').forEach(b => b.classList.remove('active-btn'));
+            el.classList.add('active-btn');
+            
+            if (type === 'ai') selectedAI = val;
+            if (type === 'ratio') selectedRatio = val;
+        }
 
-            if(!input) return alert("Vision likho bhai!");
+        async function igniteEngine() {
+            const input = document.getElementById('uInput').value.trim();
+            const btn = document.getElementById('masterBtn');
+            const box = document.getElementById('outBox');
+            const text = document.getElementById('outText');
 
-            btn.innerHTML = `ENGINEERING... <i class="fa-solid fa-spinner animate-spin ml-2"></i>`;
+            if (!input) return alert("Pehle vision likho bhai!");
+
             btn.disabled = true;
+            btn.innerHTML = `Thinking... <i class="fa-solid fa-spinner animate-spin ml-2"></i>`;
 
             try {
+                // Mistral Large API Call Logic
                 const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
                     method: "POST",
                     headers: {
@@ -72,33 +137,30 @@
                         model: "mistral-large-latest",
                         messages: [{
                             role: "user",
-                            content: `Act as a world-class AI prompt engineer. Create a highly detailed, professional, and long image generation prompt for Midjourney/DALL-E based on this vision: "${input}". Include specific lighting, 35mm lens, atmospheric details, and 8k textures. Give me ONLY the prompt text, no extra words.`
+                            content: `Expand this idea: "${input}" into a detailed, professional image prompt for ${selectedAI}. Ratio: --ar ${selectedRatio}. Output prompt only.`
                         }]
                     })
                 });
 
                 const data = await response.json();
                 
-                if(data.choices && data.choices[0].message) {
-                    resArea.classList.remove('hidden');
-                    resText.innerText = data.choices[0].message.content;
-                    resArea.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    alert("Mistral Key Error: कृपया चेक करें कि आपकी Key सही है या नहीं।");
+                if (data.choices && data.choices[0].message) {
+                    box.classList.remove('hidden');
+                    text.innerText = data.choices[0].message.content;
+                    box.scrollIntoView({ behavior: 'smooth' });
                 }
-
             } catch (e) {
-                alert("Network Issue: इंटरनेट या API Endpoint चेक करें।");
+                alert("AI Connection failed! Token status check kijiye.");
             } finally {
-                btn.innerHTML = `IGNITE AI <i class="fa-solid fa-fire-lightning ml-2"></i>`;
                 btn.disabled = false;
+                btn.innerHTML = `GENERATE <i class="fa-solid fa-sparkles ml-2 text-yellow-400"></i>`;
             }
         }
 
-        function copyText() {
-            const text = document.getElementById('outputText').innerText;
-            navigator.clipboard.writeText(text);
-            alert("Copied!");
+        function copyToClipboard() {
+            const prompt = document.getElementById('outText').innerText;
+            navigator.clipboard.writeText(prompt);
+            alert("Prompt Copied!");
         }
     </script>
 </body>
