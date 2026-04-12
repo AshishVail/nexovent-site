@@ -1,116 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexovent Studio | Pro AI</title>
+    <title>Nexovent Studio Pro | AI Prompt Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #020617; color: #f8fafc; }
-        .glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .active-chip { background: linear-gradient(135deg, #3b82f6, #8b5cf6) !important; color: white !important; border: none !important; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3); }
-        .neon-btn { transition: all 0.3s ease; border: 1px solid rgba(59, 130, 246, 0.3); }
-        .neon-btn:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); transform: translateY(-2px); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #010409; color: #e6edf3; overflow-x: hidden; }
+        .glass { background: rgba(13, 17, 23, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(48, 54, 61, 0.8); }
+        .active-chip { background: linear-gradient(135deg, #1f6feb, #8957e5) !important; color: white !important; border: none !important; box-shadow: 0 0 20px rgba(31, 111, 235, 0.4); }
+        .prompt-card { border-left: 4px solid #1f6feb; animation: slideUp 0.5s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; object-fit: cover; transition: opacity 2s ease; }
     </style>
 </head>
-<body class="min-h-screen py-10 px-4">
-    <div class="max-w-5xl mx-auto space-y-8">
-        
-        <div class="glass p-6 rounded-[32px] flex justify-between items-center">
+<body class="min-h-screen">
+    <img id="bg-canvas" src="" alt="">
+    
+    <div class="max-w-6xl mx-auto px-4 py-8 relative z-10">
+        <header class="flex justify-between items-center glass p-5 rounded-3xl mb-8">
             <div class="flex items-center gap-3">
-                <i class="fa-solid fa-wand-magic-sparkles text-blue-500 text-2xl"></i>
-                <h1 class="text-2xl font-800 tracking-tighter uppercase">Nexovent <span class="text-blue-500">Studio</span></h1>
+                <i class="fa-solid fa-brain text-blue-500 text-2xl animate-pulse"></i>
+                <h1 class="text-xl font-800 tracking-tighter uppercase">Nexovent <span class="text-blue-500">AI</span></h1>
             </div>
-            <div class="flex items-center gap-2 text-[10px] font-black text-blue-400 bg-blue-500/10 px-4 py-2 rounded-full uppercase tracking-widest">
-                <span class="w-2 h-2 bg-blue-500 rounded-full animate-ping"></span> Gemini 1.5 Pro
+            <div class="flex items-center gap-2 text-[10px] font-bold text-blue-400 border border-blue-400/30 px-4 py-1.5 rounded-full uppercase">
+                <span class="w-2 h-2 bg-blue-500 rounded-full"></span> Studio v4.0
             </div>
-        </div>
+        </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-4 space-y-6">
-                <div class="glass p-8 rounded-[35px] space-y-8">
+            <aside class="lg:col-span-4 space-y-6">
+                <div class="glass p-6 rounded-[32px] space-y-8">
                     <div>
-                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-[0.2em] mb-5">Output Style</h3>
-                        <div class="grid grid-cols-1 gap-3">
-                            <button onclick="updateSettings('style', 'Hyper-Realistic 8k Photography', this)" class="style-btn active-chip w-full text-left p-4 rounded-2xl border border-white/5 text-sm font-semibold">📸 Photography</button>
-                            <button onclick="updateSettings('style', 'Cyberpunk Digital Art Illustration', this)" class="style-btn w-full text-left p-4 rounded-2xl border border-white/5 text-sm font-semibold">🌃 Cyberpunk</button>
-                            <button onclick="updateSettings('style', 'Studio Ghibli Anime Style', this)" class="style-btn w-full text-left p-4 rounded-2xl border border-white/5 text-sm font-semibold">🎨 Anime Art</button>
+                        <h3 class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-4">Artistic Engine</h3>
+                        <div class="grid grid-cols-1 gap-2" id="styleSelector">
+                            <button onclick="updateConf('style', 'Photorealistic, 8k, highly detailed', this)" class="opt-btn active-chip w-full text-left p-4 rounded-xl border border-white/5 text-sm transition-all">📸 Hyper Realism</button>
+                            <button onclick="updateConf('style', 'Anime style, vibrant colors, Studio Ghibli', this)" class="opt-btn w-full text-left p-4 rounded-xl border border-white/5 text-sm transition-all">🎨 Anime Masterpiece</button>
+                            <button onclick="updateConf('style', 'Cyberpunk, neon lighting, futuristic city', this)" class="opt-btn w-full text-left p-4 rounded-xl border border-white/5 text-sm transition-all">🌃 Cyberpunk 2077</button>
                         </div>
                     </div>
                     <div>
-                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-[0.2em] mb-4">Ratio</h3>
-                        <div class="flex gap-3">
-                            <button onclick="updateSettings('ratio', '16:9', this)" class="ratio-btn active-chip flex-1 py-3 rounded-xl border border-white/5 text-xs font-bold">16:9</button>
-                            <button onclick="updateSettings('ratio', '9:16', this)" class="ratio-btn flex-1 py-3 rounded-xl border border-white/5 text-xs font-bold">9:16</button>
+                        <h3 class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-4">Frame Ratio</h3>
+                        <div class="flex gap-2">
+                            <button onclick="updateConf('ratio', '16:9', this)" class="ratio-btn active-chip flex-1 py-3 rounded-xl border border-white/5 text-xs">16:9</button>
+                            <button onclick="updateConf('ratio', '9:16', this)" class="ratio-btn flex-1 py-3 rounded-xl border border-white/5 text-xs">9:16</button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </aside>
 
-            <div class="lg:col-span-8 space-y-6">
-                <div class="glass p-10 rounded-[45px] neon-border">
-                    <textarea id="mainInput" class="w-full h-44 bg-transparent text-3xl font-light placeholder-gray-800 outline-none resize-none leading-tight" placeholder="Imagine a futuristic tiger in Mumbai..."></textarea>
+            <main class="lg:col-span-8 space-y-6">
+                <div class="glass p-8 rounded-[40px] shadow-2xl">
+                    <textarea id="mainPrompt" class="w-full h-40 bg-transparent text-2xl font-light placeholder-gray-700 outline-none resize-none leading-relaxed" placeholder="Describe your vision here..."></textarea>
                     
-                    <div class="flex flex-col md:flex-row justify-between items-center mt-10 pt-10 border-t border-white/5 gap-8">
+                    <div class="flex flex-col md:flex-row justify-between items-center mt-8 pt-8 border-t border-white/5 gap-6">
                         <div class="cf-turnstile" data-sitekey="0x4AAAAAAAC8Q1xRQMVIesdD4" data-theme="dark"></div>
-                        <button id="igniteBtn" onclick="generatePrompt()" class="w-full md:w-auto bg-blue-600 neon-btn px-12 py-5 rounded-2xl font-800 text-lg flex items-center justify-center gap-3">
-                            <span>GENERATE</span> <i class="fa-solid fa-fire-glow"></i>
+                        
+                        <button id="igniteBtn" onclick="generateAI()" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 px-12 py-5 rounded-2xl font-800 text-lg flex items-center justify-center gap-3 shadow-lg shadow-blue-600/20 transition-all active:scale-95">
+                            <span>GENERATE</span> <i class="fa-solid fa-bolt"></i>
                         </button>
                     </div>
                 </div>
 
-                <div id="outputContainer" class="hidden glass p-10 rounded-[45px] border-l-8 border-blue-600 animate-in fade-in duration-1000">
+                <div id="resultCard" class="hidden glass p-8 rounded-[40px] prompt-card border-l-8 border-blue-600">
                     <div class="flex justify-between items-center mb-6">
-                        <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.3em]">AI Masterpiece Prompt</span>
-                        <button onclick="copyToClipboard()" class="text-xs bg-white/5 hover:bg-white/10 px-5 py-2 rounded-full transition-all">Copy Prompt</button>
+                        <span class="text-[10px] font-black text-blue-400 uppercase tracking-widest">Masterpiece Prompt Ready</span>
+                        <button onclick="copyToClipboard()" class="text-xs bg-white/5 hover:bg-white/10 px-5 py-2 rounded-full border border-white/10 transition-all">
+                            <i class="fa-solid fa-copy mr-2"></i> Copy
+                        </button>
                     </div>
-                    <p id="outputText" class="text-xl md:text-2xl text-gray-200 font-light italic leading-relaxed"></p>
+                    <p id="outputTxt" class="text-xl md:text-2xl text-gray-300 font-light italic leading-relaxed"></p>
                 </div>
-            </div>
+            </main>
         </div>
     </div>
 
     <script>
+        // Use the Keys provided by you
         const CONFIG = {
-            API_KEY: "AIzaSyAaKDz3ENsoRscOKwEgngsCMg41q6YbnI4",
-            style: "Hyper-Realistic 8k Photography",
+            GEMINI: "AIzaSyAaKDz3ENsoRscOKwEgngsCMg41q6YbnI4",
+            PEXELS: "NpyUyuEMNBYyjPJaqc8tQaaLpDoOyqV69HFRy7hqa4N5NeKrWWaHXP9s",
+            style: "Photorealistic, 8k, highly detailed",
             ratio: "16:9"
         };
 
-        function updateSettings(type, value, el) {
-            const btns = document.querySelectorAll('.' + type + '-btn');
-            btns.forEach(b => b.classList.remove('active-chip'));
+        function updateConf(type, val, el) {
+            document.querySelectorAll('.' + (type === 'style' ? 'opt' : 'ratio') + '-btn').forEach(b => b.classList.remove('active-chip'));
             el.classList.add('active-chip');
-            CONFIG[type] = value;
+            CONFIG[type] = val;
         }
 
-        async function generatePrompt() {
-            const input = document.getElementById('mainInput').value.trim();
+        async function generateAI() {
+            const input = document.getElementById('mainPrompt').value.trim();
             const btn = document.getElementById('igniteBtn');
-            const outputArea = document.getElementById('outputContainer');
+            const resCard = document.getElementById('resultCard');
+            const outTxt = document.getElementById('outputTxt');
             const turnstile = document.querySelector('[name="cf-turnstile-response"]')?.value;
 
             if (!input) return alert("Please enter your idea!");
-            if (!turnstile) return alert("Please complete the security check!");
+            if (!turnstile) return alert("Please complete Security Check!");
 
             btn.disabled = true;
-            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> <span>ANALYZING...</span>`;
+            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> <span>ENGINEERING...</span>`;
 
             try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${CONFIG.API_KEY}`, {
+                // Correct Gemini Pro API call structure
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${CONFIG.GEMINI}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         contents: [{
                             parts: [{
-                                text: `Act as a professional prompt engineer. Convert this idea: "${input}" into a highly detailed image prompt. 
-                                Style: ${CONFIG.style}. Aspect Ratio: --ar ${CONFIG.ratio}. 
-                                Provide ONLY the final text prompt.`
+                                text: `Act as a professional prompt engineer for Midjourney and DALL-E. 
+                                Expand this idea: "${input}" into a high-end image prompt. 
+                                Style: ${CONFIG.style}. Ratio: --ar ${CONFIG.ratio}. 
+                                Output ONLY the final prompt text.`
                             }]
                         }]
                     })
@@ -118,26 +125,44 @@
 
                 const data = await response.json();
                 
-                if (data.candidates && data.candidates[0].content.parts[0].text) {
-                    outputArea.classList.remove('hidden');
-                    document.getElementById('outputText').innerText = data.candidates[0].content.parts[0].text;
-                    outputArea.scrollIntoView({ behavior: 'smooth' });
+                if (data.candidates && data.candidates[0].content) {
+                    const finalResult = data.candidates[0].content.parts[0].text;
+                    resCard.classList.remove('hidden');
+                    outTxt.innerText = finalResult;
+                    resCard.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Background update using Pexels
+                    updateBackground(input);
                 } else {
-                    throw new Error("API Limit reached or Error.");
+                    throw new Error("API Response Error");
                 }
 
             } catch (err) {
                 console.error(err);
-                alert("Connection Error. Please check your internet or try later.");
+                alert("AI Connection Failed. Please try refreshing the page or check your internet.");
             } finally {
                 btn.disabled = false;
-                btn.innerHTML = `<span>GENERATE</span> <i class="fa-solid fa-fire-glow"></i>`;
+                btn.innerHTML = `<span>GENERATE</span> <i class="fa-solid fa-bolt"></i>`;
             }
         }
 
+        async function updateBackground(query) {
+            try {
+                const res = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=1`, {
+                    headers: { Authorization: CONFIG.PEXELS }
+                });
+                const data = await res.json();
+                if (data.photos[0]) {
+                    const bg = document.getElementById('bg-canvas');
+                    bg.src = data.photos[0].src.large2x;
+                    bg.style.opacity = "0.3";
+                }
+            } catch (e) { console.log("BG Update Error"); }
+        }
+
         function copyToClipboard() {
-            const text = document.getElementById('outputText').innerText;
-            navigator.clipboard.writeText(text);
+            const t = document.getElementById('outputTxt').innerText;
+            navigator.clipboard.writeText(t);
             alert("Prompt Copied!");
         }
     </script>
