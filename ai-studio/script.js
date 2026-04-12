@@ -1,61 +1,48 @@
-const CONFIG = {
-    GEMINI_KEY: "AIzaSyAaKDz3ENsoRscOKwEgngsCMg41q6YbnI4",
-    PEXELS_KEY: "NpyUyuEMNBYyjPJaqc8tQaaLpDoOyqV69HFRy7hqa4N5NeKrWWaHXP9s"
+let currentSettings = {
+    style: 'Cinematic Photorealistic',
+    ratio: '16:9'
 };
 
-let activeStyle = "Cinematic";
-
-function setStyle(s, b) {
-    activeStyle = s;
-    document.querySelectorAll('.style-btn').forEach(btn => btn.classList.remove('active-btn'));
-    b.classList.add('active-btn');
+function selectOption(type, value, element) {
+    currentSettings[type] = value;
+    
+    // Remove active class from siblings
+    const selector = type === 'style' ? '.opt-btn' : '.ratio-btn';
+    document.querySelectorAll(selector).forEach(btn => btn.classList.remove('active-chip'));
+    
+    // Add to clicked
+    element.classList.add('active-chip');
 }
 
-async function updateBackground(query) {
-    try {
-        const res = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=1`, {
-            headers: { Authorization: CONFIG.PEXELS_KEY }
-        });
-        const data = await res.json();
-        if (data.photos[0]) {
-            document.body.style.backgroundImage = `linear-gradient(rgba(5,7,10,0.8), rgba(5,7,10,0.95)), url('${data.photos[0].src.large2x}')`;
-        }
-    } catch (e) { console.log("BG Load Error"); }
-}
+async function igniteEngine() {
+    const input = document.getElementById('promptInput').value;
+    const btn = document.getElementById('masterBtn');
+    const resultBox = document.getElementById('resultDisplay');
+    const turnstileResponse = document.querySelector('[name="cf-turnstile-response"]').value;
 
-async function generateProPrompt() {
-    const input = document.getElementById('userInput').value;
-    const turnstileToken = document.querySelector('[name="cf-turnstile-response"]').value;
+    if (!input) return alert("Please enter your idea first!");
+    if (!turnstileResponse) return alert("Please complete the security check!");
 
-    if (!input || !turnstileToken) return alert("Please fill input and verify security.");
-
-    const btn = document.getElementById('genBtn');
-    btn.innerText = "Analyzing...";
     btn.disabled = true;
-    updateBackground(input);
+    btn.innerHTML = `<span>PROCESSING...</span> <i class="fa-solid fa-circle-notch animate-spin"></i>`;
 
-    const prompt = `Professional AI image prompt for: "${input}". Style: ${activeStyle}. Highly detailed, 8k resolution.`;
+    // Modern Prompt Engineering Logic
+    const finalPrompt = `[Masterpiece] ${input}, ${currentSettings.style} style, ultra-detailed, 8k resolution, highly realistic, shot on 35mm lens, depth of field, sharp focus, vibrant colors, lighting by Unreal Engine 5, aspect ratio --ar ${currentSettings.ratio}`;
 
-    try {
-        // यहाँ आपकी Gemini API को कॉल किया जाएगा
-        document.getElementById('resultBox').classList.remove('hidden');
-        document.getElementById('generatedText').innerText = prompt;
-        saveHistory(prompt);
-    } catch (e) { alert("API Error!"); }
-    finally { btn.innerText = "Generate Masterpiece"; btn.disabled = false; }
+    // Simulate AI Processing
+    setTimeout(() => {
+        resultBox.classList.remove('hidden');
+        document.getElementById('outputText').innerText = finalPrompt;
+        btn.disabled = false;
+        btn.innerHTML = `<span>IGNITE ENGINE</span> <i class="fa-solid fa-fire-flame-curved"></i>`;
+        
+        // Auto-scroll to result
+        resultBox.scrollIntoView({ behavior: 'smooth' });
+    }, 1500);
 }
 
-function saveHistory(txt) {
-    const cont = document.getElementById('historyContainer');
-    const d = document.createElement('div');
-    d.className = "p-3 bg-white/5 rounded-xl text-[10px] text-gray-400 truncate cursor-pointer";
-    d.innerText = txt;
-    d.onclick = () => { document.getElementById('generatedText').innerText = txt; };
-    cont.prepend(d);
+function copyOutput() {
+    const text = document.getElementById('outputText').innerText;
+    navigator.clipboard.writeText(text);
+    alert("Prompt copied to clipboard!");
 }
-
-function copyText() {
-    navigator.clipboard.writeText(document.getElementById('generatedText').innerText);
-    alert("Copied!");
-}
-
