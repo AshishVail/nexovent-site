@@ -1,0 +1,27 @@
+name: Google Indexing Bot
+
+on:
+  push:
+    branches:
+      - main  # जब भी आप मेन ब्रांच में कुछ नया डालेंगे, ये चलेगा
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install google-auth requests
+
+      - name: Run Indexing Script
+        env:
+          INDEXING_SERVICE_ACCOUNT_JSON: ${{ secrets.INDEXING_SERVICE_ACCOUNT_JSON }}
+        run: python index_now.py
+        
