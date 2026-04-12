@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexovent.tech | Masterpiece AI Prompts</title>
+    <title>Nexovent.tech | Professional AI Prompt Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +18,6 @@
         .nav-link { font-weight: 600; color: #666; transition: 0.3s; }
         .nav-link:hover { color: #ff8a4c; }
         .ai-label { background: #ff8a4c; padding: 4px 10px; border-radius: 8px; color: white; font-weight: 800; font-size: 14px; }
-        /* Professional Footer Elements */
         #resultArea { display: none; border: 2px dashed #ff8a4c; background: #fffaf7; margin-top: 30px; border-radius: 20px; }
     </style>
 </head>
@@ -30,11 +29,11 @@
                 <span class="ai-label">AI</span>
                 <span class="text-xl font-800 tracking-tighter">Nexovent<span class="text-gray-400">.tech</span></span>
             </div>
-            <div class="hidden md:flex gap-8 items-center">
+            <div class="hidden md:flex gap-8 items-center text-sm">
                 <a href="#" class="nav-link">Home</a>
-                <a href="#pro-tools" class="nav-link">Tools</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <button class="bg-black text-white px-6 py-2.5 rounded-full font-bold text-sm">Sign In</button>
+                <a href="#tools-hub" class="nav-link">Tools</a>
+                <a href="mailto:support@nexovent.tech" class="nav-link">Support</a>
+                <button class="bg-black text-white px-6 py-2.5 rounded-full font-bold">Sign In</button>
             </div>
         </div>
     </nav>
@@ -43,15 +42,11 @@
         <h1 class="text-5xl md:text-7xl font-800 tracking-tight leading-tight">
             Turn your ideas into <br> <span class="text-gray-400">detailed AI prompts</span>
         </h1>
-        <p class="text-gray-500 mt-6 text-xl">No prompt engineering degree required. Just type and ignite.</p>
+        <p class="text-gray-500 mt-6 text-xl font-medium">Professional grade prompt engineering by Nexovent Technology.</p>
 
         <div class="hero-card mt-12 p-8 md:p-14 text-left">
-            
             <div class="mb-10">
-                <div class="flex justify-between items-end mb-4">
-                    <label class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Target AI Model</label>
-                    <span class="text-[10px] font-bold text-green-500 flex items-center gap-1"><i class="fa-solid fa-circle text-[6px]"></i> MISTRAL LARGE ACTIVE</span>
-                </div>
+                <label class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 block mb-4 text-center md:text-left">Select AI Engine</label>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <div onclick="selectModel(this)" class="model-chip active-chip chip px-6 py-4 rounded-2xl text-sm font-bold">Midjourney 6.0</div>
                     <div onclick="selectModel(this)" class="model-chip chip px-6 py-4 rounded-2xl text-sm font-bold text-gray-500">DALL-E 3</div>
@@ -61,7 +56,7 @@
             </div>
 
             <div class="mb-10">
-                <label class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 block mb-4">Aspect Ratio</label>
+                <label class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 block mb-4 text-center md:text-left">Aspect Ratio</label>
                 <div class="flex gap-4">
                     <button onclick="selectRatio(this)" class="ratio-chip active-chip chip flex-1 py-4 rounded-2xl text-sm font-bold">16:9 Landscape</button>
                     <button onclick="selectRatio(this)" class="ratio-chip chip flex-1 py-4 rounded-2xl text-sm font-bold text-gray-500">1:1 Square</button>
@@ -69,81 +64,80 @@
                 </div>
             </div>
 
-            <div class="relative mb-6">
-                <textarea id="uInput" rows="5" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-6 text-2xl placeholder-gray-300 outline-none transition-all" placeholder="Describe your vision..."></textarea>
-            </div>
+            <textarea id="uInput" rows="5" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-6 text-2xl placeholder-gray-300 outline-none transition-all mb-6" placeholder="Type your vision here..."></textarea>
 
-            <button onclick="igniteEngine()" id="genBtn" class="btn-orange w-full py-5 rounded-2xl text-white font-bold text-lg flex items-center justify-center gap-3">
-                <i class="fa-solid fa-fire-lightning"></i> Ignite AI Engine
+            <button onclick="ignite()" id="genBtn" class="btn-orange w-full py-5 rounded-2xl text-white font-bold text-lg flex items-center justify-center gap-3 active:scale-95 transition-all">
+                <i class="fa-solid fa-fire-lightning"></i> Ignite Engine
             </button>
 
             <div id="resultArea" class="p-8">
-                <p class="text-[10px] font-black uppercase tracking-widest text-[#ff8a4c] mb-3">Masterpiece Prompt Generated:</p>
-                <div id="resText" class="text-xl text-gray-700 leading-relaxed font-light italic"></div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-[#ff8a4c] mb-3">Nexovent Engineered Prompt:</p>
+                <div id="resText" class="text-xl text-gray-700 italic font-medium"></div>
             </div>
         </div>
     </main>
 
-    <footer class="bg-white border-t border-gray-100 pt-20 pb-10 px-8">
+    <footer class="bg-white border-t border-gray-100 pt-20 pb-10 px-8 mt-12">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
             
-            <div class="md:col-span-4 space-y-6 text-center md:text-left">
-                <div class="flex items-center gap-2 justify-center md:justify-start">
+            <div class="md:col-span-4 space-y-6">
+                <div class="flex items-center gap-2">
                     <span class="ai-label">AI</span>
                     <span class="text-xl font-800 tracking-tighter">Nexovent<span class="text-gray-400">.tech</span></span>
                 </div>
-                <p class="text-gray-500 text-sm max-w-sm">Crafting professional prompts for Midjourney, DALL-E, and all major AI image generators.</p>
-                <div class="flex gap-4 text-xl text-gray-400 justify-center md:justify-start">
-                    <a href="#" class="hover:text-black"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" class="hover:text-black"><i class="fa-brands fa-pinterest"></i></a>
-                    <a href="#" class="hover:text-black"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" class="hover:text-black"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="hover:text-black"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="hover:text-black"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="hover:text-black"><i class="fa-brands fa-reddit-alien"></i></a>
+                <p class="text-gray-500 text-sm">Empowering creators with precision-engineered AI prompts. No API mentions, just pure branding.</p>
+                <div class="flex gap-4 text-xl text-gray-400">
+                    <a href="#" class="hover:text-red-600 transition"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-red-500 transition"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#" class="hover:text-blue-700 transition"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="hover:text-black transition"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-pink-600 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-blue-600 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-orange-600 transition"><i class="fa-brands fa-reddit-alien"></i></a>
                 </div>
             </div>
             
-            <div class="md:col-span-5 grid grid-cols-2 gap-4" id="pro-tools">
-                <h4 class="col-span-2 text-xs font-black uppercase text-gray-400 tracking-widest mb-4">Top Image Generators</h4>
-                <div class="space-y-3 text-sm text-gray-500">
-                    <a href="https://midjourney.com" class="hover:text-black block"><i class="fa-solid fa-arrow-right mr-2 text-gray-200"></i>Midjourney v6</a>
-                    <a href="https://openai.com/dall-e-3" class="hover:text-black block"><i class="fa-solid fa-arrow-right mr-2 text-gray-200"></i>OpenAI DALL-E 3</a>
-                    <a href="https://leonardo.ai" class="hover:text-black block"><i class="fa-solid fa-arrow-right mr-2 text-gray-200"></i>Leonardo.ai</a>
-                    <a href="https://adobe.com/firefly" class="hover:text-black block"><i class="fa-solid fa-arrow-right mr-2 text-gray-200"></i>Adobe Firefly</a>
-                    <a href="https://stable-diffusion.ai" class="hover:text-black block"><i class="fa-solid fa-arrow-right mr-2 text-gray-200"></i>Stable Diffusion</a>
+            <div id="tools-hub" class="md:col-span-5 grid grid-cols-2 gap-4">
+                <h4 class="col-span-2 text-xs font-black uppercase text-gray-400 tracking-widest mb-4">Direct Tool Access</h4>
+                <div class="space-y-2 text-sm text-gray-500">
+                    <a href="https://midjourney.com" target="_blank" class="hover:text-black block">Midjourney v6</a>
+                    <a href="https://openai.com/dall-e-3" target="_blank" class="hover:text-black block">OpenAI DALL-E 3</a>
+                    <a href="https://leonardo.ai" target="_blank" class="hover:text-black block">Leonardo AI</a>
+                    <a href="https://adobe.com/firefly" target="_blank" class="hover:text-black block">Adobe Firefly</a>
+                    <a href="https://stable-diffusion.ai" target="_blank" class="hover:text-black block">Stable Diffusion</a>
                 </div>
-                <div class="space-y-3 text-sm text-gray-500">
-                    <a href="https://playground.ai" class="hover:text-black block"><i class="fa-solid fa-arrow-right mr-2 text-gray-200"></i>Playground AI</a>
-                    <a href="https://dezgo.com" class="hover:text-black block"><i class="fa-solid fa-arrow-right mr-2 text-gray-200"></i>Dezgo Image Gen</a>
-                    <a href="https://artbreeder.com" class="hover:text-black block"><i class="fa-solid fa-arrow-right mr-2 text-gray-200"></i>Artbreeder</a>
-                    <a href="https://nightcafe.studio" class="hover:text-black block"><i class="fa-solid fa-arrow-right mr-2 text-gray-200"></i>NightCafe Studio</a>
-                    <a href="https://wombo.art" class="hover:text-black block"><i class="fa-solid fa-arrow-right mr-2 text-gray-200"></i>Dream by WOMBO</a>
+                <div class="space-y-2 text-sm text-gray-500">
+                    <a href="https://playground.com" target="_blank" class="hover:text-black block">Playground AI</a>
+                    <a href="https://lexica.art" target="_blank" class="hover:text-black block">Lexica Art</a>
+                    <a href="https://www.bluewillow.ai" target="_blank" class="hover:text-black block">BlueWillow</a>
+                    <a href="https://nightcafe.studio" target="_blank" class="hover:text-black block">NightCafe Studio</a>
+                    <a href="https://wombo.art" target="_blank" class="hover:text-black block">Dream WOMBO</a>
                 </div>
             </div>
 
-            <div class="md:col-span-3 space-y-6">
-                <div id="contact">
-                    <h4 class="text-xs font-black uppercase text-gray-400 tracking-widest mb-4">Contact Support</h4>
-                    <a href="support@nexoventai.tach" class="text-sm text-gray-600 font-semibold hover:text-black block"><i class="fa-solid fa-envelope mr-2"></i>nexoventai@gmail.com</a>
+            <div class="md:col-span-3 space-y-8">
+                <div>
+                    <h4 class="text-xs font-black uppercase text-gray-400 tracking-widest mb-4">Support Inquiry</h4>
+                    <a href="mailto:support@nexovent.tech" class="text-sm font-bold text-gray-800 hover:text-orange-500 transition underline underline-offset-4">support@nexovent.tech</a>
                 </div>
                 <div>
-                    <h4 class="text-xs font-black uppercase text-gray-400 tracking-widest mb-4">Legal</h4>
-                    <ul class="text-xs text-gray-500 space-y-2">
-                        <li><a href="#" class="hover:text-black">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-black">Terms of Service</a></li>
+                    <h4 class="text-xs font-black uppercase text-gray-400 tracking-widest mb-4">Resources</h4>
+                    <div class="space-y-2 text-xs text-gray-500 font-bold uppercase">
+                        <a href="#" class="block hover:text-black">Privacy Policy</a>
+                        <a href="#" class="block hover:text-black">Terms of Service</a>
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-100 text-center">
-            <p class="text-[10px] text-gray-300 font-bold uppercase tracking-widest">&copy; 2026 NEXOVENT.TECH GLOBAL. ALL RIGHTS RESERVED.</p>
+            <p class="text-[10px] text-gray-300 font-bold uppercase tracking-[0.5em]">&copy; 2026 NEXOVENT.TECH GLOBAL. ENGINEERED FOR EXCELLENCE.</p>
         </div>
     </footer>
 
     <script>
-        // No logic changes, just ensuring no errors
+        const API_KEY = "OUjZmK9tvZ7toyDnOPkCJMqB3soCQBI4";
+        
         function selectModel(el) {
             document.querySelectorAll('.model-chip').forEach(c => c.classList.remove('active-chip'));
             el.classList.add('active-chip');
@@ -152,14 +146,37 @@
             document.querySelectorAll('.ratio-chip').forEach(c => c.classList.remove('active-chip'));
             el.classList.add('active-chip');
         }
-        function igniteEngine() {
+
+        async function ignite() {
             const input = document.getElementById('uInput').value.trim();
-            const resultArea = document.getElementById('resultArea');
+            const btn = document.getElementById('genBtn');
+            const resArea = document.getElementById('resultArea');
             const resText = document.getElementById('resText');
-            if(!input) return alert("Bhai, kuch toh likho!");
-            resultArea.style.display = "block";
-            resText.innerText = `"Hyper-detailed cinematic shot of Create a high quality ${input} for Midjourney, DALL-E, 8k details."`;
-            resultArea.scrollIntoView({ behavior: 'smooth' });
+
+            if(!input) return;
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> ENGAGING ENGINE...';
+
+            try {
+                const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
+                    method: "POST",
+                    headers: { "Authorization": `Bearer ${API_KEY}`, "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        model: "mistral-large-latest",
+                        messages: [{ role: "user", content: `You are the Nexovent Tech Engine. Create a professional, short, high-detail image prompt for ${input}. Result only.` }]
+                    })
+                });
+                const data = await response.json();
+                resArea.style.display = "block";
+                resText.innerText = data.choices[0].message.content;
+                resArea.scrollIntoView({ behavior: 'smooth' });
+            } catch (e) {
+                console.error("Connection Error");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-fire-lightning"></i> Ignite Engine';
+            }
         }
     </script>
 </body>
