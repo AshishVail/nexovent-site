@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Nexovent Technical Global</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; color: #1a1a1a; }
+        .nt-badge { background: #ff8a4c; color: white; padding: 4px 10px; border-radius: 8px; font-weight: 800; }
+        .gradient-text { background: linear-gradient(90deg, #ff8a4c, #e0763d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .input-field { width: 100%; padding: 16px; border: 1px solid #f0f0f0; border-radius: 16px; outline: none; transition: 0.3s; background: #fafafa; }
+        .input-field:focus { border-color: #ff8a4c; background: #white; box-shadow: 0 0 0 4px rgba(255, 138, 76, 0.1); }
+        .send-btn { background: #ff8a4c; color: white; padding: 16px 32px; border-radius: 16px; font-weight: 700; transition: 0.3s; width: 100%; }
+        .send-btn:hover { background: #e0763d; transform: translateY(-2px); }
+        .social-link { color: #666; transition: 0.3s; font-size: 1.2rem; }
+        .social-link:hover { color: #ff8a4c; transform: translateY(-3px); }
+    </style>
+</head>
+<body>
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="nt-badge">NT</span>
+                <span class="text-xl font-800 tracking-tighter">Nexovent<span class="text-gray-400">.tech</span></span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-600">
+                <a href="index.html" class="hover:text-[#ff8a4c] transition">Home</a>
+                <a href="about.html" class="hover:text-[#ff8a4c] transition">About</a>
+                <a href="blog.html" class="hover:text-[#ff8a4c] transition">Blog</a>
+                <a href="contact.html" class="text-[#ff8a4c]">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-16 px-6 text-center bg-gray-50">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-800 mb-4 tracking-tight">Get in <span class="gradient-text">Touch.</span></h1>
+            <p class="text-gray-500 text-lg">Have a technical query or a collaboration idea? We are here to help you scale your vision.</p>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto py-20 px-6 grid md:grid-cols-2 gap-16">
+        
+        <div class="space-y-12">
+            <div>
+                <h2 class="text-2xl font-800 mb-6">Contact Information</h2>
+                <p class="text-gray-600 leading-relaxed mb-8">Nexovent Technical Global is committed to providing precision-engineered support. Reach out to our team for official inquiries regarding AI tools, technical education, or digital mastery.</p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-[#ff8a4c]">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-800">Email Us</p>
+                            <p class="text-gray-500">support@nexovent.tech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-800 mb-4">Follow Our Updates</h3>
+                <div class="flex gap-6">
+                    <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white border border-gray-100 p-8 md:p-10 rounded-[32px] shadow-sm">
+            <form action="https://formspree.io/f/YOUR_EMAIL_HERE" method="POST" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-800 mb-2">Full Name</label>
+                    <input type="text" name="name" placeholder="Enter your name" class="input-field" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-800 mb-2">Subject</label>
+                    <input type="text" name="subject" placeholder="What is this about?" class="input-field" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-800 mb-2">Message</label>
+                    <textarea name="message" rows="5" placeholder="Write your message here..." class="input-field" required></textarea>
+                </div>
+                <button type="submit" class="send-btn">
+                    Send Message <i class="fa-solid fa-paper-plane ml-2"></i>
+                </button>
+            </form>
+        </div>
+
+    </main>
+
+    <footer class="bg-black text-gray-500 pt-24 pb-12 px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="space-y-6">
+                <div class="flex items-center gap-2 text-white">
+                    <span class="nt-badge">NT</span>
+                    <span class="text-xl font-800">Nexovent.tech</span>
+                </div>
+                <p class="text-xs leading-relaxed">Official Business Profile. Engineering the next generation of digital workflows and AI-driven excellence.</p>
+                <div class="flex space-x-5 pt-2">
+                    <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="text-white font-800 text-sm">Quick Links</h4>
+                <ul class="text-xs space-y-3">
+                    <li><a href="index.html" class="hover:text-white">Home</a></li>
+                    <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                    <li><a href="blog.html" class="hover:text-white">Official Blog</a></li>
+                    <li><a href="contact.html" class="hover:text-white text-white">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="text-white font-800 text-sm">Legal & Compliance</h4>
+                <ul class="text-xs space-y-3">
+                    <li><a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
+                    <li><a href="terms-conditions.html" class="hover:text-white">Terms & Conditions</a></li>
+                    <li><a href="disclaimer.html" class="hover:text-white">Disclaimer</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="text-white font-800 text-sm">Corporate</h4>
+                <p class="text-[10px] uppercase tracking-widest text-gray-700">Nexovent Global Enterprise</p>
+                <p class="text-xs italic">"Precision in every pixel."</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-gray-900 pt-8 text-center">
+            <p class="text-[10px] uppercase tracking-[0.4em]">© 2026 NEXOVENT.TECH | ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
