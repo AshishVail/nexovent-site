@@ -1,64 +1,96 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexovent AI Studio | Pro Prompt Lab</title>
+    <title>Nexovent AI | Ultimate Prompt Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #05070a; color: white; transition: background 0.8s ease; }
-        .glass-effect { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .active-btn { background: #2563eb !important; border-color: #3b82f6 !important; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #020617; color: #f8fafc; overflow-x: hidden; }
+        .neon-border { border: 1px solid rgba(59, 130, 246, 0.2); box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); }
+        .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gradient-text { background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-glow:hover { box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); transform: translateY(-2px); }
+        .active-chip { background: linear-gradient(135deg, #2563eb, #7c3aed); border: none !important; }
     </style>
 </head>
-<body class="min-h-screen bg-fixed bg-cover bg-center">
-    <div class="flex h-screen overflow-hidden">
-        <aside class="w-64 glass-effect p-6 hidden md:flex flex-col border-r border-white/10">
-            <div class="text-2xl font-800 mb-10 tracking-tighter text-blue-500">NEXOVENT<span class="text-white">.AI</span></div>
-            <nav class="space-y-4 flex-1">
-                <button class="w-full flex items-center space-x-3 p-3 rounded-xl bg-blue-600/10 text-blue-400 border border-blue-600/20"><span>🚀</span> <span>Prompt Engine</span></button>
-                <div id="historyContainer" class="mt-10 space-y-3 overflow-y-auto max-h-60"></div>
-            </nav>
-        </aside>
+<body class="min-h-screen">
+    <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-900/20 blur-[120px] rounded-full"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-900/20 blur-[120px] rounded-full"></div>
 
-        <main class="flex-1 overflow-y-auto p-4 md:p-10">
-            <div class="max-w-5xl mx-auto">
-                <header class="mb-10">
-                    <h1 class="text-4xl font-800">AI Prompt Studio</h1>
-                    <p class="text-gray-400 mt-2">Professional Midjourney & DALL-E prompts generator.</p>
-                </header>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-12">
+        <nav class="flex justify-between items-center mb-16">
+            <div class="text-2xl font-800 tracking-tighter flex items-center gap-2">
+                <i class="fa-solid fa-bolt-lightning text-blue-500"></i>
+                <span>NEXOVENT <span class="gradient-text">STUDIO</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="#" class="hover:text-white transition">Models</a>
+                <a href="#" class="hover:text-white transition">Gallery</a>
+                <a href="#" class="hover:text-white transition">API Docs</a>
+            </div>
+        </nav>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <div class="lg:col-span-4 space-y-6">
-                        <div class="glass-effect p-6 rounded-3xl space-y-6">
-                            <label class="text-[10px] font-bold text-gray-500 uppercase tracking-widest block">Art Style</label>
-                            <div class="grid grid-cols-2 gap-2">
-                                <button onclick="setStyle('Cinematic', this)" class="style-btn p-3 border border-white/10 rounded-xl text-xs active-btn">🎬 Cinematic</button>
-                                <button onclick="setStyle('Cyberpunk', this)" class="style-btn p-3 border border-white/10 rounded-xl text-xs">🌃 Cyberpunk</button>
-                            </div>
-                        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-4 space-y-6">
+                <div class="glass-card p-6 rounded-3xl neon-border">
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generation Mode
+                    </h3>
+                    <div class="grid grid-cols-1 gap-3" id="styleGrid">
+                        <button onclick="selectOption('style', 'Cinematic Photorealistic', this)" class="opt-btn w-full text-left p-4 rounded-2xl border border-white/5 hover:bg-white/5 transition flex items-center justify-between active-chip">
+                            <span>Cinematic Pro</span> <i class="fa-solid fa-camera-retro"></i>
+                        </button>
+                        <button onclick="selectOption('style', 'Digital Cyberpunk Art', this)" class="opt-btn w-full text-left p-4 rounded-2xl border border-white/5 hover:bg-white/5 transition flex items-center justify-between">
+                            <span>Cyberpunk 2077</span> <i class="fa-solid fa-city"></i>
+                        </button>
+                        <button onclick="selectOption('style', 'Anime / Studio Ghibli', this)" class="opt-btn w-full text-left p-4 rounded-2xl border border-white/5 hover:bg-white/5 transition flex items-center justify-between">
+                            <span>Anime Masterpiece</span> <i class="fa-solid fa-ghost"></i>
+                        </button>
                     </div>
+                </div>
 
-                    <div class="lg:col-span-8 space-y-6">
-                        <div class="glass-effect p-8 rounded-3xl">
-                            <textarea id="userInput" class="w-full h-40 bg-transparent text-2xl font-light placeholder-gray-700 outline-none resize-none" placeholder="अपना आईडिया यहाँ लिखें..."></textarea>
-                            <div class="flex flex-col md:flex-row justify-between items-center mt-6 pt-6 border-t border-white/10 gap-4">
-                                <div class="cf-turnstile" data-sitekey="0x4AAAAAAAC8Q1xRQMVIesdD4" data-theme="dark"></div>
-                                <button id="genBtn" onclick="generateProPrompt()" class="bg-blue-600 hover:bg-blue-700 px-10 py-4 rounded-2xl font-bold transition">Generate Masterpiece</button>
-                            </div>
-                        </div>
-                        <div id="resultBox" class="hidden glass-effect p-8 rounded-3xl border-l-4 border-blue-500">
-                            <p id="generatedText" class="text-xl text-gray-200 leading-relaxed italic"></p>
-                            <button onclick="copyText()" class="mt-4 text-xs bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full">COPY</button>
-                        </div>
+                <div class="glass-card p-6 rounded-3xl">
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Aspect Ratio</h3>
+                    <div class="flex gap-3">
+                        <button onclick="selectOption('ratio', '16:9', this)" class="ratio-btn flex-1 py-3 rounded-xl border border-white/5 text-xs hover:bg-white/5 active-chip">16:9</button>
+                        <button onclick="selectOption('ratio', '1:1', this)" class="ratio-btn flex-1 py-3 rounded-xl border border-white/5 text-xs hover:bg-white/5">1:1</button>
+                        <button onclick="selectOption('ratio', '9:16', this)" class="ratio-btn flex-1 py-3 rounded-xl border border-white/5 text-xs hover:bg-white/5">9:16</button>
                     </div>
                 </div>
             </div>
-        </main>
+
+            <div class="lg:col-span-8 space-y-6">
+                <div class="glass-card p-8 rounded-[40px] neon-border">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-[10px] font-bold rounded-full uppercase">Engine v4.0</span>
+                        <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-[10px] font-bold rounded-full uppercase text-white">Stable Diffusion XL</span>
+                    </div>
+                    <textarea id="promptInput" class="w-full h-48 bg-transparent text-3xl font-light placeholder-gray-700 outline-none resize-none" placeholder="Describe your imagination..."></textarea>
+                    
+                    <div class="flex flex-col md:flex-row justify-between items-center mt-8 pt-8 border-t border-white/5 gap-6">
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAC8Q1xRQMVIesdD4" data-theme="dark"></div>
+                        <button id="masterBtn" onclick="igniteEngine()" class="w-full md:w-auto bg-blue-600 btn-glow px-12 py-5 rounded-2xl font-800 text-lg flex items-center justify-center gap-3 transition-all">
+                            <span>IGNITE ENGINE</span> <i class="fa-solid fa-fire-flame-curved"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="resultDisplay" class="hidden glass-card p-8 rounded-[40px] border-l-4 border-blue-500 animate-pulse">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Masterpiece Prompt Ready</span>
+                        <button onclick="copyOutput()" class="text-xs text-gray-500 hover:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <p id="outputText" class="text-xl text-gray-300 font-light italic leading-relaxed"></p>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
-
