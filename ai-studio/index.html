@@ -3,115 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexovent AI Studio | Pro Prompt Lab</title>
+    <title>Nexovent AI Studio | World's #1 Prompt Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #010409; color: #e6edf3; display: flex; flex-col; min-h-screen; }
-        .glass-card { background: rgba(13, 17, 23, 0.85); backdrop-filter: blur(25px); border: 1px solid #30363d; }
-        .active-btn { background: linear-gradient(135deg, #7c3aed, #e879f9) !important; color: white !important; border-color: #e879f9 !important; box-shadow: 0 5px 20px rgba(124, 58, 237, 0.4); }
-        .gradient-text { background: linear-gradient(135deg, #e879f9 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .footer-bg { background: #010204; border-t: 1px solid #222; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #010204; color: #f0f6fc; display: flex; flex-col; min-h-screen; }
+        .glass-ui { background: rgba(13, 17, 23, 0.9); backdrop-filter: blur(30px); border: 1px solid #30363d; }
+        .tab-btn { background: #0d1117; border: 1px solid #30363d; color: #8b949e; transition: 0.3s; }
+        .tab-btn:hover { border-color: #58a6ff; color: #58a6ff; }
+        .tab-btn.active { background: linear-gradient(135deg, #1f6feb, #8957e5); border: none; color: white; box-shadow: 0 5px 20px rgba(31, 111, 235, 0.3); }
+        .gradient-main { background: linear-gradient(135deg, #1f6feb 0%, #8957e5 100%); }
+        .social-icon { color: #8b949e; transition: 0.3s; font-size: 1.25rem; }
+        .social-icon:hover { color: white; transform: scale(1.1); }
+        select { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between p-4 md:p-8">
+<body class="min-h-screen flex flex-col justify-between">
 
-    <header class="max-w-7xl mx-auto w-full glass-card p-6 rounded-[30px] flex justify-between items-center mb-10 shadow-2xl">
+    <header class="max-w-[1920px] mx-auto w-full p-6 flex justify-between items-center border-b border-gray-800">
         <div class="flex items-center gap-3">
-            <i class="fa-solid fa-code text-3xl text-[#e879f9]"></i>
-            <h1 class="text-2xl font-800 tracking-tighter uppercase italic">Nexovent <span class="gradient-text">Studio</span></h1>
+            <i class="fa-solid fa-wand-magic-sparkles text-3xl text-[#58a6ff]"></i>
+            <h1 class="text-3xl font-800 tracking-tighter uppercase italic">Nexovent <span class="text-[#58a6ff]">Studio</span></h1>
         </div>
-        <div class="text-[10px] font-black uppercase text-purple-400 bg-purple-400/10 px-4 py-2 rounded-full tracking-widest">Mistral Large AI Active</div>
+        <div class="flex items-center gap-4">
+            <div class="text-[10px] font-black uppercase text-green-400 bg-green-400/10 px-4 py-2 rounded-full tracking-widest flex items-center gap-2">
+                <span class="h-1.5 w-1.5 bg-green-500 rounded-full"></span> Mistral Large API (Active)
+            </div>
+            <a href="mailto:support@nexovent.tech" class="text-xs text-gray-400 hover:text-white">API Docs</a>
+        </div>
     </header>
 
-    <main class="flex-grow max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+    <main class="flex-grow max-w-[1920px] mx-auto w-full grid grid-cols-1 xl:grid-cols-12 gap-8 px-6 py-12 mb-16">
         
-        <aside class="space-y-6">
-            <div class="glass-card p-8 rounded-[40px] space-y-8">
+        <aside class="xl:col-span-3 space-y-8">
+            <div class="glass-ui p-8 rounded-[40px] space-y-10">
+                
                 <div>
-                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-5 flex items-center gap-2">
-                        <i class="fa-solid fa-microchip"></i> Select Target AI
-                    </h3>
-                    <div class="space-y-3">
-                        <button onclick="updateSettings('ai', 'Midjourney v6.0', this)" class="ai-btn active-btn w-full text-left p-4 rounded-xl border border-white/5 text-sm font-semibold transition-all">Midjourney 6.0 (HQ)</button>
-                        <button onclick="updateSettings('ai', 'DALL-E 3', this)" class="ai-btn w-full text-left p-4 rounded-xl border border-white/5 text-sm font-semibold transition-all">OpenAI DALL-E 3</button>
+                    <div class="flex justify-between items-center mb-5">
+                        <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                            <i class="fa-solid fa-microchip"></i> Target AI Model
+                        </h3>
+                        <span class="text-[10px] text-blue-400">JUMP TO <i class="fa-solid fa-arrow-down ml-1"></i></span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 mb-4" id="quickAI">
+                        <button onclick="updateSettings('ai', 'Midjourney v6.0', this)" class="ai-btn active tab-btn p-4 rounded-xl text-xs font-semibold">Midjourney 6.0</button>
+                        <button onclick="updateSettings('ai', 'DALL-E 3', this)" class="ai-btn tab-btn p-4 rounded-xl text-xs font-semibold">DALL-E 3</button>
+                    </div>
+                    <div class="relative">
+                        <input type="text" id="aiSearch" onkeyup="searchAI()" placeholder="Search from 100+ AIs (Stable Diffusion, Leonardo...)" class="w-full bg-[#0d1117] border border-gray-800 rounded-xl px-4 py-3 text-sm outline-none">
+                        <i class="fa-solid fa-search absolute right-4 top-3.5 text-gray-700"></i>
                     </div>
                 </div>
 
                 <div>
-                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Aspect Ratio</h3>
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-expand"></i> Aspect Ratio & Size
+                    </h3>
+                    <div class="grid grid-cols-3 gap-2 mb-4">
+                        <button onclick="updateSettings('ratio', '16:9', this)" class="ratio-btn active tab-btn py-3 rounded-lg text-xs font-bold">16:9</button>
+                        <button onclick="updateSettings('ratio', '1:1', this)" class="ratio-btn tab-btn py-3 rounded-lg text-xs font-bold">1:1</button>
+                        <button onclick="updateSettings('ratio', '9:16', this)" class="ratio-btn tab-btn py-3 rounded-lg text-xs font-bold">9:16</button>
+                    </div>
                     <div class="flex gap-2">
-                        <button onclick="updateSettings('ratio', '16:9', this)" class="ratio-btn active-btn flex-1 py-3 rounded-lg border border-white/5 text-xs font-bold">16:9</button>
-                        <button onclick="updateSettings('ratio', '1:1', this)" class="ratio-btn flex-1 py-3 rounded-lg border border-white/5 text-xs font-bold">1:1</button>
-                        <button onclick="updateSettings('ratio', '9:16', this)" class="ratio-btn flex-1 py-3 rounded-lg border border-white/5 text-xs font-bold">9:16</button>
+                        <input type="number" id="customWidth" placeholder="Width (e.g. 1920)" class="flex-1 bg-[#0d1117] border border-gray-800 rounded-lg px-4 py-2.5 text-xs outline-none">
+                        <input type="number" id="customHeight" placeholder="Height (e.g. 1080)" class="flex-1 bg-[#0d1117] border border-gray-800 rounded-lg px-4 py-2.5 text-xs outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-gem"></i> Quality Modifiers
+                    </h3>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="toggleModifier('8k', this)" class="mod-btn tab-btn py-2.5 rounded-lg text-[10px] font-bold">Ultra 8K</button>
+                        <button onclick="toggleModifier('Photography', this)" class="mod-btn tab-btn py-2.5 rounded-lg text-[10px] font-bold">Photography</button>
                     </div>
                 </div>
             </div>
         </aside>
 
-        <section class="md:col-span-2 space-y-8">
-            <div class="glass-card p-10 rounded-[50px] space-y-8 relative overflow-hidden">
-                <textarea id="uInput" class="w-full h-44 bg-transparent text-3xl font-light placeholder-gray-800 outline-none resize-none leading-snug" placeholder="Describe your vision (e.g. A futuristic tiger)..."></textarea>
+        <section class="xl:col-span-9 space-y-8">
+            <div class="glass-ui p-10 rounded-[40px] space-y-8 relative overflow-hidden">
+                <textarea id="uInput" class="w-full h-56 bg-transparent text-4xl font-light placeholder-gray-800 outline-none resize-none leading-snug" placeholder="Enter your creative spark here (e.g. 'A cybernetic lion in space')..."></textarea>
                 
-                <div class="flex justify-end pt-8 border-t border-white/5">
-                    <button id="masterBtn" onclick="igniteEngine()" class="w-full md:w-auto bg-white/5 hover:bg-white/10 px-12 py-5 rounded-2xl font-800 text-lg uppercase transition-all tracking-widest border border-gray-700 active-btn">
-                        GENERATE <i class="fa-solid fa-sparkles ml-2 text-yellow-400"></i>
+                <div class="flex justify-end pt-8 border-t border-gray-800">
+                    <button id="masterBtn" onclick="igniteEngine()" class="w-full md:w-auto gradient-main px-16 py-6 rounded-2xl font-800 text-xl uppercase transition-all tracking-widest text-white shadow-xl hover:scale-105">
+                        Ignite AI Engine <i class="fa-solid fa-bolt-lightning ml-2 text-yellow-300"></i>
                     </button>
                 </div>
             </div>
 
-            <div id="outBox" class="hidden glass-card p-10 rounded-[50px] animate-in fade-in duration-700">
+            <div id="outBox" class="hidden glass-ui p-10 rounded-[40px] border-l-8 border-blue-500 animate-in fade-in duration-700">
                 <div class="flex justify-between items-center mb-6">
-                    <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest">Masterpiece Prompt Result:</span>
-                    <button onclick="copyToClipboard()" class="text-xs text-gray-400 hover:text-white flex items-center gap-2">
-                        <i class="fa-solid fa-copy"></i> Copy
+                    <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest">Masterpiece Prompt Engineering Result:</span>
+                    <button onclick="copyToClipboard()" class="text-xs bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-lg transition-all font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-copy"></i> Copy Prompt
                     </button>
                 </div>
-                <p id="outText" class="text-xl md:text-2xl text-gray-100 font-light italic leading-relaxed"></p>
+                <p id="outText" class="text-2xl md:text-3xl text-gray-100 font-light italic leading-relaxed"></p>
             </div>
         </section>
     </main>
 
-    <footer class="footer-bg rounded-t-[40px] px-8 py-10">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="md:col-span-2 space-y-3">
-                <h1 class="text-xl font-800 uppercase text-white">Nexovent Studio</h1>
-                <p class="text-sm text-gray-500 max-w-sm">Crafting professional-grade AI prompts with Mistral Large for creators like you.</p>
+    <footer class="glass-ui rounded-t-[50px] px-10 py-16 mt-16 shadow-inner relative overflow-hidden">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-5 gap-12">
+            
+            <div class="md:col-span-2 space-y-4">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-robot text-2xl text-blue-500"></i>
+                    <h1 class="text-2xl font-800 uppercase text-white tracking-tighter">Nexovent Platform</h1>
+                </div>
+                <p class="text-sm text-gray-500 max-w-sm">The world's first unified platform for engineering professional AI prompts. Powered by Mistral Large.</p>
+                <div class="text-[10px] text-gray-700">Status: World's #1 Platform v4.0</div>
             </div>
             
             <div class="space-y-4">
                 <h3 class="text-xs font-black uppercase text-gray-400 tracking-widest">Contact Support</h3>
-                <div class="text-sm text-gray-300 space-y-1">
-                    <p><i class="fa-solid fa-envelope mr-2 text-gray-600"></i> <a href="mailto:nexoventai@gmail.com" class="hover:text-white">nexoventai@gmail.com</a></p>
-                    <p><i class="fa-solid fa-location-dot mr-2 text-gray-600"></i> Pune, India</p>
+                <div class="text-sm text-gray-300 space-y-2">
+                    <p><i class="fa-solid fa-envelope mr-2 text-gray-600"></i> <a href="mailto:support@nexovent.tech" class="hover:text-white font-semibold">support@nexovent.tech</a></p>
+                    <p><i class="fa-solid fa-ticket mr-2 text-gray-600"></i> Open Ticket</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-xs font-black uppercase text-gray-400 tracking-widest">Explore AIs</h3>
+                <div class="text-sm text-gray-600 grid grid-cols-2 gap-x-2 gap-y-1">
+                    <a href="#" class="hover:text-white">Midjourney</a>
+                    <a href="#" class="hover:text-white">Leonardo.ai</a>
+                    <a href="#" class="hover:text-white">Adobe Firefly</a>
+                    <a href="#" class="hover:text-white">Stable Diffusion</a>
                 </div>
             </div>
 
             <div class="space-y-4">
                 <h3 class="text-xs font-black uppercase text-gray-400 tracking-widest">Legal</h3>
-                <div class="text-sm text-gray-500 space-y-1">
-                    <p><a href="#" class="hover:text-white">Terms of Service</a></p>
-                    <p><a href="#" class="hover:text-white">Privacy Policy</a></p>
+                <div class="text-sm text-gray-600 space-y-1">
+                    <a href="#" class="hover:text-white">Terms of Service</a><br>
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
                 </div>
             </div>
         </div>
-        <p class="text-[10px] text-gray-700 mt-10 text-center uppercase tracking-widest">&copy; 2024 Nexovent Tech. All rights reserved.</p>
+
+        <div class="max-w-[1920px] mx-auto mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-[11px] text-gray-700 uppercase tracking-[0.3em]">&copy; 2024 Nexovent Tech. First-of-its-kind platform.</p>
+            
+            <div class="flex items-center gap-6">
+                <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-pinterest"></i></a>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // Use the Mistral Key you generated
+        // Your Ultra-Long Prompt Engineering Key
         const MISTRAL_KEY = "OUjZmK9tvZ7toyDnOPkCJMqB3soCQBI4";
         
-        let selectedAI = "Midjourney v6.0";
-        let selectedRatio = "16:9";
+        let settings = {
+            ai: "Midjourney v6.0",
+            ratio: "16:9",
+            mods: []
+        };
 
         function updateSettings(type, val, el) {
-            document.querySelectorAll('.' + type + '-btn').forEach(b => b.classList.remove('active-btn'));
-            el.classList.add('active-btn');
-            
-            if (type === 'ai') selectedAI = val;
-            if (type === 'ratio') selectedRatio = val;
+            document.querySelectorAll('.' + type + '-btn').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+            settings[type] = val;
+        }
+
+        function toggleModifier(val, el) {
+            if (settings.mods.includes(val)) {
+                settings.mods = settings.mods.filter(m => m !== val);
+                el.classList.remove('active');
+            } else {
+                settings.mods.push(val);
+                el.classList.add('active');
+            }
         }
 
         async function igniteEngine() {
@@ -120,12 +190,18 @@
             const box = document.getElementById('outBox');
             const text = document.getElementById('outText');
 
-            if (!input) return alert("Pehle vision likho bhai!");
+            if (!input) return alert("Pehle kuch creative vision likho bhai!");
 
             btn.disabled = true;
             btn.innerHTML = `Thinking... <i class="fa-solid fa-spinner animate-spin ml-2"></i>`;
 
             try {
+                // Determine dimensions (custom or ratio)
+                let dimensionString = settings.ratio;
+                const cw = document.getElementById('customWidth').value;
+                const ch = document.getElementById('customHeight').value;
+                if(cw && ch) dimensionString = `${cw}x${ch}px`;
+
                 // Mistral Large API Call Logic
                 const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
                     method: "POST",
@@ -137,8 +213,9 @@
                         model: "mistral-large-latest",
                         messages: [{
                             role: "user",
-                            content: `Expand this idea: "${input}" into a detailed, professional image prompt for ${selectedAI}. Ratio: --ar ${selectedRatio}. Output prompt only.`
-                        }]
+                            content: `Expand this idea: "${input}" into an extremely detailed, world-class image generation prompt for ${settings.ai}. Ratio/Size: ${dimensionString}. Modifiers: ${settings.mods.join(', ')}. Include unique lighting, atmosphere, camera settings (35mm, f/1.8), and specific textures (e.g. wet skin, rusted metal). Give me ONLY the final prompt text, making it as long and detailed as possible.`
+                        }],
+                        temperature: 0.8
                     })
                 });
 
@@ -150,17 +227,23 @@
                     box.scrollIntoView({ behavior: 'smooth' });
                 }
             } catch (e) {
-                alert("AI Connection failed! Token status check kijiye.");
+                alert("AI Connection failed! API status check kijiye.");
             } finally {
                 btn.disabled = false;
-                btn.innerHTML = `GENERATE <i class="fa-solid fa-sparkles ml-2 text-yellow-400"></i>`;
+                btn.innerHTML = `Ignite AI Engine <i class="fa-solid fa-bolt-lightning ml-2 text-yellow-300"></i>`;
             }
+        }
+
+        // Search AI Placeholder (Real Search logic would need backend)
+        function searchAI() {
+            const val = document.getElementById('aiSearch').value;
+            console.log("Searching AI: " + val);
         }
 
         function copyToClipboard() {
             const prompt = document.getElementById('outText').innerText;
             navigator.clipboard.writeText(prompt);
-            alert("Prompt Copied!");
+            alert("Mega Prompt Copied!");
         }
     </script>
 </body>
