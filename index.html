@@ -236,4 +236,99 @@
 
     </div>
 </section>
+<section class="py-24 px-6 bg-[#0c0e12] border-t border-gray-900">
+    <div class="max-w-3xl mx-auto">
+        
+        <h2 class="text-3xl font-black text-white mb-12 text-center">Global Resources <span class="text-blue-600">& FAQ</span></h2>
 
+        <div class="space-y-4">
+            
+            <div class="border border-gray-800 rounded-2xl overflow-hidden">
+                <button class="w-full p-5 text-left bg-[#12161b] flex justify-between items-center group transition" onclick="toggleFAQ(1)">
+                    <span class="text-gray-200 font-semibold text-sm">How does the AI Studio optimize prompts for global engines?</span>
+                    <i id="icon-1" class="fas fa-plus text-gray-500 text-xs transition-transform duration-300"></i>
+                </button>
+                <div id="ans-1" class="max-h-0 overflow-hidden transition-all duration-300 bg-[#0c0e12]">
+                    <p class="p-5 text-gray-500 text-xs leading-relaxed">
+                        Our engine uses linguistic mapping to inject high-precision lighting, texture, and style tokens that Midjourney and DALL-E 3 require for photo-realistic results.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border border-gray-800 rounded-2xl overflow-hidden">
+                <button class="w-full p-5 text-left bg-[#12161b] flex justify-between items-center group transition" onclick="toggleFAQ(2)">
+                    <span class="text-gray-200 font-semibold text-sm">Are the automation scripts compatible with Google Search Console?</span>
+                    <i id="icon-2" class="fas fa-plus text-gray-500 text-xs transition-transform duration-300"></i>
+                </button>
+                <div id="ans-2" class="max-h-0 overflow-hidden transition-all duration-300 bg-[#0c0e12]">
+                    <p class="p-5 text-gray-500 text-xs leading-relaxed">
+                        Yes, Nexovent tools utilize official API protocols to ensure seamless connectivity and instant indexing for new URLs within 24 hours.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border border-gray-800 rounded-2xl overflow-hidden">
+                <button class="w-full p-5 text-left bg-[#12161b] flex justify-between items-center group transition" onclick="toggleFAQ(3)">
+                    <span class="text-gray-200 font-semibold text-sm">Is Nexovent accessible for global enterprise use?</span>
+                    <i id="icon-3" class="fas fa-plus text-gray-500 text-xs transition-transform duration-300"></i>
+                </button>
+                <div id="ans-3" class="max-h-0 overflow-hidden transition-all duration-300 bg-[#0c0e12]">
+                    <p class="p-5 text-gray-500 text-xs leading-relaxed">
+                        Absolutely. The platform is engineered on a global node infrastructure to provide high-speed access from any region, specifically optimized for Western markets.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border border-gray-800 rounded-2xl overflow-hidden">
+                <button class="w-full p-5 text-left bg-[#12161b] flex justify-between items-center group transition" onclick="toggleFAQ(4)">
+                    <span class="text-gray-200 font-semibold text-sm">Does the tool suite require high-level coding knowledge?</span>
+                    <i id="icon-4" class="fas fa-plus text-gray-500 text-xs transition-transform duration-300"></i>
+                </button>
+                <div id="ans-4" class="max-h-0 overflow-hidden transition-all duration-300 bg-[#0c0e12]">
+                    <p class="p-5 text-gray-500 text-xs leading-relaxed">
+                        No. Nexovent is designed with a "No-Code" philosophy. We handle the complex backend scripts so users can focus on execution and output.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border border-gray-800 rounded-2xl overflow-hidden">
+                <button class="w-full p-5 text-left bg-[#12161b] flex justify-between items-center group transition" onclick="toggleFAQ(5)">
+                    <span class="text-gray-200 font-semibold text-sm">How often are the AI tool repositories updated?</span>
+                    <i id="icon-5" class="fas fa-plus text-gray-500 text-xs transition-transform duration-300"></i>
+                </button>
+                <div id="ans-5" class="max-h-0 overflow-hidden transition-all duration-300 bg-[#0c0e12]">
+                    <p class="p-5 text-gray-500 text-xs leading-relaxed">
+                        Our core engines are synced daily with the latest AI model updates to maintain the highest quality of output and prompt precision.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-20 p-12 bg-blue-600 rounded-[2.5rem] text-center shadow-2xl shadow-blue-600/20">
+            <h3 class="text-2xl font-black text-white mb-4">Join the Global Network</h3>
+            <p class="text-blue-100 text-xs mb-8 max-w-sm mx-auto">Get notified about new AI engines and automation scripts directly in your inbox.</p>
+            <div class="flex flex-col md:flex-row gap-3 max-w-md mx-auto">
+                <input type="email" placeholder="Enter business email" class="flex-1 bg-white/10 border border-white/20 rounded-xl px-5 py-3 text-white text-xs focus:outline-none focus:border-white">
+                <button class="bg-white text-blue-600 px-6 py-3 rounded-xl font-black text-xs hover:bg-gray-100 transition">SUBSCRIBE</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    function toggleFAQ(id) {
+        const answer = document.getElementById(`ans-${id}`);
+        const icon = document.getElementById(`icon-${id}`);
+        
+        if (answer.style.maxHeight && answer.style.maxHeight !== '0px') {
+            answer.style.maxHeight = '0px';
+            icon.style.transform = 'rotate(0deg)';
+        } else {
+            // Close other FAQs if needed (optional)
+            answer.style.maxHeight = answer.scrollHeight + "px";
+            icon.style.transform = 'rotate(45deg)';
+        }
+    }
+</script>
