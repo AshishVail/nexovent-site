@@ -13,24 +13,16 @@
         :root { --accent: #2563eb; --border: #f1f5f9; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #ffffff; color: #111; scroll-behavior: smooth; }
         
-        /* Reading Progress Bar */
         #progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--accent); z-index: 1000; transition: width 0.1s; }
 
-        /* Professional Layout Elements */
         .nav-link { font-size: 13px; font-weight: 700; color: #64748b; transition: all 0.3s; text-transform: uppercase; letter-spacing: 0.05em; }
         .nav-link:hover { color: var(--accent); }
         
-        .article-card { border: 1px solid var(--border); border-radius: 32px; overflow: hidden; background: white; transition: transform 0.4s ease; }
-        .article-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -12px rgba(0,0,0,0.08); }
+        .article-card { border: 1px solid var(--border); border-radius: 32px; overflow: hidden; background: white; }
 
         .prose h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 2rem; color: #000; letter-spacing: -0.04em; }
         .prose h2 { font-size: 1.75rem; font-weight: 700; margin-top: 3.5rem; margin-bottom: 1.25rem; }
         .prose p { font-size: 1.15rem; line-height: 1.9; color: #475569; margin-bottom: 2rem; }
-
-        .sidebar-box { background: #f8fafc; border-radius: 24px; padding: 2rem; border: 1px solid var(--border); }
-        
-        .footer-link { font-size: 12px; font-weight: 600; color: #94a3b8; transition: color 0.3s; }
-        .footer-link:hover { color: var(--accent); }
     </style>
 </head>
 <body class="antialiased">
@@ -56,39 +48,41 @@
         <main class="lg:col-span-8 prose">
             <header class="mb-12">
                 <div class="flex items-center gap-3 mb-6">
-                    <span class="px-4 py-1.5 bg-blue-50 text-blue-600 text-[10px] font-extrabold uppercase tracking-[0.2em] rounded-full">Engineering</span>
+                    <span class="px-4 py-1.5 bg-blue-50 text-blue-600 text-[10px] font-extrabold uppercase tracking-[0.2em] rounded-full">Technical Analysis</span>
                 </div>
-                <h1>Modern Technical Infrastructure in 2026</h1>
+                <h1>Defining the Standard for Professional AI Environments</h1>
                 
                 <div class="flex items-center justify-between py-6 border-y border-gray-100 mt-10">
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold">NX</div>
                         <div>
-                            <p class="text-sm font-bold m-0 text-black">Editorial Team</p>
+                            <p class="text-sm font-bold m-0 text-black">Nexovent Editorial</p>
                             <p class="text-[11px] text-gray-400 font-bold uppercase m-0">April 13, 2026</p>
                         </div>
                     </div>
                 </div>
             </header>
 
-            <div class="article-card mb-12">
+            <div class="article-card mb-12 shadow-2xl shadow-blue-50/50">
                 <img src="https://nexovent.tech/blog-image.jpg" alt="Insights" class="w-full h-auto">
             </div>
 
-            <p>Your technical article starts here...</p>
+            <p>Welcome to the official blog. Start your professional content here. This layout is designed for maximum readability and a clean corporate feel.</p>
 
         </main>
 
         <aside class="lg:col-span-4">
             <div class="sticky top-32 flex flex-col gap-10">
-                <div class="sidebar-box">
-                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-6">Quick Navigation</h4>
-                    <ul class="space-y-4">
-                        <li><a href="https://nexovent.tech/about.html" class="text-sm font-bold text-gray-600 hover:text-blue-600 transition">About Company</a></li>
-                        <li><a href="https://nexovent.tech/contact.html" class="text-sm font-bold text-gray-600 hover:text-blue-600 transition">Get in Touch</a></li>
-                        <li><a href="https://nexovent.tech/privacy-policy.html" class="text-sm font-bold text-gray-600 hover:text-blue-600 transition">Privacy Protocols</a></li>
-                    </ul>
+                
+                <div class="bg-black p-8 rounded-[32px] text-white overflow-hidden relative shadow-xl">
+                    <div class="relative z-10">
+                        <h4 class="text-xl font-extrabold mb-4 leading-tight text-white">Advanced AI Studio</h4>
+                        <p class="text-gray-400 text-sm mb-6">Experience the global standard in prompt engineering and automation.</p>
+                        <a href="https://nexovent.tech/ai-studio" class="inline-block bg-blue-600 px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-blue-700 transition">Launch Tool</a>
+                    </div>
+                    <i class="fas fa-bolt absolute -bottom-4 -right-4 text-8xl text-white/5 rotate-12"></i>
                 </div>
+                
             </div>
         </aside>
     </div>
@@ -96,7 +90,7 @@
     <footer class="bg-white border-t border-gray-100 pt-24 pb-12 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
-                <div class="col-span-1 md:col-span-1">
+                <div class="col-span-1">
                     <a href="https://nexovent.tech" class="text-2xl font-black tracking-tighter text-black">NEXOVENT<span class="text-blue-600">.</span></a>
                     <p class="text-gray-400 text-sm leading-relaxed mt-6 mb-8">Professional digital infrastructure and AI insights for the global 2026 economy.</p>
                     
@@ -113,25 +107,25 @@
                 <div>
                     <h4 class="text-black font-black text-[10px] uppercase tracking-[0.2em] mb-8">Platform</h4>
                     <ul class="space-y-4">
-                        <li><a href="https://nexovent.tech/ai-studio" class="footer-link">AI Studio</a></li>
-                        <li><a href="https://nexovent.tech/blog" class="footer-link">Insights Blog</a></li>
+                        <li><a href="https://nexovent.tech/ai-studio" class="text-xs font-semibold text-gray-400 hover:text-blue-600">AI Studio</a></li>
+                        <li><a href="https://nexovent.tech/blog" class="text-xs font-semibold text-gray-400 hover:text-blue-600">Insights Blog</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-black font-black text-[10px] uppercase tracking-[0.2em] mb-8">Company</h4>
                     <ul class="space-y-4">
-                        <li><a href="https://nexovent.tech/about.html" class="footer-link">About Us</a></li>
-                        <li><a href="https://nexovent.tech/contact.html" class="footer-link">Contact</a></li>
-                        <li><a href="https://nexovent.tech/disclaimer.html" class="footer-link">Disclaimer</a></li>
+                        <li><a href="https://nexovent.tech/about.html" class="text-xs font-semibold text-gray-400 hover:text-blue-600">About Us</a></li>
+                        <li><a href="https://nexovent.tech/contact.html" class="text-xs font-semibold text-gray-400 hover:text-blue-600">Contact</a></li>
+                        <li><a href="https://nexovent.tech/disclaimer.html" class="text-xs font-semibold text-gray-400 hover:text-blue-600">Disclaimer</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-black font-black text-[10px] uppercase tracking-[0.2em] mb-8">Legal</h4>
                     <ul class="space-y-4">
-                        <li><a href="https://nexovent.tech/privacy-policy.html" class="footer-link">Privacy Policy</a></li>
-                        <li><a href="https://nexovent.tech/terms-conditions.html" class="footer-link">Terms & Conditions</a></li>
+                        <li><a href="https://nexovent.tech/privacy-policy.html" class="text-xs font-semibold text-gray-400 hover:text-blue-600">Privacy Policy</a></li>
+                        <li><a href="https://nexovent.tech/terms-conditions.html" class="text-xs font-semibold text-gray-400 hover:text-blue-600">Terms & Conditions</a></li>
                     </ul>
                 </div>
             </div>
