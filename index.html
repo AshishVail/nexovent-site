@@ -3,55 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexovent | AI & Digital Solutions</title>
+    <title>Nexovent | Mobile AI Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
-        .hero-gradient { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
-        .accent-border { border: 1px solid rgba(255, 255, 255, 0.1); }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0c0e12; color: white; margin: 0; }
+        .hero-box-shadow { box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2); }
+        .accent-border { border: 1px solid rgba(255, 255, 255, 0.05); }
+        .tool-link:hover { background-color: rgba(59, 130, 246, 0.1); }
     </style>
 </head>
 <body>
 
-    <nav class="p-5 flex justify-between items-center accent-border bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
-        <div class="text-2xl font-bold tracking-tighter text-blue-400">NEXOVENT</div>
-        <div class="space-x-6 hidden md:flex">
-            <a href="#tools" class="hover:text-blue-400 transition">Tools</a>
-            <a href="https://nexovent.tech" target="_blank" class="hover:text-blue-400 transition">Website</a>
-            <a href="mailto:contactashishxyz@gmail.com" class="bg-blue-600 px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">Contact Ashish</a>
-        </div>
+    <nav class="sticky top-0 z-50 bg-[#0c0e12]/80 backdrop-blur-sm px-4 py-3 border-b border-gray-900 flex justify-between items-center">
+        <div class="text-xl font-bold tracking-tighter text-blue-500">NEXOVENT</div>
+        <a href="mailto:contactashishxyz@gmail.com" class="bg-blue-600 px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-blue-700 transition">Contact</a>
     </nav>
 
-    <section class="hero-gradient py-20 px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-slate-800/40 p-8 rounded-2xl accent-border mb-10">
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+    <section class="py-12 px-4 text-center">
+        <div class="max-w-2xl mx-auto">
+            <div class="bg-[#12161b] p-6 rounded-2xl border border-gray-900 mb-8 hero-box-shadow">
+                <h1 class="text-3xl font-extrabold mb-4 leading-tight">
                     Master the <span class="text-blue-500">AI Revolution</span>
                 </h1>
-                <p class="text-gray-400 text-lg md:text-xl leading-relaxed">
-                    Nexovent ek professional hub hai jahan aapko milega high-performance AI engines, 
-                    automation scripts, aur data-driven strategies. Hum digital creators ke mushkil 
-                    workflows ko simplify karte hain.
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    High-performance AI engines, automation scripts, and digital strategies for creators.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-6 bg-slate-900/80 rounded-xl accent-border">
-                    <i class="fas fa-bolt text-blue-400 text-2xl mb-4"></i>
-                    <h3 class="font-bold mb-2">Ultra Fast</h3>
-                    <p class="text-sm text-gray-500">Hamare scripts aur tools 24h results dene ke liye optimize hain.</p>
+            <div class="grid grid-cols-2 gap-3 max-w-sm mx-auto mb-16">
+                <div class="p-4 bg-[#12161b] rounded-xl accent-border text-center">
+                    <i class="fas fa-bolt text-blue-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">Ultra Fast</h3>
+                    <p class="text-[11px] text-gray-600">Scripts optimize for 24h results.</p>
                 </div>
-                <div class="p-6 bg-slate-900/80 rounded-xl accent-border">
-                    <i class="fas fa-microchip text-blue-400 text-2xl mb-4"></i>
-                    <h3 class="font-bold mb-2">AI Powered</h3>
-                    <p class="text-sm text-gray-500">Midjourney aur DALL-E jaise models ke liye precision engineering.</p>
+                <div class="p-4 bg-[#12161b] rounded-xl accent-border text-center">
+                    <i class="fas fa-microchip text-blue-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">AI Powered</h3>
+                    <p class="text-[11px] text-gray-600">Precision for Midjourney/DALL-E.</p>
                 </div>
-                <div class="p-6 bg-slate-900/80 rounded-xl accent-border">
-                    <i class="fas fa-shield-alt text-blue-400 text-2xl mb-4"></i>
-                    <h3 class="font-bold mb-2">Enterprise Ready</h3>
-                    <p class="text-sm text-gray-500">Professional SEO aur digital visibility ke liye trusted solution.</p>
+                <div class="p-4 bg-[#12161b] rounded-xl accent-border text-center">
+                    <i class="fas fa-shield-alt text-blue-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">Enterprise</h3>
+                    <p class="text-[11px] text-gray-600">Trusted SEO visibility.</p>
+                </div>
+                <div class="p-4 bg-[#12161b] rounded-xl accent-border text-center">
+                    <i class="fas fa-sync text-blue-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">Daily Sync</h3>
+                    <p class="text-[11px] text-gray-600">Updated tool resources daily.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="py-10 px-4 bg-[#12161b] border-t border-gray-900">
+        <div class="max-w-xl mx-auto">
+            <h2 class="text-2xl font-extrabold text-center mb-10 text-gray-200">Featured AI Tools Suite</h2>
+
+            <a href="https://nexovent.tech/ai-studio" target="_blank" class="block bg-gradient-to-r from-blue-900/40 to-blue-600/20 p-6 rounded-2xl border border-blue-800/50 mb-6 hover:scale-[1.02] transition-transform shadow-xl shadow-blue-900/30">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center text-blue-500 text-xl border border-blue-700/30">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest bg-blue-900/40 px-2 py-0.5 rounded-full">Primary Tool</span>
+                </div>
+                <h3 class="font-extrabold text-white text-lg mb-2">Masterpiece Prompt Generator</h3>
+                <p class="text-xs text-gray-400 leading-relaxed max-w-md">Type your simple vision, and this tool generates highly detailed, optimized prompts for Midjourney and DALL-E to create photo-realistic art instantly.</p>
+                <div class="flex justify-end mt-4">
+                    <button class="bg-white text-blue-900 text-xs px-4 py-1.5 rounded-lg font-black hover:opacity-90">OPEN TOOL <i class="fas fa-external-link-alt ml-1"></i></button>
+                </div>
+            </a>
+
+            <div class="grid grid-cols-2 gap-3 mb-10">
+                <div class="bg-[#0c0e12] p-4 rounded-xl accent-border text-center tool-link">
+                    <i class="fab fa-youtube text-red-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">YouTube AI Hub</h3>
+                    <p class="text-[10px] text-gray-600">Optimize videos, tags, SEO.</p>
+                </div>
+                <div class="bg-[#0c0e12] p-4 rounded-xl accent-border text-center tool-link">
+                    <i class="fab fa-pinterest text-pink-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">Pinterest Tool</h3>
+                    <p class="text-[10px] text-gray-600">Pin growth automation bot.</p>
+                </div>
+                <div class="bg-[#0c0e12] p-4 rounded-xl accent-border text-center tool-link">
+                    <i class="fab fa-linkedin text-sky-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">LinkedIn Suite</h3>
+                    <p class="text-[10px] text-gray-600">Post generation, reach tool.</p>
+                </div>
+                <div class="bg-[#0c0e12] p-4 rounded-xl accent-border text-center tool-link">
+                    <i class="fab fa-reddit-alien text-orange-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">Reddit Analytics</h3>
+                    <p class="text-[10px] text-gray-600">Track karma, post reach.</p>
+                </div>
+                <div class="bg-[#0c0e12] p-4 rounded-xl accent-border text-center tool-link">
+                    <i class="fab fa-instagram text-fuchsia-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">Instagram AI Bot</h3>
+                    <p class="text-[10px] text-gray-600">Content ideas, growth tips.</p>
+                </div>
+                <div class="bg-[#0c0e12] p-4 rounded-xl accent-border text-center tool-link">
+                    <i class="fab fa-facebook-f text-blue-700 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">Facebook Tool</h3>
+                    <p class="text-[10px] text-gray-600">Optimize ad campaigns.</p>
+                </div>
+                <div class="bg-[#0c0e12] p-4 rounded-xl accent-border text-center tool-link">
+                    <i class="fas fa-robot text-teal-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">Custom Bot Suite</h3>
+                    <p class="text-[10px] text-gray-600">Python automation scripts.</p>
+                </div>
+                <div class="bg-[#0c0e12] p-4 rounded-xl accent-border text-center tool-link">
+                    <i class="fas fa-image text-purple-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">DALL-E 3 Hub</h3>
+                    <p class="text-[10px] text-gray-600">Stable, quick art prompts.</p>
+                </div>
+                <div class="bg-[#0c0e12] p-4 rounded-xl accent-border text-center tool-link">
+                    <i class="fas fa-brush text-rose-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">Midjourney Art</h3>
+                    <p class="text-[10px] text-gray-600">Detailed style generators.</p>
+                </div>
+                <div class="bg-[#0c0e12] p-4 rounded-xl accent-border text-center tool-link">
+                    <i class="fas fa-code text-green-500 text-lg mb-2"></i>
+                    <h3 class="font-bold text-sm mb-1">Code AI Copilot</h3>
+                    <p class="text-[10px] text-gray-600">Simplify coding workflows.</p>
                 </div>
             </div>
         </div>
