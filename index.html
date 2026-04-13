@@ -3,262 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Nexovent | Premium AI Engines, Professional Prompt Engineering & Web Tools</title>
-    <meta name="description" content="Nexovent.tech is a leading digital hub for AI-driven solutions. Explore our AI Studio for high-precision Midjourney and DALL-E prompts, custom web automation bots, and enterprise-grade SEO strategies.">
-    <meta name="keywords" content="Nexovent AI Studio, Professional Prompt Engineering, Google Indexing Bot, AI Tool Suite, Midjourney Prompts, DALL-E 3 Tool, Web Automation 2026, SEO Expert Solutions">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://nexovent.tech/">
-
+    <title>Nexovent | AI & Digital Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #0f172a;
-            --accent: #3b82f6;
-            --bg-light: #ffffff;
-            --card-bg: #f8fafc;
-        }
-
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--bg-light); 
-            color: var(--secondary); 
-            margin: 0;
-            scroll-behavior: smooth;
-        }
-
-        .hero-gradient {
-            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent),
-                        radial-gradient(circle at bottom left, rgba(45, 212, 191, 0.05), transparent);
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after { width: 100%; }
-
-        /* FAQ Accordion Styling */
-        .faq-item {
-            border-bottom: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out;
-        }
-
-        .faq-item.active .faq-content {
-            max-height: 200px;
-        }
-
-        .faq-item.active i {
-            transform: rotate(180deg);
-        }
-
-        .ai-card {
-            background: white;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .ai-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.1);
-            border-color: #3b82f6;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
+        .hero-gradient { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .accent-border { border: 1px solid rgba(255, 255, 255, 0.1); }
     </style>
 </head>
 <body>
 
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-black tracking-tighter text-blue-600">NEXOVENT</div>
-            <div class="hidden md:flex space-x-10 text-sm font-semibold text-slate-600">
-                <a href="index.html" class="nav-link hover:text-blue-600">Platform</a>
-                <a href="https://nexovent.tech/ai-studio" class="nav-link hover:text-blue-600">AI Studio</a>
-                <a href="tools.html" class="nav-link hover:text-blue-600">Tools</a>
-                <a href="blog.html" class="nav-link hover:text-blue-600">Insights</a>
-            </div>
-            <div class="hidden md:block">
-                <a href="mailto:support@nexovent.tech" class="text-sm font-bold text-slate-800 border-b-2 border-blue-600 pb-1 hover:text-blue-600 transition">support@nexovent.tech</a>
-            </div>
+    <nav class="p-5 flex justify-between items-center accent-border bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="text-2xl font-bold tracking-tighter text-blue-400">NEXOVENT</div>
+        <div class="space-x-6 hidden md:flex">
+            <a href="#tools" class="hover:text-blue-400 transition">Tools</a>
+            <a href="https://nexovent.tech" target="_blank" class="hover:text-blue-400 transition">Website</a>
+            <a href="mailto:contactashishxyz@gmail.com" class="bg-blue-600 px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">Contact Ashish</a>
         </div>
     </nav>
 
-    <section class="hero-gradient min-h-[85vh] flex flex-col justify-center items-center text-center px-4">
-        <div class="inline-flex items-center px-4 py-2 mb-8 text-xs font-bold tracking-widest text-blue-600 uppercase bg-blue-50 rounded-full">
-            <span class="mr-2 flex h-2 w-2 rounded-full bg-blue-600 animate-pulse"></span>
-            Enterprise Digital Infrastructure
-        </div>
-        <h1 class="text-5xl md:text-8xl font-black mb-8 tracking-tight text-slate-900">
-            Scale Your Digital <br> <span class="gradient-text">Ecosystem.</span>
-        </h1>
-        <p class="text-slate-500 text-lg md:text-xl max-w-3xl mb-12 font-medium leading-relaxed">
-            Professional AI Engines, advanced indexing automation, and data-driven infrastructure built for global scalability and high-performance output.
-        </p>
+    <section class="hero-gradient py-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-slate-800/40 p-8 rounded-2xl accent-border mb-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                    Master the <span class="text-blue-500">AI Revolution</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl leading-relaxed">
+                    Nexovent ek professional hub hai jahan aapko milega high-performance AI engines, 
+                    automation scripts, aur data-driven strategies. Hum digital creators ke mushkil 
+                    workflows ko simplify karte hain.
+                </p>
+            </div>
 
-        <div class="w-full max-w-5xl bg-white border border-slate-200 rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-blue-500/5 hover:border-blue-300 transition-all">
-            <div class="flex flex-col md:flex-row items-center gap-10">
-                <div class="flex-1 text-left">
-                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl mb-6">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Nexovent AI Studio</h2>
-                    <p class="text-slate-500 text-lg mb-8">Access our professional-grade prompt engineering suite for Midjourney v6, DALL-E 3, and Stable Diffusion. Build your vision with technical precision.</p>
-                    <div class="flex gap-4">
-                        <a href="https://nexovent.tech/ai-studio" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">Launch Studio</a>
-                        <a href="#about-ai" class="bg-slate-50 text-slate-700 px-8 py-4 rounded-2xl font-bold hover:bg-slate-100 transition">How it works</a>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 bg-slate-900/80 rounded-xl accent-border">
+                    <i class="fas fa-bolt text-blue-400 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2">Ultra Fast</h3>
+                    <p class="text-sm text-gray-500">Hamare scripts aur tools 24h results dene ke liye optimize hain.</p>
                 </div>
-                <div class="flex-1 grid grid-cols-2 gap-4">
-                    <div class="ai-card p-6 rounded-3xl text-center"><i class="fas fa-bolt text-blue-500 mb-3"></i><p class="font-bold text-sm">Ultra Fast</p></div>
-                    <div class="ai-card p-6 rounded-3xl text-center"><i class="fas fa-shield-alt text-teal-500 mb-3"></i><p class="font-bold text-sm">Enterprise</p></div>
-                    <div class="ai-card p-6 rounded-3xl text-center"><i class="fas fa-code text-purple-500 mb-3"></i><p class="font-bold text-sm">API Ready</p></div>
-                    <div class="ai-card p-6 rounded-3xl text-center"><i class="fas fa-globe text-orange-500 mb-3"></i><p class="font-bold text-sm">Global Sync</p></div>
+                <div class="p-6 bg-slate-900/80 rounded-xl accent-border">
+                    <i class="fas fa-microchip text-blue-400 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2">AI Powered</h3>
+                    <p class="text-sm text-gray-500">Midjourney aur DALL-E jaise models ke liye precision engineering.</p>
+                </div>
+                <div class="p-6 bg-slate-900/80 rounded-xl accent-border">
+                    <i class="fas fa-shield-alt text-blue-400 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2">Enterprise Ready</h3>
+                    <p class="text-sm text-gray-500">Professional SEO aur digital visibility ke liye trusted solution.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <section class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-20 items-center">
-            <div>
-                <h2 class="text-4xl font-black text-slate-900 mb-6 leading-tight">Engineered for the <br>Next-Gen Web.</h2>
-                <p class="text-slate-500 text-lg mb-8">We focus on three core pillars of digital growth: Advanced AI Content, Real-time Automation, and Search Dominance.</p>
-                <ul class="space-y-4 font-semibold text-slate-700">
-                    <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-3"></i> Custom Google Indexing APIs for 24h results.</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-3"></i> High-precision prompt engineering tools.</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-3"></i> Professional SEO & Digital Visibility scripts.</li>
-                </ul>
-            </div>
-            <div class="bg-slate-50 p-12 rounded-[3rem] border border-slate-100">
-                <div class="space-y-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                        <span class="text-blue-600 font-black text-xs uppercase">Recent Tool</span>
-                        <h4 class="font-bold text-slate-900 mt-1 text-lg">Python-based Google Bot v2.1</h4>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                        <span class="text-teal-600 font-black text-xs uppercase">Latest Engine</span>
-                        <h4 class="font-bold text-slate-900 mt-1 text-lg">Stable Diffusion Master Suite</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-slate-50 border-y border-slate-200">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-center text-slate-900 mb-16">Platform Insights (FAQ)</h2>
-            <div class="space-y-4">
-                <div class="faq-item bg-white px-8 py-6 rounded-2xl cursor-pointer" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-xl text-slate-800">1. What is the core technology behind Nexovent AI Studio?</h3>
-                        <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
-                    </div>
-                    <div class="faq-content text-slate-500 mt-4 leading-relaxed">
-                        The AI Studio utilizes advanced LLM chains to analyze visual intent and convert it into machine-optimized tokens for Midjourney and DALL-E 3, ensuring maximum image clarity.
-                    </div>
-                </div>
-                <div class="faq-item bg-white px-8 py-6 rounded-2xl cursor-pointer" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-xl text-slate-800">2. How does the Google Indexing Bot accelerate SEO?</h3>
-                        <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
-                    </div>
-                    <div class="faq-content text-slate-500 mt-4 leading-relaxed">
-                        Our Python scripts connect directly to Google Search Console API to push new URLs instantly, bypassing the weeks of waiting usually required for organic crawling.
-                    </div>
-                </div>
-                <div class="faq-item bg-white px-8 py-6 rounded-2xl cursor-pointer" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-xl text-slate-800">3. Is Nexovent a global agency or a tool suite?</h3>
-                        <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
-                    </div>
-                    <div class="faq-content text-slate-500 mt-4 leading-relaxed">
-                        Nexovent functions as a hybrid Digital Hub—providing both high-performance automation tools for creators and enterprise-level technical consultation for digital strategy.
-                    </div>
-                </div>
-                <div class="faq-item bg-white px-8 py-6 rounded-2xl cursor-pointer" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-xl text-slate-800">4. Can I integrate these tools via API?</h3>
-                        <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
-                    </div>
-                    <div class="faq-content text-slate-500 mt-4 leading-relaxed">
-                        Currently, our tools are accessible via the web dashboard. API integration for the AI Studio engines is scheduled for the Q3 2026 update.
-                    </div>
-                </div>
-                <div class="faq-item bg-white px-8 py-6 rounded-2xl cursor-pointer" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-xl text-slate-800">5. What makes Nexovent prompts better than manual typing?</h3>
-                        <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
-                    </div>
-                    <div class="faq-content text-slate-500 mt-4 leading-relaxed">
-                        Manual prompts often lack lighting, style, and camera parameters. Our engine automatically injects these technical details based on your simple vision.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="pt-24 pb-12 bg-slate-900 text-slate-400">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 border-b border-slate-800 pb-20">
-            <div class="col-span-2">
-                <div class="text-3xl font-black tracking-tighter text-white mb-6">NEXOVENT</div>
-                <p class="max-w-md text-slate-500 leading-relaxed mb-8">Empowering digital creators with premium AI tools, high-performance web solutions, and data-driven infrastructure. We turn ideas into scalable digital reality.</p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i class="fab fa-linkedin-in text-white"></i></a>
-                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition"><i class="fab fa-twitter text-white"></i></a>
-                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition"><i class="fab fa-instagram text-white"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4 class="font-bold text-white mb-6">Tools & Studio</h4>
-                <ul class="space-y-4 text-sm">
-                    <li><a href="https://nexovent.tech/ai-studio" class="hover:text-blue-400">AI Prompt Generator</a></li>
-                    <li><a href="#" class="hover:text-blue-400">Google Indexing API</a></li>
-                    <li><a href="#" class="hover:text-blue-400">SEO Audit Tool</a></li>
-                    <li><a href="#" class="hover:text-blue-400">WordPress Automation</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-white mb-6">Infrastructure</h4>
-                <ul class="space-y-4 text-sm">
-                    <li><a href="about.html" class="hover:text-blue-400">Privacy & Security</a></li>
-                    <li><a href="terms.html" class="hover:text-blue-400">Terms of Use</a></li>
-                    <li><a href="mailto:support@nexovent.tech" class="hover:text-blue-400">Business Inquiry</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-6 pt-12 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
-            <p class="text-xs font-medium text-slate-600">© 2026 Nexovent.tech | Registered Digital Enterprise. All Rights Reserved.</p>
-            <p class="text-xs font-medium text-slate-600 uppercase tracking-widest">Azamgarh • Global Operations</p>
-        </div>
-    </footer>
 
 </body>
 </html>
