@@ -3,86 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexovent.tech | 100% Free AI Prompt Generator 2026 - Master Your Art</title>
-    
-    <meta name="description" content="Use Nexovent's Free AI Prompt Generator to create high-quality, professional prompts for Midjourney, DALL-E 3, and Stable Diffusion. 100% Free Tool for creators.">
-    <meta name="keywords" content="free ai prompt generator, nexovent prompts, midjourney prompt helper free, best free ai tools 2026, generate ai art prompts">
-
+    <title>Nexovent | #1 FREE AI Prompt Engine 2026 - Unlimited Professional Access</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfcfc; color: #1a1a1a; scroll-behavior: smooth; }
-        .hero-card { background: white; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; }
-        .chip { transition: all 0.3s; border: 1.5px solid #eee; cursor: pointer; text-align: center; }
-        .chip:hover { border-color: #ff8a4c; color: #ff8a4c; }
-        .active-chip { background: #ff8a4c !important; color: white !important; border-color: #ff8a4c !important; font-weight: 600; }
-        .btn-orange { background: #ff8a4c; transition: 0.3s; box-shadow: 0 10px 20px rgba(255, 138, 76, 0.2); }
-        .btn-orange:hover { background: #e0763d; transform: translateY(-2px); }
-        .ai-label { background: #ff8a4c; padding: 4px 10px; border-radius: 8px; color: white; font-weight: 800; font-size: 14px; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; color: #1a1a1a; }
+        .hero-card { background: white; border-radius: 40px; box-shadow: 0 25px 60px rgba(0,0,0,0.06); border: 1.5px solid #f3f3f3; }
         
-        #resultArea { display: none; border: 2px dashed #ff8a4c; background: #fffaf7; margin-top: 30px; border-radius: 20px; position: relative; padding: 30px; }
-        .copy-btn { position: absolute; top: 15px; right: 15px; background: white; border: 1px solid #eee; padding: 6px 12px; border-radius: 10px; font-size: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; }
-        .copy-btn:hover { background: #ff8a4c; color: white; border-color: #ff8a4c; }
-
-        /* Typography Fixes */
-        .article-content h1 { font-size: 2.5rem; font-weight: 900; line-height: 1.2; margin-bottom: 1.5rem; color: #000; letter-spacing: -0.02em; }
-        .article-content h2 { font-size: 1.8rem; font-weight: 800; margin-top: 3rem; margin-bottom: 1rem; color: #111; border-left: 6px solid #ff8a4c; padding-left: 20px; }
-        .article-content h3 { font-size: 1.4rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.8rem; color: #222; }
-        .article-content p { font-size: 1.15rem; line-height: 1.8; color: #4b5563; margin-bottom: 1.5rem; text-align: justify; }
+        .chip { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 2px solid #f0f0f0; cursor: pointer; position: relative; overflow: hidden; }
+        .chip:hover { border-color: #ff8a4c; transform: translateY(-2px); }
+        .active-chip { background: #ff8a4c !important; color: white !important; border-color: #ff8a4c !important; box-shadow: 0 10px 20px rgba(255, 138, 76, 0.3); }
+        
+        .btn-orange { background: #ff8a4c; transition: 0.4s; box-shadow: 0 15px 30px rgba(255, 138, 76, 0.25); }
+        .btn-orange:hover { background: #e0763d; transform: translateY(-3px); box-shadow: 0 20px 40px rgba(255, 138, 76, 0.4); }
+        .ai-label { background: #ff8a4c; padding: 4px 12px; border-radius: 10px; color: white; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        #resultArea { display: none; border: 2.5px dashed #ff8a4c; background: #fffaf7; margin-top: 35px; border-radius: 25px; animation: slideIn 0.5s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="antialiased flex flex-col min-h-screen">
+<body class="antialiased">
 
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-8 py-5 max-w-7xl mx-auto w-full">
-        <div class="flex justify-between items-center w-full">
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <span class="ai-label">FREE</span>
-                <span class="text-xl font-800 tracking-tighter">Nexovent<span class="text-gray-400">.tech</span></span>
+                <span class="text-2xl font-800 tracking-tighter">Nexovent<span class="text-gray-400">.tech</span></span>
             </div>
-            <div class="hidden md:flex gap-8 items-center text-sm">
-                <a href="#" class="font-bold text-gray-600 hover:text-[#ff8a4c]">Home</a>
-                <a href="#article-guide" class="font-bold text-gray-600 hover:text-[#ff8a4c]">Free Guide</a>
-                <a href="https://x.com/nexovent" target="_blank" class="font-bold text-gray-600 hover:text-[#ff8a4c]">Twitter</a>
-                <button class="bg-black text-white px-8 py-3 rounded-full font-bold">Sign Up Free</button>
-            </div>
+            
+            <a href="https://nexovent.tech" class="bg-black text-white p-3 rounded-full flex items-center justify-center hover:bg-gray-800 transition shadow-lg active:scale-90">
+                <i class="fa-solid fa-house px-2"></i>
+            </a>
         </div>
     </nav>
 
-    <main class="flex-grow max-w-5xl mx-auto text-center px-6 pt-16 pb-24">
-        <header class="mb-12">
-            <h1 class="text-6xl md:text-8xl font-900 tracking-tighter leading-none mb-6">
-                Free <span class="text-[#ff8a4c]">AI Prompt</span> <br>Engine 2026
-            </h1>
-            <p class="text-gray-600 text-2xl font-medium max-w-3xl mx-auto leading-relaxed">
-                The world's most powerful <strong>free AI prompt generator</strong>. Designed for Midjourney, DALL-E, and professional creators.
-            </p>
-        </header>
+    <main class="max-w-4xl mx-auto px-6 pt-16 pb-24 text-center">
+        <h1 class="text-5xl md:text-7xl font-900 tracking-tight leading-[1.1] mb-6">
+            World's Best <br><span class="text-[#ff8a4c]">Free AI Prompt</span> Generator
+        </h1>
+        <p class="text-gray-500 text-xl font-medium max-w-2xl mx-auto mb-12">
+            Engineered for Midjourney v6, DALL-E 3, and professional creators. Zero cost, 100% precision.
+        </p>
 
-        <div class="hero-card p-8 md:p-16 text-left border-t-8 border-[#ff8a4c]">
-            <div class="mb-10">
-                <label class="text-xs font-black uppercase tracking-widest text-gray-400 block mb-6">Step 1: Select AI Model (Free Access)</label>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div id="m1" onclick="selectModel('m1')" class="model-chip active-chip chip px-6 py-5 rounded-2xl text-sm font-bold">Midjourney v6</div>
-                    <div id="m2" onclick="selectModel('m2')" class="model-chip chip px-6 py-5 rounded-2xl text-sm font-bold text-gray-500">DALL-E 3</div>
-                    <div id="m3" onclick="selectModel('m3')" class="model-chip chip px-6 py-5 rounded-2xl text-sm font-bold text-gray-500">Stable Diffusion</div>
-                    <div id="m4" onclick="selectModel('m4')" class="model-chip chip px-6 py-5 rounded-2xl text-sm font-bold text-gray-500">Leonardo AI</div>
+        <div class="hero-card p-8 md:p-14 text-left">
+            
+            <div class="mb-12">
+                <label class="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 block mb-5">Step 1: Select AI Engine (Free Access)</label>
+                <div class="grid grid-cols-2 gap-4" id="modelContainer">
+                    <div onclick="toggleSelection(this, 'model-chip')" class="model-chip active-chip chip p-6 rounded-2xl text-center">
+                        <span class="block font-800 text-lg">Midjourney v6</span>
+                    </div>
+                    <div onclick="toggleSelection(this, 'model-chip')" class="model-chip chip p-6 rounded-2xl text-center">
+                        <span class="block font-800 text-lg text-gray-600">DALL-E 3</span>
+                    </div>
+                    <div onclick="toggleSelection(this, 'model-chip')" class="model-chip chip p-6 rounded-2xl text-center">
+                        <span class="block font-800 text-lg text-gray-600">Stable Diffusion</span>
+                    </div>
+                    <div onclick="toggleSelection(this, 'model-chip')" class="model-chip chip p-6 rounded-2xl text-center">
+                        <span class="block font-800 text-lg text-gray-600">Leonardo AI</span>
+                    </div>
                 </div>
             </div>
 
-            <textarea id="uInput" rows="4" class="w-full bg-gray-50 border-2 border-gray-100 rounded-[30px] p-8 text-2xl placeholder-gray-300 outline-none focus:border-[#ff8a4c] transition-all mb-8" placeholder="Describe your creative vision here..."></textarea>
+            <div class="mb-12">
+                <label class="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 block mb-5">Step 2: Set Aspect Ratio</label>
+                <div class="grid grid-cols-3 gap-3">
+                    <div onclick="toggleSelection(this, 'ratio-chip')" class="ratio-chip active-chip chip py-4 rounded-xl text-center font-bold text-sm">16:9 Landscape</div>
+                    <div onclick="toggleSelection(this, 'ratio-chip')" class="ratio-chip chip py-4 rounded-xl text-center font-bold text-sm text-gray-500">1:1 Square</div>
+                    <div onclick="toggleSelection(this, 'ratio-chip')" class="ratio-chip chip py-4 rounded-xl text-center font-bold text-sm text-gray-500">9:16 Portrait</div>
+                </div>
+            </div>
 
-            <button onclick="ignite()" id="genBtn" class="btn-orange w-full py-6 rounded-[30px] text-white font-black text-2xl flex items-center justify-center gap-4 active:scale-95 transition-all shadow-xl">
+            <div class="mb-8">
+                <label class="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 block mb-5">Step 3: Describe Your Vision</label>
+                <textarea id="uInput" rows="4" class="w-full bg-gray-50 border border-gray-100 rounded-3xl p-8 text-2xl placeholder-gray-300 focus:ring-4 focus:ring-orange-100 outline-none transition-all" placeholder="E.g. A futuristic cyberpunk city in 2026..."></textarea>
+            </div>
+
+            <button onclick="ignite()" id="genBtn" class="btn-orange w-full py-6 rounded-3xl text-white font-900 text-xl flex items-center justify-center gap-4">
                 <i class="fa-solid fa-wand-magic-sparkles"></i> GENERATE MASTERPIECE
             </button>
 
-            <div id="resultArea">
-                <button class="copy-btn" id="copyBtn" onclick="copyPrompt()"><i class="fa-regular fa-copy"></i> COPY PROMPT</button>
-                <p class="text-[10px] font-black uppercase tracking-widest text-[#ff8a4c] mb-4">Nexovent Professional Output:</p>
-                <div id="resText" class="text-2xl text-gray-700 italic font-semibold leading-relaxed pr-12"></div>
+            <div id="resultArea" class="p-10 relative">
+                <button class="absolute top-6 right-6 bg-white border border-gray-200 px-4 py-2 rounded-xl text-xs font-900 hover:bg-orange-500 hover:text-white transition shadow-sm" onclick="copyPrompt()">COPY PROMPT</button>
+                <p class="text-[10px] font-black uppercase tracking-widest text-[#ff8a4c] mb-4">Nexovent Pro Output:</p>
+                <div id="resText" class="text-xl text-gray-800 italic leading-relaxed font-semibold"></div>
             </div>
+        </div>
     </main>
+
+    <script>
+        function toggleSelection(element, className) {
+            document.querySelectorAll('.' + className).forEach(chip => {
+                chip.classList.remove('active-chip');
+                const text = chip.querySelector('span') || chip;
+                if(text.classList) text.classList.add('text-gray-600');
+            });
+            element.classList.add('active-chip');
+            const activeText = element.querySelector('span') || element;
+            if(activeText.classList) activeText.classList.remove('text-gray-600');
+        }
+
+        async function ignite() {
+            const input = document.getElementById('uInput').value.trim();
+            const btn = document.getElementById('genBtn');
+            const resArea = document.getElementById('resultArea');
+            const resText = document.getElementById('resText');
+
+            if(!input) return;
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> CREATING MAGIC...';
+
+            try {
+                const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
+                    method: "POST",
+                    headers: { "Authorization": "Bearer OUjZmK9tvZ7toyDnOPkCJMqB3soCQBI4", "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        model: "mistral-large-latest",
+                        messages: [{ role: "user", content: `Create a professional image prompt for: ${input}. Result only.` }]
+                    })
+                });
+                const data = await response.json();
+                resArea.style.display = "block";
+                resText.innerText = data.choices[0].message.content;
+                resArea.scrollIntoView({ behavior: 'smooth' });
+            } catch (e) {
+                console.log("Error");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> GENERATE MASTERPIECE';
+            }
+        }
+
+        function copyPrompt() {
+            const text = document.getElementById('resText').innerText;
+            navigator.clipboard.writeText(text);
+        }
+    </script>
+</body>
+</html>
+
     <article id="article-guide" class="article-content max-w-4xl mx-auto px-6 pb-20 pt-16 text-left">
 <h1 class="text-4xl md:text-6xl font-900 text-black mb-10 leading-tight">
         Free AI Prompt Engineering: The Ultimate 2026 Masterclass
