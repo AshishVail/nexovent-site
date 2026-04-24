@@ -1,5 +1,7 @@
 {
-  "name": "nexovent-site",
+  "name": "nexovent-ai-tool",
   "version": "1.0.0",
-  "dependencies": {}
+  "dependencies": {
+    "@google/generative-ai": "latest"
+  }
 }
