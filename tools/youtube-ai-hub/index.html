@@ -153,7 +153,68 @@
                 resultArea.innerText = response;
             }, 1500);
         }
-    </script>
+        <script>
+        async function generateAI(type) {
+            const topic = document.getElementById('topic').value;
+            const resultArea = document.getElementById('result-area');
 
-</body>
-</html>
+            if (!topic) {
+                alert("Please enter a topic first!");
+                return;
+            }
+
+            resultArea.innerHTML = '<span class="loading">AI is processing detailed results... Please wait.</span>';
+
+            // Detailed Logic for Better Results
+            setTimeout(() => {
+                let response = "";
+                
+                if(type === 'titles') {
+                    response = "🔥 VIRAL TITLES:\n\n" +
+                               "1. " + topic + " : 99% People Don't Know This!\n" +
+                               "2. How to Master " + topic + " in 2026 (Step-by-Step)\n" +
+                               "3. STOP Doing This if you want to succeed in " + topic + "\n" +
+                               "4. " + topic + " Exposed: The Ugly Truth\n" +
+                               "5. From Beginner to Pro in " + topic + " (Complete Guide)";
+                }
+                
+                if(type === 'tags') {
+                    // Yahan 15-20 tags generate karne ka logic hai
+                    let commonTags = "viral, trending, 2026, shorts, nexovent, guide, tutorial, hindi, amazing";
+                    let topicTags = topic.split(' ').join(', ') + ", " + topic + " 2026, how to " + topic;
+                    response = "🏷️ TOP 15+ TAGS:\n\n" + topicTags + ", " + commonTags + ", youtube growth, strategy, " + topic + " tips, best " + topic + " video";
+                }
+                
+                if(type === 'desc') {
+                    response = "📝 DETAILED DESCRIPTION:\n\n" +
+                               "In this video, we deep dive into " + topic + " and explain everything you need to know to get started. \n\n" +
+                               "📌 What you will learn:\n" +
+                               "- Introduction to " + topic + "\n" +
+                               "- Secret tips and tricks for 2026\n" +
+                               "- Common mistakes to avoid\n" +
+                               "- Final summary and conclusion\n\n" +
+                               "Don't forget to LIKE and SUBSCRIBE for more content on " + topic + "!\n\n" +
+                               "#"+topic.replace(/ /g, "")+" #Nexovent #YoutubeGrowth #2026";
+                }
+                
+                if(type === 'script') {
+                    response = "🎬 VIDEO SCRIPT OUTLINE:\n\n" +
+                               "[0:00-0:30] HOOK: Start with a shocking fact about " + topic + ".\n" +
+                               "[0:30-1:30] INTRO: Briefly explain why " + topic + " is important today.\n" +
+                               "[1:30-5:00] BODY: Show 3 main points regarding " + topic + ".\n" +
+                               "[5:00-6:00] SUMMARY: Recap everything we discussed.\n" +
+                               "[6:00-End] CTA: Ask viewers to comment their thoughts on " + topic + ".";
+                }
+                
+                if(type === 'ideas') {
+                    response = "🖼️ THUMBNAIL CONCEPTS:\n\n" +
+                               "Idea 1 (Comparison): Left side 'Old Way' vs Right side 'New Way with " + topic + "'. Use bright red and green colors.\n\n" +
+                               "Idea 2 (Shocking): A close-up face with a shocked expression pointing at a big text that says '"+ topic.toUpperCase() +" IS CHANGING!'.\n\n" +
+                               "Idea 3 (Listicle): Big bold text 'TOP 5 TIPS' with a high-quality icon representing " + topic + ".";
+                }
+                
+                resultArea.innerText = response;
+            }, 1500);
+        }
+    </script>
+    
