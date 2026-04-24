@@ -163,8 +163,10 @@
             transition: 0.3s;
         }
 
-        .gen-btn:active {
-            transform: scale(0.98);
+        .gen-btn:disabled {
+            background: #ccc;
+            box-shadow: none;
+            cursor: not-allowed;
         }
 
         #result-box {
@@ -210,7 +212,7 @@
 
         <div class="tool-card">
             <span class="step-label">Step 1: Enter Video Topic</span>
-            <input type="text" id="video-topic" placeholder="e.g. How to grow on YouTube 2026...">
+            <input type="text" id="video-topic" placeholder="e.g. How to grow on YouTube 2026..." onkeypress="if(event.key === 'Enter') startGeneration()">
 
             <span class="step-label">Step 2: Select Tool Type</span>
             <div class="button-grid">
@@ -255,14 +257,12 @@
                 return;
             }
 
-            // UI Reset
             resBox.style.display = 'none';
             spinner.style.display = 'block';
             btn.disabled = true;
-            btn.style.opacity = '0.7';
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> GENERATING...';
 
             try {
-                // सुधार: Relative path '/api/generate' का उपयोग करें, पूरा URL नहीं।
                 const response = await fetch('/api/generate', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -272,20 +272,20 @@
                 const data = await response.json();
 
                 if (data.output) {
-                    resBox.innerText = data.output;
-                } else if (data.error) {
-                    resBox.innerText = "Error: " + data.error;
+                    // \n को <br> में बदलकर अच्छी तरह दिखाना
+                    resBox.innerHTML = `<strong>Result for ${selectedType}:</strong><br><br>${data.output.replace(/\n/g, '<br>')}`;
                 } else {
-                    resBox.innerText = "Error: AI response issue. Check logs.";
+                    resBox.innerText = "Error: " + (data.error || "AI response issue.");
                 }
             } catch (err) {
-                console.error("Fetch Error:", err);
-                resBox.innerText = "Connection Error: Check if your server is running.";
+                resBox.innerText = "Connection Error: Please try again.";
             } finally {
                 spinner.style.display = 'none';
                 resBox.style.display = 'block';
                 btn.disabled = false;
-                btn.style.opacity = '1';
+                btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> GENERATE MASTERPIECE';
+                // रिजल्ट आने पर ऑटो स्क्रॉल
+                resBox.scrollIntoView({ behavior: 'smooth' });
             }
         }
     </script>
