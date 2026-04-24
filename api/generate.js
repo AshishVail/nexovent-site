@@ -4,25 +4,26 @@ export default async function handler(req, res) {
   }
 
   const { topic, type } = req.body;
-  const apiKey = process.env.GEMINI_API_KEY; // Ye Vercel se key uthayega
+  const apiKey = process.env.GEMINI_API_KEY;
 
-  // AI ke liye instruction
-  const promptText = `As a YouTube SEO expert, generate a very long and detailed ${type} for the video topic: "${topic}". Make it professional and viral.`;
+  if (!apiKey) {
+    return res.status(500).json({ output: "API Key is missing in Vercel settings." });
+  }
 
   try {
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: promptText }] }]
+        contents: [{ parts: [{ text: `Generate a detailed ${type} for a YouTube video about: ${topic}. Make it viral and engaging.` }] }]
       })
     });
 
     const data = await response.json();
-    const aiOutput = data.candidates[0].content.parts[0].text;
+    const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response from AI.";
     
-    res.status(200).json({ output: aiOutput });
+    res.status(200).json({ output: resultText });
   } catch (error) {
-    res.status(500).json({ error: "AI connection failed" });
+    res.status(500).json({ output: "Server Error: " + error.message });
   }
 }
