@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube AI Hub - Nexovent</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #58a6ff;
+            --text-color: #c9d1d9;
+            --btn-hover: #1f6feb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            border: 1px solid #30363d;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: #8b949e;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            background: #0d1117;
+            color: white;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: var(--btn-hover);
+        }
+
+        #result-area {
+            background: #0d1117;
+            border: 1px dashed #30363d;
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 150px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .loading {
+            color: orange;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>YouTube AI Hub 🚀</h1>
+        <p class="subtitle">Optimize your videos with AI-powered Titles, Tags, and Scripts.</p>
+
+        <div class="input-group">
+            <label for="topic">Enter Video Topic or Keywords:</label>
+            <input type="text" id="topic" placeholder="e.g. How to grow on Instagram 2026">
+        </div>
+
+        <div class="button-grid">
+            <button onclick="generateAI('titles')">Viral Titles</button>
+            <button onclick="generateAI('tags')">Best Tags</button>
+            <button onclick="generateAI('desc')">Description</button>
+            <button onclick="generateAI('script')">Video Script</button>
+            <button onclick="generateAI('ideas')">Thumbnail Ideas</button>
+        </div>
+
+        <div id="result-area">Results will appear here...</div>
+    </div>
+
+    <script>
+        async function generateAI(type) {
+            const topic = document.getElementById('topic').value;
+            const resultArea = document.getElementById('result-area');
+
+            if (!topic) {
+                alert("Please enter a topic first!");
+                return;
+            }
+
+            resultArea.innerHTML = '<span class="loading">AI is thinking... Please wait.</span>';
+
+            // यहाँ हम अभी के लिए एक डेमो मैसेज दिखा रहे हैं। 
+            // बाद में इसे आप अपनी OpenAI API से कनेक्ट कर सकते हैं।
+            
+            setTimeout(() => {
+                let response = "";
+                if(type === 'titles') response = "1. " + topic + " (Mind-blowing Method!)\n2. Why everyone is talking about " + topic + "\n3. 5 Secrets of " + topic + " you didn't know!";
+                if(type === 'tags') response = topic.replace(/ /g, ", ") + ", viral video, trending 2026, nexovent ai";
+                if(type === 'desc') response = "In this video, we cover everything about " + topic + ". Watch till the end for a special bonus tip!";
+                if(type === 'script') response = "[Hook]: Stop scrolling! If you want to master " + topic + ", this video is for you...";
+                if(type === 'ideas') response = "Idea 1: Split screen showing Before vs After " + topic + ".\nIdea 2: High contrast text with a 'Shocked' emoji.";
+                
+                resultArea.innerText = response;
+            }, 1500);
+        }
+    </script>
+
+</body>
+</html>
