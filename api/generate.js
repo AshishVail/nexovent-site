@@ -1,8 +1,7 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 export default async function handler(req, res) {
-  // आपकी Key यहाँ सुरक्षित तरीके से रहेगी
-  const genAI = new GoogleGenerativeAI("AIzaSyDeFKardTCDJk5FQyLl9CJbgMLWQP1UP4w");
+4w");
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   try {
@@ -12,6 +11,4 @@ export default async function handler(req, res) {
     const response = await result.response;
     res.status(200).json({ output: response.text() });
   } catch (e) {
-    res.status(500).json({ output: "Error: " + e.message });
-  }
-}
+    res.status(500).json({ output: "Erro
