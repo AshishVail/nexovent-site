@@ -105,37 +105,52 @@
         }
 
         async function ignite() {
-            const input = document.getElementById('uInput').value.trim();
-            const btn = document.getElementById('genBtn');
-            const resArea = document.getElementById('resultArea');
-            const resText = document.getElementById('resText');
+    const input = document.getElementById('uInput').value.trim();
+    const btn = document.getElementById('genBtn');
+    const resArea = document.getElementById('resultArea');
+    const resText = document.getElementById('resText');
+    
+    // वर्तमान में सिलेक्टेड मॉडल और रेश्यो की वैल्यू निकालना
+    const activeModel = document.querySelector('.model-chip.active-chip').innerText;
+    const activeRatio = document.querySelector('.ratio-chip.active-chip').innerText;
 
-            if(!input) return;
+    if(!input) {
+        alert("Please describe your vision first!");
+        return;
+    }
 
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> CREATING MAGIC...';
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> CREATING MAGIC...';
 
-            try {
-                const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
-                    method: "POST",
-                    headers: { "Authorization": "Bearer", "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        model: "mistral-large-latest",
-                        messages: [{ role: "user", content: `Create a professional image prompt for: ${input}. Result only.` }]
-                    })
-                });
-                const data = await response.json();
-                resArea.style.display = "block";
-                resText.innerText = data.choices[0].message.content;
-                resArea.scrollIntoView({ behavior: 'smooth' });
-            } catch (e) {
-                console.log("Error");
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> GENERATE MASTERPIECE';
-            }
+    try {
+        // अब हम आपके खुद के बनाए सुरक्षित API पाथ पर रिक्वेस्ट भेजेंगे
+        const response = await fetch("/api/prompt", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                input: input,
+                model: activeModel,
+                ratio: activeRatio
+            })
+        });
+        
+        const data = await response.json();
+        
+        if(data.output) {
+            resArea.style.display = "block";
+            resText.innerText = data.output;
+            resArea.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            alert("Error generating prompt.");
         }
-
+    } catch (e) {
+        console.error("Error:", e);
+        alert("Connection Error. Check your Vercel logs.");
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> GENERATE MASTERPIECE';
+    }
+}
         function copyPrompt() {
             const text = document.getElementById('resText').innerText;
             navigator.clipboard.writeText(text);
