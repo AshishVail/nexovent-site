@@ -3,218 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube AI Hub - Nexovent</title>
+    <title>Nexovent | YouTube AI Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --accent-color: #58a6ff;
-            --text-color: #c9d1d9;
-            --btn-hover: #1f6feb;
+            --primary-orange: #ff7a45; /* आपके प्रॉम्प्ट जनरेटर जैसा ऑरेंज */
+            --bg-light: #f9fafb;
+            --text-dark: #1f2937;
+            --card-white: #ffffff;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             margin: 0;
-            padding: 20px;
+            padding: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
         }
 
-        .container {
-            max-width: 800px;
+        /* Top Navigation Header */
+        .header {
             width: 100%;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            border: 1px solid #30363d;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: absolute;
+            top: 0;
+        }
+
+        .badge {
+            background: var(--primary-orange);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .brand-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4b5563;
+        }
+
+        .home-btn {
+            background: black;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Main Container */
+        .container {
+            margin-top: 100px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
         }
 
         h1 {
-            color: var(--accent-color);
-            text-align: center;
+            font-size: 32px;
             margin-bottom: 10px;
+            font-weight: 800;
         }
 
-        p.subtitle {
-            text-align: center;
-            color: #8b949e;
-            margin-bottom: 30px;
+        .subtitle {
+            color: #6b7280;
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.5;
         }
 
-        .input-group {
-            margin-bottom: 20px;
+        /* Card Section */
+        .tool-card {
+            background: var(--card-white);
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: left;
         }
 
-        label {
+        .step-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
             display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #30363d;
-            background: #0d1117;
-            color: white;
-            box-sizing: border-box;
+            padding: 15px;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+            background: #fdfdfd;
             font-size: 16px;
+            margin-bottom: 25px;
+            box-sizing: border-box;
+            outline: none;
         }
 
+        input[type="text"]:focus {
+            border-color: var(--primary-orange);
+        }
+
+        /* Button Grid */
         .button-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin-bottom: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
         }
 
-        button {
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            background: var(--accent-color);
-            color: white;
+        .opt-btn {
+            padding: 15px;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            font-weight: 600;
             cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
+            transition: 0.2s;
+            color: #4b5563;
         }
 
-        button:hover {
-            background: var(--btn-hover);
+        .opt-btn.active {
+            background: var(--primary-orange);
+            color: white;
+            border-color: var(--primary-orange);
+            box-shadow: 0 4px 12px rgba(255, 122, 69, 0.3);
         }
 
-        #result-area {
-            background: #0d1117;
-            border: 1px dashed #30363d;
+        /* Generate Button */
+        .gen-btn {
+            width: 100%;
+            padding: 18px;
+            border-radius: 20px;
+            border: none;
+            background: var(--primary-orange);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(255, 122, 69, 0.4);
+        }
+
+        /* Result Area */
+        #result-box {
+            margin-top: 30px;
+            background: #fff;
+            border-radius: 20px;
             padding: 20px;
-            border-radius: 8px;
-            min-height: 150px;
+            text-align: left;
+            border: 1px solid #e5e7eb;
             white-space: pre-wrap;
-            line-height: 1.6;
+            display: none; /* Hidden initially */
         }
 
-        .loading {
-            color: orange;
-            font-style: italic;
+        .loading-spinner {
+            display: none;
+            margin: 20px auto;
+            width: 30px;
+            height: 30px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
     </style>
 </head>
 <body>
 
+    <div class="header">
+        <span class="badge">Free</span>
+        <span class="brand-name">Nexovent<span style="color:#9ca3af">.tech</span></span>
+        <a href="/" class="home-btn"><i class="fa-solid fa-house"></i></a>
+    </div>
+
     <div class="container">
-        <h1>YouTube AI Hub 🚀</h1>
-        <p class="subtitle">Optimize your videos with AI-powered Titles, Tags, and Scripts.</p>
+        <h1>YouTube AI Hub</h1>
+        <p class="subtitle">World's best AI tools for Creators. Optimized for Tags, Titles, and Viral Scripts. Zero cost.</p>
 
-        <div class="input-group">
-            <label for="topic">Enter Video Topic or Keywords:</label>
-            <input type="text" id="topic" placeholder="e.g. How to grow on Instagram 2026">
+        <div class="tool-card">
+            <span class="step-label">Step 1: Enter Video Topic</span>
+            <input type="text" id="video-topic" placeholder="e.g. How to grow on YouTube 2026...">
+
+            <span class="step-label">Step 2: Select Tool Type</span>
+            <div class="button-grid">
+                <button class="opt-btn" onclick="selectType('titles', this)">Viral Titles</button>
+                <button class="opt-btn" onclick="selectType('tags', this)">Best Tags</button>
+                <button class="opt-btn" onclick="selectType('desc', this)">Detailed Description</button>
+                <button class="opt-btn" onclick="selectType('script', this)">Full Script</button>
+            </div>
+
+            <button class="gen-btn" onclick="startGeneration()">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> GENERATE MASTERPIECE
+            </button>
         </div>
 
-        <div class="button-grid">
-            <button onclick="generateAI('titles')">Viral Titles</button>
-            <button onclick="generateAI('tags')">Best Tags</button>
-            <button onclick="generateAI('desc')">Description</button>
-            <button onclick="generateAI('script')">Video Script</button>
-            <button onclick="generateAI('ideas')">Thumbnail Ideas</button>
-        </div>
-
-        <div id="result-area">Results will appear here...</div>
+        <div class="loading-spinner" id="spinner"></div>
+        <div id="result-box"></div>
     </div>
 
     <script>
-        async function generateAI(type) {
-            const topic = document.getElementById('topic').value;
-            const resultArea = document.getElementById('result-area');
+        let selectedType = '';
 
-            if (!topic) {
-                alert("Please enter a topic first!");
-                return;
-            }
-
-            resultArea.innerHTML = '<span class="loading">AI is thinking... Please wait.</span>';
-
-            // यहाँ हम अभी के लिए एक डेमो मैसेज दिखा रहे हैं। 
-            // बाद में इसे आप अपनी OpenAI API से कनेक्ट कर सकते हैं।
-            
-            setTimeout(() => {
-                let response = "";
-                if(type === 'titles') response = "1. " + topic + " (Mind-blowing Method!)\n2. Why everyone is talking about " + topic + "\n3. 5 Secrets of " + topic + " you didn't know!";
-                if(type === 'tags') response = topic.replace(/ /g, ", ") + ", viral video, trending 2026, nexovent ai";
-                if(type === 'desc') response = "In this video, we cover everything about " + topic + ". Watch till the end for a special bonus tip!";
-                if(type === 'script') response = "[Hook]: Stop scrolling! If you want to master " + topic + ", this video is for you...";
-                if(type === 'ideas') response = "Idea 1: Split screen showing Before vs After " + topic + ".\nIdea 2: High contrast text with a 'Shocked' emoji.";
-                
-                resultArea.innerText = response;
-            }, 1500);
+        function selectType(type, btn) {
+            selectedType = type;
+            document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
         }
-        <script>
-        async function generateAI(type) {
-            const topic = document.getElementById('topic').value;
-            const resultArea = document.getElementById('result-area');
 
-            if (!topic) {
-                alert("Please enter a topic first!");
+        async function startGeneration() {
+            const topic = document.getElementById('video-topic').value;
+            const resBox = document.getElementById('result-box');
+            const spinner = document.getElementById('spinner');
+
+            if (!topic || !selectedType) {
+                alert("Please enter a topic and select a tool type!");
                 return;
             }
 
-            resultArea.innerHTML = '<span class="loading">AI is processing detailed results... Please wait.</span>';
+            resBox.style.display = 'none';
+            spinner.style.display = 'block';
 
-            // Detailed Logic for Better Results
+            // Detailed Content Logic
             setTimeout(() => {
-                let response = "";
+                let finalContent = "";
                 
-                if(type === 'titles') {
-                    response = "🔥 VIRAL TITLES:\n\n" +
-                               "1. " + topic + " : 99% People Don't Know This!\n" +
-                               "2. How to Master " + topic + " in 2026 (Step-by-Step)\n" +
-                               "3. STOP Doing This if you want to succeed in " + topic + "\n" +
-                               "4. " + topic + " Exposed: The Ugly Truth\n" +
-                               "5. From Beginner to Pro in " + topic + " (Complete Guide)";
+                if(selectedType === 'titles') {
+                    finalContent = "🚀 TOP 5 VIRAL TITLES:\n\n1. " + topic + " : 99% People Don't Know This!\n2. How to Master " + topic + " in 2026 (Full Guide)\n3. STOP Doing This if you want to grow in " + topic + "\n4. The Secret Strategy for " + topic + " Exposed\n5. From 0 to Hero in " + topic + " (Hindi)";
+                } else if(selectedType === 'tags') {
+                    finalContent = "🏷️ TOP 20 SEO TAGS:\n\n" + topic.split(' ').join(', ') + ", youtube growth, viral, trending 2026, " + topic + " tips, nexovent, how to start " + topic + ", amazing " + topic + " video, hindi tutorial, step by step " + topic + ", best tags, seo ranking, 2026 strategy, " + topic + " secrets.";
+                } else if(selectedType === 'desc') {
+                    finalContent = "📝 DETAILED DESCRIPTION:\n\nIn this video, we explore everything about " + topic + ". We have covered the latest trends and strategies for 2026 to help you stay ahead.\n\n📌 Topics Covered:\n- Basics of " + topic + "\n- Advanced Tips & Tricks\n- Future of " + topic + "\n\nFollow us on Instagram: @nexovent\n#"+topic.replace(/ /g, "")+" #Nexovent #Viral2026";
+                } else if(selectedType === 'script') {
+                    finalContent = "🎬 FULL VIDEO SCRIPT:\n\n[0:00] HOOK: Shocking news about " + topic + "!\n[0:45] INTRO: Welcome to the channel, let's talk about " + topic + ".\n[2:00] MAIN CONTENT: Point 1: Why " + topic + " matters. Point 2: Secret hacks for 2026.\n[5:30] SUMMARY: Quick recap of all " + topic + " steps.\n[6:00] CTA: Subscribe for more!";
                 }
-                
-                if(type === 'tags') {
-                    // Yahan 15-20 tags generate karne ka logic hai
-                    let commonTags = "viral, trending, 2026, shorts, nexovent, guide, tutorial, hindi, amazing";
-                    let topicTags = topic.split(' ').join(', ') + ", " + topic + " 2026, how to " + topic;
-                    response = "🏷️ TOP 15+ TAGS:\n\n" + topicTags + ", " + commonTags + ", youtube growth, strategy, " + topic + " tips, best " + topic + " video";
-                }
-                
-                if(type === 'desc') {
-                    response = "📝 DETAILED DESCRIPTION:\n\n" +
-                               "In this video, we deep dive into " + topic + " and explain everything you need to know to get started. \n\n" +
-                               "📌 What you will learn:\n" +
-                               "- Introduction to " + topic + "\n" +
-                               "- Secret tips and tricks for 2026\n" +
-                               "- Common mistakes to avoid\n" +
-                               "- Final summary and conclusion\n\n" +
-                               "Don't forget to LIKE and SUBSCRIBE for more content on " + topic + "!\n\n" +
-                               "#"+topic.replace(/ /g, "")+" #Nexovent #YoutubeGrowth #2026";
-                }
-                
-                if(type === 'script') {
-                    response = "🎬 VIDEO SCRIPT OUTLINE:\n\n" +
-                               "[0:00-0:30] HOOK: Start with a shocking fact about " + topic + ".\n" +
-                               "[0:30-1:30] INTRO: Briefly explain why " + topic + " is important today.\n" +
-                               "[1:30-5:00] BODY: Show 3 main points regarding " + topic + ".\n" +
-                               "[5:00-6:00] SUMMARY: Recap everything we discussed.\n" +
-                               "[6:00-End] CTA: Ask viewers to comment their thoughts on " + topic + ".";
-                }
-                
-                if(type === 'ideas') {
-                    response = "🖼️ THUMBNAIL CONCEPTS:\n\n" +
-                               "Idea 1 (Comparison): Left side 'Old Way' vs Right side 'New Way with " + topic + "'. Use bright red and green colors.\n\n" +
-                               "Idea 2 (Shocking): A close-up face with a shocked expression pointing at a big text that says '"+ topic.toUpperCase() +" IS CHANGING!'.\n\n" +
-                               "Idea 3 (Listicle): Big bold text 'TOP 5 TIPS' with a high-quality icon representing " + topic + ".";
-                }
-                
-                resultArea.innerText = response;
-            }, 1500);
+
+                spinner.style.display = 'none';
+                resBox.innerText = finalContent;
+                resBox.style.display = 'block';
+            }, 1800);
         }
     </script>
-    
+</body>
+</html>
