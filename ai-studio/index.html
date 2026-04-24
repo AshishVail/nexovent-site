@@ -118,7 +118,7 @@
             try {
                 const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
                     method: "POST",
-                    headers: { "Authorization": "Bearer OUjZmK9tvZ7toyDnOPkCJMqB3soCQBI4", "Content-Type": "application/json" },
+                    headers: { "Authorization": "Bearer", "Content-Type": "application/json" },
                     body: JSON.stringify({
                         model: "mistral-large-latest",
                         messages: [{ role: "user", content: `Create a professional image prompt for: ${input}. Result only.` }]
