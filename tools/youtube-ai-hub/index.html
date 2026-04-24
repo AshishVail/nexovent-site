@@ -221,16 +221,13 @@
     <script>
         let selectedType = '';
 
-        // बटन सिलेक्ट करने का फंक्शन
         function selectType(type, btn) {
             selectedType = type;
             const buttons = document.querySelectorAll('.opt-btn');
             buttons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            console.log("Selected Type:", selectedType); // Debugging के लिए
         }
 
-        // जनरेट करने का फंक्शन
         async function startGeneration() {
             const topicInput = document.getElementById('video-topic');
             const topic = topicInput.value;
@@ -242,16 +239,16 @@
                 return;
             }
             if (!selectedType) {
-                alert("Please select a tool type (e.g., Viral Titles)!");
+                alert("Please select a tool type!");
                 return;
             }
 
-            // UI को तैयार करें
             resBox.style.display = 'none';
             spinner.style.display = 'block';
 
             try {
-                const response = await fetch('/api/generate', {
+                // यहाँ बदलाव किया गया है: पूरा URL इस्तेमाल हो रहा है
+                const response = await fetch('https://nexovent.tech/api/generate', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ topic: topic, type: selectedType })
@@ -262,11 +259,11 @@
                 if (data.output) {
                     resBox.innerText = data.output;
                 } else {
-                    resBox.innerText = "AI Response error. Please check your API Key settings in Vercel.";
+                    resBox.innerText = "Error: " + (data.error || "Unknown AI response error.");
                 }
             } catch (err) {
                 console.error("Fetch Error:", err);
-                resBox.innerText = "Connection Error: Ensure api/generate.js is on GitHub and your API key is in Vercel.";
+                resBox.innerText = "Connection Error: Please ensure api/generate.js is in the main 'api' folder on GitHub.";
             }
 
             spinner.style.display = 'none';
