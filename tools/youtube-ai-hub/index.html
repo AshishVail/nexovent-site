@@ -195,7 +195,7 @@
 
     <div class="container">
         <h1>YouTube AI Hub</h1>
-        <p class="subtitle">World's best AI tools for Creators. Optimized for Tags, Titles, and Viral Scripts. Zero cost.</p>
+        <p class="subtitle">World's best AI tools for Creators. Optimized for Tags, Titles, and Viral Scripts.</p>
 
         <div class="tool-card">
             <span class="step-label">Step 1: Enter Video Topic</span>
@@ -203,13 +203,13 @@
 
             <span class="step-label">Step 2: Select Tool Type</span>
             <div class="button-grid">
-                <button class="opt-btn" onclick="selectType('Viral Titles', this)">Viral Titles</button>
-                <button class="opt-btn" onclick="selectType('Best Tags', this)">Best Tags</button>
-                <button class="opt-btn" onclick="selectType('Detailed Description', this)">Description</button>
-                <button class="opt-btn" onclick="selectType('Complete Video Script', this)">Full Script</button>
+                <button type="button" class="opt-btn" onclick="selectType('Viral Titles', this)">Viral Titles</button>
+                <button type="button" class="opt-btn" onclick="selectType('Best Tags', this)">Best Tags</button>
+                <button type="button" class="opt-btn" onclick="selectType('Detailed Description', this)">Description</button>
+                <button type="button" class="opt-btn" onclick="selectType('Full Video Script', this)">Full Script</button>
             </div>
 
-            <button class="gen-btn" onclick="startGeneration()">
+            <button type="button" class="gen-btn" onclick="startGeneration()">
                 <i class="fa-solid fa-wand-magic-sparkles"></i> GENERATE MASTERPIECE
             </button>
         </div>
@@ -221,27 +221,36 @@
     <script>
         let selectedType = '';
 
+        // बटन सिलेक्ट करने का फंक्शन
         function selectType(type, btn) {
             selectedType = type;
-            document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+            const buttons = document.querySelectorAll('.opt-btn');
+            buttons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+            console.log("Selected Type:", selectedType); // Debugging के लिए
         }
 
+        // जनरेट करने का फंक्शन
         async function startGeneration() {
-            const topic = document.getElementById('video-topic').value;
+            const topicInput = document.getElementById('video-topic');
+            const topic = topicInput.value;
             const resBox = document.getElementById('result-box');
             const spinner = document.getElementById('spinner');
 
-            if (!topic || !selectedType) {
-                alert("Please enter a topic and select a tool type!");
+            if (!topic) {
+                alert("Please enter a topic first!");
+                return;
+            }
+            if (!selectedType) {
+                alert("Please select a tool type (e.g., Viral Titles)!");
                 return;
             }
 
+            // UI को तैयार करें
             resBox.style.display = 'none';
             spinner.style.display = 'block';
 
             try {
-                // यह API (api/generate.js) को कॉल करेगा जो Vercel पर सुरक्षित है
                 const response = await fetch('/api/generate', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -253,11 +262,11 @@
                 if (data.output) {
                     resBox.innerText = data.output;
                 } else {
-                    resBox.innerText = "Error: AI could not generate content. Please try again.";
+                    resBox.innerText = "AI Response error. Please check your API Key settings in Vercel.";
                 }
-            } catch (error) {
-                console.error("Error:", error);
-                resBox.innerText = "Connection Error: Ensure api/generate.js exists on GitHub and API key is in Vercel.";
+            } catch (err) {
+                console.error("Fetch Error:", err);
+                resBox.innerText = "Connection Error: Ensure api/generate.js is on GitHub and your API key is in Vercel.";
             }
 
             spinner.style.display = 'none';
