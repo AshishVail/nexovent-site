@@ -1,29 +1,33 @@
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
 export default async function handler(req, res) {
+  // 1. Check if the Method is POST
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ output: "Only POST requests allowed" });
   }
 
   const { topic, type } = req.body;
-  const apiKey = process.env.GEMINI_API_KEY;
 
+  // 2. Check if API Key exists in Vercel
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    return res.status(500).json({ output: "API Key is missing in Vercel settings." });
+    return res.status(500).json({ output: "Error: GEMINI_API_KEY is missing in Vercel settings." });
   }
 
   try {
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: `Generate a detailed ${type} for a YouTube video about: ${topic}. Make it viral and engaging.` }] }]
-      })
-    });
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const data = await response.json();
-    const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response from AI.";
-    
-    res.status(200).json({ output: resultText });
+    const prompt = `You are an expert YouTube strategist. Generate a high-quality ${type} for a video about: ${topic}. Make it professional and viral-ready.`;
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+
+    res.status(200).json({ output: text });
   } catch (error) {
-    res.status(500).json({ output: "Server Error: " + error.message });
+    console.error("AI Error:", error);
+    // यह लाइन आपको बताएगी कि असली एरर क्या है (जैसे: Invalid Key या Billing Issue)
+    res.status(500).json({ output: "AI Error: " + error.message });
   }
 }
