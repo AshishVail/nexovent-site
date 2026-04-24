@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-orange: #ff7a45; /* आपके प्रॉम्प्ट जनरेटर जैसा ऑरेंज */
+            --primary-orange: #ff7a45;
             --bg-light: #f9fafb;
             --text-dark: #1f2937;
             --card-white: #ffffff;
@@ -23,7 +23,6 @@
             justify-content: center;
         }
 
-        /* Top Navigation Header */
         .header {
             width: 100%;
             max-width: 600px;
@@ -64,7 +63,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* Main Container */
         .container {
             margin-top: 100px;
             max-width: 500px;
@@ -85,7 +83,6 @@
             line-height: 1.5;
         }
 
-        /* Card Section */
         .tool-card {
             background: var(--card-white);
             padding: 25px;
@@ -120,7 +117,6 @@
             border-color: var(--primary-orange);
         }
 
-        /* Button Grid */
         .button-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -146,7 +142,6 @@
             box-shadow: 0 4px 12px rgba(255, 122, 69, 0.3);
         }
 
-        /* Generate Button */
         .gen-btn {
             width: 100%;
             padding: 18px;
@@ -164,7 +159,6 @@
             box-shadow: 0 6px 20px rgba(255, 122, 69, 0.4);
         }
 
-        /* Result Area */
         #result-box {
             margin-top: 30px;
             background: #fff;
@@ -173,7 +167,8 @@
             text-align: left;
             border: 1px solid #e5e7eb;
             white-space: pre-wrap;
-            display: none; /* Hidden initially */
+            display: none;
+            line-height: 1.6;
         }
 
         .loading-spinner {
@@ -188,7 +183,6 @@
         }
 
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
     </style>
 </head>
 <body>
@@ -209,10 +203,10 @@
 
             <span class="step-label">Step 2: Select Tool Type</span>
             <div class="button-grid">
-                <button class="opt-btn" onclick="selectType('titles', this)">Viral Titles</button>
-                <button class="opt-btn" onclick="selectType('tags', this)">Best Tags</button>
-                <button class="opt-btn" onclick="selectType('desc', this)">Detailed Description</button>
-                <button class="opt-btn" onclick="selectType('script', this)">Full Script</button>
+                <button class="opt-btn" onclick="selectType('Viral Titles', this)">Viral Titles</button>
+                <button class="opt-btn" onclick="selectType('Best Tags', this)">Best Tags</button>
+                <button class="opt-btn" onclick="selectType('Detailed Description', this)">Description</button>
+                <button class="opt-btn" onclick="selectType('Complete Video Script', this)">Full Script</button>
             </div>
 
             <button class="gen-btn" onclick="startGeneration()">
@@ -246,79 +240,29 @@
             resBox.style.display = 'none';
             spinner.style.display = 'block';
 
-            // Detailed Content Logic
-            setTimeout(() => {
-                let finalContent = "";
-                
-                if(selectedType === 'titles') {
-                    finalContent = "🚀 TOP 5 VIRAL TITLES:\n\n1. " + topic + " : 99% People Don't Know This!\n2. How to Master " + topic + " in 2026 (Full Guide)\n3. STOP Doing This if you want to grow in " + topic + "\n4. The Secret Strategy for " + topic + " Exposed\n5. From 0 to Hero in " + topic + " (Hindi)";
-                } else if(selectedType === 'tags') {
-                    finalContent = "🏷️ TOP 20 SEO TAGS:\n\n" + topic.split(' ').join(', ') + ", youtube growth, viral, trending 2026, " + topic + " tips, nexovent, how to start " + topic + ", amazing " + topic + " video, hindi tutorial, step by step " + topic + ", best tags, seo ranking, 2026 strategy, " + topic + " secrets.";
-                } else if(selectedType === 'desc') {
-                    finalContent = "📝 DETAILED DESCRIPTION:\n\nIn this video, we explore everything about " + topic + ". We have covered the latest trends and strategies for 2026 to help you stay ahead.\n\n📌 Topics Covered:\n- Basics of " + topic + "\n- Advanced Tips & Tricks\n- Future of " + topic + "\n\nFollow us on Instagram: @nexovent\n#"+topic.replace(/ /g, "")+" #Nexovent #Viral2026";
-                } else if(selectedType === 'script') {
-                    finalContent = "🎬 FULL VIDEO SCRIPT:\n\n[0:00] HOOK: Shocking news about " + topic + "!\n[0:45] INTRO: Welcome to the channel, let's talk about " + topic + ".\n[2:00] MAIN CONTENT: Point 1: Why " + topic + " matters. Point 2: Secret hacks for 2026.\n[5:30] SUMMARY: Quick recap of all " + topic + " steps.\n[6:00] CTA: Subscribe for more!";
-                }
-
-                spinner.style.display = 'none';
-                resBox.innerText = finalContent;
-                resBox.style.display = 'block';
-            }, 1800);
-        }
-        <script>
-        let selectedType = '';
-
-        function selectType(type, btn) {
-            selectedType = type;
-            // Remove 'active' class from all buttons
-            document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
-            // Add 'active' class to the clicked button
-            btn.classList.add('active');
-        }
-
-        async function startGeneration() {
-            const topic = document.getElementById('video-topic').value;
-            const resBox = document.getElementById('result-box');
-            const spinner = document.getElementById('spinner');
-
-            if (!topic || !selectedType) {
-                alert("Please enter a topic and select a tool type!");
-                return;
-            }
-
-            // UI Reset & Show Loader
-            resBox.style.display = 'none';
-            spinner.style.display = 'block';
-
             try {
-                // Calling your secure Vercel API
+                // यह API (api/generate.js) को कॉल करेगा जो Vercel पर सुरक्षित है
                 const response = await fetch('/api/generate', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        topic: topic,
-                        type: selectedType
-                    }),
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ topic: topic, type: selectedType })
                 });
 
                 const data = await response.json();
 
                 if (data.output) {
-                    // Displaying the real AI response
                     resBox.innerText = data.output;
                 } else {
-                    resBox.innerText = "Error: AI could not generate content. Check your API Key.";
+                    resBox.innerText = "Error: AI could not generate content. Please try again.";
                 }
             } catch (error) {
                 console.error("Error:", error);
-                resBox.innerText = "Connection Error: Make sure api/generate.js is uploaded to GitHub.";
+                resBox.innerText = "Connection Error: Ensure api/generate.js exists on GitHub and API key is in Vercel.";
             }
 
-            // Hide Loader & Show Result
             spinner.style.display = 'none';
             resBox.style.display = 'block';
         }
     </script>
-    
+</body>
+</html>
