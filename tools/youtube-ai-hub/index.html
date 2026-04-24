@@ -265,6 +265,60 @@
                 resBox.style.display = 'block';
             }, 1800);
         }
+        <script>
+        let selectedType = '';
+
+        function selectType(type, btn) {
+            selectedType = type;
+            // Remove 'active' class from all buttons
+            document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+            // Add 'active' class to the clicked button
+            btn.classList.add('active');
+        }
+
+        async function startGeneration() {
+            const topic = document.getElementById('video-topic').value;
+            const resBox = document.getElementById('result-box');
+            const spinner = document.getElementById('spinner');
+
+            if (!topic || !selectedType) {
+                alert("Please enter a topic and select a tool type!");
+                return;
+            }
+
+            // UI Reset & Show Loader
+            resBox.style.display = 'none';
+            spinner.style.display = 'block';
+
+            try {
+                // Calling your secure Vercel API
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        topic: topic,
+                        type: selectedType
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (data.output) {
+                    // Displaying the real AI response
+                    resBox.innerText = data.output;
+                } else {
+                    resBox.innerText = "Error: AI could not generate content. Check your API Key.";
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                resBox.innerText = "Connection Error: Make sure api/generate.js is uploaded to GitHub.";
+            }
+
+            // Hide Loader & Show Result
+            spinner.style.display = 'none';
+            resBox.style.display = 'block';
+        }
     </script>
-</body>
-</html>
+    
