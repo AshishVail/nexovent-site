@@ -5,52 +5,46 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-<url>
-  <loc>https://nexovent.tech/</loc>
-  <lastmod>2026-04-17T10:00:00+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
+  <url>
+    <loc>https://nexovent.tech/</loc>
+    <lastmod>2026-04-25T10:00:00+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
 
-<url>
-  <loc>https://nexovent.tech/ai-studio/index.html</loc>
-  <lastmod>2026-04-17T10:00:00+00:00</lastmod>
-  <priority>0.90</priority>
-</url>
+  <url>
+    <loc>https://nexovent.tech/tools/instagram-caption-generator</loc>
+    <lastmod>2026-04-25T10:00:00+00:00</lastmod>
+    <priority>0.95</priority>
+  </url>
 
-<url>
-  <loc>https://nexovent.tech/blog/top-10-ai-tools.html</loc>
-  <lastmod>2026-04-17T10:00:00+00:00</lastmod>
-  <priority>0.85</priority>
-</url>
+  <url>
+    <loc>https://nexovent.tech/ai-studio/</loc>
+    <lastmod>2026-04-25T10:00:00+00:00</lastmod>
+    <priority>0.90</priority>
+  </url>
 
-<url>
-  <loc>https://nexovent.tech/about.html</loc>
-  <lastmod>2026-04-12T07:45:16+00:00</lastmod>
-  <priority>0.70</priority>
-</url>
+  <url>
+    <loc>https://nexovent.tech/blog/top-10-ai-tools</loc>
+    <lastmod>2026-04-17T10:00:00+00:00</lastmod>
+    <priority>0.85</priority>
+  </url>
 
-<url>
-  <loc>https://nexovent.tech/contact.html</loc>
-  <lastmod>2026-04-12T07:45:17+00:00</lastmod>
-  <priority>0.70</priority>
-</url>
+  <url>
+    <loc>https://nexovent.tech/about</loc>
+    <lastmod>2026-04-12T07:45:16+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
 
-<url>
-  <loc>https://nexovent.tech/privacy-policy.html</loc>
-  <lastmod>2026-04-12T07:45:17+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
+  <url>
+    <loc>https://nexovent.tech/contact</loc>
+    <lastmod>2026-04-12T07:45:17+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
 
-<url>
-  <loc>https://nexovent.tech/terms-conditions.html</loc>
-  <lastmod>2026-04-12T07:45:17+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-
-<url>
-  <loc>https://nexovent.tech/disclaimer.html</loc>
-  <lastmod>2026-04-12T07:45:17+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
+  <url>
+    <loc>https://nexovent.tech/privacy-policy</loc>
+    <lastmod>2026-04-12T07:45:17+00:00</lastmod>
+    <priority>0.50</priority>
+  </url>
 
 </urlset>
