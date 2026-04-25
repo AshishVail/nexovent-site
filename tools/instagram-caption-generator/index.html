@@ -1,158 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Nexovent's Instagram Caption Generator: Craft viral captions, hooks, and SEO-rich strategies for Instagram growth. Free, AI-powered, and mobile-ready." />
-  <meta name="keywords" content="Instagram caption generator, social media AI, viral captions, Instagram growth, SEO, Nexovent" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="Nexovent's Instagram Caption Generator is your AI-powered tool for viral captions and 2026 social media growth. Try the best mobile-friendly caption generator for creators and brands."/>
+  <meta name="keywords" content="instagram caption generator, ai caption generator, viral hashtags, social media growth, nexovent, 2026"/>
   <title>Instagram Caption Generator – Nexovent Tech</title>
-  <!-- Fonts: Inter & Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@700&display=swap" rel="stylesheet">
-  <!-- FontAwesome for icons -->
+  <!-- Google Fonts: Inter & Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
-    :root {
-      --nv-white: #fff;
-      --nv-bg: #faf9fc;
-      --nv-dark: #111111;
-      --nv-accent: #6e4aff;
-      --nv-accent2: #8a63fd;
-      --nv-txt-main: #23233c;
-      --nv-txt-light: #7b7e8f;
-      --nv-card: #fff;
-      --nv-shadow: 0 4px 32px 0 rgba(110, 74, 255, 0.08), 0 1px 6px #b7bfdc21;
-      --nv-radius: 18px;
-    }
-    html, body {
-      background: var(--nv-white);
-      color: var(--nv-txt-main);
+    html,body {
+      background: #fff;
+      color: #25254c;
       font-family: 'Inter', 'Poppins', Arial, sans-serif;
       margin: 0;
       padding: 0;
+      max-width: 100vw;
+      box-sizing: border-box;
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+      max-width: 100%;
     }
 
-    /* HEADER/NAV BAR */
+    /* HEADER */
     .nv-nav {
       position: sticky;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: var(--nv-white);
-      height: 62px;
-      box-shadow: 0 1.5px 22px -10px #6e4aff19;
+      background: #fff;
+      height: 56px;
+      border-bottom: 1.5px solid #eeeeee;
       display: flex; align-items: center; justify-content: center;
     }
     .nv-nav-content {
-      flex: 1;
-      max-width: 1250px;
+      width: 100%; max-width: 1200px;
       display: flex;
       align-items: center;
-      gap: 14px;
-      height: 62px;
+      height: 56px;
       padding: 0 2vw;
+      gap: 12px;
     }
     .nv-nav-logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       font-family: 'Poppins',sans-serif;
-      font-size: 1.47em;
+      font-size: 1.35em;
       font-weight: 800;
-      letter-spacing: -.5px;
-      color: var(--nv-accent);
+      letter-spacing: -0.5px;
+      color: #7649ee;
       text-decoration: none;
       user-select: none;
-      transition: opacity .15s;
+      background: none;
+      border: none;
     }
     .nv-logo-svg {
+      width: 30px; height: 30px;
+      border-radius: 8px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px; height: 36px;
-      margin-right: 2px;
-      background: linear-gradient(135deg, #ece7ff 70%, #6E4AFF 100%);
-      border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(138,99,253, .12);
+      align-items: center; justify-content: center;
+      background: linear-gradient(135deg,#ece7ff 65%, #7649ee 100%);
+      box-shadow: 0 2.5px 7px 0 #8A63FD14;
     }
     .nv-logo-svg svg {
-      width: 23px;height: 23px;display:block;
+      width: 19px;height:19px;display:block;
     }
     .nv-nav-label {
-      color: #23233c;
+      color: #25254c;
       font-weight: bold;
-      background: linear-gradient(90deg,#23233c 70%,#6E4AFF 100%);
+      background: linear-gradient(95deg,#25254c 65%,#7f60e5 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    @media(max-width: 600px) {
-      .nv-nav-label {font-size:1em;}
-      .nv-nav-content {padding: 0 3vw;}
-    }
 
-    /* MAIN TOOL CARD */
+    /* TOOL LAYOUT */
     main {
       min-height: 100vh;
-      margin: 0;
-      padding: 0;
       width: 100vw;
       display: flex;
       flex-direction: column;
       align-items: center;
+      background: #fff;
     }
     .nv-tool-card {
-      background: var(--nv-card);
-      box-shadow: var(--nv-shadow);
-      border-radius: var(--nv-radius);
-      width: 98vw;
-      max-width: 480px;
-      margin-top: 2.1em;
-      margin-bottom: 1.4em;
-      padding: 2.2em 2.5vw 2.1em 2.5vw;
-      display: flex; flex-direction: column; align-items: center;
-      border: 1.2px solid #f3f0fa;
-      transition: box-shadow .13s;
+      background: #fff;
+      border-radius: 15px;
+      width: 97vw;
+      max-width: 415px;
+      margin: 1.2em auto 1.2em auto;
+      box-shadow: 0 6px 32px 0 rgba(100, 84, 153, 0.08), 0 1px 8px #c5ccda13;
+      padding: 1.3em 1.2em 1.15em 1.2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1.15px solid #eeeeee;
+      transition: box-shadow .13s, padding .13s;
     }
     .nv-tool-title {
-      font-size: 1.75rem;
-      font-family:'Poppins',sans-serif;
+      margin: .06em 0 .04em 0;
+      text-align: center;
+      font-size: 1.45rem;
+      font-family: 'Poppins',sans-serif;
       font-weight: 800;
-      background: linear-gradient(90deg,#23233c 35%,#8a63fd 81%);
+      background: linear-gradient(90deg,#25254c 50%, #7f60e5 100%);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
-      text-fill-color:transparent;
-      margin-bottom: .13em;
-      text-align: center;
+      margin-bottom: .1em;
+      line-height:1.2;
     }
     .nv-tool-desc {
-      color: var(--nv-txt-light);
-      font-size: 1.1rem;
+      font-size: 1em;
+      color: #62627e;
       text-align: center;
       margin-bottom: 1.1em;
       font-weight: 500;
+      line-height:1.5;
     }
     .nv-form {
       width: 100%;
       box-sizing: border-box;
+      margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 1em;
+      gap: 0.75em;
     }
-    /* Multi-option rows */
     .nv-form-row {
       display: flex;
-      gap: 10px;
+      gap: 9px;
       flex-wrap: wrap;
     }
     .nv-form-row > div { flex:1; }
     .nv-select-wrap {
       position: relative;
-      display: flex;
-      align-items: center;
-      background: #f8f8fc;
-      border: 1.2px solid #ece7fa;
-      border-radius: 14px;
-      box-shadow: 0 0.5px 7px #aa97ff0e;
-      min-width: 120px;
+      display: flex;align-items: center;
+      background: #f7f8fa;
+      border: 1px solid #eeeeee;
+      border-radius: 11px;
+      box-shadow: 0 0.5px 7px #b6a2f90b;
+      min-width: 99px;
+      margin-top: 0;
+      margin-bottom: 0;
     }
     .nv-select-wrap select {
       width: 100%;
@@ -160,339 +151,314 @@
       background: transparent;
       border: none;
       outline: none;
-      color: #493d8b;
-      padding: 10px 14px 10px 35px;
-      font-size: 1.02em;
+      color: #404070;
+      padding: 8px 14px 8px 31px;
+      font-size: 0.99em;
       font-family: inherit;
       font-weight: 600;
-      border-radius: 14px;
+      border-radius: 11px;
       cursor: pointer;
     }
     .nv-select-wrap i {
       position: absolute;
-      left: 13px;
-      top: 13px;
-      color: #8a63fd;
+      left: 10px;
+      top: 11px;
+      color: #7649ee;
       font-size: 1em;
-      opacity: .76;
+      opacity: .75;
     }
     .nv-select-wrap:after {
       content: "";
-      position: absolute; right: 14px; top: 23px;
-      border: .33em solid transparent;
-      border-top: .45em solid #7b7e8f;
+      position: absolute; right: 13px; top: 19px;
+      border: .27em solid transparent;
+      border-top: .37em solid #a8a8be;
       pointer-events: none;
-      opacity: 0.55;
+      opacity: 0.45;
     }
     textarea.nv-textarea {
       width: 100%;
-      min-height: 80px;
+      min-height: 54px;
       font-size: 1rem;
-      border-radius: 13px;
-      padding: 1em;
-      color: #23233c;
+      border-radius: 9px;
+      padding: .85em;
+      color: #25254c;
       background: #fff;
-      border: 1.2px solid #ece7fa;
-      margin-bottom: 0.14em;
+      border: 1px solid #eeeeee;
+      margin-bottom: 0.12em;
       font-family: inherit;
-      box-shadow: 0 0.5px 5px #8a63fd0d;
+      box-shadow: 0 0.5px 5px #b6a2f90a;
       resize: vertical;
       transition: border .13s;
       outline: none;
     }
-    textarea.nv-textarea:focus {
-      border-color: #6e4aff;
-      background: #faf9fc;
-    }
-    /* Upload Photo Button */
+    textarea.nv-textarea:focus { border-color: #7649ee; background: #fafaff;}
+    /* Upload Button */
     .nv-upload-wrap {
       display: flex;
-      align-items: center;gap:1em;
-      margin: .05em 0 0.2em 0;
+      align-items: center;gap:.7em;
       width: 100%;
+      margin: .07em 0 0.18em 0;
     }
     .nv-upload-btn {
-      padding: 0.77em 1.18em;
-      font-size: 1rm;
+      padding: 0.65em 1.11em;
+      font-size: .95em;
       font-family: inherit;
       font-weight: 700;
-      border-radius: 12px;
-      border: 1.1px solid #ece7fa;
+      border-radius: 9px;
+      border: 1px solid #eeeeee;
       color: #fff;
-      background: linear-gradient(90deg,#6e4aff 0%,#8a63fd 100%);
+      background: linear-gradient(90deg,#7649ee 0%,#B18CFE 100%);
       cursor: pointer;
-      display: flex; align-items: center; gap: 0.6em;
+      display: flex; align-items: center; gap: 0.5em;
       transition: box-shadow 0.12s, background 0.14s, border 0.12s;
-      box-shadow: 0 2px 8px 0 #8a63fd22;
+      box-shadow: 0 1.5px 6px 0 #8A63FD15;
     }
     .nv-upload-btn:hover, .nv-upload-btn:focus {
-      background: linear-gradient(90deg,#8a63fd 0%,#6e4aff 100%);
-      box-shadow: 0 6px 26px #8a63fd33;
-      border-color: #8a63fd;
+      background: linear-gradient(90deg,#A98AF3 0%,#7649ee 100%);
+      border-color: #7649ee;
       outline: none;
     }
     .nv-filename {
-      color: #554c7b;
-      font-size: .97em;
+      color: #857fb6;
+      font-size: .95em;
       font-weight: 600;
-      opacity: 0.77;
+      opacity: 0.74;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      max-width: 180px;
+      max-width: 150px;
       vertical-align: middle;
     }
-    /* GEN BTN */
+    /* Gen Button */
     .nv-gen-btn {
       width: 100%;
-      background: linear-gradient(90deg,#6e4aff 0%,#8a63fd 100%);
+      background: linear-gradient(90deg,#7649ee 0%,#b898fe 100%);
       color: #fff;
-      font-family: 'Montserrat',sans-serif;
       font-weight: 800;
-      font-size: 1.15rem;
-      padding: 1em 0.7em;
+      font-size: 1.05rem;
+      padding: .92em 0.55em;
       border: none;
-      border-radius: 14px;
-      box-shadow: 0 4px 18px 0 #ac91fa18;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px 0 #ac91fa10;
       cursor: pointer;
-      margin-top: 7px;
-      margin-bottom: 3px;
-      transition: box-shadow .16s, transform .13s, background .13s;
+      margin-top: 5px;
+      margin-bottom: 2px;
+      transition: box-shadow .13s, transform .12s, background .14s;
       outline: none;
     }
     .nv-gen-btn:hover, .nv-gen-btn:focus {
-      background: linear-gradient(90deg,#8a63fd 0%,#6e4aff 100%);
-      box-shadow: 0 0 0 3px #ede6ff, 0 4px 18px 0 #8A63FD44;
-      transform: scale(1.011);
+      background: linear-gradient(90deg,#b898fe 0%,#7649ee 100%);
+      box-shadow: 0 0 0 2.5px #eae0fa86, 0 2px 9px 0 #8A63FD19;
+      transform: scale(1.006);
     }
     /* ==== OUTPUT ==== */
     .nv-output-section {
       width: 100%;
-      margin: 1.7em auto 0.0em auto;
-      padding: 1.1em 1.2em 1.23em 1.2em;
-      border-radius: 14px;
+      margin: 1.2em auto 0em auto;
+      padding: .78em .85em .93em .89em;
+      border-radius: 10px;
       background: #fff;
-      box-shadow: 0 2px 18px 0 #bfc8ea08;
+      box-shadow: 0 1.5px 13px 0 #e2e8f019;
       display: none;
       flex-direction: column;
       align-items: flex-start;
-      border: 1.1px solid #ece7fa;
-      gap: 0.3em;
+      border: 1px solid #eeeeee;
+      gap: 0.15em;
     }
     .nv-output-label {
-      font-size: 1.09rem;
+      font-size: 1.02rem;
       font-weight: 700;
-      color: var(--nv-accent);
-      margin: .2em 0 .17em 0;
+      color: #7649ee;
+      margin-top: .23em;
+      margin-bottom: .09em;
     }
     .nv-hook-output, .nv-caption-output, .nv-hashtags-output {
       font-family: 'Inter',sans-serif;
-      font-size: 1.075rem;
-      color: var(--nv-txt-main);
-      margin-bottom: 0.17em;
+      font-size: .98rem;
+      color: #25254c;
+      margin-bottom: 0.16em;
       word-break: break-word;
-      line-height: 1.58;
+      line-height: 1.48;
     }
     .nv-hashtags-output {
-      color: var(--nv-accent2);
-      font-size: 1rem;
+      color: #7d4cfe;
+      font-size: .99rem;
       font-weight: 700;
       letter-spacing: 0.04em;
     }
     .nv-action-btns {
-      display: flex; gap: 1em;
-      margin-top: 0.3em;
+      display: flex; gap: 0.62em;
+      margin-top: 0.17em;
     }
     .nv-action-btn {
-      background: linear-gradient(90deg, #8a63fd 12%, #6E4AFF 100%);
+      background: linear-gradient(90deg, #8a63fd 9%, #7649ee 100%);
       border: none;
-      border-radius: 10px;
+      border-radius: 7px;
       color: #fff;
-      font-size: 1em; font-weight: 700;
-      padding: 6px 17px 7px 13px;
+      font-size: .98em;
+      font-weight: 700;
+      padding: 5px 14px 6px 11px;
       cursor: pointer;
-      display: flex; align-items: center; gap: 7px;
-      box-shadow: 0 1px 4px #bfc8ea11;
-      transition: background .14s, color .14s;
+      display: flex; align-items: center; gap: 6px;
+      box-shadow: 0 1px 4px #a9a5be08;
+      transition: background .12s, color .14s;
     }
-    .nv-action-btn:active { color: #6E4AFF; background: #ecedff; }
-
+    .nv-action-btn:active { color: #7649ee; background: #eae6fc;}
     /* SEO ARTICLE */
     .nv-article-section {
+      background: #fff;
       width: 100%;
-      max-width: 700px;
-      margin: 0 auto 62px auto;
-      background: #f8f8fd;
-      border-radius: 16px;
-      box-shadow: 0 2px 15px 0 #bfc8ea13;
-      padding: 2.0em 2em 2.7em 2.2em;
-      color: var(--nv-txt-main);
-      font-size:1.11rem;
+      max-width: 670px;
+      margin: 0 auto 46px auto;
+      border-radius: 11px;
+      box-shadow: 0 2px 10px 0 #dde0ea0a;
+      padding: 1.15em 1em 2.2em 1em;
+      color: #23244a;
+      font-size:1.07rem;
     }
     .nv-article-section h1 {
-      font-size: 1.5rem;
+      font-size: 1.27rem;
       font-family:'Poppins',sans-serif;
-      font-weight: 900;
-      color: var(--nv-accent);
-      margin-top: 0;
-      margin-bottom: 1.3em;
+      font-weight: 800;
+      color: #7649ee;
+      margin-top: .8em;
+      margin-bottom: .8em;
+      line-height: 1.45;
     }
     .nv-article-section h2 {
-      color: var(--nv-accent2);
-      margin-top: 1.8em;
-      font-size: 1.17rem;
-      font-weight: 800;
+      color: #7f60e5;
+      margin-top: 1.05em;
+      font-size: 1.07rem;
+      font-weight: 700;
+      margin-bottom: .75em;
     }
     .nv-article-section h3 {
-      margin-bottom: 0.36em; margin-top: 1.2em;
-      color: #23233c;
-      font-weight: 700; font-family: 'Inter',sans-serif; font-size:1.08rem;
+      margin-bottom: 0.33em; margin-top: .8em;
+      color: #23254d;
+      font-weight: 700;
+      font-size:.97rem;
     }
-    .nv-article-section ul,
-    .nv-article-section ol { 
-      margin-left: 1.1em;
-      margin-bottom: 1.06em; 
-    }
-    .nv-article-section li {margin-bottom:.16em;}
-    .nv-article-section p { color: var(--nv-txt-main); line-height:1.8;}
-    .nv-article-section strong,
-    .nv-article-section b {color:var(--nv-accent);}
-    .nv-article-section em { color: var(--nv-accent2); }
+    .nv-article-section ul, .nv-article-section ol {margin-left: 1.08em; margin-bottom: .97em;}
+    .nv-article-section li {margin-bottom:.13em;}
+    .nv-article-section p { color: #29285c; line-height:1.6;}
     .nv-article-section blockquote {
-      border-left:4px solid #6E4AFF;
-      margin:.9em 1.1em 1.1em 0;background:#f3f0fe;
-      color:#6E4AFF;
-      font-style:italic;
-      border-radius:7px;
-      padding:.7em 1em;
-      font-size:1.06em;
+      border-left:3px solid #7649ee;
+      margin:.5em 0 .8em 0;background:#f7f6fd;
+      color:#7f60e5;font-style:italic;border-radius:5px;
+      padding:.51em .95em;
+      font-size:.97em;
     }
-    .nv-article-section .kw { color: var(--nv-accent); }
-
-    /* ===== FOOTER ===== */
+    .nv-article-section .kw { color: #7f60e5; }
+    /*=== Footer ===*/
     .nv-footer {
-      background: #111111;
-      color: #eaeaea;
-      margin-top: 46px;
-      font-family: inherit;
-      padding: 0 0 0.5em 0;
+      width: 100vw;
+      background: #fff;
+      padding: 0 0 0.04em 0;
+      margin-top: 36px;
+      border-top: 1.5px solid #eeeeee;
+      box-sizing: border-box;
     }
-    .nv-footer-content {
+    .nv-footer-container {
       max-width: 1150px;
       margin: 0 auto;
-      padding: 2.2em 3vw 1.1em 3vw;
+      padding: 1.19em 2vw 0.65em 2vw;
       display: flex; flex-wrap: wrap;
-      gap: 2em;
       justify-content: space-between;
+      gap: 1.3em 2.5em;
       align-items: flex-start;
+      box-sizing: border-box;
     }
     .nv-footer-col {
       flex:1;
-      min-width:190px;
-      margin-bottom: 1.2em;
-      font-size: 1em;
-    }
-    .nv-footer-brand {
-      max-width: 315px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1em;
-    }
-    .nv-footer-logo-link {
-      display: inline-block;
-      margin-bottom: 0.13em;
-      transition: transform .17s;
-    }
-    .nv-footer-logo-link:hover { transform: scale(1.09);}
-    .nv-footer-logo svg { filter: drop-shadow(0 4px 13px #6E4AFF44);}
-    .nv-footer-about {
-      color: #b8b7d1;
-      font-size: .96em;
-      line-height: 1.5;
-      margin-top: 0.22em;
-      margin-bottom: 0.45em;
+      min-width:150px;
+      margin-bottom: 1em;
+      font-size: .97em;
+      box-sizing: border-box;
     }
     .nv-footer-title {
-      font-size: 1.05em;
+      font-size: 1em;
       font-weight: 700;
-      margin-bottom: .67em;
-      color: #c9c1f7;
+      color: #6945d0;
+      margin-bottom: .5em;
+      letter-spacing: 0.01em;
+    }
+    .nv-footer-brand {
+      max-width: 240px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6em;
+      align-items: flex-start;
+    }
+    .nv-footer-logo-link {margin-bottom:0.13em;}
+    .nv-footer-logo svg {filter: drop-shadow(0 2.5px 13px #8A63FD55);}
+    .nv-footer-about {
+      color: #857fb6;
+      font-size: .95em;
+      line-height: 1.5;
+      margin-top: 0.15em;
     }
     .nv-footer-links ul {
-      list-style: none; padding: 0;margin: 0;
+      list-style: none;
+      padding: 0;margin: 0;
     }
     .nv-footer-links li {
-      margin-bottom: 0.35em;
+      margin-bottom: 0.23em;
     }
     .nv-footer-links a {
-      color: #ededfc;
+      color: #23254d;
       text-decoration: none;
-      font-size: 1em;
+      font-size: .98em;
       transition: color 0.14s;
+      padding: 3px 0;
       display: inline-block;
-      padding: 2px 0;
     }
-    .nv-footer-links a:hover { color: #8A63FD; text-decoration: underline;}
+    .nv-footer-links a:hover { color: #7f60e5; text-decoration: underline;}
     .nv-footer-social-icons {
-      display: flex; gap: .55em; margin-top: 0.18em;
+      display: flex; gap: .43em; margin-top: 0.13em;
     }
     .nv-si {
-      display: inline-flex;
-      align-items: center; justify-content: center;
-      width: 36px; height: 36px;
+      width: 32px; height: 32px;
       border-radius: 50%;
-      background: #18122d;
-      color: #fff;
-      font-size: 1.35em;
-      transition: background .18s, color .14s, transform .13s;
-      box-shadow: 0 1.5px 7px #25073f22;
-      border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.18em;
+      transition: background .12s, color .14s, transform .14s;
+      margin-right: .07em;
     }
-    .nv-si.insta:hover { background: #dd2a7b; color: #fff; }
-    .nv-si.tw:hover    { background: #5da9e9; color: #fff; }
-    .nv-si.fb:hover    { background: #4660c2; color: #fff; }
-    .nv-si.li:hover    { background: #2b80d1; color: #fff; }
-    .nv-si.pin:hover   { background: #e60023; color: #fff; }
-    .nv-si.rd:hover    { background: #ff4500; color: #fff; }
-    .nv-si:hover { transform: scale(1.1);}
-    .nv-footer-bottom-bar {
-      width: 100%;
-      border-top: 1.2px solid #252334;
-      margin: 0.2em 0 0.2em 0;
-    }
-    .nv-footer-bottom-text {
+    .nv-si.insta {background:#fae6fa;color:#dd2a7b;}
+    .nv-si.tw {background:#e1f0fa;color:#1da1f2;}
+    .nv-si.pin {background:#fce1e2;color:#e60023;}
+    .nv-si.rd {background:#faf1ea;color:#ff4500;}
+    .nv-si.fb {background:#e7f0fa;color:#4267B2;}
+    .nv-si.li {background:#e3edf5;color:#0077b5;}
+    .nv-si:hover {transform:scale(1.09);}
+    .nv-footer-bottom {
       text-align: center;
-      color: #aaa7be;
-      font-size: 0.97em;
-      padding: 1.1em 0 0.8em 0;
-      letter-spacing: 0.017em;
+      color: #a2a2bb;
+      font-size: .96em;
+      padding: .91em 0 1.15em 0;
+      letter-spacing: 0.012em;
       font-weight: 600;
     }
-    @media (max-width: 900px) {
-      .nv-footer-content {
-        flex-direction: column;
-        gap: 1.6em;
-        align-items: flex-start;
-      }
-      .nv-footer-col { min-width: 0; }
-      .nv-footer-logo { margin-left: 0; }
-    }
+
     @media (max-width: 700px) {
-      .nv-tool-card {max-width:99vw;padding: 1.4em 2vw 1.2em 2vw;}
-      .nv-article-section {padding: 1.4em 1vw 2.2em 2vw;}
-      .nv-footer-content {padding: 1.4em 3vw 0.7em 4vw;}
+      .nv-tool-card {max-width:100vw;padding:.7em 3vw 1.1em 3vw;margin: 1.2em 0 1.2em 0;}
+      .nv-article-section {max-width: 99vw;padding:1.05em .8em 1.5em 1.2em;}
+      .nv-footer-container {padding: .99em 2vw 0.4em 2vw;gap:0.9em;}
     }
-    @media (max-width: 445px) {
-      .nv-nav-content {gap:8px;}
-      .nv-tool-card {padding:.7em 1vw;}
-      .nv-article-section {padding:.9em 1vw 1.3em 1vw;}
-      .nv-footer-content {padding:.9em 2vw 0.5em 2vw;}
+    @media (max-width: 520px) {
+      .nv-tool-title {font-size:1.11rem;}
+      .nv-footer-container {flex-direction:column;}
+      .nv-footer-col {max-width:99vw;}
+    }
+    @media (max-width:420px) {
+      .nv-footer-container {padding:.49em 1vw;}
+      .nv-tool-card,.nv-article-section {padding-left:2vw;padding-right:2vw;}
+      .nv-footer-col {font-size:.96em;}
     }
   </style>
 </head>
 <body>
-  <!-- Sticky Header/Navbar -->
+  <!-- Sticky Header -->
   <nav class="nv-nav">
     <div class="nv-nav-content">
       <a href="https://nexovent.tech" class="nv-nav-logo" aria-label="Nexovent Home">
@@ -511,14 +477,13 @@
     </div>
   </nav>
   <main>
-    <!-- Tool Card -->
     <section class="nv-tool-card">
       <div class="nv-tool-title">Instagram Caption Generator</div>
       <div class="nv-tool-desc">
-        Create high-converting viral hooks, captions, and 5 unique hashtags—optimized for your exact audience, goal, and post type. Upload an image for smart context suggestions.
+        Instantly craft viral hooks, engaging captions, and 5 unique hashtags. Upload your photo, pick your options, and go viral in 2026!
       </div>
       <form class="nv-form" id="captionForm" autocomplete="off">
-        <textarea class="nv-textarea" id="descInput" rows="3" placeholder="Describe your Instagram post (e.g. Tech tip, travel memory, product launch...)"></textarea>
+        <textarea class="nv-textarea" id="descInput" rows="2" placeholder="Describe your post (e.g. Celebrating launch, Travel memory...)"></textarea>
         <!-- Image Upload -->
         <div class="nv-upload-wrap">
           <label class="nv-upload-btn" for="imgInput">
@@ -527,7 +492,7 @@
           <input type="file" accept="image/*" id="imgInput" style="display:none;">
           <span class="nv-filename" id="filename"></span>
         </div>
-        <!-- Row 1 -->
+        <!-- Options Row 1 -->
         <div class="nv-form-row">
           <div class="nv-select-wrap">
             <i class="fa-solid fa-masks-theater"></i>
@@ -556,7 +521,7 @@
             </select>
           </div>
         </div>
-        <!-- Row 2 -->
+        <!-- Options Row 2 -->
         <div class="nv-form-row">
           <div class="nv-select-wrap">
             <i class="fa-solid fa-language"></i>
@@ -583,10 +548,8 @@
             </select>
           </div>
         </div>
-        <!-- Generate Button -->
         <button type="submit" class="nv-gen-btn" id="generateBtn">Generate Caption + Hashtags</button>
       </form>
-      <!-- Output Section -->
       <div class="nv-output-section" id="outputSection">
         <div class="nv-output-label">Viral Hook</div>
         <div class="nv-hook-output" id="hookOutput"></div>
@@ -604,93 +567,78 @@
     <section class="nv-article-section" id="article">
       <h1>Mastering Social Media with our Instagram Caption Generator</h1>
       <p>
-      In today’s competitive digital landscape, standing out on Instagram requires more than a beautiful photo or a trendy Reel. It demands captivating captions, viral hooks, and the strategic use of hashtags. Our <span class="kw">Instagram caption generator</span> merges artificial intelligence, psychology, and the latest SEO insights to help you win on social media – today and in 2026.
+      In the ever-evolving world of digital marketing, the significance of an <span class="kw">Instagram caption generator</span> has never been greater. Social platforms in 2026 demand not just attention-grabbing visuals, but also compelling captions, viral hooks, and laser-focused hashtags. For creators, agencies, and brands, our <span class="kw">Instagram caption generator</span> is the essential tool.
       </p>
-
-      <h2>Why an Instagram Caption Generator is a Creator’s Power Tool</h2>
-      <p>
-      The caption is your opportunity to stop the scroll. With billions of daily posts, compelling copy is what transforms casual browsers into engaged followers. Our Instagram caption generator is fueled by professional copywriting rules and data-driven best practices:
-      </p>
+      <h2>Why You Need an Instagram Caption Generator in 2026</h2>
       <ul>
-        <li><b>Viral Hooks</b> grab attention in the first second—essential for Reels and Carousels.</li>
-        <li><b>SEO-rich Content</b> gives your post a better shot at trending on Instagram’s Explore page.</li>
-        <li><b>CTA Optimization</b> turns engagement into traffic, sales, and loyal followers.</li>
+        <li><b>Algorithmic Discovery:</b> The <span class="kw">Instagram caption generator</span> optimizes every line for reach and engagement, positioning your posts at the top of hashtags and Explore feeds.</li>
+        <li><b>Consistent Quality:</b> Gone are the days of writer’s block. Save time and energy with our automated, yet niche-personalized content flows.</li>
+        <li><b>Maximized Viral Hooks:</b> Capture attention in the first second—Reels, Carousels, and Static Posts all require unique hooks. Our <span class="kw">Instagram caption generator</span> delivers.</li>
+        <li><b>Smart Hashtag Systems:</b> The tool creates 5 always-unique, lowercase hashtags, so your content never gets stale or spammy.</li>
       </ul>
-      <p>
-      By using the Instagram caption generator for every post, you ensure consistency, originality, and relevance. It adapts to your post type (Carousel, Reel, Static), target audience, and even language – giving creators, brands, and agencies an edge.
-      </p>
-
-      <h2>The Science Behind Viral Instagram Hooks</h2>
-      <h3>Elements of a Scroll-Stopping Hook:</h3>
+      <h2>How Does the Instagram Caption Generator Work?</h2>
       <ol>
-        <li><b>Curiosity Gap:</b> Tease the outcome, not the process.</li>
-        <li><b>Relatability & Trends:</b> Mirror the viewer’s own thoughts or connect with trending topics.</li>
-        <li><b>Direct Address:</b> Speak directly to your target audience ("Gen-Z, this one’s for you!").</li>
-        <li><b>Clear Visual Intros:</b> Use emoji and punchy language that match the visual content.</li>
+        <li>Describe your post and/or upload an image for context.</li>
+        <li>Choose between options: Tone, Post Type, Audience, Language, Goal, and Emoji Intensity for full personalization.</li>
+        <li>Click ‘Generate’ to instantly get a viral hook, an engaging caption with a custom CTA, and 5 niche hashtags.</li>
       </ol>
+      <h2>2026 Growth Strategies with Instagram Caption Generator</h2>
+      <h3>Find Your Voice with Multi-Language, Multi-Tone Output</h3>
       <p>
-      The Instagram caption generator leverages these psychological triggers with every output—ensuring your content climbs the engagement ladder.
+        Whether you need Hindi, Hinglish, or English, the <span class="kw">Instagram caption generator</span> lets you engage markets authentically. Switch between professional, funny, bold, or sassy for every audience.
       </p>
-
-      <h2>How SEO Captions Drive Real Results in 2026</h2>
-      <h3>What's New About Instagram SEO?</h3>
+      <h3>Don’t Just Post—Strategize!</h3>
       <ul>
-        <li>Keyword placement matters—so does context. Our Instagram caption generator naturally integrates top hashtags, audience-relevant keywords, and trending language.</li>
-        <li>Meta descriptions aren’t just for Google. Instagram “reads” your caption to match it with user interests.</li>
-        <li>Engagement signals (likes, comments, saves) boost both reach and hashtag search. That’s why a strong CTA is always included by our Instagram caption generator.</li>
+        <li>Describe the context to generate relevant CTAs and hooks.</li>
+        <li>Match your goals. Want engagement, more sales, or followers? Each output is tailored for your intent.</li>
+        <li>Upload an image for added AI-contextual suggestions.</li>
+        <li>Each button click reshuffles your hashtags, so you never repeat or look spammy.</li>
       </ul>
-      <h3>Why Hashtags Are Still Essential</h3>
+      <h2>SEO & Discoverability Explained</h2>
       <p>
-        The right hashtags boost discoverability but the wrong ones tank your reach. The Instagram caption generator outputs exactly 5 dynamically relevant, lowercase hashtags – always unique to every click.
+        Strong caption structure ensures better discoverability. Our <span class="kw">Instagram caption generator</span> is tuned for keyword and hashtag-rich results that appeal to both search engines and social AI. Every output is optimized for trending in 2026.
       </p>
+      <h3>Why Five Unique Hashtags?</h3>
       <ul>
-        <li><b>Better Targeting:</b> More niche = less competition.</li>
-        <li><b>SEO Synergy:</b> Hashtags act as search accelerators for both Instagram and external engines.</li>
-        <li><b>Real Engagement, Not Bots:</b> Our system never reuses the same set, so you avoid shadowbans and audience fatigue.</li>
+        <li>Research shows 3–5 niche hashtags drive the most relevant traffic in 2026.</li>
+        <li>The <span class="kw">Instagram caption generator</span> leverages random pools for maximum reach, minimum saturation, and zero shadowban risk.</li>
       </ul>
-
-      <h2>Instagram Growth Strategies for 2026</h2>
+      <h3>Our Promise: True Mobile-First Experience</h3>
+      <p>
+        On any device—from smartphones to desktops—the entire <span class="kw">Instagram caption generator</span> fits perfectly, with no awkward scrolling or element cut-offs. You can instantly copy/paste to Instagram or your social media scheduler. It’s a tool built for your workflow.
+      </p>
+      <h2>How to Go Viral: 2026’s Formula with the Instagram Caption Generator</h2>
       <ol>
-        <li>Don't post without a plan – let the Instagram caption generator tailor your content per post, audience, and goal.</li>
-        <li>Experiment! Try Bold, Sassy, and Aesthetic tones. Mix up CTA goals (Engagement, Sale, Follows) for maximum learning.</li>
-        <li>Always upload a photo for richer AI context before generating your caption.</li>
-        <li>Keep language relevant. Switch between English, Hindi, or Hinglish as your audience prefers.</li>
-        <li>Analyze performance. Refine based on what hooks and hashtags get you most reach and saves.</li>
+        <li>Start with a viral hook; intrigue, challenge, or amuse your audience.</li>
+        <li>Contextual caption: keep it personal and align with trends.</li>
+        <li>Always include a single, strong call to action.</li>
+        <li>Update hashtags with every click—avoid repetitive tags and stay fresh.</li>
+        <li>Leverage language switching for different market campaigns.</li>
       </ol>
-
-      <h2>How to Use the Instagram Caption Generator for Maximum Results</h2>
-      <ol>
-        <li>Describe your post or upload your photo for AI context analysis.</li>
-        <li>Choose your Tone, Post Type, Audience, Language, CTA, and Emoji Intensity.</li>
-        <li>Click 'Generate' and copy the viral hook, caption, and 5 unique hashtags provided.</li>
-        <li>Paste and schedule on Instagram. Monitor which output gets better engagement and play to these strengths.</li>
-      </ol>
-
-      <h3>FAQ: Instagram Caption Generator</h3>
-      <ul>
-        <li><b>Is this Instagram caption generator free?</b> – Yes, Nexovent provides the web tool for free, no login required.</li>
-        <li><b>Does it work for Reels, Carousels, and Static posts?</b> – Absolutely. All post types are supported with smart context-aware output.</li>
-        <li><b>Will my captions and hashtags be unique?</b> – Yes! Each generation uses randomization logic for the 5 hashtags and personalized hooks/CTAs.</li>
-        <li><b>Can I use it on mobile devices?</b> – Of course! The tool is fully mobile responsive and engineered for fast use on any device.</li>
-        <li><b>Why only 5 hashtags?</b> – In 2026, best practices favor 3–5 niche hashtags. More can hurt discoverability; our Instagram caption generator keeps you at the sweet spot!</li>
-      </ul>
       <blockquote>
-        “The Instagram caption generator from Nexovent gives me captions that get comments, saves and shares—my engagement has never been higher.” – @procreator
+        “The Nexovent Instagram caption generator gave my profile a new voice—now my posts see double the engagement and real community growth.”
       </blockquote>
+      <h3>Frequently Asked Questions</h3>
+      <ul>
+        <li><b>Is the Instagram caption generator tool free?</b> – Yes. Use the Nexovent tool with no login or payments required.</li>
+        <li><b>What makes hashtags always unique?</b> – Every click, our <span class="kw">Instagram caption generator</span> randomizes 5 hashtags from over 60 per niche—never repeats, always lowercase.</li>
+        <li><b>Does it work on phones?</b> – 100%. Our app is designed for mobile-first layouts and perfect fit on all devices.</li>
+        <li><b>Can I use this for Carousels and Reels?</b> – Yes. The generator adapts output to every post type selected.</li>
+        <li><b>How many times can I generate captions?</b> – Unlimited, with new hashtags every time!</li>
+      </ul>
       <p>
-        Ready for your next viral post? Try our Instagram caption generator, tailored for creators who want to win in 2026.
+        If you want 2026 social wins, try our <span class="kw">Instagram caption generator</span> and enjoy a tool that delivers viral hooks, pro CTAs, and the SEO-optimized content you need.
       </p>
     </section>
   </main>
-  <!-- Professional Footer -->
+  <!-- Footer -->
   <footer class="nv-footer">
-    <div class="nv-footer-content">
-      <!-- Brand & About -->
+    <div class="nv-footer-container">
+      <!-- Brand/About -->
       <div class="nv-footer-col nv-footer-brand">
         <a href="https://nexovent.tech" class="nv-footer-logo-link" aria-label="Nexovent Home">
           <span class="nv-footer-logo">
-            <!-- 3D 'N' Logo, slightly smaller -->
-            <svg viewBox="0 0 32 32" fill="none" style="height:29px;width:29px;display:block;">
+            <svg viewBox="0 0 32 32" fill="none" style="height:27px;width:27px;vertical-align:middle;">
               <defs>
                 <linearGradient id="n3d_footer" x1="7" y1="4" x2="28" y2="26" gradientUnits="userSpaceOnUse">
                   <stop stop-color="#6E4AFF"/><stop offset="1" stop-color="#8A63FD"/>
@@ -701,403 +649,287 @@
           </span>
         </a>
         <div class="nv-footer-about">
-          Nexovent is the trusted hub for AI-powered social media growth.<br>
-          Elevate your content with smart, future-ready tools.
+          Nexovent.tech is your AI-powered source for next-level Instagram growth.<br>
+          Our tools help you win followers, engagement, and 2026 success.
         </div>
-        <a href="https://nexovent.tech" target="_blank" class="nv-footer-home-btn" style="color:#8a63fd;font-weight:700;text-decoration:underline;font-size:1em;margin-top:2px;">Home Page</a>
       </div>
-      <!-- Links -->
+      <!-- Footer Links -->
       <div class="nv-footer-col nv-footer-links">
-        <div class="nv-footer-title">Explore</div>
+        <div class="nv-footer-title">Quick Links</div>
         <ul>
-          <li><a href="https://nexovent.tech" target="_blank" rel="noopener">Home Page</a></li>
-          <li><a href="https://nexovent.tech/tools" target="_blank" rel="noopener">All AI Tools</a></li>
-          <li><a href="https://nexovent.tech/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
-          <li><a href="mailto:contact@nexovent.tech">Contact Us</a></li>
+          <li><a href="https://nexovent.tech" target="_blank" rel="noopener">Home</a></li>
         </ul>
       </div>
-      <!-- Social -->
+      <!-- Social Media -->
       <div class="nv-footer-col">
-        <div class="nv-footer-title">Connect with Us</div>
+        <div class="nv-footer-title">Connect</div>
         <div class="nv-footer-social-icons">
           <a href="https://instagram.com/nexovent.tech" target="_blank" aria-label="Instagram" class="nv-si insta"><i class="fab fa-instagram"></i></a>
           <a href="https://x.com/nexovent" target="_blank" aria-label="X" class="nv-si tw"><i class="fab fa-x-twitter"></i></a>
-          <a href="https://facebook.com/nexovent.ai" target="_blank" aria-label="Facebook" class="nv-si fb"><i class="fab fa-facebook"></i></a>
-          <a href="https://linkedin.com/company/nexovent" target="_blank" aria-label="LinkedIn" class="nv-si li"><i class="fab fa-linkedin"></i></a>
           <a href="https://pin.it/7r4yaojIB" target="_blank" aria-label="Pinterest" class="nv-si pin"><i class="fab fa-pinterest"></i></a>
           <a href="https://www.reddit.com/u/nexovent" target="_blank" aria-label="Reddit" class="nv-si rd"><i class="fab fa-reddit"></i></a>
+          <a href="https://facebook.com/nexovent.ai" target="_blank" aria-label="Facebook" class="nv-si fb"><i class="fab fa-facebook"></i></a>
         </div>
       </div>
     </div>
-    <div class="nv-footer-bottom-bar"></div>
-    <div class="nv-footer-bottom-text">
+    <div class="nv-footer-bottom">
       Copyright 2026 Nexovent | All Rights Reserved.
     </div>
   </footer>
-  <!-- LOGIC: All below, self-contained and does NOT touch main HTML structure -->
+  <!-- Tool Logic -->
   <script>
-    // ---- Hashtag Pools by Niche/Post Type/Audience ----
+    // Hashtag pools
     const hashtagPools = {
       tech: [
         "#techtrends","#futureisnow","#innovation","#productlaunch","#appupdate","#aiwave","#growthhacks",
-        "#digitalera","#saas","#blockchain","#uxdesign","#startuplife","#programming","#devcommunity",
-        "#techtips","#automation","#cybersecurity","#iot","#cloudcomputing","#bigdata","#ml","#buildinpublic"
+        "#digitalera","#saas","#blockchain","#uxdesign","#startuplife","#programming","#techtips",
+        "#automation","#cybersecurity","#cloudcomputing","#futuretech"
       ],
       business: [
-        "#biztips","#entrepreneurlife","#branding","#salesfunnel","#leadership","#strategy","#growth",
-        "#businesstips","#worksmart","#networking","#startuplife","#consulting","#investinyourself","#hustlemode",
-        "#officegoals","#ecommercetips","#projectmanager","#customerfirst","#mindset","#b2b"
+        "#entrepreneurlife","#branding","#salesfunnel","#leadership","#strategy","#growth","#businesstips",
+        "#networking","#startuplife","#hustlemode","#projectmanager","#customerfirst","#mindset","#b2b"
       ],
       genz: [
-        "#genzmood","#vibewithus","#foryou","#relatable","#aesthetic","#goodvibes","#ootd","#tiktoktrend",
-        "#genzquotes","#youngcreators","#memespam","#moodbooster","#trendsetter","#stanaccount","#sassy"
+        "#genzmood","#foryou","#relatable","#aesthetic","#goodvibes","#ootd","#trendsetter","#vibewithus",
+        "#youngcreators","#stanaccount","#sassy"
       ],
       aesthetic: [
-        "#aestheticfeed","#dreamscape","#pasteltones","#visualart","#minimalism","#vintagevibes","#softedit",
-        "#filmphotography","#goodenergy","#designinspo","#beautifuldestinations","#sunsetchaser","#urbanlife",
-        "#moodboard","#visualaddict"
+        "#aestheticfeed","#dreamscape","#pasteltones","#visualart","#minimalism","#vintagevibes","#designinspo","#sunsetchaser","#moodboard"
       ],
       funny: [
-        "#memevibes","#funnytweets","#moodoftheday","#relatablememes","#justforfun","#lolz","#lmao","#rofl",
-        "#comedygram","#sillypost","#dailyhaha","#savage","#punny","#tooreal"
+        "#memevibes","#funnytweets","#moodoftheday","#relatablememes","#justforfun","#lolz","#comedygram","#punny"
       ],
       sassy: [
-        "#sassyclub","#queenvibes","#attitudequotes","#bossup","#fearless","#itsmyvibe","#noshame","#moodon",
-        "#glowup","#trendsetter","#speakyourtruth"
+        "#sassyclub","#queenvibes","#attitudequotes","#bossup","#fearless","#itsmyvibe","#glowup"
       ],
       professional: [
-        "#prolife","#suitedup","#branding","#linkedintips","#networking","#careergoals","#businesstalk","#mbalife",
-        "#successquotes","#workmode","#branding","#personalbranding","#growthmindset"
-      ],
-      general: [
-        "#instadaily","#viralpost","#growth2026","#exploremore","#discoveries2026","#inspo","#reels2026","#captionthis",
-        "#creative","#motivation","#bestof2026"
+        "#prolife","#suitedup","#branding","#networking","#careergoals","#businesstalk","#growthmindset"
       ],
       engagement: [
-        "#commentbelow","#dmme","#tagyourfriend","#communityfirst","#yourvoicecounts","#polltime","#qotd","#replies",
-        "#chatwithme","#engage2026"
+        "#commentbelow","#dmme","#tagyourfriend","#yourvoicecounts","#communityfirst"
       ],
       sale: [
-        "#shopnow","#limitedoffer","#newdrop","#salealert","#instasale","#onlineshopping","#exclusiveoffers","#discounted",
-        "#trendingnow","#giftideas"
+        "#shopnow","#limitedoffer","#salealert","#instasale","#exclusiveoffers","#discounted"
       ],
       follow: [
-        "#followme","#newcontent","#staytuned","#dontmiss","#igfamily","#letsconnect","#supportsmall","#followtrain","#fyp","#watchthis"
+        "#followme","#newcontent","#igfamily","#letsconnect","#supportsmall"
       ],
       reel: [
-        "#reeltips","#reeltrends","#reelsinstagram","#viralreel","#scrollstoper","#reel2026"
+        "#reeltrends","#reelsinstagram","#viralreel"
       ],
       carousel: [
-        "#carouselpost","#swipetosee","#multipleimages","#storytime","#layoutlove"
+        "#carouselpost","#swipetosee"
       ],
       static: [
-        "#postoftheday","#pictureperfect","#snapshot","#myinstamoment"
+        "#postoftheday","#pictureperfect"
+      ],
+      general: [
+        "#instadaily","#growth2026","#exploremore","#discoveries2026","#creative","#motivation"
       ]
     };
-    // Randomizer Utility: Fisher-Yates
-    function getUniqueHashtags(opts) {
-      // Compose a large pool using all selected options -> flatten, unique, randomize, pick 5.
+
+    function getRandomHashtags(opts) {
+      // Accumulate large pool from all possible categories
       let pool = [];
-      let add = arr => { if(Array.isArray(arr)) for(const t of arr) pool.push(t);}
-      // Add pools based on tone, post type, audience, goal
+      let add = arr => (Array.isArray(arr) && arr.forEach(tag=>pool.push(tag)));
       if(opts.tone) add(hashtagPools[opts.tone]);
       if(opts.type) add(hashtagPools[opts.type]);
       if(opts.audience) add(hashtagPools[opts.audience]);
       if(opts.goal) add(hashtagPools[opts.goal]);
       add(hashtagPools.general);
-      // Clean, dedup, lowercase, filter invalid/empty.
-      let unique = Array.from(new Set(pool))
-        .map(tag=>tag.toLowerCase().trim())
-        .filter(tag=>/^#[a-z0-9][a-z0-9_]*$/.test(tag));
+      // Lowercase, filter, dedup
+      let unique = Array.from(new Set(pool.map(tag=>tag.toLowerCase().trim()).filter(tag=>/^#[a-z0-9][a-z0-9_]*$/.test(tag))));
       // Shuffle
       for(let i=unique.length-1;i>0;i--){
         let j=Math.floor(Math.random()*(i+1));
-        let tmp=unique[i];unique[i]=unique[j];unique[j]=tmp;
+        [unique[i],unique[j]]=[unique[j],unique[i]];
       }
       return unique.slice(0,5);
     }
-    // Random from array
-    function r(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
-
-    // ---- VIRAL HOOK AND CAPTION TEMPLATES ----
-    // Per language, per options
     const viralHooks = {
       english: {
         funny: [
-          "Real ones will get this…",
+          "More relatable than you think…",
           "Guess what happened next?",
-          "That moment when you just know!",
-          "You weren't ready for this one 😜",
-          "No context needed 🤫"
+          "You have to see this!",
+          "IYKYK",
+          "Wait for it…"
         ],
         bold: [
-          "Rules? Never heard of them.",
-          "Here to break the feed.",
-          "Dare to stand out.",
-          "Not your average post.",
-          "Bringing the energy up!"
+          "Rules? Not for us.",
+          "Welcome to the future.",
+          "Breaking the mold.",
+          "Trend alert!",
+          "We do it differently."
         ],
         aesthetic: [
-          "Aesthetic to the core.",
-          "Dream in color 🎨",
-          "Frame of mind, frame of art.",
-          "Every pixel tells a story.",
-          "Catching vibes only."
+          "Chasing light. Capturing mood.",
+          "This vibe is unfiltered.",
+          "Pure aesthetic.",
+          "Visuals on point.",
+          "Caught the mood."
         ],
         professional: [
-          "Success starts with the right mindset.",
-          "Where focus goes, results show.",
-          "This is how it’s done.",
-          "Small steps, big impact.",
-          "Lead by example."
+          "Small steps, big growth.",
+          "This is how winners think.",
+          "Success, one click at a time.",
+          "Lead, learn, repeat.",
+          "Always leveling up."
         ],
         sassy: [
-          "Handle with attitude.",
-          "Serving looks and honesty.",
-          "Sass mode fully activated.",
-          "Woke up like this.",
-          "Confidence: 100%"
-        ]
-      },
-      hindi: { // Add Hindi templates if desired
-        funny: [
-          "Yeh toh hona hi tha…",
-          "Andaz hi kuch alag hai!",
-          "Smajh rahe ho?",
-          "Acha laga toh like kar dena! 😜",
-          "Maza hi kuch aur hai 🤫"
-        ],
-        bold: [
-          "Rules yahan nahi chalte.",
-          "Feed khud hi tod dunga.",
-          "Jazbaat bold hai.",
-          "Naya trend suru."
-        ],
-        // ... etc.
-        aesthetic: ["Khoobsurat pal.","Rang hai zindagi mein."],
-        professional: ["Manzil pass hai.","Mehnat rang laayi."],
-        sassy: ["Attitude pe bharosa hai.","Aaj full tashan me!"]
-      },
-      hinglish: {
-        funny: [
-          "Yeh vibe samjhe kya?",
-          "Bas mazaak hi mazaak hai.",
-          "Mood ekdum mast hai!",
-          "Isi baat pe comment drop karo.",
-          "Scroll mat karna – abhi maza aayega."
-        ],
-        bold: [
-          "Rule-breaker spotted.",
-          "Level hi alag hai.",
-          "Swag ki kami nahi.",
-          "Scene strong hai yahan."
-        ],
-        aesthetic: [
-          "Eyes on the vibe.",
-          "Noor hai asmaan mein.",
-          "Full artsy mood.",
-          "Vibes hi vibes hain."
-        ],
-        professional: [
-          "Growth dikh raha hai.",
-          "Kamyabi ki taraf.",
-          "Yahi hai professionalism."
-        ],
-        sassy: [
-          "Aaj kuch extra sassy.",
-          "This vibe is untouchable!",
-          "Log kya kahenge? Kuch nahi.",
-          "Drama ka afsos nahi."
+          "Sass mode ON.",
+          "Attitude for days.",
+          "Out of your league.",
+          "Confidence: 100%",
+          "Drama is my cardio."
         ]
       }
     };
-    // Caption body and CTA per settings
     const ctaBodies = {
       english: {
         funny: [
-          "If you relate, tag your bestie below! Let’s see who’s as weird as us.",
-          "Drop a 😂 if you’ve been there.",
-          "Been there, done that? Say so in comments!",
-          "Share your wildest story below 👇",
-          "How would you finish this?"
+          "Tag a friend who can relate! Leave your reaction below.",
+          "Hit the like if this made you smile.",
+          "Drop your wildest story in comments.",
+          "If you get it, comment your best emoji!",
+          "Let’s see who caught the vibe."
         ],
         bold: [
-          "Double-tap if you’re fearless too.",
-          "Tag your squad if you’d dare.",
-          "Time to take charge! Agree?",
-          "Ready to disrupt things?",
-          "Comment 'YES' if you’re on the same vibe."
+          "Double-tap if you’re not afraid to stand out.",
+          "Time to rewrite the rules. Ready?",
+          "Join the movement—comment your goal for 2026.",
+          "What risks will you take this year?",
+          "Let’s make some noise!"
         ],
         aesthetic: [
-          "Who loves these colors? Hit ❤️",
           "Would you hang this on your wall?",
-          "Save for moodboard inspo.",
-          "Drop a 🎨 if this is your vibe.",
-          "Art or accident? You decide."
+          "Color palette perfection! Agree?",
+          "Screenshot for your mood board.",
+          "Art or accident? Vote below.",
+          "Who needs a fresh vibe?"
         ],
         professional: [
-          "Let’s grow together – thoughts?",
-          "Share your tips in the comments.",
-          "Ready to level-up? Follow for more.",
-          "Tag a colleague who hustles.",
-          "Your move. What’s your next step?"
+          "Let’s collaborate—DMs open.",
+          "Drop a 💼 if you’re hustling too.",
+          "Ready to level up your brand?",
+          "Share your tip for growth.",
+          "What’s your biggest win this week?"
         ],
         sassy: [
-          "Feeling my energy? Let me know.",
-          "Drop a 🔥 for more sass.",
-          "If you can relate, comment your best clapback!",
           "Like for attitude overload.",
-          "Who else is unbothered?"
+          "If you feel this, comment your best comeback.",
+          "Unapologetically me.",
+          "Sassy and proud—who’s with me?",
+          "Drama in my DMs only."
         ]
-      },
-      hindi: {
-        funny:["Comment karo agar maza aaya!","Aapka dost kaun hai aise vibe wala?","Like karna mat bhoolna.","Kya baat hai! Reply chahiye."],
-        bold:["Iss junoon ko samjha?","Kya aap bhi aise ho?","Double tap for swag."],
-        aesthetic:["Yeh rang kaise lage?","Wah, mood ban gaya!"],
-        professional:["Aage badho, seekho.","Kuch kehna hai toh comment karo."],
-        sassy:["Thoda attitude zaruri hai 😏","Aap bhi sassy ho? Like karo."]
-      },
-      hinglish: {
-        funny:["Vibe matching hai? Comment karo!","Ek like to banta hai.","Jhakaas mood hai na?","Comments ka flood chahiye."],
-        bold:["Sahi pakde hain!","Swag strong hai.","Bindaas hai scene."],
-        aesthetic:["Aesthetic game strong!","Colors wali feeling on."],
-        professional:["Work hi pehchan hai.","Level up ka time."],
-        sassy:["Total drama hai yaar.","Share karo best sassy line."]
       }
     };
-    // CTA ending by goal
     const ctaGoalEnd = {
-      engagement: {
-        english:"Double-tap, comment, and let’s chat!",
-        hindi:"Like aur comment karna mat bhoolna!",
-        hinglish:"Like, share, comment – pura package!"
-      },
-      sale: {
-        english: "See more via link in bio.",
-        hindi: "Link bio mein hai, check karo!",
-        hinglish: "For more, link bio mein hai!"
-      },
-      follow: {
-        english:"Follow for more like this.",
-        hindi:"Aise aur content ke liye follow karo.",
-        hinglish:"Naye ideas? Follow kar lo!"
-      }
+      engagement: {english:"Double-tap and tag your circle."},
+      sale: {english: "Shop now—link in bio!"},
+      follow: {english:"Follow for more daily gems."}
     };
-    // Emoji map
     const emojiPools = {
-      funny:["😂","🤣","😜","😅","🤪"],
-      bold:["🔥","💥","😎","🚀","💯"],
-      aesthetic:["🌸","🌈","🎨","🦋","🌅"],
-      professional:["💼","🚀","👏","📈","📝"],
-      sassy:["😏","👑","🙃","💅","🦄"],
-      default:["✨","🌟","❤️"]
+      funny:["😂","🤣","😜"],
+      bold:["🔥","🚀","💯"],
+      aesthetic:["🌸","🦋","🎨"],
+      professional:["💼","📈","👏"],
+      sassy:["😏","👑","🙃"],
     };
     function getEmoji(tone, intensity) {
-      const pool = emojiPools[tone]||emojiPools.default;
+      const pool = emojiPools[tone]||["✨"];
       if(intensity=="none") return "";
       if(intensity=="minimal") return " "+pool[0];
       if(intensity=="high") {
         let arr = [];
-        let c = Math.min(3, pool.length);
+        let c = Math.max(2,Math.min(3,pool.length));
         for(let i=0;i<c;i++) arr.push(pool[Math.floor(Math.random()*pool.length)]);
         return " "+arr.join(" ");
       }
       return "";
     }
-
-    // IMAGE "AI" -- simulate w file name/content type for demo
+    function r(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
+    // Image "AI"
     function analyzeImage(file,opts) {
       let name = file && file.name ? file.name.toLowerCase() : '';
-      if (/beach|ocean|sea/.test(name)) opts.tone = "aesthetic", opts.type = "static";
-      else if (/team|business|work|office/.test(name)) opts.tone="professional",opts.audience="business";
-      else if (/fun|dog|cat|pet|meme/.test(name)) opts.tone="funny",opts.audience="genz";
-      else if (/urban|city|night/.test(name)) opts.tone="bold";
-      else if (/sass|attitude/.test(name)) opts.tone="sassy";
+      // Primitive assignment
+      if(/team|business|office/.test(name)) opts.tone="professional",opts.audience="business";
+      else if(/fun|dog|cat|meme/.test(name)) opts.tone="funny",opts.audience="genz";
+      else if(/urban|city|night/.test(name)) opts.tone="bold";
+      else if(/sass|attitude/.test(name)) opts.tone="sassy";
+      else if(/sun|sky|aesth|art|style/.test(name)) opts.tone="aesthetic";
       return opts;
     }
 
-    // UI ELEMENTS
-    const form = document.getElementById("captionForm"),
-      descInput = document.getElementById("descInput"),
-      imgInput = document.getElementById("imgInput"),
-      filenameEl = document.getElementById("filename"),
-      toneSelect = document.getElementById("toneSelect"),
-      typeSelect = document.getElementById("typeSelect"),
-      audienceSelect = document.getElementById("audienceSelect"),
-      langSelect = document.getElementById("langSelect"),
-      goalSelect = document.getElementById("goalSelect"),
-      emojiSelect = document.getElementById("emojiSelect"),
-      outputSection = document.getElementById("outputSection"),
-      hookOutput = document.getElementById("hookOutput"),
-      captionOutput = document.getElementById("captionOutput"),
-      hashtagsOutput = document.getElementById("hashtagsOutput"),
-      copyCaptionBtn = document.getElementById("copyCaptionBtn"),
-      copyHashtagBtn = document.getElementById("copyHashtagBtn");
+    // UI
+    const form=document.getElementById("captionForm"),
+      descInput=document.getElementById("descInput"),
+      imgInput=document.getElementById("imgInput"),
+      filenameEl=document.getElementById("filename"),
+      toneSelect=document.getElementById("toneSelect"),
+      typeSelect=document.getElementById("typeSelect"),
+      audienceSelect=document.getElementById("audienceSelect"),
+      langSelect=document.getElementById("langSelect"),
+      goalSelect=document.getElementById("goalSelect"),
+      emojiSelect=document.getElementById("emojiSelect"),
+      outputSection=document.getElementById("outputSection"),
+      hookOutput=document.getElementById("hookOutput"),
+      captionOutput=document.getElementById("captionOutput"),
+      hashtagsOutput=document.getElementById("hashtagsOutput"),
+      copyCaptionBtn=document.getElementById("copyCaptionBtn"),
+      copyHashtagBtn=document.getElementById("copyHashtagBtn");
+    let lastImageFile=null;
 
-    // State
-    let lastImageFile = null, lastOpts = null, lastGen = null;
-
-    imgInput.addEventListener("change", function() {
-      if (this.files.length) {
-        const f = this.files[0];
+    imgInput.addEventListener("change",function(){
+      if(this.files.length){
+        const f=this.files[0];
         filenameEl.textContent = f.name.replace(/^.*[\/\\]/,"");
-        lastImageFile = f;
-      } else {
-        filenameEl.textContent = "";
-        lastImageFile = null;
+        lastImageFile=f;
+      }else{
+        filenameEl.textContent="";lastImageFile=null;
       }
     });
-
-    form.addEventListener("submit", function(e){
+    form.addEventListener("submit",function(e){
       e.preventDefault();
-      let desc = descInput.value.trim(),
-          tone = toneSelect.value,
-          type = typeSelect.value,
-          audience = audienceSelect.value,
-          lang = langSelect.value,
-          goal = goalSelect.value,
-          emojiIntensity = emojiSelect.value;
-      let opts = {desc, tone, type, audience, lang, goal, emojiIntensity};
-      // IMAGE AI
-      if(lastImageFile) opts = analyzeImage(lastImageFile, opts);
-      // HOOK
-      let hooks = viralHooks[lang] && viralHooks[lang][opts.tone] ? viralHooks[lang][opts.tone] : viralHooks.english.professional;
-      let hook = r(hooks);
-      // CAPTION
-      let ctaArr = ctaBodies[lang] && ctaBodies[lang][opts.tone] ? ctaBodies[lang][opts.tone] : ctaBodies.english.professional;
-      let capBody = r(ctaArr);
-      let emojiStr = getEmoji(opts.tone, opts.emojiIntensity);
-      let ctaEnd = ctaGoalEnd[opts.goal]&&ctaGoalEnd[opts.goal][lang]?ctaGoalEnd[opts.goal][lang]:"";
-      let descClean = desc?desc[0].toUpperCase()+desc.slice(1):"";
-      let caption = capBody + (descClean ? " " + descClean : "") + emojiStr + "\n" + ctaEnd;
-
-      // HASHTAGS
-      let hashtagsArr = getUniqueHashtags(opts);
-      let hashtags = hashtagsArr.join(" ");
-      // Output
-      hookOutput.textContent = hook;
-      captionOutput.textContent = caption.trim();
-      hashtagsOutput.textContent = hashtags;
-      outputSection.style.display = "flex";
-      setTimeout(()=>outputSection.scrollIntoView({behavior:'smooth',block:'center'}), 80);
-      lastGen = {hook, caption, hashtags};
+      let desc=descInput.value.trim(),
+        tone=toneSelect.value,
+        type=typeSelect.value,
+        audience=audienceSelect.value,
+        lang=langSelect.value,
+        goal=goalSelect.value,
+        emojiIntensity=emojiSelect.value;
+      let opts={desc,tone,type,audience,lang,goal,emojiIntensity};
+      if(lastImageFile) opts=analyzeImage(lastImageFile,opts);
+      // Hook
+      let hooks=(viralHooks[lang]&&viralHooks[lang][opts.tone])?viralHooks[lang][opts.tone]:viralHooks.english.professional;
+      let hook=r(hooks);
+      // Caption
+      let ctaArr=(ctaBodies[lang]&&ctaBodies[lang][opts.tone])?ctaBodies[lang][opts.tone]:ctaBodies.english.professional;
+      let capBody=r(ctaArr),emojiStr=getEmoji(opts.tone,emojiIntensity);
+      let ctaEnd=ctaGoalEnd[opts.goal]&&ctaGoalEnd[opts.goal][lang]?ctaGoalEnd[opts.goal][lang]:"";
+      let descClean=desc?desc[0].toUpperCase()+desc.slice(1):"";
+      let caption=capBody+(descClean?" "+descClean:"")+emojiStr+"\n"+ctaEnd;
+      // Hashtags
+      let hashtagsArr=getRandomHashtags(opts);
+      let hashtags=hashtagsArr.join(" ");
+      hookOutput.textContent=hook;
+      captionOutput.textContent=caption.trim();
+      hashtagsOutput.textContent=hashtags;
+      outputSection.style.display="flex";
+      setTimeout(()=>outputSection.scrollIntoView({behavior:'smooth',block:'center'}),80);
     });
-
-    // Copy Buttons
-    copyCaptionBtn.addEventListener("click", ()=>{
-      let text = captionOutput.textContent||"";
-      if (!text) return;
+    copyCaptionBtn.addEventListener("click",()=>{
+      let text=captionOutput.textContent||"";if(!text)return;
       navigator.clipboard.writeText(text).then(()=>{
-        copyCaptionBtn.innerHTML = `<i class="fa-solid fa-check"></i>Copied!`;
-        setTimeout(()=>{copyCaptionBtn.innerHTML = `<i class="fa-regular fa-copy"></i>Copy Caption`},1100);
+        copyCaptionBtn.innerHTML=`<i class="fa-solid fa-check"></i>Copied!`;
+        setTimeout(()=>{copyCaptionBtn.innerHTML=`<i class="fa-regular fa-copy"></i>Copy Caption`},1000);
       });
     });
-    copyHashtagBtn.addEventListener("click", ()=>{
-      let text = hashtagsOutput.textContent||"";
-      if (!text) return;
+    copyHashtagBtn.addEventListener("click",()=>{
+      let text=hashtagsOutput.textContent||"";if(!text)return;
       navigator.clipboard.writeText(text).then(()=>{
-        copyHashtagBtn.innerHTML = `<i class="fa-solid fa-check"></i>Copied!`;
-        setTimeout(()=>{copyHashtagBtn.innerHTML = `<i class="fa-solid fa-hashtag"></i>Copy Hashtags`},1000);
+        copyHashtagBtn.innerHTML=`<i class="fa-solid fa-check"></i>Copied!`;
+        setTimeout(()=>{copyHashtagBtn.innerHTML=`<i class="fa-solid fa-hashtag"></i>Copy Hashtags`},1000);
       });
     });
     window.addEventListener('DOMContentLoaded',()=>{ if(window.innerWidth>520) descInput.focus(); });
