@@ -1,1449 +1,1108 @@
-<!doctype html>
+```html
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#111827" />
-  <meta name="description" content="Nexovent Instagram Viral Growth Suite — premium mobile-first tools for reels, captions, hashtags, bios, and planning." />
-  <title>Nexovent - Insta Growth Suite</title>
-
-  <!-- Tailwind (CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // Tailwind config (mobile-app feel + glass)
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Helvetica','Arial'],
-          },
-          boxShadow: {
-            glass: '0 20px 60px rgba(0,0,0,.35)',
-            soft: '0 10px 25px rgba(0,0,0,.25)'
-          }
-        }
-      }
-    }
-  </script>
-
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Nexovent's Instagram Caption Generator: Craft viral captions, hooks, and SEO-rich strategies for Instagram growth. Free, AI-powered, and mobile-ready." />
+  <meta name="keywords" content="Instagram caption generator, social media AI, viral captions, Instagram growth, SEO, Nexovent" />
+  <title>Instagram Caption Generator – Nexovent Tech</title>
+  <!-- Fonts: Inter & Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
-    /* ========= App Background + Glass Theme ========= */
-    :root{
-      --grad-1:#833ab4;
-      --grad-2:#fd1d1d;
-      --grad-3:#fcb045;
+    :root {
+      --nv-white: #fff;
+      --nv-bg: #faf9fc;
+      --nv-dark: #111111;
+      --nv-accent: #6e4aff;
+      --nv-accent2: #8a63fd;
+      --nv-txt-main: #23233c;
+      --nv-txt-light: #7b7e8f;
+      --nv-card: #fff;
+      --nv-shadow: 0 4px 32px 0 rgba(110, 74, 255, 0.08), 0 1px 6px #b7bfdc21;
+      --nv-radius: 18px;
     }
-    body{
-      background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3));
+    html, body {
+      background: var(--nv-white);
+      color: var(--nv-txt-main);
+      font-family: 'Inter', 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* HEADER/NAV BAR */
+    .nv-nav {
+      position: sticky;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--nv-white);
+      height: 62px;
+      box-shadow: 0 1.5px 22px -10px #6e4aff19;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nv-nav-content {
+      flex: 1;
+      max-width: 1250px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 62px;
+      padding: 0 2vw;
+    }
+    .nv-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Poppins',sans-serif;
+      font-size: 1.47em;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      color: var(--nv-accent);
+      text-decoration: none;
+      user-select: none;
+      transition: opacity .15s;
+    }
+    .nv-logo-svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      margin-right: 2px;
+      background: linear-gradient(135deg, #ece7ff 70%, #6E4AFF 100%);
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(138,99,253, .12);
+    }
+    .nv-logo-svg svg {
+      width: 23px;height: 23px;display:block;
+    }
+    .nv-nav-label {
+      color: #23233c;
+      font-weight: bold;
+      background: linear-gradient(90deg,#23233c 70%,#6E4AFF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @media(max-width: 600px) {
+      .nv-nav-label {font-size:1em;}
+      .nv-nav-content {padding: 0 3vw;}
+    }
+
+    /* MAIN TOOL CARD */
+    main {
       min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    /* iOS safe area */
-    .safe-top{ padding-top: max(env(safe-area-inset-top), 12px); }
-    .safe-bot{ padding-bottom: max(env(safe-area-inset-bottom), 12px); }
-
-    .glass{
-      background: rgba(255,255,255,.14);
-      border: 1px solid rgba(255,255,255,.22);
-      box-shadow: 0 20px 60px rgba(0,0,0,.25);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+    .nv-tool-card {
+      background: var(--nv-card);
+      box-shadow: var(--nv-shadow);
+      border-radius: var(--nv-radius);
+      width: 98vw;
+      max-width: 480px;
+      margin-top: 2.1em;
+      margin-bottom: 1.4em;
+      padding: 2.2em 2.5vw 2.1em 2.5vw;
+      display: flex; flex-direction: column; align-items: center;
+      border: 1.2px solid #f3f0fa;
+      transition: box-shadow .13s;
     }
-    .glass-strong{
-      background: rgba(17,24,39,.28);
-      border: 1px solid rgba(255,255,255,.18);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+    .nv-tool-title {
+      font-size: 1.75rem;
+      font-family:'Poppins',sans-serif;
+      font-weight: 800;
+      background: linear-gradient(90deg,#23233c 35%,#8a63fd 81%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-fill-color:transparent;
+      margin-bottom: .13em;
+      text-align: center;
     }
-    .chip{
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.18);
+    .nv-tool-desc {
+      color: var(--nv-txt-light);
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 1.1em;
+      font-weight: 500;
     }
-    .tap{
-      -webkit-tap-highlight-color: transparent;
+    .nv-form {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
     }
-    /* Premium app micro-interactions */
-    .press{
-      transition: transform .12s ease, filter .12s ease, opacity .12s ease;
+    /* Multi-option rows */
+    .nv-form-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
-    .press:active{ transform: scale(.99); filter: brightness(1.05); }
-
-    /* nicer scrollbars on WebKit */
-    .scrollbar::-webkit-scrollbar{ height: 10px; width: 10px; }
-    .scrollbar::-webkit-scrollbar-thumb{ background: rgba(255,255,255,.25); border-radius: 999px; }
-    .scrollbar::-webkit-scrollbar-track{ background: rgba(255,255,255,.08); border-radius: 999px; }
-
-    /* Modal */
-    .modal-backdrop{
-      background: rgba(0,0,0,.55);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+    .nv-form-row > div { flex:1; }
+    .nv-select-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: #f8f8fc;
+      border: 1.2px solid #ece7fa;
+      border-radius: 14px;
+      box-shadow: 0 0.5px 7px #aa97ff0e;
+      min-width: 120px;
     }
-
-    /* Small helper: make inputs feel native */
-    input, textarea, select{
+    .nv-select-wrap select {
+      width: 100%;
+      appearance: none;
+      background: transparent;
+      border: none;
       outline: none;
+      color: #493d8b;
+      padding: 10px 14px 10px 35px;
+      font-size: 1.02em;
+      font-family: inherit;
+      font-weight: 600;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+    .nv-select-wrap i {
+      position: absolute;
+      left: 13px;
+      top: 13px;
+      color: #8a63fd;
+      font-size: 1em;
+      opacity: .76;
+    }
+    .nv-select-wrap:after {
+      content: "";
+      position: absolute; right: 14px; top: 23px;
+      border: .33em solid transparent;
+      border-top: .45em solid #7b7e8f;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+    textarea.nv-textarea {
+      width: 100%;
+      min-height: 80px;
+      font-size: 1rem;
+      border-radius: 13px;
+      padding: 1em;
+      color: #23233c;
+      background: #fff;
+      border: 1.2px solid #ece7fa;
+      margin-bottom: 0.14em;
+      font-family: inherit;
+      box-shadow: 0 0.5px 5px #8a63fd0d;
+      resize: vertical;
+      transition: border .13s;
+      outline: none;
+    }
+    textarea.nv-textarea:focus {
+      border-color: #6e4aff;
+      background: #faf9fc;
+    }
+    /* Upload Photo Button */
+    .nv-upload-wrap {
+      display: flex;
+      align-items: center;gap:1em;
+      margin: .05em 0 0.2em 0;
+      width: 100%;
+    }
+    .nv-upload-btn {
+      padding: 0.77em 1.18em;
+      font-size: 1rm;
+      font-family: inherit;
+      font-weight: 700;
+      border-radius: 12px;
+      border: 1.1px solid #ece7fa;
+      color: #fff;
+      background: linear-gradient(90deg,#6e4aff 0%,#8a63fd 100%);
+      cursor: pointer;
+      display: flex; align-items: center; gap: 0.6em;
+      transition: box-shadow 0.12s, background 0.14s, border 0.12s;
+      box-shadow: 0 2px 8px 0 #8a63fd22;
+    }
+    .nv-upload-btn:hover, .nv-upload-btn:focus {
+      background: linear-gradient(90deg,#8a63fd 0%,#6e4aff 100%);
+      box-shadow: 0 6px 26px #8a63fd33;
+      border-color: #8a63fd;
+      outline: none;
+    }
+    .nv-filename {
+      color: #554c7b;
+      font-size: .97em;
+      font-weight: 600;
+      opacity: 0.77;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 180px;
+      vertical-align: middle;
+    }
+    /* GEN BTN */
+    .nv-gen-btn {
+      width: 100%;
+      background: linear-gradient(90deg,#6e4aff 0%,#8a63fd 100%);
+      color: #fff;
+      font-family: 'Montserrat',sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      padding: 1em 0.7em;
+      border: none;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px 0 #ac91fa18;
+      cursor: pointer;
+      margin-top: 7px;
+      margin-bottom: 3px;
+      transition: box-shadow .16s, transform .13s, background .13s;
+      outline: none;
+    }
+    .nv-gen-btn:hover, .nv-gen-btn:focus {
+      background: linear-gradient(90deg,#8a63fd 0%,#6e4aff 100%);
+      box-shadow: 0 0 0 3px #ede6ff, 0 4px 18px 0 #8A63FD44;
+      transform: scale(1.011);
+    }
+    /* ==== OUTPUT ==== */
+    .nv-output-section {
+      width: 100%;
+      margin: 1.7em auto 0.0em auto;
+      padding: 1.1em 1.2em 1.23em 1.2em;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 2px 18px 0 #bfc8ea08;
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      border: 1.1px solid #ece7fa;
+      gap: 0.3em;
+    }
+    .nv-output-label {
+      font-size: 1.09rem;
+      font-weight: 700;
+      color: var(--nv-accent);
+      margin: .2em 0 .17em 0;
+    }
+    .nv-hook-output, .nv-caption-output, .nv-hashtags-output {
+      font-family: 'Inter',sans-serif;
+      font-size: 1.075rem;
+      color: var(--nv-txt-main);
+      margin-bottom: 0.17em;
+      word-break: break-word;
+      line-height: 1.58;
+    }
+    .nv-hashtags-output {
+      color: var(--nv-accent2);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .nv-action-btns {
+      display: flex; gap: 1em;
+      margin-top: 0.3em;
+    }
+    .nv-action-btn {
+      background: linear-gradient(90deg, #8a63fd 12%, #6E4AFF 100%);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1em; font-weight: 700;
+      padding: 6px 17px 7px 13px;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 7px;
+      box-shadow: 0 1px 4px #bfc8ea11;
+      transition: background .14s, color .14s;
+    }
+    .nv-action-btn:active { color: #6E4AFF; background: #ecedff; }
+
+    /* SEO ARTICLE */
+    .nv-article-section {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto 62px auto;
+      background: #f8f8fd;
+      border-radius: 16px;
+      box-shadow: 0 2px 15px 0 #bfc8ea13;
+      padding: 2.0em 2em 2.7em 2.2em;
+      color: var(--nv-txt-main);
+      font-size:1.11rem;
+    }
+    .nv-article-section h1 {
+      font-size: 1.5rem;
+      font-family:'Poppins',sans-serif;
+      font-weight: 900;
+      color: var(--nv-accent);
+      margin-top: 0;
+      margin-bottom: 1.3em;
+    }
+    .nv-article-section h2 {
+      color: var(--nv-accent2);
+      margin-top: 1.8em;
+      font-size: 1.17rem;
+      font-weight: 800;
+    }
+    .nv-article-section h3 {
+      margin-bottom: 0.36em; margin-top: 1.2em;
+      color: #23233c;
+      font-weight: 700; font-family: 'Inter',sans-serif; font-size:1.08rem;
+    }
+    .nv-article-section ul,
+    .nv-article-section ol { 
+      margin-left: 1.1em;
+      margin-bottom: 1.06em; 
+    }
+    .nv-article-section li {margin-bottom:.16em;}
+    .nv-article-section p { color: var(--nv-txt-main); line-height:1.8;}
+    .nv-article-section strong,
+    .nv-article-section b {color:var(--nv-accent);}
+    .nv-article-section em { color: var(--nv-accent2); }
+    .nv-article-section blockquote {
+      border-left:4px solid #6E4AFF;
+      margin:.9em 1.1em 1.1em 0;background:#f3f0fe;
+      color:#6E4AFF;
+      font-style:italic;
+      border-radius:7px;
+      padding:.7em 1em;
+      font-size:1.06em;
+    }
+    .nv-article-section .kw { color: var(--nv-accent); }
+
+    /* ===== FOOTER ===== */
+    .nv-footer {
+      background: #111111;
+      color: #eaeaea;
+      margin-top: 46px;
+      font-family: inherit;
+      padding: 0 0 0.5em 0;
+    }
+    .nv-footer-content {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 2.2em 3vw 1.1em 3vw;
+      display: flex; flex-wrap: wrap;
+      gap: 2em;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .nv-footer-col {
+      flex:1;
+      min-width:190px;
+      margin-bottom: 1.2em;
+      font-size: 1em;
+    }
+    .nv-footer-brand {
+      max-width: 315px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1em;
+    }
+    .nv-footer-logo-link {
+      display: inline-block;
+      margin-bottom: 0.13em;
+      transition: transform .17s;
+    }
+    .nv-footer-logo-link:hover { transform: scale(1.09);}
+    .nv-footer-logo svg { filter: drop-shadow(0 4px 13px #6E4AFF44);}
+    .nv-footer-about {
+      color: #b8b7d1;
+      font-size: .96em;
+      line-height: 1.5;
+      margin-top: 0.22em;
+      margin-bottom: 0.45em;
+    }
+    .nv-footer-title {
+      font-size: 1.05em;
+      font-weight: 700;
+      margin-bottom: .67em;
+      color: #c9c1f7;
+    }
+    .nv-footer-links ul {
+      list-style: none; padding: 0;margin: 0;
+    }
+    .nv-footer-links li {
+      margin-bottom: 0.35em;
+    }
+    .nv-footer-links a {
+      color: #ededfc;
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.14s;
+      display: inline-block;
+      padding: 2px 0;
+    }
+    .nv-footer-links a:hover { color: #8A63FD; text-decoration: underline;}
+    .nv-footer-social-icons {
+      display: flex; gap: .55em; margin-top: 0.18em;
+    }
+    .nv-si {
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #18122d;
+      color: #fff;
+      font-size: 1.35em;
+      transition: background .18s, color .14s, transform .13s;
+      box-shadow: 0 1.5px 7px #25073f22;
+      border: none;
+    }
+    .nv-si.insta:hover { background: #dd2a7b; color: #fff; }
+    .nv-si.tw:hover    { background: #5da9e9; color: #fff; }
+    .nv-si.fb:hover    { background: #4660c2; color: #fff; }
+    .nv-si.li:hover    { background: #2b80d1; color: #fff; }
+    .nv-si.pin:hover   { background: #e60023; color: #fff; }
+    .nv-si.rd:hover    { background: #ff4500; color: #fff; }
+    .nv-si:hover { transform: scale(1.1);}
+    .nv-footer-bottom-bar {
+      width: 100%;
+      border-top: 1.2px solid #252334;
+      margin: 0.2em 0 0.2em 0;
+    }
+    .nv-footer-bottom-text {
+      text-align: center;
+      color: #aaa7be;
+      font-size: 0.97em;
+      padding: 1.1em 0 0.8em 0;
+      letter-spacing: 0.017em;
+      font-weight: 600;
+    }
+    @media (max-width: 900px) {
+      .nv-footer-content {
+        flex-direction: column;
+        gap: 1.6em;
+        align-items: flex-start;
+      }
+      .nv-footer-col { min-width: 0; }
+      .nv-footer-logo { margin-left: 0; }
+    }
+    @media (max-width: 700px) {
+      .nv-tool-card {max-width:99vw;padding: 1.4em 2vw 1.2em 2vw;}
+      .nv-article-section {padding: 1.4em 1vw 2.2em 2vw;}
+      .nv-footer-content {padding: 1.4em 3vw 0.7em 4vw;}
+    }
+    @media (max-width: 445px) {
+      .nv-nav-content {gap:8px;}
+      .nv-tool-card {padding:.7em 1vw;}
+      .nv-article-section {padding:.9em 1vw 1.3em 1vw;}
+      .nv-footer-content {padding:.9em 2vw 0.5em 2vw;}
     }
   </style>
 </head>
-
-<body class="text-white font-sans antialiased">
-  <!-- Sticky Glass Header -->
-  <header class="sticky top-0 z-50 safe-top">
-    <div class="mx-auto max-w-md px-4">
-      <div class="glass rounded-2xl px-4 py-3 flex items-center justify-between gap-3">
-        <div class="flex items-center gap-3 min-w-0">
-          <div class="h-10 w-10 rounded-2xl glass-strong flex items-center justify-center shadow-soft">
-            <span class="text-lg font-black">N</span>
-          </div>
-          <div class="min-w-0">
-            <div class="text-sm font-semibold leading-tight truncate">Nexovent - Insta Growth Suite</div>
-            <div class="text-xs text-white/80 leading-tight truncate">Glass tools to go viral (offline demo)</div>
-          </div>
-        </div>
-        <button id="btnHelp" class="tap press chip rounded-xl px-3 py-2 text-xs font-semibold">
-          Help
-        </button>
-      </div>
+<body>
+  <!-- Sticky Header/Navbar -->
+  <nav class="nv-nav">
+    <div class="nv-nav-content">
+      <a href="https://nexovent.tech" class="nv-nav-logo" aria-label="Nexovent Home">
+        <span class="nv-logo-svg">
+          <svg viewBox="0 0 32 32" fill="none">
+            <defs>
+              <linearGradient id="n_3d_g1" x1="7" y1="4" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6E4AFF"/><stop offset="1" stop-color="#8A63FD"/>
+              </linearGradient>
+            </defs>
+            <path d="M7 28V4h5.2l8.2 20.5V4H25v24h-5.2L7.6 7.7V28H7Z" fill="url(#n_3d_g1)"/>
+          </svg>
+        </span>
+        <span class="nv-nav-label">nexovent tech</span>
+      </a>
     </div>
-  </header>
-
-  <!-- App Shell -->
-  <main class="mx-auto max-w-md px-4 pb-24 safe-bot">
-    <!-- Top quick actions -->
-    <section class="mt-4">
-      <div class="glass rounded-2xl p-4">
-        <div class="flex items-start justify-between gap-3">
-          <div>
-            <h1 class="text-base font-extrabold tracking-tight">Instagram Viral Growth Suite</h1>
-            <p class="text-xs text-white/80 mt-1">
-              10 premium mini-tools in one mobile app UI. Everything runs in your browser.
-            </p>
+  </nav>
+  <main>
+    <!-- Tool Card -->
+    <section class="nv-tool-card">
+      <div class="nv-tool-title">Instagram Caption Generator</div>
+      <div class="nv-tool-desc">
+        Create high-converting viral hooks, captions, and 5 unique hashtags—optimized for your exact audience, goal, and post type. Upload an image for smart context suggestions.
+      </div>
+      <form class="nv-form" id="captionForm" autocomplete="off">
+        <textarea class="nv-textarea" id="descInput" rows="3" placeholder="Describe your Instagram post (e.g. Tech tip, travel memory, product launch...)"></textarea>
+        <!-- Image Upload -->
+        <div class="nv-upload-wrap">
+          <label class="nv-upload-btn" for="imgInput">
+            <i class="fa-solid fa-image"></i>Upload Photo
+          </label>
+          <input type="file" accept="image/*" id="imgInput" style="display:none;">
+          <span class="nv-filename" id="filename"></span>
+        </div>
+        <!-- Row 1 -->
+        <div class="nv-form-row">
+          <div class="nv-select-wrap">
+            <i class="fa-solid fa-masks-theater"></i>
+            <select id="toneSelect">
+              <option value="funny">Funny</option>
+              <option value="bold">Bold</option>
+              <option value="aesthetic">Aesthetic</option>
+              <option value="professional" selected>Professional</option>
+              <option value="sassy">Sassy</option>
+            </select>
           </div>
-          <div class="flex flex-col items-end gap-2">
-            <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">Single-file</span>
-            <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">Vanilla JS</span>
+          <div class="nv-select-wrap">
+            <i class="fa-solid fa-layer-group"></i>
+            <select id="typeSelect">
+              <option value="reel">Reel</option>
+              <option value="carousel">Carousel</option>
+              <option value="static">Static Post</option>
+            </select>
+          </div>
+          <div class="nv-select-wrap">
+            <i class="fa-solid fa-users"></i>
+            <select id="audienceSelect">
+              <option value="genz">Gen-Z</option>
+              <option value="business">Business</option>
+              <option value="general" selected>General</option>
+            </select>
           </div>
         </div>
-
-        <div class="mt-4 grid grid-cols-2 gap-3">
-          <button class="tap press chip rounded-2xl p-3 text-left" data-jump="#toolScript">
-            <div class="text-xs text-white/80">Start Here</div>
-            <div class="font-bold text-sm">Reel Script Writer</div>
-          </button>
-          <button class="tap press chip rounded-2xl p-3 text-left" data-jump="#toolPlanner">
-            <div class="text-xs text-white/80">Plan</div>
-            <div class="font-bold text-sm">7-Day Reel Planner</div>
-          </button>
+        <!-- Row 2 -->
+        <div class="nv-form-row">
+          <div class="nv-select-wrap">
+            <i class="fa-solid fa-language"></i>
+            <select id="langSelect">
+              <option value="english" selected>English</option>
+              <option value="hindi">Hindi</option>
+              <option value="hinglish">Hinglish</option>
+            </select>
+          </div>
+          <div class="nv-select-wrap">
+            <i class="fa-solid fa-bullseye"></i>
+            <select id="goalSelect">
+              <option value="engagement" selected>Engagement</option>
+              <option value="sale">Direct Sale</option>
+              <option value="follow">Follow</option>
+            </select>
+          </div>
+          <div class="nv-select-wrap">
+            <i class="fa-regular fa-face-laugh-wink"></i>
+            <select id="emojiSelect">
+              <option value="none">None</option>
+              <option value="minimal">Minimal</option>
+              <option value="high" selected>High</option>
+            </select>
+          </div>
+        </div>
+        <!-- Generate Button -->
+        <button type="submit" class="nv-gen-btn" id="generateBtn">Generate Caption + Hashtags</button>
+      </form>
+      <!-- Output Section -->
+      <div class="nv-output-section" id="outputSection">
+        <div class="nv-output-label">Viral Hook</div>
+        <div class="nv-hook-output" id="hookOutput"></div>
+        <div class="nv-output-label">Caption w/ CTA</div>
+        <div class="nv-caption-output" id="captionOutput"></div>
+        <div class="nv-output-label">Niche Hashtags</div>
+        <div class="nv-hashtags-output" id="hashtagsOutput"></div>
+        <div class="nv-action-btns">
+          <button type="button" class="nv-action-btn" id="copyCaptionBtn"><i class="fa-regular fa-copy"></i>Copy Caption</button>
+          <button type="button" class="nv-action-btn" id="copyHashtagBtn"><i class="fa-solid fa-hashtag"></i>Copy Hashtags</button>
         </div>
       </div>
     </section>
+    <!-- SEO Article -->
+    <section class="nv-article-section" id="article">
+      <h1>Mastering Social Media with our Instagram Caption Generator</h1>
+      <p>
+      In today’s competitive digital landscape, standing out on Instagram requires more than a beautiful photo or a trendy Reel. It demands captivating captions, viral hooks, and the strategic use of hashtags. Our <span class="kw">Instagram caption generator</span> merges artificial intelligence, psychology, and the latest SEO insights to help you win on social media – today and in 2026.
+      </p>
 
-    <!-- Tools Grid -->
-    <section class="mt-4 space-y-4">
+      <h2>Why an Instagram Caption Generator is a Creator’s Power Tool</h2>
+      <p>
+      The caption is your opportunity to stop the scroll. With billions of daily posts, compelling copy is what transforms casual browsers into engaged followers. Our Instagram caption generator is fueled by professional copywriting rules and data-driven best practices:
+      </p>
+      <ul>
+        <li><b>Viral Hooks</b> grab attention in the first second—essential for Reels and Carousels.</li>
+        <li><b>SEO-rich Content</b> gives your post a better shot at trending on Instagram’s Explore page.</li>
+        <li><b>CTA Optimization</b> turns engagement into traffic, sales, and loyal followers.</li>
+      </ul>
+      <p>
+      By using the Instagram caption generator for every post, you ensure consistency, originality, and relevance. It adapts to your post type (Carousel, Reel, Static), target audience, and even language – giving creators, brands, and agencies an edge.
+      </p>
 
-      <!-- 1) AI Reel Script & Hook Writer -->
-      <article id="toolScript" class="glass rounded-2xl p-4">
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-sm font-extrabold">1) AI Reel Script & Hook Writer</h2>
-          <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">30 sec</span>
-        </div>
-        <p class="text-xs text-white/80 mt-1">
-          Enter a topic. Generates a viral hook + a structured 30-second reel script.
-        </p>
+      <h2>The Science Behind Viral Instagram Hooks</h2>
+      <h3>Elements of a Scroll-Stopping Hook:</h3>
+      <ol>
+        <li><b>Curiosity Gap:</b> Tease the outcome, not the process.</li>
+        <li><b>Relatability & Trends:</b> Mirror the viewer’s own thoughts or connect with trending topics.</li>
+        <li><b>Direct Address:</b> Speak directly to your target audience ("Gen-Z, this one’s for you!").</li>
+        <li><b>Clear Visual Intros:</b> Use emoji and punchy language that match the visual content.</li>
+      </ol>
+      <p>
+      The Instagram caption generator leverages these psychological triggers with every output—ensuring your content climbs the engagement ladder.
+      </p>
 
-        <label class="block mt-3 text-xs font-semibold text-white/90">Topic</label>
-        <input id="scriptTopic" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm placeholder:text-white/50"
-               placeholder="e.g., How to grow on Instagram as a tech creator" />
+      <h2>How SEO Captions Drive Real Results in 2026</h2>
+      <h3>What's New About Instagram SEO?</h3>
+      <ul>
+        <li>Keyword placement matters—so does context. Our Instagram caption generator naturally integrates top hashtags, audience-relevant keywords, and trending language.</li>
+        <li>Meta descriptions aren’t just for Google. Instagram “reads” your caption to match it with user interests.</li>
+        <li>Engagement signals (likes, comments, saves) boost both reach and hashtag search. That’s why a strong CTA is always included by our Instagram caption generator.</li>
+      </ul>
+      <h3>Why Hashtags Are Still Essential</h3>
+      <p>
+        The right hashtags boost discoverability but the wrong ones tank your reach. The Instagram caption generator outputs exactly 5 dynamically relevant, lowercase hashtags – always unique to every click.
+      </p>
+      <ul>
+        <li><b>Better Targeting:</b> More niche = less competition.</li>
+        <li><b>SEO Synergy:</b> Hashtags act as search accelerators for both Instagram and external engines.</li>
+        <li><b>Real Engagement, Not Bots:</b> Our system never reuses the same set, so you avoid shadowbans and audience fatigue.</li>
+      </ul>
 
-        <div class="mt-3 flex gap-2">
-          <button id="btnGenScript" class="tap press flex-1 rounded-2xl bg-white/20 hover:bg-white/25 px-4 py-3 text-sm font-bold">
-            Generate Script
-          </button>
-          <button id="btnCopyScript" class="tap press chip rounded-2xl px-4 py-3 text-sm font-semibold">
-            Copy
-          </button>
-        </div>
+      <h2>Instagram Growth Strategies for 2026</h2>
+      <ol>
+        <li>Don't post without a plan – let the Instagram caption generator tailor your content per post, audience, and goal.</li>
+        <li>Experiment! Try Bold, Sassy, and Aesthetic tones. Mix up CTA goals (Engagement, Sale, Follows) for maximum learning.</li>
+        <li>Always upload a photo for richer AI context before generating your caption.</li>
+        <li>Keep language relevant. Switch between English, Hindi, or Hinglish as your audience prefers.</li>
+        <li>Analyze performance. Refine based on what hooks and hashtags get you most reach and saves.</li>
+      </ol>
 
-        <div class="mt-3 glass-strong rounded-2xl p-3">
-          <div class="text-xs font-semibold text-white/80">Output</div>
-          <pre id="scriptOut" class="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-white/90"></pre>
-        </div>
-      </article>
+      <h2>How to Use the Instagram Caption Generator for Maximum Results</h2>
+      <ol>
+        <li>Describe your post or upload your photo for AI context analysis.</li>
+        <li>Choose your Tone, Post Type, Audience, Language, CTA, and Emoji Intensity.</li>
+        <li>Click 'Generate' and copy the viral hook, caption, and 5 unique hashtags provided.</li>
+        <li>Paste and schedule on Instagram. Monitor which output gets better engagement and play to these strengths.</li>
+      </ol>
 
-      <!-- 2) Color Palette Extractor -->
-      <article id="toolPalette" class="glass rounded-2xl p-4">
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-sm font-extrabold">2) Color Palette Extractor</h2>
-          <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">Image</span>
-        </div>
-        <p class="text-xs text-white/80 mt-1">
-          Upload a photo to extract dominant colors (approx). Runs locally using Canvas.
-        </p>
-
-        <div class="mt-3 grid grid-cols-1 gap-3">
-          <input id="paletteFile" type="file" accept="image/*"
-                 class="block w-full text-xs file:mr-3 file:rounded-xl file:border-0 file:bg-white/20 file:text-white file:px-4 file:py-2 file:font-semibold file:tap file:press" />
-
-          <div class="grid grid-cols-2 gap-3 items-start">
-            <div class="glass-strong rounded-2xl p-3">
-              <div class="text-xs font-semibold text-white/80">Preview</div>
-              <canvas id="paletteCanvas" class="mt-2 w-full rounded-xl overflow-hidden"></canvas>
-              <div class="mt-2 text-[11px] text-white/70">Tip: brighter photos extract better.</div>
-            </div>
-
-            <div class="glass-strong rounded-2xl p-3">
-              <div class="flex items-center justify-between">
-                <div class="text-xs font-semibold text-white/80">HEX Palette</div>
-                <button id="btnCopyPalette" class="tap press chip rounded-xl px-3 py-2 text-xs font-semibold">Copy</button>
-              </div>
-              <div id="paletteSwatches" class="mt-2 grid grid-cols-2 gap-2"></div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- 3) Insta-Font Styler -->
-      <article id="toolFonts" class="glass rounded-2xl p-4">
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-sm font-extrabold">3) Insta-Font Styler</h2>
-          <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">10+ styles</span>
-        </div>
-        <p class="text-xs text-white/80 mt-1">
-          Real-time text converter for bio. Copy the style you like.
-        </p>
-
-        <label class="block mt-3 text-xs font-semibold text-white/90">Text</label>
-        <input id="fontInput" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm placeholder:text-white/50"
-               placeholder="Type your bio line…" />
-
-        <div class="mt-3 glass-strong rounded-2xl p-3">
-          <div class="flex items-center justify-between">
-            <div class="text-xs font-semibold text-white/80">Styles</div>
-            <button id="btnCopyFirstFont" class="tap press chip rounded-xl px-3 py-2 text-xs font-semibold">Copy Top</button>
-          </div>
-          <div id="fontList" class="mt-2 space-y-2"></div>
-        </div>
-      </article>
-
-      <!-- 4) AI Caption & Emoji Recommender -->
-      <article id="toolCaption" class="glass rounded-2xl p-4">
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-sm font-extrabold">4) AI Caption & Emoji Recommender</h2>
-          <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">Caption</span>
-        </div>
-        <p class="text-xs text-white/80 mt-1">
-          Describe the photo and get a pro caption with matching emojis + CTA.
-        </p>
-
-        <label class="block mt-3 text-xs font-semibold text-white/90">Photo Description</label>
-        <textarea id="captionDesc" rows="3"
-          class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm placeholder:text-white/50"
-          placeholder="e.g., Laptop on desk, coding at night, neon vibes"></textarea>
-
-        <div class="mt-3 flex gap-2">
-          <button id="btnGenCaption" class="tap press flex-1 rounded-2xl bg-white/20 hover:bg-white/25 px-4 py-3 text-sm font-bold">
-            Generate Caption
-          </button>
-          <button id="btnCopyCaption" class="tap press chip rounded-2xl px-4 py-3 text-sm font-semibold">
-            Copy
-          </button>
-        </div>
-
-        <div class="mt-3 glass-strong rounded-2xl p-3">
-          <div class="text-xs font-semibold text-white/80">Output</div>
-          <div id="captionOut" class="mt-2 text-sm leading-relaxed text-white/90"></div>
-        </div>
-      </article>
-
-      <!-- 5) Viral Hashtag Finder -->
-      <article id="toolHashtags" class="glass rounded-2xl p-4">
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-sm font-extrabold">5) Viral Hashtag Finder</h2>
-          <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">Low/High</span>
-        </div>
-        <p class="text-xs text-white/80 mt-1">
-          Choose a niche to generate mixed competition tags.
-        </p>
-
-        <div class="mt-3 grid grid-cols-2 gap-3">
-          <div>
-            <label class="text-xs font-semibold text-white/90">Niche</label>
-            <select id="tagNiche" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm">
-              <option value="tech">Tech</option>
-              <option value="finance">Finance</option>
-              <option value="lifestyle">Lifestyle</option>
-            </select>
-          </div>
-          <div>
-            <label class="text-xs font-semibold text-white/90">Total Tags</label>
-            <select id="tagCount" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm">
-              <option>10</option>
-              <option selected>20</option>
-              <option>30</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="mt-3 flex gap-2">
-          <button id="btnGenTags" class="tap press flex-1 rounded-2xl bg-white/20 hover:bg-white/25 px-4 py-3 text-sm font-bold">
-            Generate Hashtags
-          </button>
-          <button id="btnCopyTags" class="tap press chip rounded-2xl px-4 py-3 text-sm font-semibold">
-            Copy
-          </button>
-        </div>
-
-        <div class="mt-3 grid grid-cols-1 gap-3">
-          <div class="glass-strong rounded-2xl p-3">
-            <div class="flex items-center justify-between">
-              <div class="text-xs font-semibold text-white/80">Low Competition</div>
-              <span class="text-[11px] text-white/70">More discoverable</span>
-            </div>
-            <div id="tagsLow" class="mt-2 flex flex-wrap gap-2"></div>
-          </div>
-
-          <div class="glass-strong rounded-2xl p-3">
-            <div class="flex items-center justify-between">
-              <div class="text-xs font-semibold text-white/80">High Competition</div>
-              <span class="text-[11px] text-white/70">More reach</span>
-            </div>
-            <div id="tagsHigh" class="mt-2 flex flex-wrap gap-2"></div>
-          </div>
-        </div>
-      </article>
-
-      <!-- 6) Engagement Rate Calculator -->
-      <article id="toolEngagement" class="glass rounded-2xl p-4">
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-sm font-extrabold">6) Engagement Rate Calculator</h2>
-          <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">Health</span>
-        </div>
-        <p class="text-xs text-white/80 mt-1">
-          Enter Followers, Likes, Comments. Get ER% and a health score.
-        </p>
-
-        <div class="mt-3 grid grid-cols-3 gap-2">
-          <div>
-            <label class="text-xs font-semibold">Followers</label>
-            <input id="erFollowers" inputmode="numeric" class="mt-1 w-full glass-strong rounded-2xl px-3 py-3 text-sm" placeholder="10k" />
-          </div>
-          <div>
-            <label class="text-xs font-semibold">Likes</label>
-            <input id="erLikes" inputmode="numeric" class="mt-1 w-full glass-strong rounded-2xl px-3 py-3 text-sm" placeholder="500" />
-          </div>
-          <div>
-            <label class="text-xs font-semibold">Comments</label>
-            <input id="erComments" inputmode="numeric" class="mt-1 w-full glass-strong rounded-2xl px-3 py-3 text-sm" placeholder="45" />
-          </div>
-        </div>
-
-        <div class="mt-3 flex gap-2">
-          <button id="btnCalcER" class="tap press flex-1 rounded-2xl bg-white/20 hover:bg-white/25 px-4 py-3 text-sm font-bold">
-            Calculate
-          </button>
-          <button id="btnResetER" class="tap press chip rounded-2xl px-4 py-3 text-sm font-semibold">
-            Reset
-          </button>
-        </div>
-
-        <div class="mt-3 glass-strong rounded-2xl p-3">
-          <div class="text-xs font-semibold text-white/80">Results</div>
-          <div id="erOut" class="mt-2 text-sm text-white/90"></div>
-        </div>
-      </article>
-
-      <!-- 7) Best Posting Time Finder -->
-      <article id="toolTime" class="glass rounded-2xl p-4">
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-sm font-extrabold">7) Best Posting Time Finder</h2>
-          <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">Schedule</span>
-        </div>
-        <p class="text-xs text-white/80 mt-1">
-          Choose your audience type for suggested best posting windows.
-        </p>
-
-        <div class="mt-3 grid grid-cols-2 gap-3">
-          <div>
-            <label class="text-xs font-semibold">Audience</label>
-            <select id="audienceType" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm">
-              <option value="students">Students</option>
-              <option value="professionals">Professionals</option>
-              <option value="creators">Creators</option>
-            </select>
-          </div>
-          <div>
-            <label class="text-xs font-semibold">Timezone</label>
-            <select id="audienceTZ" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm">
-              <option value="local" selected>Local Device</option>
-              <option value="est">US/Eastern</option>
-              <option value="pst">US/Pacific</option>
-              <option value="gmt">GMT/UTC</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="mt-3 flex gap-2">
-          <button id="btnTime" class="tap press flex-1 rounded-2xl bg-white/20 hover:bg-white/25 px-4 py-3 text-sm font-bold">
-            Suggest Best Times
-          </button>
-          <button id="btnCopyTimes" class="tap press chip rounded-2xl px-4 py-3 text-sm font-semibold">
-            Copy
-          </button>
-        </div>
-
-        <div class="mt-3 glass-strong rounded-2xl p-3">
-          <div class="text-xs font-semibold text-white/80">Suggested Times</div>
-          <div id="timeOut" class="mt-2 text-sm text-white/90"></div>
-        </div>
-      </article>
-
-      <!-- 8) Shadowban Safety Check -->
-      <article id="toolShadowban" class="glass rounded-2xl p-4">
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-sm font-extrabold">8) Shadowban Safety Check</h2>
-          <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">Checklist</span>
-        </div>
-        <p class="text-xs text-white/80 mt-1">
-          Check banned hashtags + a quick safety checklist. (Offline reference list included)
-        </p>
-
-        <label class="block mt-3 text-xs font-semibold text-white/90">Paste Hashtags (space or newline separated)</label>
-        <textarea id="shadowTags" rows="3"
-          class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm placeholder:text-white/50"
-          placeholder="#likeforlike #follow4follow #instagood ..."></textarea>
-
-        <div class="mt-3 flex gap-2">
-          <button id="btnShadowCheck" class="tap press flex-1 rounded-2xl bg-white/20 hover:bg-white/25 px-4 py-3 text-sm font-bold">
-            Run Safety Check
-          </button>
-          <button id="btnCopyShadow" class="tap press chip rounded-2xl px-4 py-3 text-sm font-semibold">
-            Copy Report
-          </button>
-        </div>
-
-        <div class="mt-3 glass-strong rounded-2xl p-3">
-          <div class="text-xs font-semibold text-white/80">Report</div>
-          <div id="shadowOut" class="mt-2 text-sm text-white/90"></div>
-        </div>
-
-        <div class="mt-3 glass-strong rounded-2xl p-3">
-          <div class="text-xs font-semibold text-white/80">Quick Checklist</div>
-          <div class="mt-2 space-y-2 text-sm">
-            <label class="flex items-start gap-3 tap">
-              <input type="checkbox" class="mt-1" />
-              <span class="text-white/90">I’m not using repetitive copy-paste comments.</span>
-            </label>
-            <label class="flex items-start gap-3 tap">
-              <input type="checkbox" class="mt-1" />
-              <span class="text-white/90">I avoid engagement pods and bot services.</span>
-            </label>
-            <label class="flex items-start gap-3 tap">
-              <input type="checkbox" class="mt-1" />
-              <span class="text-white/90">I vary hashtags and keep them relevant.</span>
-            </label>
-            <label class="flex items-start gap-3 tap">
-              <input type="checkbox" class="mt-1" />
-              <span class="text-white/90">I post consistently and don’t spam stories.</span>
-            </label>
-          </div>
-        </div>
-      </article>
-
-      <!-- 9) Professional Bio Architect -->
-      <article id="toolBio" class="glass rounded-2xl p-4">
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-sm font-extrabold">9) Professional Bio Architect</h2>
-          <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">4 lines</span>
-        </div>
-        <p class="text-xs text-white/80 mt-1">
-          Build a clean, icon-based 4-line bio for your niche.
-        </p>
-
-        <div class="mt-3 space-y-3">
-          <div>
-            <label class="text-xs font-semibold">Name / Brand</label>
-            <input id="bioName" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm" placeholder="Nexovent" />
-          </div>
-          <div>
-            <label class="text-xs font-semibold">What you do</label>
-            <input id="bioWhat" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm" placeholder="Helping creators grow with strategy + design" />
-          </div>
-          <div>
-            <label class="text-xs font-semibold">Proof / Credibility</label>
-            <input id="bioProof" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm" placeholder="100+ reels optimized • 1M+ total views" />
-          </div>
-          <div>
-            <label class="text-xs font-semibold">Call-to-action</label>
-            <input id="bioCTA" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm" placeholder="DM “GROW” for a free audit" />
-          </div>
-        </div>
-
-        <div class="mt-3 flex gap-2">
-          <button id="btnGenBio" class="tap press flex-1 rounded-2xl bg-white/20 hover:bg-white/25 px-4 py-3 text-sm font-bold">
-            Generate Bio
-          </button>
-          <button id="btnCopyBio" class="tap press chip rounded-2xl px-4 py-3 text-sm font-semibold">
-            Copy
-          </button>
-        </div>
-
-        <div class="mt-3 glass-strong rounded-2xl p-3">
-          <div class="text-xs font-semibold text-white/80">Bio Output</div>
-          <pre id="bioOut" class="mt-2 whitespace-pre-wrap text-sm text-white/90"></pre>
-        </div>
-      </article>
-
-      <!-- 10) Reel Content Planner -->
-      <article id="toolPlanner" class="glass rounded-2xl p-4">
-        <div class="flex items-center justify-between gap-3">
-          <h2 class="text-sm font-extrabold">10) Reel Content Planner</h2>
-          <span class="chip rounded-full px-3 py-1 text-[11px] font-semibold">7 days</span>
-        </div>
-        <p class="text-xs text-white/80 mt-1">
-          Generate a 7-day reel schedule. Choose niche and intensity.
-        </p>
-
-        <div class="mt-3 grid grid-cols-2 gap-3">
-          <div>
-            <label class="text-xs font-semibold">Niche</label>
-            <select id="planNiche" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm">
-              <option value="tech">Tech</option>
-              <option value="finance">Finance</option>
-              <option value="lifestyle">Lifestyle</option>
-            </select>
-          </div>
-          <div>
-            <label class="text-xs font-semibold">Intensity</label>
-            <select id="planIntensity" class="mt-1 w-full glass-strong rounded-2xl px-4 py-3 text-sm">
-              <option value="balanced" selected>Balanced</option>
-              <option value="aggressive">Aggressive</option>
-              <option value="educational">Educational</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="mt-3 flex gap-2">
-          <button id="btnGenPlan" class="tap press flex-1 rounded-2xl bg-white/20 hover:bg-white/25 px-4 py-3 text-sm font-bold">
-            Generate 7-Day Plan
-          </button>
-          <button id="btnCopyPlan" class="tap press chip rounded-2xl px-4 py-3 text-sm font-semibold">
-            Copy
-          </button>
-        </div>
-
-        <div class="mt-3 glass-strong rounded-2xl p-3">
-          <div class="text-xs font-semibold text-white/80">Schedule</div>
-          <div id="planOut" class="mt-2 text-sm text-white/90 space-y-2"></div>
-        </div>
-      </article>
-
+      <h3>FAQ: Instagram Caption Generator</h3>
+      <ul>
+        <li><b>Is this Instagram caption generator free?</b> – Yes, Nexovent provides the web tool for free, no login required.</li>
+        <li><b>Does it work for Reels, Carousels, and Static posts?</b> – Absolutely. All post types are supported with smart context-aware output.</li>
+        <li><b>Will my captions and hashtags be unique?</b> – Yes! Each generation uses randomization logic for the 5 hashtags and personalized hooks/CTAs.</li>
+        <li><b>Can I use it on mobile devices?</b> – Of course! The tool is fully mobile responsive and engineered for fast use on any device.</li>
+        <li><b>Why only 5 hashtags?</b> – In 2026, best practices favor 3–5 niche hashtags. More can hurt discoverability; our Instagram caption generator keeps you at the sweet spot!</li>
+      </ul>
+      <blockquote>
+        “The Instagram caption generator from Nexovent gives me captions that get comments, saves and shares—my engagement has never been higher.” – @procreator
+      </blockquote>
+      <p>
+        Ready for your next viral post? Try our Instagram caption generator, tailored for creators who want to win in 2026.
+      </p>
     </section>
   </main>
-
-  <!-- Footer -->
-  <footer class="fixed bottom-0 left-0 right-0 z-40 safe-bot">
-    <div class="mx-auto max-w-md px-4 pb-3">
-      <div class="glass rounded-2xl px-4 py-3 flex items-center justify-between gap-3">
-        <div class="text-[11px] text-white/85">
-          Copyright 2026 Nexovent | Developed by Ashish
+  <!-- Professional Footer -->
+  <footer class="nv-footer">
+    <div class="nv-footer-content">
+      <!-- Brand & About -->
+      <div class="nv-footer-col nv-footer-brand">
+        <a href="https://nexovent.tech" class="nv-footer-logo-link" aria-label="Nexovent Home">
+          <span class="nv-footer-logo">
+            <!-- 3D 'N' Logo, slightly smaller -->
+            <svg viewBox="0 0 32 32" fill="none" style="height:29px;width:29px;display:block;">
+              <defs>
+                <linearGradient id="n3d_footer" x1="7" y1="4" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6E4AFF"/><stop offset="1" stop-color="#8A63FD"/>
+                </linearGradient>
+              </defs>
+              <path d="M7 28V4h5.2l8.2 20.5V4H25v24h-5.2L7.6 7.7V28H7Z" fill="url(#n3d_footer)"/>
+            </svg>
+          </span>
+        </a>
+        <div class="nv-footer-about">
+          Nexovent is the trusted hub for AI-powered social media growth.<br>
+          Elevate your content with smart, future-ready tools.
         </div>
-        <button id="btnTop" class="tap press chip rounded-xl px-3 py-2 text-xs font-semibold">
-          ↑ Top
-        </button>
+        <a href="https://nexovent.tech" target="_blank" class="nv-footer-home-btn" style="color:#8a63fd;font-weight:700;text-decoration:underline;font-size:1em;margin-top:2px;">Home Page</a>
       </div>
-    </div>
-  </footer>
-
-  <!-- Help Modal -->
-  <div id="helpModal" class="hidden fixed inset-0 z-50">
-    <div class="modal-backdrop absolute inset-0"></div>
-    <div class="relative mx-auto max-w-md px-4 pt-24">
-      <div class="glass rounded-3xl p-5">
-        <div class="flex items-start justify-between gap-3">
-          <div>
-            <div class="text-sm font-extrabold">How to use</div>
-            <div class="text-xs text-white/80 mt-1">
-              This is an offline demo suite. “AI” outputs are generated by smart templates (no API keys).
-            </div>
-          </div>
-          <button id="btnCloseHelp" class="tap press chip rounded-xl px-3 py-2 text-xs font-semibold">Close</button>
-        </div>
-
-        <ul class="mt-4 text-sm text-white/90 space-y-2 list-disc pl-5">
-          <li>Use <b>Reel Script</b> for hook + structure.</li>
-          <li><b>Hashtags</b> gives a low/high competition mix.</li>
-          <li><b>Color Palette</b> runs locally (no upload to server).</li>
-          <li>For video popup: add links with <code>data-video="popup"</code> (feature ready for expansion).</li>
+      <!-- Links -->
+      <div class="nv-footer-col nv-footer-links">
+        <div class="nv-footer-title">Explore</div>
+        <ul>
+          <li><a href="https://nexovent.tech" target="_blank" rel="noopener">Home Page</a></li>
+          <li><a href="https://nexovent.tech/tools" target="_blank" rel="noopener">All AI Tools</a></li>
+          <li><a href="https://nexovent.tech/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+          <li><a href="mailto:contact@nexovent.tech">Contact Us</a></li>
         </ul>
       </div>
+      <!-- Social -->
+      <div class="nv-footer-col">
+        <div class="nv-footer-title">Connect with Us</div>
+        <div class="nv-footer-social-icons">
+          <a href="https://instagram.com/nexovent.tech" target="_blank" aria-label="Instagram" class="nv-si insta"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/nexovent" target="_blank" aria-label="X" class="nv-si tw"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://facebook.com/nexovent.ai" target="_blank" aria-label="Facebook" class="nv-si fb"><i class="fab fa-facebook"></i></a>
+          <a href="https://linkedin.com/company/nexovent" target="_blank" aria-label="LinkedIn" class="nv-si li"><i class="fab fa-linkedin"></i></a>
+          <a href="https://pin.it/7r4yaojIB" target="_blank" aria-label="Pinterest" class="nv-si pin"><i class="fab fa-pinterest"></i></a>
+          <a href="https://www.reddit.com/u/nexovent" target="_blank" aria-label="Reddit" class="nv-si rd"><i class="fab fa-reddit"></i></a>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- Toast -->
-  <div id="toast" class="pointer-events-none fixed left-1/2 -translate-x-1/2 bottom-24 z-50 hidden">
-    <div class="glass rounded-2xl px-4 py-3 text-sm font-semibold">Copied!</div>
-  </div>
-
+    <div class="nv-footer-bottom-bar"></div>
+    <div class="nv-footer-bottom-text">
+      Copyright 2026 Nexovent | All Rights Reserved.
+    </div>
+  </footer>
+  <!-- LOGIC: All below, self-contained and does NOT touch main HTML structure -->
   <script>
-    /* =========================================================
-       Nexovent - Instagram Viral Growth Suite
-       Single-file app | Clean, commented Vanilla JS
-       ========================================================= */
-
-    // ---------- Small utilities ----------
-    const $ = (sel, root = document) => root.querySelector(sel);
-
-    function showToast(msg = "Copied!") {
-      const t = $("#toast");
-      if (!t) return;
-      t.firstElementChild.textContent = msg;
-      t.classList.remove("hidden");
-      clearTimeout(showToast._timer);
-      showToast._timer = setTimeout(() => t.classList.add("hidden"), 1100);
-    }
-
-    async function copyText(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-        showToast("Copied!");
-      } catch {
-        // Fallback
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.style.position = "fixed";
-        ta.style.left = "-9999px";
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-        showToast("Copied!");
-      }
-    }
-
-    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
-
-    function parseNumberLike(str) {
-      // Accept "10k", "2.5m", "12,300"
-      if (!str) return 0;
-      const s = String(str).trim().toLowerCase().replace(/,/g, "");
-      const mult = s.endsWith("k") ? 1e3 : s.endsWith("m") ? 1e6 : s.endsWith("b") ? 1e9 : 1;
-      const num = parseFloat(s.replace(/[kmb]$/,""));
-      return Number.isFinite(num) ? num * mult : 0;
-    }
-
-    // ---------- 1) Reel Script Generator (template-based “AI”) ----------
-    function generateReelScript(topic) {
-      const clean = (topic || "").trim();
-      const t = clean || "your topic";
-
-      // A few hook patterns to choose from
-      const hooks = [
-        `Stop scrolling — if you're struggling with ${t}, this will fix it in 30 seconds.`,
-        `Most people get ${t} completely wrong. Here’s the simple way to do it.`,
-        `If I had to restart with ${t} today, I’d do ONLY these 3 steps.`,
-        `This is the fastest shortcut to improve ${t} — and almost nobody uses it.`,
-        `I wish someone told me this about ${t} earlier…`
-      ];
-      const hook = hooks[Math.floor(Math.random() * hooks.length)];
-
-      return [
-        `VIRAL HOOK: ${hook}`,
-        ``,
-        `0–3s (Hook):`,
-        `• Say the hook with energy. Add on-screen text: “${t} in 30s”.`,
-        ``,
-        `3–10s (Problem):`,
-        `• “Here’s why it’s not working: you’re focusing on the wrong metric / step.”`,
-        `• Quick example that your audience relates to.`,
-        ``,
-        `10–24s (3-Step Solution):`,
-        `1) Do THIS first: define the exact goal + audience in one sentence.`,
-        `2) Do THIS next: use a simple framework (Hook → Value → CTA).`,
-        `3) Do THIS daily: 15 minutes of repetition + one improvement each post.`,
-        ``,
-        `24–30s (CTA):`,
-        `• “Want my checklist for ${t}? Comment ‘GROW’ and I’ll send it.”`,
-        `• “Follow @Nexovent for daily growth systems.”`,
-        ``,
-        `B-roll Ideas:`,
-        `• Talking head + screen recording + quick cuts every 1.0–1.5s.`,
-        ``,
-        `Caption Starter:`,
-        `• “Saved you 30 minutes? Save this and share with a friend.”`
-      ].join("\n");
-    }
-
-    // ---------- 2) Color Palette Extractor (Canvas quantization) ----------
-    function rgbToHex(r,g,b){
-      const to = (n) => n.toString(16).padStart(2,"0");
-      return `#${to(r)}${to(g)}${to(b)}`.toUpperCase();
-    }
-
-    function colorDistance(a,b){
-      const dr=a.r-b.r, dg=a.g-b.g, db=a.b-b.b;
-      return dr*dr + dg*dg + db*db;
-    }
-
-    function extractPaletteFromCanvas(canvas, count = 6) {
-      const ctx = canvas.getContext("2d", { willReadFrequently: true });
-      const { width, height } = canvas;
-      const img = ctx.getImageData(0,0,width,height).data;
-
-      // Sample pixels (skip for speed)
-      const samples = [];
-      const step = Math.max(1, Math.floor((width * height) / 12000)); // dynamic sampling
-      for (let i=0; i<img.length; i += 4 * step) {
-        const r = img[i], g = img[i+1], b = img[i+2], a = img[i+3];
-        if (a < 200) continue; // ignore transparent
-        // ignore near-black/near-white extremes slightly (keeps palette nicer)
-        const lum = 0.2126*r + 0.7152*g + 0.0722*b;
-        if (lum < 10 || lum > 245) continue;
-        samples.push({ r,g,b });
-      }
-      if (!samples.length) return [];
-
-      // K-means-ish clustering (small iterations)
-      const centers = [];
-      for (let i=0; i<count; i++) centers.push(samples[Math.floor(Math.random()*samples.length)]);
-
-      for (let iter=0; iter<7; iter++){
-        const buckets = Array.from({length: count}, () => ({ r:0,g:0,b:0,n:0 }));
-        for (const p of samples){
-          let bestI=0, bestD=Infinity;
-          for (let i=0; i<count; i++){
-            const d = colorDistance(p, centers[i]);
-            if (d < bestD){ bestD=d; bestI=i; }
-          }
-          const b = buckets[bestI];
-          b.r += p.r; b.g += p.g; b.b += p.b; b.n++;
-        }
-        for (let i=0; i<count; i++){
-          const b = buckets[i];
-          if (b.n > 0){
-            centers[i] = { r: Math.round(b.r/b.n), g: Math.round(b.g/b.n), b: Math.round(b.b/b.n) };
-          }
-        }
-      }
-
-      // Sort by "presence" approx by nearest assignments one more time
-      const counts = Array(count).fill(0);
-      for (const p of samples){
-        let bestI=0, bestD=Infinity;
-        for (let i=0; i<count; i++){
-          const d = colorDistance(p, centers[i]);
-          if (d < bestD){ bestD=d; bestI=i; }
-        }
-        counts[bestI]++;
-      }
-
-      const items = centers.map((c,i)=>({ hex: rgbToHex(c.r,c.g,c.b), w: counts[i], rgb:c }));
-      items.sort((a,b)=>b.w-a.w);
-
-      // de-duplicate close colors
-      const out = [];
-      for (const it of items){
-        if (!out.some(o => colorDistance(o.rgb, it.rgb) < 600)) out.push(it);
-        if (out.length >= count) break;
-      }
-      return out.map(x => x.hex);
-    }
-
-    // ---------- 3) Insta-Font Styler ----------
-    // Character maps for basic A-Z a-z 0-9 (some styles)
-    const FONT_STYLES = [
-      { name: "Bold Serif", map: makeMapper("𝐀","𝐚","𝟎") },
-      { name: "Bold Sans", map: makeMapper("𝗔","𝗮","𝟬") },
-      { name: "Italic Serif", map: makeMapper("𝘈","𝘢","0") },
-      { name: "Bold Italic", map: makeMapper("𝘼","𝙖","0") },
-      { name: "Monospace", map: makeMapper("𝙰","𝚊","𝟶") },
-      { name: "Script", map: makeMapper("𝓐","𝓪","0") },
-      { name: "Fraktur", map: makeMapper("𝔄","𝔞","0") },
-      { name: "Double Struck", map: makeMapper("𝔸","𝕒","𝟘") },
-      { name: "Small Caps-ish", map: smallCapsLike },
-      { name: "Bubble", map: bubbleLike },
-      { name: "Spaced", map: spacedLike }
-    ];
-
-    function makeMapper(Acap, alow, zero) {
-      // Create mapper for A-Z and a-z ranges if they exist in unicode block.
-      // Note: Some blocks don't include digits; we keep digits as-is unless provided.
-      const capStart = Acap.codePointAt(0);
-      const lowStart = alow.codePointAt(0);
-      const zeroStart = zero && zero !== "0" ? zero.codePointAt(0) : null;
-
-      return function mapText(s){
-        let out = "";
-        for (const ch of (s || "")){
-          const code = ch.codePointAt(0);
-          if (code >= 65 && code <= 90){
-            out += String.fromCodePoint(capStart + (code - 65));
-          } else if (code >= 97 && code <= 122){
-            out += String.fromCodePoint(lowStart + (code - 97));
-          } else if (zeroStart && code >= 48 && code <= 57){
-            out += String.fromCodePoint(zeroStart + (code - 48));
-          } else {
-            out += ch;
-          }
-        }
-        return out;
-      }
-    }
-
-    function smallCapsLike(s){
-      const map = {
-        a:"ᴀ", b:"ʙ", c:"ᴄ", d:"ᴅ", e:"ᴇ", f:"ғ", g:"ɢ", h:"ʜ", i:"ɪ", j:"ᴊ",
-        k:"ᴋ", l:"ʟ", m:"ᴍ", n:"ɴ", o:"ᴏ", p:"ᴘ", q:"ǫ", r:"ʀ", s:"s", t:"ᴛ",
-        u:"ᴜ", v:"ᴠ", w:"ᴡ", x:"x", y:"ʏ", z:"ᴢ"
-      };
-      return (s||"").split("").map(ch=>{
-        const low = ch.toLowerCase();
-        if (map[low]) return map[low];
-        return ch;
-      }).join("");
-    }
-
-    function bubbleLike(s){
-      const map = {
-        a:"ⓐ",b:"ⓑ",c:"ⓒ",d:"ⓓ",e:"ⓔ",f:"ⓕ",g:"ⓖ",h:"ⓗ",i:"ⓘ",j:"ⓙ",
-        k:"ⓚ",l:"ⓛ",m:"ⓜ",n:"ⓝ",o:"ⓞ",p:"ⓟ",q:"ⓠ",r:"ⓡ",s:"ⓢ",t:"ⓣ",
-        u:"ⓤ",v:"ⓥ",w:"ⓦ",x:"ⓧ",y:"ⓨ",z:"ⓩ"
-      };
-      return (s||"").split("").map(ch=>{
-        const low = ch.toLowerCase();
-        if (map[low]) return map[low];
-        return ch;
-      }).join("");
-    }
-
-    function spacedLike(s){
-      return (s||"").split("").join(" ");
-    }
-
-    // ---------- 4) Caption + Emoji (template-based) ----------
-    function generateCaption(desc) {
-      const d = (desc || "").trim();
-      const base = d || "this moment";
-
-      // Emoji set selection
-      const emojiSets = [
-        ["✨","📸","🔥","💡","🎯","🧠"],
-        ["🌙","💻","⚡","🚀","🎥","🟣"],
-        ["🧩","🛠️","📈","💎","✅","🫶"],
-        ["☕","🎧","🧠","💬","💥","⭐"]
-      ];
-      const em = emojiSets[Math.floor(Math.random()*emojiSets.length)];
-
-      const hooks = [
-        `POV: ${base} ${em[0]}`,
-        `A quick reminder about ${base} ${em[1]}`,
-        `Here’s what nobody tells you about ${base} ${em[2]}`
-      ];
-      const hook = hooks[Math.floor(Math.random()*hooks.length)];
-
-      return [
-        `${hook}`,
-        ``,
-        `3 takeaways:`,
-        `• Keep it simple, keep it consistent ${em[3]}`,
-        `• One clear message per reel ${em[4]}`,
-        `• End with a strong CTA (save/share) ${em[5]}`,
-        ``,
-        `If this helped, comment “GROW” and follow @Nexovent for daily systems.`
-      ].join("\n");
-    }
-
-    // ---------- 5) Viral Hashtag Finder ----------
-    const HASHTAGS = {
-      tech: {
-        low: ["#techcreator","#devlife","#buildinpublic","#codingreels","#softwaretips","#productivityhacks","#learntocode","#frontenddaily","#aiworkflow","#webdevjourney","#creatorstack","#saasbuilder"],
-        high:["#programming","#webdevelopment","#coding","#technology","#developer","#ai","#startup","#softwareengineering","#tech","#design","#productivity","#entrepreneur"]
-      },
-      finance: {
-        low: ["#financecreator","#moneymindset","#wealthhabits","#personalfinance101","#budgetingtips","#investingbasics","#sidehustleideas","#financialliteracy","#moneytalks","#smartspending","#cashflowtips","#stocksforbeginners"],
-        high:["#finance","#investing","#stocks","#business","#entrepreneur","#money","#wealth","#bitcoin","#crypto","#motivation","#success","#realestate"]
-      },
-      lifestyle: {
-        low: ["#lifestylecreator","#dailyhabits","#mindfulliving","#routinebuilder","#aestheticvibes","#selfcaretips","#morningroutine","#productivityroutine","#wellnessjourney","#lifeupdate","#minimalhabits","#glowupjourney"],
-        high:["#lifestyle","#travel","#fitness","#selfcare","#wellness","#motivation","#fashion","#photography","#love","#instagood","#explorepage","#viral"]
-      }
-    };
-
-    function genHashtags(niche, total) {
-      const t = Math.max(10, Math.min(30, total|0));
-      const poolLow = [...(HASHTAGS[niche]?.low || [])];
-      const poolHigh = [...(HASHTAGS[niche]?.high || [])];
-
-      shuffle(poolLow); shuffle(poolHigh);
-
-      const lowCount = Math.round(t * 0.6);
-      const highCount = t - lowCount;
-
-      return {
-        low: poolLow.slice(0, lowCount),
-        high: poolHigh.slice(0, highCount)
-      };
-    }
-
-    function shuffle(arr){
-      for (let i=arr.length-1; i>0; i--){
-        const j = Math.floor(Math.random()*(i+1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
-    // ---------- 6) Engagement rate ----------
-    function calcEngagementRate(followers, likes, comments) {
-      if (followers <= 0) return { er: 0, score: 0, label: "N/A" };
-      const er = ((likes + comments) / followers) * 100;
-      // simple scoring curve (Instagram typical ranges vary; this is an approximate indicator)
-      const score = clamp(Math.round((er / 8) * 100), 0, 100); // 8% ~ 100
-      let label = "Needs work";
-      if (er >= 6) label = "Excellent";
-      else if (er >= 3.5) label = "Strong";
-      else if (er >= 2) label = "Average";
-      return { er, score, label };
-    }
-
-    // ---------- 7) Best posting time ----------
-    const TIME_SUGGESTIONS = {
-      students: [
-        { label: "Weekdays", times: ["7:30–9:00 AM", "12:30–2:00 PM", "8:00–10:30 PM"] },
-        { label: "Weekends", times: ["10:00 AM–12:00 PM", "6:00–9:00 PM"] }
+    // ---- Hashtag Pools by Niche/Post Type/Audience ----
+    const hashtagPools = {
+      tech: [
+        "#techtrends","#futureisnow","#innovation","#productlaunch","#appupdate","#aiwave","#growthhacks",
+        "#digitalera","#saas","#blockchain","#uxdesign","#startuplife","#programming","#devcommunity",
+        "#techtips","#automation","#cybersecurity","#iot","#cloudcomputing","#bigdata","#ml","#buildinpublic"
       ],
-      professionals: [
-        { label: "Weekdays", times: ["7:00–8:30 AM", "12:00–1:30 PM", "6:00–8:30 PM"] },
-        { label: "Weekends", times: ["9:00–11:00 AM", "5:00–7:30 PM"] }
+      business: [
+        "#biztips","#entrepreneurlife","#branding","#salesfunnel","#leadership","#strategy","#growth",
+        "#businesstips","#worksmart","#networking","#startuplife","#consulting","#investinyourself","#hustlemode",
+        "#officegoals","#ecommercetips","#projectmanager","#customerfirst","#mindset","#b2b"
       ],
-      creators: [
-        { label: "Weekdays", times: ["10:00 AM–12:00 PM", "3:00–5:00 PM", "7:30–10:00 PM"] },
-        { label: "Weekends", times: ["11:00 AM–1:00 PM", "7:00–10:00 PM"] }
+      genz: [
+        "#genzmood","#vibewithus","#foryou","#relatable","#aesthetic","#goodvibes","#ootd","#tiktoktrend",
+        "#genzquotes","#youngcreators","#memespam","#moodbooster","#trendsetter","#stanaccount","#sassy"
+      ],
+      aesthetic: [
+        "#aestheticfeed","#dreamscape","#pasteltones","#visualart","#minimalism","#vintagevibes","#softedit",
+        "#filmphotography","#goodenergy","#designinspo","#beautifuldestinations","#sunsetchaser","#urbanlife",
+        "#moodboard","#visualaddict"
+      ],
+      funny: [
+        "#memevibes","#funnytweets","#moodoftheday","#relatablememes","#justforfun","#lolz","#lmao","#rofl",
+        "#comedygram","#sillypost","#dailyhaha","#savage","#punny","#tooreal"
+      ],
+      sassy: [
+        "#sassyclub","#queenvibes","#attitudequotes","#bossup","#fearless","#itsmyvibe","#noshame","#moodon",
+        "#glowup","#trendsetter","#speakyourtruth"
+      ],
+      professional: [
+        "#prolife","#suitedup","#branding","#linkedintips","#networking","#careergoals","#businesstalk","#mbalife",
+        "#successquotes","#workmode","#branding","#personalbranding","#growthmindset"
+      ],
+      general: [
+        "#instadaily","#viralpost","#growth2026","#exploremore","#discoveries2026","#inspo","#reels2026","#captionthis",
+        "#creative","#motivation","#bestof2026"
+      ],
+      engagement: [
+        "#commentbelow","#dmme","#tagyourfriend","#communityfirst","#yourvoicecounts","#polltime","#qotd","#replies",
+        "#chatwithme","#engage2026"
+      ],
+      sale: [
+        "#shopnow","#limitedoffer","#newdrop","#salealert","#instasale","#onlineshopping","#exclusiveoffers","#discounted",
+        "#trendingnow","#giftideas"
+      ],
+      follow: [
+        "#followme","#newcontent","#staytuned","#dontmiss","#igfamily","#letsconnect","#supportsmall","#followtrain","#fyp","#watchthis"
+      ],
+      reel: [
+        "#reeltips","#reeltrends","#reelsinstagram","#viralreel","#scrollstoper","#reel2026"
+      ],
+      carousel: [
+        "#carouselpost","#swipetosee","#multipleimages","#storytime","#layoutlove"
+      ],
+      static: [
+        "#postoftheday","#pictureperfect","#snapshot","#myinstamoment"
       ]
     };
-
-    function formatTimeSuggestions(audience, tz) {
-      const blocks = TIME_SUGGESTIONS[audience] || TIME_SUGGESTIONS.creators;
-      const tzLabel = tz === "local" ? "Local Time" : tz.toUpperCase();
-      const lines = [`Best Posting Times (${tzLabel})`];
-      for (const b of blocks) {
-        lines.push(`\n${b.label}:`);
-        for (const t of b.times) lines.push(`• ${t}`);
+    // Randomizer Utility: Fisher-Yates
+    function getUniqueHashtags(opts) {
+      // Compose a large pool using all selected options -> flatten, unique, randomize, pick 5.
+      let pool = [];
+      let add = arr => { if(Array.isArray(arr)) for(const t of arr) pool.push(t);}
+      // Add pools based on tone, post type, audience, goal
+      if(opts.tone) add(hashtagPools[opts.tone]);
+      if(opts.type) add(hashtagPools[opts.type]);
+      if(opts.audience) add(hashtagPools[opts.audience]);
+      if(opts.goal) add(hashtagPools[opts.goal]);
+      add(hashtagPools.general);
+      // Clean, dedup, lowercase, filter invalid/empty.
+      let unique = Array.from(new Set(pool))
+        .map(tag=>tag.toLowerCase().trim())
+        .filter(tag=>/^#[a-z0-9][a-z0-9_]*$/.test(tag));
+      // Shuffle
+      for(let i=unique.length-1;i>0;i--){
+        let j=Math.floor(Math.random()*(i+1));
+        let tmp=unique[i];unique[i]=unique[j];unique[j]=tmp;
       }
-      lines.push(`\nTip: Post 15–25 minutes BEFORE the peak window to catch early engagement.`);
-      return lines.join("\n");
+      return unique.slice(0,5);
     }
+    // Random from array
+    function r(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
 
-    // ---------- 8) Shadowban safety check ----------
-    // Note: real banned hashtag lists change often; this is an offline *starter* list for screening.
-    const BANNED_HASHTAGS = new Set([
-      "#likeforlike","#follow4follow","#instalike","#instantfollow","#gaintrick",
-      "#adultlife","#beautyblogger","#brain","#kansas","#curvygirls","#streetphoto"
-    ].map(s => s.toLowerCase()));
-
-    function shadowbanReport(input) {
-      const raw = (input || "").trim();
-      const tags = raw
-        .split(/\s+/g)
-        .map(t => t.trim())
-        .filter(Boolean)
-        .map(t => t.startsWith("#") ? t : `#${t}`)
-        .map(t => t.toLowerCase());
-
-      const unique = Array.from(new Set(tags));
-      const banned = unique.filter(t => BANNED_HASHTAGS.has(t));
-      const score = clamp(100 - banned.length * 18, 0, 100);
-
-      const lines = [];
-      lines.push(`Shadowban Safety Report`);
-      lines.push(`• Tags checked: ${unique.length}`);
-      lines.push(`• Banned/suspicious matches: ${banned.length}`);
-      lines.push(`• Safety score: ${score}/100`);
-      if (banned.length) {
-        lines.push(`\nAvoid these:`);
-        for (const b of banned) lines.push(`- ${b}`);
-      } else {
-        lines.push(`\nNo matches found in the offline banned list.`);
-      }
-      lines.push(`\nNote: Instagram’s restricted tags can change. Always verify manually if reach drops suddenly.`);
-      return lines.join("\n");
-    }
-
-    // ---------- 9) Bio architect ----------
-    function generateBio({ name, what, proof, cta }) {
-      const n = (name||"").trim() || "Your Name";
-      const w = (what||"").trim() || "What you do (clear + specific)";
-      const p = (proof||"").trim() || "Proof / credibility (numbers work)";
-      const c = (cta||"").trim() || "CTA (DM keyword / link)";
-      return [
-        `👋 ${n}`,
-        `🎯 ${w}`,
-        `📌 ${p}`,
-        `📩 ${c}`
-      ].join("\n");
-    }
-
-    // ---------- 10) 7-day reel planner ----------
-    const PLAN_TOPICS = {
-      tech: {
-        balanced: [
-          "3 mistakes beginners make in coding reels",
-          "My 60-second dev productivity setup",
-          "Before/after: fixing a slow website",
-          "AI tool I use daily (quick demo)",
-          "Code snippet breakdown: 1 trick",
-          "My developer routine (day in life)",
-          "Weekly recap + what I learned"
+    // ---- VIRAL HOOK AND CAPTION TEMPLATES ----
+    // Per language, per options
+    const viralHooks = {
+      english: {
+        funny: [
+          "Real ones will get this…",
+          "Guess what happened next?",
+          "That moment when you just know!",
+          "You weren't ready for this one 😜",
+          "No context needed 🤫"
         ],
-        aggressive: [
-          "Hot take: most devs learn wrong",
-          "The 1 framework to learn faster",
-          "Do this before you build any app",
-          "I tried X AI tool for 7 days",
-          "Stop using this pattern (use this)",
-          "My top 5 dev tools (rapid fire)",
-          "Replying to comments (controversial)"
+        bold: [
+          "Rules? Never heard of them.",
+          "Here to break the feed.",
+          "Dare to stand out.",
+          "Not your average post.",
+          "Bringing the energy up!"
         ],
-        educational: [
-          "Hook formula for tech reels",
-          "Explain a concept: APIs in 30 sec",
-          "Explain a concept: auth in 30 sec",
-          "Portfolio tips: what recruiters want",
-          "Debugging checklist",
-          "System design mini-lesson",
-          "Q&A: answer top questions"
+        aesthetic: [
+          "Aesthetic to the core.",
+          "Dream in color 🎨",
+          "Frame of mind, frame of art.",
+          "Every pixel tells a story.",
+          "Catching vibes only."
+        ],
+        professional: [
+          "Success starts with the right mindset.",
+          "Where focus goes, results show.",
+          "This is how it’s done.",
+          "Small steps, big impact.",
+          "Lead by example."
+        ],
+        sassy: [
+          "Handle with attitude.",
+          "Serving looks and honesty.",
+          "Sass mode fully activated.",
+          "Woke up like this.",
+          "Confidence: 100%"
         ]
       },
-      finance: {
-        balanced: [
-          "Budget rule that actually works",
-          "3 money habits that changed my life",
-          "Avoid these investing mistakes",
-          "Simple explanation: compounding",
-          "Side hustle idea breakdown",
-          "Weekly market recap (simple)",
-          "Q&A: common finance myths"
+      hindi: { // Add Hindi templates if desired
+        funny: [
+          "Yeh toh hona hi tha…",
+          "Andaz hi kuch alag hai!",
+          "Smajh rahe ho?",
+          "Acha laga toh like kar dena! 😜",
+          "Maza hi kuch aur hai 🤫"
         ],
-        aggressive: [
-          "Unpopular money truth",
-          "Stop doing this with your salary",
-          "If I had to start with $100…",
-          "The trap keeping you broke",
-          "This debt strategy is underrated",
-          "My top 5 finance apps",
-          "React to a viral finance claim"
+        bold: [
+          "Rules yahan nahi chalte.",
+          "Feed khud hi tod dunga.",
+          "Jazbaat bold hai.",
+          "Naya trend suru."
         ],
-        educational: [
-          "Investing basics in 30 sec",
-          "How to build an emergency fund",
-          "Credit score explained simply",
-          "ETF vs stock: quick compare",
-          "Passive income realities",
-          "How to track expenses fast",
-          "FAQ: savings vs investing"
-        ]
+        // ... etc.
+        aesthetic: ["Khoobsurat pal.","Rang hai zindagi mein."],
+        professional: ["Manzil pass hai.","Mehnat rang laayi."],
+        sassy: ["Attitude pe bharosa hai.","Aaj full tashan me!"]
       },
-      lifestyle: {
-        balanced: [
-          "Morning routine (realistic)",
-          "3 habits for a better week",
-          "Desk setup / room glow-up",
-          "Outfit / aesthetic transitions",
-          "Healthy meal in 30 seconds",
-          "My weekly reset checklist",
-          "Self-care Q&A / comments"
+      hinglish: {
+        funny: [
+          "Yeh vibe samjhe kya?",
+          "Bas mazaak hi mazaak hai.",
+          "Mood ekdum mast hai!",
+          "Isi baat pe comment drop karo.",
+          "Scroll mat karna – abhi maza aayega."
         ],
-        aggressive: [
-          "Hard truth about motivation",
-          "Glow-up rule no one follows",
-          "Stop doing this every morning",
-          "If I had to restart my life…",
-          "This is why you feel tired",
-          "Top 5 lifestyle hacks",
-          "React to a viral trend (your take)"
+        bold: [
+          "Rule-breaker spotted.",
+          "Level hi alag hai.",
+          "Swag ki kami nahi.",
+          "Scene strong hai yahan."
         ],
-        educational: [
-          "Habit stacking explained",
-          "How to stop procrastinating",
-          "Minimalism: where to start",
-          "Time-blocking tutorial",
-          "Meal prep basics",
-          "Sleep hygiene checklist",
-          "Weekly planning walkthrough"
+        aesthetic: [
+          "Eyes on the vibe.",
+          "Noor hai asmaan mein.",
+          "Full artsy mood.",
+          "Vibes hi vibes hain."
+        ],
+        professional: [
+          "Growth dikh raha hai.",
+          "Kamyabi ki taraf.",
+          "Yahi hai professionalism."
+        ],
+        sassy: [
+          "Aaj kuch extra sassy.",
+          "This vibe is untouchable!",
+          "Log kya kahenge? Kuch nahi.",
+          "Drama ka afsos nahi."
         ]
       }
     };
-
-    function generatePlan(niche, intensity) {
-      const list = PLAN_TOPICS[niche]?.[intensity] || PLAN_TOPICS.tech.balanced;
-      const days = ["Day 1","Day 2","Day 3","Day 4","Day 5","Day 6","Day 7"];
-      return days.map((d,i)=>({ day: d, topic: list[i] || list[list.length-1] }));
-    }
-
-    // ---------- Video Popup Feature (YouTube links) ----------
-    // Usage: <a href="https://www.youtube.com/watch?v=..." data-video="popup">Watch</a>
-    // (Not used in UI by default, but implemented per requirement.)
-    function parseYouTubeId(url){
-      try{
-        const u = new URL(url, location.href);
-        if (u.hostname.includes("youtu.be")) return u.pathname.replace("/","").trim() || null;
-        if (u.searchParams.get("v")) return u.searchParams.get("v");
-        const parts = u.pathname.split("/").filter(Boolean);
-        const embedIndex = parts.indexOf("embed");
-        if (embedIndex >= 0 && parts[embedIndex+1]) return parts[embedIndex+1];
-        const shortsIndex = parts.indexOf("shorts");
-        if (shortsIndex >= 0 && parts[shortsIndex+1]) return parts[shortsIndex+1];
-        return null;
-      }catch{ return null; }
-    }
-
-    // Lightweight modal creator for video popup
-    function ensureVideoModal() {
-      let modal = $("#videoModal");
-      if (modal) return modal;
-
-      modal = document.createElement("div");
-      modal.id = "videoModal";
-      modal.className = "fixed inset-0 z-[60] hidden";
-      modal.innerHTML = `
-        <div class="modal-backdrop absolute inset-0" data-close="1"></div>
-        <div class="relative mx-auto max-w-md px-4 pt-24">
-          <div class="glass rounded-3xl overflow-hidden">
-            <div class="flex items-center justify-between px-4 py-3 border-b border-white/15">
-              <div class="text-sm font-extrabold">Video</div>
-              <button class="tap press chip rounded-xl px-3 py-2 text-xs font-semibold" data-close="1">Close</button>
-            </div>
-            <div class="bg-black aspect-video">
-              <iframe id="videoFrame" class="w-full h-full" src="about:blank"
-                title="YouTube video" loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            </div>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-
-      modal.addEventListener("click", (e) => {
-        const t = e.target;
-        if (t && t.getAttribute && t.getAttribute("data-close")) closeVideoModal();
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeVideoModal();
-      });
-
-      return modal;
-    }
-
-    function openVideoModal(youtubeId) {
-      const modal = ensureVideoModal();
-      const frame = $("#videoFrame", modal);
-      frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(youtubeId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
-      modal.classList.remove("hidden");
-      document.documentElement.style.overflow = "hidden";
-    }
-
-    function closeVideoModal() {
-      const modal = $("#videoModal");
-      if (!modal) return;
-      const frame = $("#videoFrame", modal);
-      if (frame) frame.src = "about:blank";
-      modal.classList.add("hidden");
-      document.documentElement.style.overflow = "";
-    }
-
-    // ---------- App wiring ----------
-    function mount() {
-      // Jump buttons
-      document.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-jump]");
-        if (!btn) return;
-        const sel = btn.getAttribute("data-jump");
-        const el = sel ? document.querySelector(sel) : null;
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-
-      // Help modal
-      const helpModal = $("#helpModal");
-      $("#btnHelp")?.addEventListener("click", () => helpModal.classList.remove("hidden"));
-      $("#btnCloseHelp")?.addEventListener("click", () => helpModal.classList.add("hidden"));
-      helpModal?.addEventListener("click", (e) => {
-        if (e.target.classList.contains("modal-backdrop")) helpModal.classList.add("hidden");
-      });
-
-      // Footer top button
-      $("#btnTop")?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-
-      // 1) Script writer
-      $("#btnGenScript")?.addEventListener("click", () => {
-        const topic = $("#scriptTopic").value;
-        $("#scriptOut").textContent = generateReelScript(topic);
-      });
-      $("#btnCopyScript")?.addEventListener("click", () => copyText($("#scriptOut").textContent || ""));
-
-      // 2) Palette extractor
-      const canvas = $("#paletteCanvas");
-      const ctx = canvas.getContext("2d", { willReadFrequently: true });
-
-      $("#paletteFile")?.addEventListener("change", async (e) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
-
-        const img = new Image();
-        img.decoding = "async";
-        img.loading = "eager";
-
-        img.onload = () => {
-          // fit image into canvas (square-ish for better sampling)
-          const maxW = 520;
-          const scale = Math.min(1, maxW / img.width);
-          const w = Math.max(240, Math.round(img.width * scale));
-          const h = Math.round(img.height * scale);
-          canvas.width = w;
-          canvas.height = h;
-
-          ctx.drawImage(img, 0, 0, w, h);
-
-          const palette = extractPaletteFromCanvas(canvas, 6);
-          renderPalette(palette);
-        };
-
-        img.src = await fileToDataURL(file);
-      });
-
-      $("#btnCopyPalette")?.addEventListener("click", () => {
-        const hexes = Array.from(document.querySelectorAll("[data-hex]")).map(x => x.getAttribute("data-hex"));
-        copyText(hexes.join(", "));
-      });
-
-      function renderPalette(hexes) {
-        const wrap = $("#paletteSwatches");
-        wrap.innerHTML = "";
-        if (!hexes.length) {
-          wrap.innerHTML = `<div class="text-xs text-white/70 col-span-2">Upload an image to extract colors.</div>`;
-          return;
-        }
-        for (const hex of hexes) {
-          const item = document.createElement("button");
-          item.className = "tap press glass-strong rounded-2xl p-2 text-left";
-          item.setAttribute("data-hex", hex);
-          item.innerHTML = `
-            <div class="rounded-xl h-12 w-full" style="background:${hex}; border:1px solid rgba(255,255,255,.18)"></div>
-            <div class="mt-2 text-xs font-bold">${hex}</div>
-          `;
-          item.addEventListener("click", () => copyText(hex));
-          wrap.appendChild(item);
-        }
+    // Caption body and CTA per settings
+    const ctaBodies = {
+      english: {
+        funny: [
+          "If you relate, tag your bestie below! Let’s see who’s as weird as us.",
+          "Drop a 😂 if you’ve been there.",
+          "Been there, done that? Say so in comments!",
+          "Share your wildest story below 👇",
+          "How would you finish this?"
+        ],
+        bold: [
+          "Double-tap if you’re fearless too.",
+          "Tag your squad if you’d dare.",
+          "Time to take charge! Agree?",
+          "Ready to disrupt things?",
+          "Comment 'YES' if you’re on the same vibe."
+        ],
+        aesthetic: [
+          "Who loves these colors? Hit ❤️",
+          "Would you hang this on your wall?",
+          "Save for moodboard inspo.",
+          "Drop a 🎨 if this is your vibe.",
+          "Art or accident? You decide."
+        ],
+        professional: [
+          "Let’s grow together – thoughts?",
+          "Share your tips in the comments.",
+          "Ready to level-up? Follow for more.",
+          "Tag a colleague who hustles.",
+          "Your move. What’s your next step?"
+        ],
+        sassy: [
+          "Feeling my energy? Let me know.",
+          "Drop a 🔥 for more sass.",
+          "If you can relate, comment your best clapback!",
+          "Like for attitude overload.",
+          "Who else is unbothered?"
+        ]
+      },
+      hindi: {
+        funny:["Comment karo agar maza aaya!","Aapka dost kaun hai aise vibe wala?","Like karna mat bhoolna.","Kya baat hai! Reply chahiye."],
+        bold:["Iss junoon ko samjha?","Kya aap bhi aise ho?","Double tap for swag."],
+        aesthetic:["Yeh rang kaise lage?","Wah, mood ban gaya!"],
+        professional:["Aage badho, seekho.","Kuch kehna hai toh comment karo."],
+        sassy:["Thoda attitude zaruri hai 😏","Aap bhi sassy ho? Like karo."]
+      },
+      hinglish: {
+        funny:["Vibe matching hai? Comment karo!","Ek like to banta hai.","Jhakaas mood hai na?","Comments ka flood chahiye."],
+        bold:["Sahi pakde hain!","Swag strong hai.","Bindaas hai scene."],
+        aesthetic:["Aesthetic game strong!","Colors wali feeling on."],
+        professional:["Work hi pehchan hai.","Level up ka time."],
+        sassy:["Total drama hai yaar.","Share karo best sassy line."]
       }
-
-      function fileToDataURL(file) {
-        return new Promise((res, rej) => {
-          const r = new FileReader();
-          r.onload = () => res(String(r.result));
-          r.onerror = rej;
-          r.readAsDataURL(file);
-        });
+    };
+    // CTA ending by goal
+    const ctaGoalEnd = {
+      engagement: {
+        english:"Double-tap, comment, and let’s chat!",
+        hindi:"Like aur comment karna mat bhoolna!",
+        hinglish:"Like, share, comment – pura package!"
+      },
+      sale: {
+        english: "See more via link in bio.",
+        hindi: "Link bio mein hai, check karo!",
+        hinglish: "For more, link bio mein hai!"
+      },
+      follow: {
+        english:"Follow for more like this.",
+        hindi:"Aise aur content ke liye follow karo.",
+        hinglish:"Naye ideas? Follow kar lo!"
       }
-
-      // 3) Font styler
-      const fontInput = $("#fontInput");
-      const fontList = $("#fontList");
-
-      function renderFonts(text) {
-        const t = text || "";
-        fontList.innerHTML = "";
-        FONT_STYLES.forEach((st, idx) => {
-          const val = st.map(t);
-          const row = document.createElement("div");
-          row.className = "tap press glass-strong rounded-2xl p-3";
-          row.innerHTML = `
-            <div class="flex items-center justify-between gap-3">
-              <div class="min-w-0">
-                <div class="text-[11px] text-white/70 font-semibold">${st.name}</div>
-                <div class="text-sm font-semibold text-white/95 break-words">${escapeHTML(val) || "<span class='text-white/60'>…</span>"}</div>
-              </div>
-              <button class="chip rounded-xl px-3 py-2 text-xs font-semibold shrink-0">Copy</button>
-            </div>
-          `;
-          row.querySelector("button").addEventListener("click", () => copyText(val));
-          fontList.appendChild(row);
-        });
+    };
+    // Emoji map
+    const emojiPools = {
+      funny:["😂","🤣","😜","😅","🤪"],
+      bold:["🔥","💥","😎","🚀","💯"],
+      aesthetic:["🌸","🌈","🎨","🦋","🌅"],
+      professional:["💼","🚀","👏","📈","📝"],
+      sassy:["😏","👑","🙃","💅","🦄"],
+      default:["✨","🌟","❤️"]
+    };
+    function getEmoji(tone, intensity) {
+      const pool = emojiPools[tone]||emojiPools.default;
+      if(intensity=="none") return "";
+      if(intensity=="minimal") return " "+pool[0];
+      if(intensity=="high") {
+        let arr = [];
+        let c = Math.min(3, pool.length);
+        for(let i=0;i<c;i++) arr.push(pool[Math.floor(Math.random()*pool.length)]);
+        return " "+arr.join(" ");
       }
-
-      fontInput?.addEventListener("input", () => renderFonts(fontInput.value));
-      $("#btnCopyFirstFont")?.addEventListener("click", () => {
-        const t = fontInput.value || "";
-        const top = FONT_STYLES[0].map(t);
-        copyText(top);
-      });
-      renderFonts("");
-
-      function escapeHTML(str){
-        return String(str)
-          .replaceAll("&","&amp;")
-          .replaceAll("<","&lt;")
-          .replaceAll(">","&gt;")
-          .replaceAll('"',"&quot;")
-          .replaceAll("'","&#039;");
-      }
-
-      // 4) Caption generator
-      $("#btnGenCaption")?.addEventListener("click", () => {
-        const desc = $("#captionDesc").value;
-        $("#captionOut").textContent = generateCaption(desc);
-      });
-      $("#btnCopyCaption")?.addEventListener("click", () => copyText($("#captionOut").textContent || ""));
-
-      // 5) Hashtag finder
-      $("#btnGenTags")?.addEventListener("click", () => {
-        const niche = $("#tagNiche").value;
-        const total = parseInt($("#tagCount").value, 10);
-        const { low, high } = genHashtags(niche, total);
-        renderTagChips($("#tagsLow"), low);
-        renderTagChips($("#tagsHigh"), high);
-      });
-
-      $("#btnCopyTags")?.addEventListener("click", () => {
-        const all = [
-          ...Array.from($("#tagsLow").querySelectorAll("[data-tag]")).map(x => x.getAttribute("data-tag")),
-          ...Array.from($("#tagsHigh").querySelectorAll("[data-tag]")).map(x => x.getAttribute("data-tag"))
-        ].filter(Boolean);
-        copyText(all.join(" "));
-      });
-
-      function renderTagChips(root, tags) {
-        root.innerHTML = "";
-        tags.forEach(t => {
-          const b = document.createElement("button");
-          b.className = "tap press chip rounded-full px-3 py-2 text-xs font-semibold";
-          b.setAttribute("data-tag", t);
-          b.textContent = t;
-          b.addEventListener("click", () => copyText(t));
-          root.appendChild(b);
-        });
-      }
-
-      // 6) Engagement calc
-      $("#btnCalcER")?.addEventListener("click", () => {
-        const followers = parseNumberLike($("#erFollowers").value);
-        const likes = parseNumberLike($("#erLikes").value);
-        const comments = parseNumberLike($("#erComments").value);
-
-        const { er, score, label } = calcEngagementRate(followers, likes, comments);
-
-        if (followers <= 0) {
-          $("#erOut").innerHTML = `<div class="text-white/90">Please enter a valid follower count.</div>`;
-          return;
-        }
-
-        const badge =
-          score >= 80 ? "bg-emerald-400/20 border-emerald-200/25" :
-          score >= 55 ? "bg-sky-400/20 border-sky-200/25" :
-          score >= 35 ? "bg-amber-400/20 border-amber-200/25" :
-                        "bg-rose-400/20 border-rose-200/25";
-
-        $("#erOut").innerHTML = `
-          <div class="flex items-center justify-between gap-3">
-            <div>
-              <div class="text-sm font-bold">Engagement Rate: ${er.toFixed(2)}%</div>
-              <div class="text-xs text-white/75">Health: ${label}</div>
-            </div>
-            <div class="chip ${badge} rounded-2xl px-3 py-2 text-sm font-extrabold border">
-              ${score}/100
-            </div>
-          </div>
-          <div class="mt-2 text-xs text-white/80">
-            Rule of thumb: <b>3–6%</b> is strong for many accounts. Context matters by niche.
-          </div>
-        `;
-      });
-
-      $("#btnResetER")?.addEventListener("click", () => {
-        $("#erFollowers").value = "";
-        $("#erLikes").value = "";
-        $("#erComments").value = "";
-        $("#erOut").textContent = "";
-      });
-
-      // 7) Best posting times
-      $("#btnTime")?.addEventListener("click", () => {
-        const aud = $("#audienceType").value;
-        const tz = $("#audienceTZ").value;
-        const text = formatTimeSuggestions(aud, tz);
-        $("#timeOut").textContent = text;
-      });
-      $("#btnCopyTimes")?.addEventListener("click", () => copyText($("#timeOut").textContent || ""));
-
-      // 8) Shadowban check
-      $("#btnShadowCheck")?.addEventListener("click", () => {
-        const report = shadowbanReport($("#shadowTags").value);
-        $("#shadowOut").textContent = report;
-      });
-      $("#btnCopyShadow")?.addEventListener("click", () => copyText($("#shadowOut").textContent || ""));
-
-      // 9) Bio generator
-      $("#btnGenBio")?.addEventListener("click", () => {
-        const bio = generateBio({
-          name: $("#bioName").value,
-          what: $("#bioWhat").value,
-          proof: $("#bioProof").value,
-          cta: $("#bioCTA").value
-        });
-        $("#bioOut").textContent = bio;
-      });
-      $("#btnCopyBio")?.addEventListener("click", () => copyText($("#bioOut").textContent || ""));
-
-      // 10) Planner
-      $("#btnGenPlan")?.addEventListener("click", () => {
-        const niche = $("#planNiche").value;
-        const intensity = $("#planIntensity").value;
-        const plan = generatePlan(niche, intensity);
-        renderPlan(plan);
-      });
-      $("#btnCopyPlan")?.addEventListener("click", () => {
-        const lines = Array.from($("#planOut").querySelectorAll("[data-line]")).map(x => x.getAttribute("data-line"));
-        copyText(lines.join("\n"));
-      });
-
-      function renderPlan(plan) {
-        const out = $("#planOut");
-        out.innerHTML = "";
-        plan.forEach(p => {
-          const row = document.createElement("div");
-          row.className = "tap press glass-strong rounded-2xl p-3";
-          row.setAttribute("data-line", `${p.day}: ${p.topic}`);
-          row.innerHTML = `
-            <div class="flex items-start justify-between gap-3">
-              <div class="min-w-0">
-                <div class="text-[11px] text-white/70 font-semibold">${p.day}</div>
-                <div class="text-sm font-bold text-white/95">${p.topic}</div>
-                <div class="text-xs text-white/75 mt-1">Hook → Value → CTA • Add captions • Quick cuts</div>
-              </div>
-              <button class="chip rounded-xl px-3 py-2 text-xs font-semibold shrink-0">Copy</button>
-            </div>
-          `;
-          row.querySelector("button").addEventListener("click", () => copyText(`${p.day}: ${p.topic}`));
-          out.appendChild(row);
-        });
-      }
-
-      // Video popup delegation (feature ready)
-      document.addEventListener("click", (e) => {
-        const a = e.target.closest?.('a[data-video="popup"]');
-        if (!a) return;
-        const id = parseYouTubeId(a.href || "");
-        if (!id) return;
-        e.preventDefault();
-        openVideoModal(id);
-      });
+      return "";
     }
 
-    // Fast start
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", mount, { once: true });
-    } else {
-      mount();
+    // IMAGE "AI" -- simulate w file name/content type for demo
+    function analyzeImage(file,opts) {
+      let name = file && file.name ? file.name.toLowerCase() : '';
+      if (/beach|ocean|sea/.test(name)) opts.tone = "aesthetic", opts.type = "static";
+      else if (/team|business|work|office/.test(name)) opts.tone="professional",opts.audience="business";
+      else if (/fun|dog|cat|pet|meme/.test(name)) opts.tone="funny",opts.audience="genz";
+      else if (/urban|city|night/.test(name)) opts.tone="bold";
+      else if (/sass|attitude/.test(name)) opts.tone="sassy";
+      return opts;
     }
+
+    // UI ELEMENTS
+    const form = document.getElementById("captionForm"),
+      descInput = document.getElementById("descInput"),
+      imgInput = document.getElementById("imgInput"),
+      filenameEl = document.getElementById("filename"),
+      toneSelect = document.getElementById("toneSelect"),
+      typeSelect = document.getElementById("typeSelect"),
+      audienceSelect = document.getElementById("audienceSelect"),
+      langSelect = document.getElementById("langSelect"),
+      goalSelect = document.getElementById("goalSelect"),
+      emojiSelect = document.getElementById("emojiSelect"),
+      outputSection = document.getElementById("outputSection"),
+      hookOutput = document.getElementById("hookOutput"),
+      captionOutput = document.getElementById("captionOutput"),
+      hashtagsOutput = document.getElementById("hashtagsOutput"),
+      copyCaptionBtn = document.getElementById("copyCaptionBtn"),
+      copyHashtagBtn = document.getElementById("copyHashtagBtn");
+
+    // State
+    let lastImageFile = null, lastOpts = null, lastGen = null;
+
+    imgInput.addEventListener("change", function() {
+      if (this.files.length) {
+        const f = this.files[0];
+        filenameEl.textContent = f.name.replace(/^.*[\/\\]/,"");
+        lastImageFile = f;
+      } else {
+        filenameEl.textContent = "";
+        lastImageFile = null;
+      }
+    });
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      let desc = descInput.value.trim(),
+          tone = toneSelect.value,
+          type = typeSelect.value,
+          audience = audienceSelect.value,
+          lang = langSelect.value,
+          goal = goalSelect.value,
+          emojiIntensity = emojiSelect.value;
+      let opts = {desc, tone, type, audience, lang, goal, emojiIntensity};
+      // IMAGE AI
+      if(lastImageFile) opts = analyzeImage(lastImageFile, opts);
+      // HOOK
+      let hooks = viralHooks[lang] && viralHooks[lang][opts.tone] ? viralHooks[lang][opts.tone] : viralHooks.english.professional;
+      let hook = r(hooks);
+      // CAPTION
+      let ctaArr = ctaBodies[lang] && ctaBodies[lang][opts.tone] ? ctaBodies[lang][opts.tone] : ctaBodies.english.professional;
+      let capBody = r(ctaArr);
+      let emojiStr = getEmoji(opts.tone, opts.emojiIntensity);
+      let ctaEnd = ctaGoalEnd[opts.goal]&&ctaGoalEnd[opts.goal][lang]?ctaGoalEnd[opts.goal][lang]:"";
+      let descClean = desc?desc[0].toUpperCase()+desc.slice(1):"";
+      let caption = capBody + (descClean ? " " + descClean : "") + emojiStr + "\n" + ctaEnd;
+
+      // HASHTAGS
+      let hashtagsArr = getUniqueHashtags(opts);
+      let hashtags = hashtagsArr.join(" ");
+      // Output
+      hookOutput.textContent = hook;
+      captionOutput.textContent = caption.trim();
+      hashtagsOutput.textContent = hashtags;
+      outputSection.style.display = "flex";
+      setTimeout(()=>outputSection.scrollIntoView({behavior:'smooth',block:'center'}), 80);
+      lastGen = {hook, caption, hashtags};
+    });
+
+    // Copy Buttons
+    copyCaptionBtn.addEventListener("click", ()=>{
+      let text = captionOutput.textContent||"";
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(()=>{
+        copyCaptionBtn.innerHTML = `<i class="fa-solid fa-check"></i>Copied!`;
+        setTimeout(()=>{copyCaptionBtn.innerHTML = `<i class="fa-regular fa-copy"></i>Copy Caption`},1100);
+      });
+    });
+    copyHashtagBtn.addEventListener("click", ()=>{
+      let text = hashtagsOutput.textContent||"";
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(()=>{
+        copyHashtagBtn.innerHTML = `<i class="fa-solid fa-check"></i>Copied!`;
+        setTimeout(()=>{copyHashtagBtn.innerHTML = `<i class="fa-solid fa-hashtag"></i>Copy Hashtags`},1000);
+      });
+    });
+    window.addEventListener('DOMContentLoaded',()=>{ if(window.innerWidth>520) descInput.focus(); });
   </script>
 </body>
 </html>
+```
