@@ -10,8 +10,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0c0e12; color: white; }
         .glass-card { background: #12161b; border: 1px solid #2d2d2d; border-radius: 2rem; }
-        .btn-gradient { background: linear-gradient(135deg, #d946ef 0%, #a855f7 100%); transition: all 0.3s ease; }
-        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3); }
+        .btn-gradient { background: linear-gradient(135deg, #d946ef 0%, #a855f7 100%); }
         .hashtag-item { background: rgba(217, 70, 239, 0.1); border: 1px solid rgba(217, 70, 239, 0.2); border-radius: 0.75rem; padding: 0.5rem 1rem; font-size: 0.875rem; color: #f5d0fe; }
     </style>
 </head>
@@ -19,87 +18,81 @@
 
     <nav class="max-w-4xl mx-auto py-4 flex justify-between items-center mb-12">
         <a href="https://nexovent.tech" class="text-xl font-black text-blue-500 tracking-tighter">NEXOVENT</a>
-        <a href="../" class="text-xs font-bold text-gray-500 hover:text-white transition">← BACK TO SUITE</a>
+        <a href="../" class="text-xs font-bold text-gray-500 hover:text-white transition">← BACK</a>
     </nav>
 
     <div class="max-w-2xl mx-auto text-center mb-12">
-        <h1 class="text-3xl md:text-4xl font-black mb-4 uppercase tracking-tight">AI Hashtag <span class="text-fuchsia-500 text-shadow-lg">Generator</span></h1>
-        <p class="text-gray-500 text-sm italic">Generate viral hashtags based on your content niche instantly.</p>
+        <h1 class="text-3xl font-black mb-4 uppercase tracking-tight italic">SambaNova <span class="text-fuchsia-500">AI Engine</span></h1>
+        <p class="text-gray-500 text-sm">Professional Hashtag Generation based on Post Title.</p>
     </div>
 
     <div class="max-w-2xl mx-auto glass-card p-6 md:p-10 mb-8">
         <div class="mb-6">
-            <label class="block text-xs font-black uppercase tracking-widest text-gray-400 mb-3">Enter Niche / Keyword</label>
-            <input type="text" id="keyword" placeholder="e.g. Photography, Fitness, Tech news..." 
-                class="w-full bg-[#0c0e12] border border-gray-800 rounded-xl p-4 text-white focus:outline-none focus:border-fuchsia-500 transition shadow-inner">
+            <label class="block text-xs font-black uppercase tracking-widest text-gray-400 mb-3">Post Title or Topic</label>
+            <input type="text" id="topicInput" placeholder="Enter your video/post title here..." 
+                class="w-full bg-[#0c0e12] border border-gray-800 rounded-xl p-4 text-white focus:outline-none focus:border-fuchsia-500 transition">
         </div>
 
-        <button onclick="generateHashtags()" class="w-full btn-gradient p-4 rounded-xl font-black uppercase tracking-widest text-sm mb-6">
-            Generate Hashtags <i class="fas fa-bolt ml-2"></i>
+        <button onclick="fetchHashtags()" id="genBtn" class="w-full btn-gradient p-4 rounded-xl font-black uppercase tracking-widest text-sm mb-6 transition-all hover:opacity-90">
+            Generate Viral Tags <i class="fas fa-bolt ml-2"></i>
         </button>
 
         <div id="loading" class="hidden text-center py-8">
             <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-fuchsia-500 mb-2"></div>
-            <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">Analyzing Niche...</p>
+            <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">SambaNova AI is analyzing...</p>
         </div>
 
-        <div id="resultBox" class="hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div id="resultBox" class="hidden animate-in fade-in duration-500">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xs font-black uppercase tracking-widest text-gray-400">Viral Tags Found</h3>
-                <button onclick="copyTags()" class="text-[10px] font-black uppercase tracking-widest text-fuchsia-500 hover:text-white transition">
-                    <i class="fas fa-copy mr-1"></i> Copy All
-                </button>
+                <h3 class="text-xs font-black uppercase tracking-widest text-gray-400">Optimized Hashtags</h3>
+                <button onclick="copyAll()" class="text-[10px] font-black text-fuchsia-500 uppercase tracking-widest"><i class="fas fa-copy mr-1"></i> Copy</button>
             </div>
-            <div id="hashtagList" class="flex flex-wrap gap-2 mb-6">
+            <div id="outputArea" class="bg-[#0c0e12] p-4 rounded-xl border border-gray-800 text-sm leading-relaxed text-gray-300 whitespace-pre-wrap">
                 </div>
         </div>
     </div>
 
-    <footer class="max-w-2xl mx-auto text-center text-[10px] text-gray-700 tracking-widest uppercase font-bold">
-        Powered by Nexovent AI Engine 2026
-    </footer>
-
     <script>
-        const hashtagData = {
-            "photography": ["#photography", "#photooftheday", "#nature", "#travel", "#picoftheday", "#instagram", "#love", "#instagood", "#photographer", "#art", "#portrait", "#landscape", "#canon", "#nikon", "#vsco", "#creative", "#explore", "#visuals", "#shutterbug", "#moment"],
-            "tech": ["#tech", "#technology", "#innovation", "#gadgets", "#future", "#ai", "#coding", "#software", "#engineering", "#programming", "#developer", "#digital", "#cybersecurity", "#apple", "#android", "#technews", "#robotics", "#web3", "#crypto", "#smarttech"],
-            "fitness": ["#fitness", "#gym", "#workout", "#motivation", "#bodybuilding", "#training", "#health", "#lifestyle", "#fitfam", "#healthy", "#gymlife", "#personaltrainer", "#crossfit", "#abs", "#muscle", "#exercise", "#yoga", "#fitspo", "#strong", "#cardio"],
-            "general": ["#explorepage", "#viral", "#trending", "#reels", "#foryou", "#instagram", "#growth", "#community", "#contentcreator", "#digitalmarketing", "#success", "#mindset", "#daily", "#explore", "#vibes"]
-        };
-
-        function generateHashtags() {
-            const keyword = document.getElementById('keyword').value.toLowerCase().trim();
+        async function fetchHashtags() {
+            const topic = document.getElementById('topicInput').value;
+            const btn = document.getElementById('genBtn');
             const loading = document.getElementById('loading');
             const resultBox = document.getElementById('resultBox');
-            const list = document.getElementById('hashtagList');
+            const outputArea = document.getElementById('outputArea');
 
-            if (!keyword) return alert("Please enter a keyword first!");
+            if (!topic) return alert("Please enter a title!");
 
+            btn.disabled = true;
             loading.classList.remove('hidden');
             resultBox.classList.add('hidden');
-            list.innerHTML = '';
 
-            // Simulated AI Delay
-            setTimeout(() => {
-                loading.classList.add('hidden');
+            try {
+                // यह आपके Vercel के बैकएंड (generate.js) को कॉल करेगा
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        topic: topic, 
+                        type: "30 highly viral and niche-specific Instagram hashtags. Return only hashtags separated by space." 
+                    })
+                });
+
+                const data = await response.json();
+                outputArea.innerText = data.output;
                 resultBox.classList.remove('hidden');
-
-                // Logic to select tags
-                let tags = hashtagData[Object.keys(hashtagData).find(k => keyword.includes(k))] || hashtagData.general;
-                
-                // Add unique suffix tags
-                const uniqueTags = tags.map(t => `<div class="hashtag-item">${t}</div>`).join('');
-                list.innerHTML = uniqueTags;
-            }, 1200);
+            } catch (error) {
+                alert("Server Error. Please try again.");
+            } finally {
+                loading.classList.add('hidden');
+                btn.disabled = false;
+            }
         }
 
-        function copyTags() {
-            const tags = Array.from(document.querySelectorAll('.hashtag-item')).map(div => div.innerText).join(' ');
-            navigator.clipboard.writeText(tags).then(() => {
-                alert("Hashtags copied to clipboard!");
-            });
+        function copyAll() {
+            const text = document.getElementById('outputArea').innerText;
+            navigator.clipboard.writeText(text);
+            alert("Copied to clipboard!");
         }
     </script>
 </body>
 </html>
-
