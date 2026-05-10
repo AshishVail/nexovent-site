@@ -1,678 +1,560 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth bg-[#FAF8F5] text-[#111]">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KRONOS — Prestige Swiss Watches</title>
-    <meta name="description" content="KRONOS crafts timepieces of extraordinary legacy, precision, and exclusivity.">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
-    <!-- Google Fonts: Cinzel & Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
-    <style>
-      html {
-        font-family: 'Montserrat', system-ui, sans-serif;
-      }
-      .font-luxury {
-        font-family: 'Cinzel', serif;
-        letter-spacing: 0.04em;
-      }
-      .btn-gold {
-        @apply bg-gradient-to-br from-[#c5a880] to-[#9e825a] text-[#111] font-semibold rounded-full shadow-lg hover:scale-105 transition-all duration-150;
-      }
-      .glass {
-        background: rgba(250, 248, 245, 0.7);
-        backdrop-filter: blur(10px);
-      }
-      .stroke-gold {
-        -webkit-text-stroke: 2px #c5a880;
-        text-stroke: 2px #c5a880;
-      }
-      /* Custom scroll-bar */
-      ::-webkit-scrollbar { width: 9px; background: #fdfdfd; }
-      ::-webkit-scrollbar-thumb { background: #d0c3af; border-radius: 100vw; }
-      body, html {scrollbar-width: thin; scrollbar-color: #d0c3af #fdfdfd;}
-    </style>
-  </head>
-  <body class="bg-[#FAF8F5] text-[#111111] overflow-x-hidden">
+<html lang="en" class="bg-white text-[#111111] scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KRONOS Ultra-Luxury Watches</title>
+  <meta name="description" content="KRONOS – Swiss Ultra-Luxury Timepieces, Precision Redefined">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+    html { font-family: 'Montserrat', system-ui, sans-serif; }
+    .font-luxury { font-family: 'Cinzel', serif; }
+    .glass {
+      background: rgba(255,255,255,0.9);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+    .gold { color: #c5a880; }
+    .border-gold { border-color: #c5a880 !important; }
+    .btn-gold {
+      @apply rounded-full px-7 py-2.5 font-semibold uppercase tracking-wide transition shadow border;
+      background: linear-gradient(90deg, #ffe5bc 0%, #fff0d3 100%);
+      border: 1.5px solid #c5a880;
+      color: #111111;
+    }
+    .btn-gold:hover {
+      background: linear-gradient(90deg, #fffaee 0%, #ffe6b8 100%);
+      color: #c5a880;
+      border-color: #c5a880;
+    }
+    .shadow-gold {
+      box-shadow: 0 8px 28px 0 #ffe7be36, 0 1.5px 5px #c5a88018;
+    }
+    ::selection {
+      background: #c5a88033;
+    }
+    .no-select, img, button, .glass { user-select: none; }
+    /* Newsletter focus */
+    input:focus {
+      outline: 2px solid #c5a88055;
+    }
+  </style>
+</head>
+<body class="bg-white text-[#111111] min-h-screen">
 
-    <!-- ===================== Navbar ===================== -->
-    <nav id="navbar" class="glass fixed top-0 left-0 w-full z-50 border-b border-[#ece6dd] transition-all duration-300 bg-opacity-70">
-      <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20 transition-all duration-300">
-        <!-- Brand -->
-        <div class="flex items-center space-x-3">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Watch_%28analog%29_icon.png" alt="KRONOS Logo" class="h-8 w-8 object-contain select-none pointer-events-none">
-          <span class="font-luxury text-3xl text-[#c5a880] tracking-wider">KRONOS</span>
-        </div>
-        <!-- Desktop Nav Links -->
-        <div class="hidden lg:flex items-center space-x-10 font-medium">
-          <a href="#heritage" class="hover:text-[#c5a880] transition">Heritage</a>
-          <a href="#watches" class="hover:text-[#c5a880] transition">Watches</a>
-          <a href="#customizer" class="hover:text-[#c5a880] transition">Customizer</a>
-          <a href="#specs" class="hover:text-[#c5a880] transition">Technical</a>
-          <a href="#faq" class="hover:text-[#c5a880] transition">FAQ</a>
-        </div>
-        <!-- Cart & Mobile Trigger -->
-        <div class="flex items-center space-x-6">
-          <button id="cart-btn" class="relative group p-2 rounded-full hover:bg-[#f6f5f2] transition">
-            <i class="fa-solid fa-bag-shopping text-2xl"></i>
-            <span id="cart-count" class="absolute -top-1.5 -right-1 bg-gradient-to-br from-[#c5a880] to-[#9e825a] text-white text-xs px-1.5 py-0.5 font-bold rounded-full shadow z-10">0</span>
-          </button>
-          <button id="mobile-menu-trigger" class="lg:hidden p-3 rounded-full hover:bg-[#f6f5f2] transition text-2xl">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-        </div>
+  <!-- ================== NAVBAR ================== -->
+  <nav id="navbar"
+    class="glass fixed top-0 left-0 w-full z-50 shadow-lg transition-all duration-300 border-b border-gray-100 h-[72px] flex items-center">
+    <div class="max-w-7xl mx-auto px-5 flex items-center justify-between w-full">
+      <a href="#hero" class="flex items-center no-select">
+        <span class="font-luxury text-2xl md:text-3xl gold tracking-wide font-bold">KRONOS</span>
+      </a>
+      <div class="hidden md:flex items-center space-x-10 font-semibold">
+        <a href="#heritage" class="hover:text-[#c5a880] transition">Heritage</a>
+        <a href="#collection" class="hover:text-[#c5a880] transition">Collection</a>
+        <a href="#specs" class="hover:text-[#c5a880] transition">Specs</a>
+        <a href="#customizer" class="hover:text-[#c5a880] transition">Customize</a>
+        <a href="#faq" class="hover:text-[#c5a880] transition">FAQ</a>
       </div>
-      <!-- Mobile Drawer -->
-      <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/60 hidden">
-        <div class="absolute right-0 top-0 h-full w-72 bg-[#faf8f5] shadow-2xl flex flex-col p-8 animate-slideInLeft">
-          <div class="flex justify-between items-center mb-10">
-            <span class="font-luxury text-2xl text-[#c5a880]">KRONOS</span>
-            <button id="mobile-menu-close" class="text-black text-2xl hover:text-[#9e825a]"><i class="fa-solid fa-times"></i></button>
-          </div>
-          <a href="#heritage" class="block py-3 text-lg font-semibold hover:text-[#c5a880]">Heritage</a>
-          <a href="#watches" class="block py-3 text-lg font-semibold hover:text-[#c5a880]">Watches</a>
-          <a href="#customizer" class="block py-3 text-lg font-semibold hover:text-[#c5a880]">Customizer</a>
-          <a href="#specs" class="block py-3 text-lg font-semibold hover:text-[#c5a880]">Technical</a>
-          <a href="#faq" class="block py-3 text-lg font-semibold hover:text-[#c5a880]">FAQ</a>
-        </div>
+      <div class="flex items-center space-x-5">
+        <button id="cart-btn" class="relative p-2 rounded-full">
+          <i class="fa-solid fa-bag-shopping text-2xl"></i>
+          <span id="cart-count"
+            class="absolute -top-1.5 -right-2 bg-gradient-to-tr from-[#c5a880] to-[#f9cb86] text-white text-xs rounded-full px-1.5 py-0.5 font-semibold shadow"
+            >0</span>
+        </button>
+        <button id="menu-btn" class="md:hidden p-2 rounded-full hover:bg-gray-100">
+          <i class="fa-solid fa-bars text-2xl"></i>
+        </button>
       </div>
-    </nav>
+    </div>
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white bg-opacity-90 z-60 backdrop-blur-md flex flex-col pt-20 px-7 transition-all duration-500 translate-x-full h-full w-full md:hidden" style="right:-100%;">
+      <button id="menu-close" class="absolute top-4 right-7 text-3xl text-[#111] hover:text-[#c5a880]"><i class="fa-solid fa-times"></i></button>
+      <a href="#heritage" class="block py-4 text-xl font-semibold hover:text-[#c5a880]">Heritage</a>
+      <a href="#collection" class="block py-4 text-xl font-semibold hover:text-[#c5a880]">Collection</a>
+      <a href="#specs" class="block py-4 text-xl font-semibold hover:text-[#c5a880]">Specs</a>
+      <a href="#customizer" class="block py-4 text-xl font-semibold hover:text-[#c5a880]">Customize</a>
+      <a href="#faq" class="block py-4 text-xl font-semibold hover:text-[#c5a880]">FAQ</a>
+    </div>
+  </nav>
 
-    <!-- ===================== Hero Section ===================== -->
-    <header class="relative pt-36 sm:pt-44 pb-32 bg-gradient-to-b from-[#111111]/[0.90] via-[#222018]/70 to-[#FAF8F5] mb-10 overflow-x-clip">
-      <div class="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between px-6 z-10">
-        <!-- Animated Dial Background -->
-        <div class="absolute left-1/2 -translate-x-1/2 top-14 z-0 select-none pointer-events-none"
-          style="width: 560px; height: 560px;">
-          <svg id="dial-svg" width="560" height="560" viewBox="0 0 560 560" fill="none"
-            xmlns="http://www.w3.org/2000/svg" class="absolute">
-            <circle cx="280" cy="280" r="265" stroke="#c5a880bb" stroke-width="2" />
-            <circle cx="280" cy="280" r="235" stroke="#9e825a33" stroke-width="6" />
-            <circle cx="280" cy="280" r="190" stroke="#c5a880bb" stroke-width="1.5" />
-            <circle cx="280" cy="280" r="160" stroke="#11111122" stroke-width="8" />
-            <g id="ticks">
-              <!-- Tick marks will be added by JavaScript -->
-            </g>
-          </svg>
+  <!-- ================== HERO ================== -->
+  <section id="hero" class="relative w-full min-h-[700px] flex items-center justify-center bg-white pt-24 md:pt-32 pb-4">
+    <div class="max-w-7xl mx-auto px-5 grid grid-cols-1 md:grid-cols-2 items-center gap-12 md:gap-4">
+      <!-- Text Column -->
+      <div>
+        <div id="gsap-hero-heading-1" class="font-luxury text-5xl md:text-6xl font-extrabold tracking-tight text-[#111] mb-4 opacity-0 translate-y-14">THE ULTRA-LUXURY</div>
+        <div id="gsap-hero-heading-2" class="font-luxury text-4xl md:text-5xl gold font-bold tracking-wide mb-7 opacity-0 translate-y-14">KRONOS</div>
+        <div id="gsap-hero-desc" class="text-lg md:text-xl font-semibold mb-9 opacity-0 translate-y-14 max-w-lg">
+          Handcrafted Swiss chronographs. Sculpted in gold and time itself.<br>
+          Welcome to the world of next-level elegance.
         </div>
-        <!-- Watch Image -->
-        <div class="relative w-full flex justify-center lg:w-1/2 z-10">
-          <img id="hero-watch"
-            src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=600"
-            alt="KRONOS Masterpiece"
-            class="relative z-10 h-[410px] w-auto select-none drop-shadow-2xl will-change-transform"
-            style="transform-origin: 54% 43%;">
-        </div>
-        <!-- Hero Heading and CTA -->
-        <div class="flex-1 mt-16 lg:mt-0 text-center lg:text-left z-10">
-          <h1 class="font-luxury text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#FAF8F5] leading-tight drop-shadow" id="hero-heading-1">THE MASTERPIECE</h1>
-          <h2 class="font-luxury text-3xl md:text-4xl mt-4 text-[#c5a880] tracking-widest font-semibold drop-shadow" id="hero-heading-2">KRONOS</h2>
-          <p class="mt-5 text-lg md:text-2xl font-medium text-[#d9d6cf] max-w-xl drop-shadow" id="hero-para">
-            Artisanal Swiss precision. Born for legends, sculpted for connoisseurs.
-          </p>
-          <button id="shop-now" class="mt-8 px-8 py-3 btn-gold text-lg font-semibold uppercase tracking-wide shadow-lg transition
-          focus:ring-4 ring-[#c5a880]/30
-          animate-bounce-short">
-            Shop Now <i class="fa-solid fa-arrow-right-long ml-2"></i>
-          </button>
+        <div id="gsap-hero-cta" class="flex gap-6 opacity-0 translate-y-14">
+          <a href="#collection" class="btn-gold shadow-gold">View Collection</a>
+          <a href="#customizer" class="rounded-full border border-[#c5a880] px-7 py-2.5 uppercase font-semibold tracking-wide bg-white hover:bg-[#fff8ee] transition text-[#c5a880] shadow">Customize</a>
         </div>
       </div>
-    </header>
+      <!-- Visual Column -->
+      <div class="relative flex items-center justify-center min-h-[380px] md:min-h-[480px]">
+        <!-- Rotating Gold Circle -->
+        <svg id="gsap-hero-ring"
+          width="349" height="349" viewBox="0 0 349 349"
+          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 drop-shadow opacity-0"
+          fill="none">
+          <circle cx="174.5" cy="174.5" r="160" stroke="#c5a880" stroke-width="4"/>
+          <circle cx="174.5" cy="174.5" r="140" stroke="#ffe9c8" stroke-width="2"/>
+          <circle cx="174.5" cy="174.5" r="174" stroke="#c5a88052" stroke-width="1"/>
+        </svg>
+        <!-- Watch image (rotating in) -->
+        <img
+          id="gsap-hero-img"
+          src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=600"
+          alt="KRONOS Timepiece"
+          class="z-10 relative w-[270px] md:w-[330px] rounded-full shadow-2xl border-4 border-[#fffbe8] opacity-0"
+        />
+      </div>
+    </div>
+  </section>
 
-    <!-- ===================== Heritage Section ===================== -->
-    <section id="heritage" class="relative max-w-7xl mx-auto px-6 py-32 flex flex-col md:flex-row md:items-stretch gap-16 z-20">
-      <div class="md:w-1/2 flex flex-col justify-center">
-        <h2 class="font-luxury text-4xl md:text-5xl text-[#111] mb-7">Swiss Maison Heritage</h2>
-        <p class="text-lg leading-relaxed tracking-wide text-[#483e31]">
-          Forged amidst the alpine air, each KRONOS timepiece is a testament to centuries of meticulous expertise honed in the renowned Swiss Jura valley.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-6">
-          <div class="flex items-center space-x-3">
-            <i class="fa-solid fa-gem text-[#c5a880] text-2xl"></i>
-            <span class="font-medium text-[#111]">Hand-crafted Movements</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <i class="fa-solid fa-building-columns text-[#c5a880] text-xl"></i>
-            <span class="font-medium text-[#111]">Maison Founded 1887</span>
-          </div>
-        </div>
+  <!-- ================== HERITAGE ================== -->
+  <section id="heritage" class="max-w-7xl mx-auto px-5 py-32 grid md:grid-cols-2 grid-cols-1 gap-12 items-center">
+    <!-- Left IMG -->
+    <div id="gsap-heritage-img" class="opacity-0 -translate-x-16">
+      <div class="relative mx-auto w-[90%] max-w-[400px]">
+        <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=600"
+          alt="Watch Gears" class="rounded-3xl border-2 border-gold shadow-xl w-full object-cover"/>
+        <div class="absolute bottom-0 left-0 w-16 h-2 bg-[#c5a880] rounded-r-full"></div>
       </div>
-      <div class="md:w-1/2 flex items-center justify-center relative">
-        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?q=80&w=400&auto=format&fit=crop"
-          alt="Swiss Heritage" class="rounded-2xl shadow-xl object-cover h-[350px] w-[95%] md:w-[410px] heritage-img opacity-0">
-        <div class="absolute -inset-5 rounded-2xl border-2 border-dashed border-[#c5a880] pointer-events-none"></div>
+    </div>
+    <!-- Right Text -->
+    <div id="gsap-heritage-txt" class="opacity-0 translate-x-16">
+      <div class="font-luxury text-3xl md:text-4xl font-bold mb-6">The Maison Heritage</div>
+      <div class="h-1 w-24 bg-[#c5a880] rounded mb-8"></div>
+      <div class="text-lg md:text-xl font-semibold text-[#111] mb-6 leading-relaxed">
+        Each KRONOS watch is born in Switzerland’s Vallée de Joux. Since 1887, old-world mastery meets rare hand-finished artistry—resulting in timepieces of eternal value. Gold, crafted mechanical wonders, and devotion to perfection.
       </div>
-    </section>
+      <div class="text-base text-[#A0895B] font-medium">
+        <i class="fa-solid fa-award mr-2 gold"></i>
+        <span>Swiss Atelier, Family-owned. Timeless since 1887.</span>
+      </div>
+    </div>
+  </section>
 
-    <!-- ===================== Featured Watches ===================== -->
-    <section id="watches" class="max-w-7xl mx-auto px-6 py-32">
-      <h2 class="font-luxury text-4xl md:text-5xl mb-14 text-center text-[#111]">Featured Timepieces</h2>
-      <div class="grid md:grid-cols-3 gap-14">
-        <!-- Watch Card 1 -->
-        <div class="group bg-white rounded-3xl shadow-xl transition transform-gpu duration-300 hover:-translate-y-3 hover:shadow-gold relative" style="box-shadow:0 8px 40px 0 #f4f4f4,0 2px 6px #b6aa95;">
-          <div class="overflow-hidden rounded-t-3xl">
-            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=500&auto=format&fit=crop"
-              alt="Midnight Obsidian" class="w-full h-[260px] object-cover transition duration-300 group-hover:scale-110 group-hover:rotate-2">
-          </div>
-          <div class="p-7">
-            <h3 class="font-luxury text-2xl mb-2">Midnight Obsidian</h3>
-            <p class="text-[#9e825a] font-semibold mb-3">$8,450</p>
-            <p class="text-gray-600 mb-5">A symphony of deep onyx, rose gold accents, and midnight intrigue—designed for the soirée that never ends.</p>
-            <button class="add-to-cart-btn btn-gold px-5 py-2 mr-2">Add to Cart</button>
-            <button class="add-to-cart-btn bg-black bg-opacity-90 hover:bg-opacity-100 text-[#c5a880] px-4 py-2 rounded-full ml-2 text-sm tracking-wide font-semibold shadow transition">Add to Collection</button>
-          </div>
+  <!-- ================== TOAST NOTIFICATION ================== -->
+  <div id="toast"
+    class="fixed bottom-7 right-7 z-[100] opacity-0 pointer-events-none transition-all duration-500"
+    style="transform:translateY(40px)">
+    <div class="flex items-center bg-white border-2 border-gold shadow-gold rounded-xl px-7 py-3 text-lg font-semibold">
+      <span class="gold mr-2"><i class="fa-solid fa-check-circle"></i></span>
+      <span id="toast-msg">Added to cart!</span>
+    </div>
+  </div>
+
+  <!-- ================== COLLECTION ================== -->
+  <section id="collection" class="max-w-7xl mx-auto px-5 py-32">
+    <div id="gsap-collection-heading" class="font-luxury text-4xl md:text-5xl font-bold text-center mb-16 opacity-0 translate-y-12">Featured Collection</div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Card 1 -->
+      <div id="gsap-col1" class="bg-white border border-gray-200 rounded-2xl shadow-gold p-0 flex flex-col group opacity-0 translate-y-20">
+        <div class="relative overflow-hidden rounded-t-2xl">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=480"
+            alt="Midnight Obsidian" class="mx-auto w-full h-[240px] object-cover rounded-t-2xl
+              transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"/>
         </div>
-        <!-- Watch Card 2 -->
-        <div class="group bg-white rounded-3xl shadow-xl transition transform-gpu duration-300 hover:-translate-y-3 hover:shadow-gold relative" style="box-shadow:0 8px 40px 0 #f4f4f4,0 2px 6px #b6aa95;">
-          <div class="overflow-hidden rounded-t-3xl">
-            <img src="https://images.unsplash.com/photo-1515442261605-cd4ce49fc2c1?q=80&w=500&auto=format&fit=crop"
-              alt="The Sterling Slate" class="w-full h-[260px] object-cover transition duration-300 group-hover:scale-110 group-hover:-rotate-2">
-          </div>
-          <div class="p-7">
-            <h3 class="font-luxury text-2xl mb-2">The Sterling Slate</h3>
-            <p class="text-[#9e825a] font-semibold mb-3">$9,200</p>
-            <p class="text-gray-600 mb-5">Sophisticated slate dial enveloped by surgical-grade titanium; a timepiece in pursuit of perfection.</p>
-            <button class="add-to-cart-btn btn-gold px-5 py-2 mr-2">Add to Cart</button>
-            <button class="add-to-cart-btn bg-black bg-opacity-90 hover:bg-opacity-100 text-[#c5a880] px-4 py-2 rounded-full ml-2 text-sm tracking-wide font-semibold shadow transition">Add to Collection</button>
-          </div>
-        </div>
-        <!-- Watch Card 3 -->
-        <div class="group bg-white rounded-3xl shadow-xl transition transform-gpu duration-300 hover:-translate-y-3 hover:shadow-gold relative" style="box-shadow:0 8px 40px 0 #f4f4f4,0 2px 6px #b6aa95;">
-          <div class="overflow-hidden rounded-t-3xl">
-            <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=500&auto=format&fit=crop"
-              alt="Rose Gold Dynasty" class="w-full h-[260px] object-cover transition duration-300 group-hover:scale-110 group-hover:rotate-3">
-          </div>
-          <div class="p-7">
-            <h3 class="font-luxury text-2xl mb-2">Rose Gold Dynasty</h3>
-            <p class="text-[#9e825a] font-semibold mb-3">$12,800</p>
-            <p class="text-gray-600 mb-5">A celebration of divine proportions—liquid rose gold meets sapphire clarity and princely complication.</p>
-            <button class="add-to-cart-btn btn-gold px-5 py-2 mr-2">Add to Cart</button>
-            <button class="add-to-cart-btn bg-black bg-opacity-90 hover:bg-opacity-100 text-[#c5a880] px-4 py-2 rounded-full ml-2 text-sm tracking-wide font-semibold shadow transition">Add to Collection</button>
+        <div class="p-7 flex flex-col flex-1">
+          <div class="font-luxury text-2xl mb-2">Midnight Obsidian</div>
+          <div class="gold font-bold text-xl mb-5">$8,600</div>
+          <div class="text-gray-700 mb-7 flex-1">Glacial black dial, 18K gold, sapphire dome. A celebration of night and power.</div>
+          <div class="flex gap-4">
+            <button class="btn-gold add-to-cart" data-product="Midnight Obsidian">Add to Cart</button>
+            <button class="rounded-full border border-[#c5a880] px-5 py-2.5 uppercase font-semibold text-[#c5a880] bg-white hover:bg-[#fff5e0] shadow transition add-to-cart" data-product="Midnight Obsidian (Collection)">Add to Collection</button>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- ===================== 3D-like Customizer ===================== -->
-    <section id="customizer" class="max-w-7xl mx-auto px-6 py-32">
-      <h2 class="font-luxury text-4xl md:text-5xl mb-12 text-center text-[#111]">Design Your Own Kronos</h2>
-      <div class="flex flex-col lg:flex-row lg:items-center gap-16">
-        <div class="mx-auto min-w-[320px] max-w-[360px] h-[420px] bg-gradient-to-br from-[#f6f2ea] via-[#ebddc0] to-[#f8f6f3] rounded-3xl shadow-lg flex flex-col items-center justify-center p-5 relative customizer-img-box">
-          <div id="customizer-watch-imgs" class="relative w-full h-[350px] flex items-center justify-center">
-            <img data-case="rosegold" src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=450&q=80"
-              class="absolute mx-auto customizer-watch-img object-contain w-auto h-[300px] opacity-0 transition-opacity duration-700 will-change-auto" alt="Rose Gold Dynasty Watch">
-            <img data-case="titanium" src="https://images.unsplash.com/photo-1515442261605-cd4ce49fc2c1?auto=format&fit=crop&w=450&q=80"
-              class="absolute mx-auto customizer-watch-img object-contain w-auto h-[300px] opacity-0 transition-opacity duration-700 will-change-auto" alt="Sterling Slate Watch">
-            <img data-case="black" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=450&q=80"
-              class="absolute mx-auto customizer-watch-img object-contain w-auto h-[300px] opacity-0 transition-opacity duration-700 will-change-auto" alt="Midnight Obsidian Watch">
-          </div>
+      <!-- Card 2 -->
+      <div id="gsap-col2" class="bg-white border border-gray-200 rounded-2xl shadow-gold p-0 flex flex-col group opacity-0 translate-y-20">
+        <div class="relative overflow-hidden rounded-t-2xl">
+          <img src="https://images.unsplash.com/photo-1515442261605-cd4ce49fc2c1?q=80&w=480"
+            alt="Sterling Slate" class="mx-auto w-full h-[240px] object-cover rounded-t-2xl
+              transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3"/>
         </div>
-        <div class="flex-1 flex flex-col items-center lg:items-start gap-14">
-          <div>
-            <h3 class="font-luxury text-2xl mb-6">Case Finish</h3>
-            <div class="flex gap-4">
-              <button class="customizer-case-selector flex items-center px-6 py-3 rounded-full font-medium text-lg border-2 border-[#c5a880] bg-[#faf8f5] hover:bg-[#f8ecd9] focus:ring-4 ring-[#c5a880]/60 transition-all duration-200 uppercase selected" data-case="rosegold"><i class="fa-solid fa-circle mr-2 text-[#c5a880]"></i>Rose Gold</button>
-              <button class="customizer-case-selector flex items-center px-6 py-3 rounded-full font-medium text-lg border-2 border-[#9e825a] bg-[#faf8f5] hover:bg-[#eee7da] focus:ring-4 ring-[#9e825a]/50 transition-all duration-200 uppercase" data-case="titanium"><i class="fa-solid fa-circle mr-2 text-gray-400"></i>Titanium</button>
-              <button class="customizer-case-selector flex items-center px-6 py-3 rounded-full font-medium text-lg border-2 border-black bg-[#faf8f5] hover:bg-[#eceae8] focus:ring-4 ring-black/40 transition-all duration-200 uppercase" data-case="black"><i class="fa-solid fa-circle mr-2 text-[#111]"></i>Midnight Black</button>
-            </div>
-          </div>
-          <div>
-            <h3 class="font-luxury text-2xl mb-6">Strap Style</h3>
-            <div class="flex gap-4">
-              <button class="customizer-strap-selector flex items-center px-5 py-2 rounded-full font-medium border border-[#c5a880] bg-[#faf8f5] hover:bg-[#f8ecd9] transition uppercase selected" data-strap="genuineleather"><i class="fa-solid fa-grip-lines-vertical mr-2"></i>Leather</button>
-              <button class="customizer-strap-selector flex items-center px-5 py-2 rounded-full font-medium border border-[#9e825a] bg-[#faf8f5] hover:bg-[#eee7da] transition uppercase" data-strap="metal"><i class="fa-solid fa-grip-lines mr-2"></i>Metal</button>
-              <button class="customizer-strap-selector flex items-center px-5 py-2 rounded-full font-medium border border-black bg-[#faf8f5] hover:bg-[#eceae8] transition uppercase" data-strap="rubber"><i class="fa-solid fa-grip-lines mr-2"></i>Rubber</button>
-            </div>
-          </div>
-          <button id="add-customizer-to-cart" class="mt-2 px-10 py-3 btn-gold text-lg font-semibold uppercase tracking-wide shadow-lg focus:ring-4 ring-[#c5a880]/30">Add to Cart</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== Technical Specs ===================== -->
-    <section id="specs" class="max-w-7xl mx-auto px-6 py-32">
-      <h2 class="font-luxury text-4xl md:text-5xl text-center mb-12">Technical Blueprint</h2>
-      <div class="relative grid sm:grid-cols-3 grid-cols-1 gap-6 items-center">
-        <!-- Outer Points -->
-        <div class="col-span-1 flex flex-col items-center justify-center space-y-16">
-          <div class="flex flex-col items-center">
-            <i class="fa-solid fa-gear text-3xl md:text-4xl text-[#c5a880] mb-2"></i>
-            <span class="text-xl font-semibold">Tourbillon Calibre</span>
-            <span class="text-gray-600 mt-1">In-house, 28,800 vph</span>
-          </div>
-          <div class="flex flex-col items-center">
-            <i class="fa-solid fa-tint text-3xl md:text-4xl text-[#9e825a] mb-2"></i>
-            <span class="text-xl font-semibold">100M Water Resistant</span>
-            <span class="text-gray-600 mt-1">IP68 certified</span>
-          </div>
-        </div>
-        <!-- Rotating Center Movement -->
-        <div class="col-span-1 flex items-center justify-center py-8">
-          <div class="rounded-full shadow-lg border-4 border-[#c5a880] bg-[#faf8f5] p-7 relative">
-            <img id="technical-movement" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=220&q=80" alt="Movement" class="w-44 h-44 object-contain movement-spin">
-          </div>
-        </div>
-        <!-- Outer Points -->
-        <div class="col-span-1 flex flex-col items-center justify-center space-y-16">
-          <div class="flex flex-col items-center">
-            <i class="fa-solid fa-shield-halved text-3xl md:text-4xl text-[#c5a880] mb-2"></i>
-            <span class="text-xl font-semibold">Sapphire Glass</span>
-            <span class="text-gray-600 mt-1">Anti-reflective, double domed</span>
-          </div>
-          <div class="flex flex-col items-center">
-            <i class="fa-solid fa-bolt text-3xl md:text-4xl text-[#9e825a] mb-2"></i>
-            <span class="text-xl font-semibold">80-hr Power Reserve</span>
-            <span class="text-gray-600 mt-1">Twin-barrel deploy</span>
+        <div class="p-7 flex flex-col flex-1">
+          <div class="font-luxury text-2xl mb-2">Sterling Slate</div>
+          <div class="gold font-bold text-xl mb-5">$9,120</div>
+          <div class="text-gray-700 mb-7 flex-1">Platinum-silver titanium, hand-finished tourbillon, masterfully forged for the connoisseur.</div>
+          <div class="flex gap-4">
+            <button class="btn-gold add-to-cart" data-product="Sterling Slate">Add to Cart</button>
+            <button class="rounded-full border border-[#c5a880] px-5 py-2.5 uppercase font-semibold text-[#c5a880] bg-white hover:bg-[#fff5e0] shadow transition add-to-cart" data-product="Sterling Slate (Collection)">Add to Collection</button>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- ===================== FAQ Accordion ===================== -->
-    <section id="faq" class="max-w-3xl mx-auto px-6 py-32">
-      <h2 class="font-luxury text-4xl md:text-5xl text-center mb-12">Client FAQ</h2>
-      <div class="space-y-6" id="faq-list">
-        <!-- FAQ 1 -->
-        <div class="rounded-2xl border border-[#c5a880] shadow-md overflow-hidden bg-white">
-          <button class="w-full flex items-center justify-between py-5 px-8 text-left focus:outline-none accordion-toggle">
-            <span class="font-semibold text-lg">What warranty does KRONOS offer?</span>
-            <span class="accordion-icon flex items-center justify-center text-2xl text-[#c5a880] transition-transform duration-200"><i class="fa-solid fa-plus"></i></span>
-          </button>
-          <div class="accordion-content max-h-0 overflow-hidden px-8 transition-all duration-400 text-gray-600">
-            <div class="pb-6">
-              Every piece comes with an <span class="text-[#9e825a] font-semibold">8-year international warranty</span> covering all movement and manufacturing defects. Our Geneva ateliers are at your service—worldwide.
-            </div>
-          </div>
+      <!-- Card 3 -->
+      <div id="gsap-col3" class="bg-white border border-gray-200 rounded-2xl shadow-gold p-0 flex flex-col group opacity-0 translate-y-20">
+        <div class="relative overflow-hidden rounded-t-2xl">
+          <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=480"
+            alt="Rose Gold Dynasty" class="mx-auto w-full h-[240px] object-cover rounded-t-2xl
+              transition-transform duration-500 group-hover:scale-110 group-hover:rotate-2"/>
         </div>
-        <!-- FAQ 2 -->
-        <div class="rounded-2xl border border-[#9e825a] shadow-md overflow-hidden bg-white">
-          <button class="w-full flex items-center justify-between py-5 px-8 text-left focus:outline-none accordion-toggle">
-            <span class="font-semibold text-lg">How can I book a private appointment?</span>
-            <span class="accordion-icon flex items-center justify-center text-2xl text-[#9e825a] transition-transform duration-200"><i class="fa-solid fa-plus"></i></span>
-          </button>
-          <div class="accordion-content max-h-0 overflow-hidden px-8 transition-all duration-400 text-gray-600">
-            <div class="pb-6">
-              Simply fill our <a href="mailto:concierge@kronosluxury.com" class="underline text-[#9e825a]">concierge form</a> or call your local boutique. Our experts arrange immersive, bespoke viewing sessions—worldwide.
-            </div>
-          </div>
-        </div>
-        <!-- FAQ 3 -->
-        <div class="rounded-2xl border border-[#c5a880] shadow-md overflow-hidden bg-white">
-          <button class="w-full flex items-center justify-between py-5 px-8 text-left focus:outline-none accordion-toggle">
-            <span class="font-semibold text-lg">What materials are used for cases and straps?</span>
-            <span class="accordion-icon flex items-center justify-center text-2xl text-[#c5a880] transition-transform duration-200"><i class="fa-solid fa-plus"></i></span>
-          </button>
-          <div class="accordion-content max-h-0 overflow-hidden px-8 transition-all duration-400 text-gray-600">
-            <div class="pb-6">
-              We exclusively use <span class="font-bold text-[#c5a880]">18k rose gold, surgical titanium, and 316L Obsidian steel</span> for cases. Straps include hand-stitched alligator, brushed metal, and premium vulcanized rubber.
-            </div>
-          </div>
-        </div>
-        <!-- FAQ 4 -->
-        <div class="rounded-2xl border border-[#9e825a] shadow-md overflow-hidden bg-white">
-          <button class="w-full flex items-center justify-between py-5 px-8 text-left focus:outline-none accordion-toggle">
-            <span class="font-semibold text-lg">Do you offer engravings or custom features?</span>
-            <span class="accordion-icon flex items-center justify-center text-2xl text-[#9e825a] transition-transform duration-200"><i class="fa-solid fa-plus"></i></span>
-          </button>
-          <div class="accordion-content max-h-0 overflow-hidden px-8 transition-all duration-400 text-gray-600">
-            <div class="pb-6">
-              Yes—personalizations, engravings, and custom complications are available for select references. Our atelier artisans are at your command—upon request.
-            </div>
+        <div class="p-7 flex flex-col flex-1">
+          <div class="font-luxury text-2xl mb-2">Rose Gold Dynasty</div>
+          <div class="gold font-bold text-xl mb-5">$13,700</div>
+          <div class="text-gray-700 mb-7 flex-1">18K rose gold, grand complications, and world-class Geneva artistry. A future classic.</div>
+          <div class="flex gap-4">
+            <button class="btn-gold add-to-cart" data-product="Rose Gold Dynasty">Add to Cart</button>
+            <button class="rounded-full border border-[#c5a880] px-5 py-2.5 uppercase font-semibold text-[#c5a880] bg-white hover:bg-[#fff5e0] shadow transition add-to-cart" data-product="Rose Gold Dynasty (Collection)">Add to Collection</button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===================== Footer ===================== -->
-    <footer class="bg-[#111] text-[#fdfdfd] pt-24 pb-12 px-6 mt-12 border-t-4 border-[#c5a880]">
-      <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16">
-        <!-- Brand & Socials -->
+  <!-- ================== TECHNICAL DIAGRAM ================== -->
+  <section id="specs" class="max-w-7xl mx-auto px-5 py-32">
+    <div id="gsap-specs-heading" class="font-luxury text-4xl md:text-5xl font-bold text-center mb-16 opacity-0 translate-y-12">Technical Perfection</div>
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
+      <!-- Left specs -->
+      <div id="gsap-spec1" class="flex flex-col items-center opacity-0 -translate-y-14">
+        <div class="gold text-3xl mb-3"><i class="fa-solid fa-gear"></i></div>
+        <div class="font-semibold text-lg mb-1">Tourbillon</div>
+        <div class="text-gray-700 text-base">Swiss, skeletonized, in-house</div>
+      </div>
+      <div id="gsap-spec2" class="flex flex-col items-center opacity-0 -translate-y-14">
+        <div class="gold text-2xl mb-3"><i class="fa-solid fa-droplet"></i></div>
+        <div class="font-semibold text-lg mb-1">100m Water Resist</div>
+        <div class="text-gray-700 text-base">ISO standard, screw-down crown</div>
+      </div>
+      <!-- Center movement -->
+      <div class="flex flex-col items-center justify-center">
+        <div class="bg-white rounded-full border-4 border-[#c5a880] p-5 shadow-gold w-[170px] h-[170px] flex items-center justify-center">
+          <img id="gsap-spec-movement" src="https://images.unsplash.com/photo-1539874754764-5a96559165b0?q=80&w=600"
+            alt="Watch Movement"
+            class="w-[110px] h-[110px] md:w-[128px] md:h-[128px] rounded-full opacity-0"
+            style="will-change: transform;"/>
+        </div>
+      </div>
+      <div id="gsap-spec3" class="flex flex-col items-center opacity-0 -translate-y-14">
+        <div class="gold text-2xl mb-3"><i class="fa-regular fa-gem"></i></div>
+        <div class="font-semibold text-lg mb-1">Sapphire Dome</div>
+        <div class="text-gray-700 text-base">Double curved, anti-glare</div>
+      </div>
+      <div id="gsap-spec4" class="flex flex-col items-center opacity-0 -translate-y-14">
+        <div class="gold text-2xl mb-3"><i class="fa-solid fa-bolt"></i></div>
+        <div class="font-semibold text-lg mb-1">72h Reserve</div>
+        <div class="text-gray-700 text-base">Twin barrel, automatic wind</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== CUSTOMIZER ================== -->
+  <section id="customizer" class="max-w-7xl mx-auto px-5 py-32">
+    <div id="gsap-customizer-heading" class="font-luxury text-4xl md:text-5xl font-bold text-center mb-10 opacity-0 translate-y-12">Design Your Own Kronos</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
+      <div class="flex flex-col gap-6 items-center">
+        <!-- Customizer watch images, only one visible -->
+        <div class="relative w-[260px] h-[250px] md:w-[320px] md:h-[320px] mx-auto">
+          <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=480&q=80"
+            data-model="rosegold"
+            alt="Rose Gold"
+            class="customizer-img absolute inset-0 object-contain w-full h-full rounded-full shadow-gold border-2 border-gold bg-white opacity-100 z-10"
+            style="transition:opacity 0.4s;"/>
+          <img src="https://images.unsplash.com/photo-1515442261605-cd4ce49fc2c1?auto=format&fit=crop&w=480&q=80"
+            data-model="titanium"
+            alt="Titanium"
+            class="customizer-img absolute inset-0 object-contain w-full h-full rounded-full shadow-gold border-2 border-gold bg-white opacity-0 z-10"
+            style="transition:opacity 0.4s;"/>
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=480&q=80"
+            data-model="obsidian"
+            alt="Obsidian Black"
+            class="customizer-img absolute inset-0 object-contain w-full h-full rounded-full shadow-gold border-2 border-gold bg-white opacity-0 z-10"
+            style="transition:opacity 0.4s;"/>
+        </div>
+      </div>
+      <div class="flex flex-col gap-10 justify-center">
         <div>
-          <div class="flex items-center space-x-3 mb-6">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Watch_%28analog%29_icon.png" alt="KRONOS Logo" class="h-7 w-7 object-contain">
-            <span class="font-luxury text-2xl text-[#c5a880]">KRONOS</span>
-          </div>
-          <p class="text-[#d1cab9] mb-4">Timeless innovation. Majestic Swiss crafts. Defining prestige since 1887.</p>
-          <div class="flex space-x-4 mt-4">
-            <a href="https://instagram.com/" target="_blank" class="hover:text-[#c5a880] text-xl"><i class="fab fa-instagram"></i></a>
-            <a href="https://facebook.com/" target="_blank" class="hover:text-[#c5a880] text-xl"><i class="fab fa-facebook"></i></a>
-            <a href="https://twitter.com/" target="_blank" class="hover:text-[#c5a880] text-xl"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://youtube.com/" target="_blank" class="hover:text-[#c5a880] text-xl"><i class="fab fa-youtube"></i></a>
+          <div class="font-luxury text-2xl mb-5">Case Finish</div>
+          <div class="flex gap-4 flex-wrap">
+            <button class="customizer-btn btn-gold selected" data-target="rosegold"><i class="fa-solid fa-circle gold mr-2"></i>Rose Gold</button>
+            <button class="customizer-btn rounded-full border border-[#c5a880] px-7 py-2.5 font-semibold uppercase bg-white hover:bg-[#fff2db] transition text-[#c5a880]" data-target="titanium"><i class="fa-solid fa-circle text-gray-400 mr-2"></i>Titanium</button>
+            <button class="customizer-btn rounded-full border border-black px-7 py-2.5 font-semibold uppercase bg-white hover:bg-gray-50 transition text-[#111111]" data-target="obsidian"><i class="fa-solid fa-circle text-black mr-2"></i>Obsidian Black</button>
           </div>
         </div>
-        <!-- Quick Links -->
-        <div>
-          <h4 class="font-luxury text-lg mb-5 text-[#c5a880]">Navigation</h4>
-          <ul class="space-y-3">
-            <li><a href="#heritage" class="hover:text-[#c5a880]">Heritage</a></li>
-            <li><a href="#watches" class="hover:text-[#c5a880]">Watches</a></li>
-            <li><a href="#customizer" class="hover:text-[#c5a880]">Customizer</a></li>
-            <li><a href="#specs" class="hover:text-[#c5a880]">Technical</a></li>
-            <li><a href="#faq" class="hover:text-[#c5a880]">FAQ</a></li>
-          </ul>
-        </div>
-        <!-- Newsletter -->
-        <div class="lg:col-span-2">
-          <h4 class="font-luxury text-lg mb-5 text-[#c5a880]">Get Elite Access</h4>
-          <form id="newsletter-form" class="flex flex-col md:flex-row gap-4 mt-2 max-w-lg">
-            <input type="email" id="newsletter-email" required autocomplete="off"
-              class="flex-1 px-5 py-3 rounded-full border border-[#c5a880] bg-[#fdfdfd] text-[#111] placeholder-[#b9a57a] font-medium focus:outline-none focus:ring-4 ring-[#c5a880]/30 transition"
-              placeholder="Your Email Address">
-            <button type="submit" class="px-7 py-3 btn-gold font-semibold uppercase tracking-tight">Join Circle <i class="fa-regular fa-paper-plane ml-1"></i></button>
-          </form>
-          <div id="newsletter-feedback" class="mt-2 text-sm"></div>
+        <button id="customizer-add" class="btn-gold mt-2 w-full md:w-2/3">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== FAQ + FOOTER ================== -->
+  <section id="faq" class="bg-white pt-24 pb-0 px-5">
+    <div id="gsap-faq-heading" class="font-luxury text-4xl md:text-5xl font-bold text-center mb-10 opacity-0 translate-y-12">Client FAQ</div>
+    <div class="max-w-2xl mx-auto space-y-8 mb-32">
+      <!-- FAQ 1 -->
+      <div class="border border-gold rounded-xl shadow bg-white">
+        <button class="faq-toggle flex justify-between items-center w-full px-8 py-6 font-semibold text-lg select-none group">
+          <span>What warranty do KRONOS watches have?</span>
+          <span class="faq-icon gold text-2xl transition-transform duration-200"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="faq-panel px-8 text-gray-700 overflow-hidden max-h-0 transition-all duration-500">
+          <div class="pb-6 text-base">Every KRONOS purchase includes a <span class="gold font-bold">10-year international warranty</span>, ensuring your timepiece is always as magnificent as day one.</div>
         </div>
       </div>
-      <div class="mt-20 border-t border-[#1f1d1b] pt-4 text-center text-[#c5a880]">
+      <!-- FAQ 2 -->
+      <div class="border border-gold rounded-xl shadow bg-white">
+        <button class="faq-toggle flex justify-between items-center w-full px-8 py-6 font-semibold text-lg select-none group">
+          <span>Do you offer bespoke customizations?</span>
+          <span class="faq-icon gold text-2xl transition-transform duration-200"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="faq-panel px-8 text-gray-700 overflow-hidden max-h-0 transition-all duration-500">
+          <div class="pb-6 text-base">Absolutely. We create limited one-of-one references, custom engravings, and exclusive complications for select clients. Contact our Maitres via the Customizer.</div>
+        </div>
+      </div>
+      <!-- FAQ 3 -->
+      <div class="border border-gold rounded-xl shadow bg-white">
+        <button class="faq-toggle flex justify-between items-center w-full px-8 py-6 font-semibold text-lg select-none group">
+          <span>How can I schedule a private viewing?</span>
+          <span class="faq-icon gold text-2xl transition-transform duration-200"><i class="fa-solid fa-plus"></i></span>
+        </button>
+        <div class="faq-panel px-8 text-gray-700 overflow-hidden max-h-0 transition-all duration-500">
+          <div class="pb-6 text-base">Visit any KRONOS atelier or request a VIP appointment. Our Concierges can arrange private sessions at your location worldwide.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="w-full px-5 pt-12 pb-10 bg-white border-t border-gray-100">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between gap-8 items-center">
+        <div class="flex items-center gap-3 mb-4 md:mb-0">
+          <span class="font-luxury text-2xl gold font-bold">KRONOS</span>
+          <span class="text-sm text-gray-500">| Swiss Excellence Since 1887</span>
+        </div>
+        <form id="newsletter-form" class="flex gap-2 md:gap-4 items-center w-full md:w-auto">
+          <input id="newsletter-email" type="email" required autocomplete="off"
+            class="px-4 py-2 rounded-full border border-gold bg-white focus:ring-2 focus:ring-[#c5a88055] w-52 md:w-64 placeholder-[#c5a8808b]"
+            placeholder="Your Email (for elite news)">
+          <button
+            type="submit"
+            class="btn-gold py-2 px-7 font-semibold text-base text-[#111] shadow border">Subscribe</button>
+          <span id="newsletter-feedback" class="ml-2 text-sm"></span>
+        </form>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+          <a href="#" class="hover:text-[#c5a880] text-xl"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-[#c5a880] text-xl"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="hover:text-[#c5a880] text-xl"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="hover:text-[#c5a880] text-xl"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="text-center text-xs text-[#c5a880] mt-10">
         &copy; 1887–2026 KRONOS Luxury Watches. All Rights Reserved.
       </div>
     </footer>
+  </section>
 
-    <!-- ===================== Toast Notification ===================== -->
-    <div id="toast" class="fixed bottom-8 right-8 z-[9999] flex items-center pointer-events-none opacity-0 transition-all duration-700 will-change-transform">
-      <div class="bg-gradient-to-br from-[#faf8f5] via-[#d0b484] to-[#9e825a] text-[#111] px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-4 border-2 border-[#c5a880] font-semibold text-lg opacity-95" style="transform: translateY(40px) scale(0.90);">
-        <i class="fa-solid fa-check-circle text-2xl text-[#c5a880]"></i>
-        <span id="toast-msg">Added to Cart</span>
-      </div>
-    </div>
+  <!-- ================== JS ================== -->
+  <script>
+    // ========== NAVBAR SCROLL + MOBILE MENU =============
+    const nav = document.getElementById('navbar');
+    const menuBtn = document.getElementById('menu-btn');
+    const menuDrawer = document.getElementById('mobile-menu');
+    const menuClose = document.getElementById('menu-close');
+    menuBtn.addEventListener('click', ()=>{
+      menuDrawer.style.right = '0';
+      menuDrawer.style.transform = 'translateX(0%)';
+    });
+    menuClose.addEventListener('click', ()=>{
+      menuDrawer.style.right = '-100%';
+      menuDrawer.style.transform = 'translateX(100%)';
+    });
+    menuDrawer.querySelectorAll('a').forEach(link=>{
+      link.addEventListener('click', ()=>{
+        menuDrawer.style.right = '-100%';
+        menuDrawer.style.transform = 'translateX(100%)';
+      })
+    });
 
-    <!-- ===================== Custom JS ===================== -->
-    <script>
-      // ---------- Navbar Shrink and Glassmorphism Logic ----------
-      const navbar = document.getElementById('navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 70) {
-          navbar.classList.add('backdrop-blur', 'h-16');
-          navbar.classList.remove('h-20');
-        } else {
-          navbar.classList.remove('backdrop-blur', 'h-16');
-          navbar.classList.add('h-20');
-        }
+    // ========== CART LOGIC + TOAST ===========
+    let cartNum = 0;
+    const cartCount = document.getElementById('cart-count');
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-msg');
+    function showToast(message) {
+      toastMsg.innerHTML = message;
+      toast.classList.remove('opacity-0','pointer-events-none');
+      gsap.fromTo(toast, {y:40, opacity:0}, {y:0, opacity:1, duration:0.5, ease:'power3.out'});
+      setTimeout(()=>{
+        gsap.to(toast, {y:40, opacity:0, duration:0.5, ease:'power2.in', onComplete:()=>toast.classList.add('pointer-events-none','opacity-0')});
+      }, 3500);
+    }
+    document.querySelectorAll('.add-to-cart').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        cartNum++;
+        cartCount.textContent = cartNum;
+        showToast(btn.dataset.product+" was added to your cart.");
+        gsap.fromTo('#cart-btn', {scale:1}, {scale:1.15, duration:0.15, yoyo:true, repeat:1, ease:'power1.inOut'});
       });
+    });
+    document.getElementById('customizer-add').addEventListener('click',()=>{
+      const model = Array.from(document.querySelectorAll('.customizer-btn')).find(b=>b.classList.contains('selected')).dataset.target;
+      const modelPretty = {
+        'rosegold':'Rose Gold', 'titanium':'Titanium', 'obsidian':'Obsidian Black'
+      }[model];
+      cartNum++;
+      cartCount.textContent = cartNum;
+      showToast("Custom "+modelPretty+" was added to your cart.");
+      gsap.fromTo('#cart-btn', {scale:1}, {scale:1.15, duration:0.15, yoyo:true, repeat:1, ease:'power1.inOut'});
+    });
 
-      // ---------- Mobile Menu Drawer Logic ----------
-      const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileMenuClose = document.getElementById('mobile-menu-close');
-      mobileMenuTrigger.addEventListener('click', () => {
-        mobileMenu.classList.remove('hidden');
-      });
-      mobileMenu.addEventListener('click', (e) => {
-        if (e.target === mobileMenu) mobileMenu.classList.add('hidden');
-      });
-      mobileMenuClose && mobileMenuClose.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-      // Enter animation
-      document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-      });
-
-      // -------------------- Hero Section: Animated Dial Marks --------------------
-      (function() {
-        const ticksGroup = document.getElementById('ticks');
-        if (!ticksGroup) return;
-        for (let i = 0; i < 60; i++) {
-          const angle = (i / 60) * 2 * Math.PI;
-          const r1 = i % 5 === 0 ? 258 : 265;
-          const r2 = 265;
-          const x1 = 280 + r1 * Math.cos(angle);
-          const y1 = 280 + r1 * Math.sin(angle);
-          const x2 = 280 + r2 * Math.cos(angle);
-          const y2 = 280 + r2 * Math.sin(angle);
-          const lw = i % 5 === 0 ? 4 : 1.5;
-          const color = i % 5 === 0 ? "#9e825a" : "#d0c3af";
-          const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-          line.setAttribute('x1', x1); line.setAttribute('y1', y1);
-          line.setAttribute('x2', x2); line.setAttribute('y2', y2);
-          line.setAttribute('stroke', color);
-          line.setAttribute('stroke-width', lw);
-          ticksGroup.appendChild(line);
-        }
-      })();
-
-      // -------------------- GSAP Animations --------------------
-      window.addEventListener('DOMContentLoaded', () => {
-        gsap.registerPlugin(ScrollTrigger);
-        // Hero Watch Animation
-        gsap.fromTo('#hero-watch', { scale: .62, rotate: -55, opacity: 0, y: -70 }, {
-          scale: 1, rotate: 0, opacity: 1, y: 0,
-          duration: 1.7, ease: 'power4.out',
-        });
-
-        gsap.from(['#hero-heading-1', '#hero-heading-2', '#hero-para', '#shop-now'], {
-          y: 60, opacity: 0, stagger: 0.23, duration: 1, ease: 'power3.out',
-          delay: 0.8,
-        });
-
-        // Dial rotation
-        gsap.to('#dial-svg', {
-          rotation: 360, ease: 'linear', duration: 40, repeat: -1, transformOrigin: 'center center',
-        });
-
-        // Heritage Image Parallax
-        gsap.to('.heritage-img', {
-          scrollTrigger: {
-            trigger: '#heritage',
-            start: 'top 85%',
-            end: 'bottom 50%',
-            scrub: true,
-          },
-          y: -40, opacity: 1, scale: 1.08, duration: 1.2, ease: 'power1.out'
-        });
-
-        // Technical Movement Image Spin
-        gsap.to('.movement-spin', {
-          rotate: 360,
-          duration: 28, repeat: -1, ease: 'linear'
-        });
-
-        // Featured Product Cards Entrance
-        gsap.from('#watches .group', {
-          scrollTrigger: { trigger: '#watches', start: "top 80%" },
-          y: 90, opacity: 0, stagger: 0.2, duration: 0.9, ease: 'power3.out'
-        });
-
-        // Customizer watch img fade-in on scroll
-        gsap.from('.customizer-img-box', {
-          scrollTrigger: { trigger: '#customizer', start: "top 80%" },
-          scale: .8, opacity: 0, duration: 1, ease: 'power3.out'
-        });
-      });
-
-      // ===================== Cart System =====================
-      let cartCount = 0;
-      const cartCountElem = document.getElementById('cart-count');
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toast-msg');
-
-      function showToast(message) {
-        toastMsg.textContent = message;
-        toast.classList.remove('opacity-0', 'pointer-events-none');
-        toast.classList.add('opacity-100');
-        gsap.fromTo(toast, {y: 50, scale: .93}, {y: 0, scale: 1, duration: 0.32, ease: 'power3.out'});
-        setTimeout(() => {
-          gsap.to(toast, {opacity: 0, y: 37, scale: .95, duration: .35, ease: 'power2.in', onComplete: () => {
-            toast.classList.add('opacity-0', 'pointer-events-none');
-            toast.style.transform = '';
-          }});
-        }, 3500);
-      }
-
-      function addToCart(productName) {
-        cartCount++;
-        cartCountElem.textContent = cartCount;
-        showToast(`${productName} was added to your cart`);
-        // Animate the cart icon
-        const cartBtn = document.getElementById('cart-btn');
-        gsap.fromTo(cartBtn, {scale: 1}, {scale: 1.17, duration: .13, yoyo: true, repeat: 1, ease: "back.inOut(2)"});
-      }
-      // Product "Add to Cart" buttons
-      document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const card = btn.closest('.group');
-          let name = card ? card.querySelector('h3').textContent : "KRONOS Watch";
-          if (btn.textContent.includes('Collection')) name += " added to Collection";
-          addToCart(name);
-        });
-      });
-
-      // Hero Shop Now CTA
-      document.getElementById('shop-now').addEventListener('click', function() {
-        document.getElementById('watches').scrollIntoView({behavior:'smooth'});
-      });
-
-      // ===================== Customizer =====================
-      // Show correct watch image per selection, crossfade with GSAP
-      let currentCase = 'rosegold';
-      let currentStrap = 'genuineleather';
-      function showCustomizerImg() {
-        document.querySelectorAll('.customizer-watch-img').forEach(img => {
-          img.style.opacity = '0';
-          img.style.zIndex = '0';
-        });
-        const chosenImg = document.querySelector(`.customizer-watch-img[data-case="${currentCase}"]`);
-        if (chosenImg) {
-          gsap.to('.customizer-watch-img', {opacity: 0, duration: 0.45, ease: 'power2.in'});
-          gsap.to(chosenImg, {opacity: 1, duration: 0.7, ease: 'power2.out'});
-          chosenImg.style.zIndex = '3';
-        }
-      }
-      document.querySelectorAll('.customizer-case-selector').forEach(btn => {
-        btn.addEventListener('click', function() {
-          document.querySelectorAll('.customizer-case-selector').forEach(b => b.classList.remove('selected', 'ring-4'));
-          btn.classList.add('selected', 'ring-4');
-          currentCase = btn.dataset.case;
-          showCustomizerImg();
-        });
-      });
-      document.querySelectorAll('.customizer-strap-selector').forEach(btn => {
-        btn.addEventListener('click', function() {
-          document.querySelectorAll('.customizer-strap-selector').forEach(b => b.classList.remove('selected', 'ring-4'));
-          btn.classList.add('selected', 'ring-4');
-          currentStrap = btn.dataset.strap;
-        });
-      });
-      showCustomizerImg();
-
-      document.getElementById('add-customizer-to-cart').addEventListener('click', function() {
-        let caseLabel = {
-          'rosegold':'Rose Gold', 'titanium':'Titanium', 'black':'Midnight Black'
-        }[currentCase];
-        let strapLabel = {
-          'genuineleather':'Leather', 'metal':'Metal', 'rubber':'Rubber'
-        }[currentStrap];
-        addToCart(`KRONOS Custom<br />(${caseLabel} / ${strapLabel} Strap)`);
-      });
-
-      // ===================== Accordion FAQ =====================
-      document.querySelectorAll('.accordion-toggle').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const content = btn.parentElement.querySelector('.accordion-content');
-          const icon = btn.querySelector('.accordion-icon');
-          const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-          if (isOpen) {
-            content.style.maxHeight = '0px';
-            icon.innerHTML = '<i class="fa-solid fa-plus"></i>';
+    // ========== CUSTOMIZER LOGIC ===========
+    let selectedModel = 'rosegold';
+    document.querySelectorAll('.customizer-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.customizer-btn').forEach(b=>b.classList.remove('selected','border-gold'));
+        btn.classList.add('selected','border-gold');
+        selectedModel = btn.dataset.target;
+        // fade imgs
+        const imgs = document.querySelectorAll('.customizer-img');
+        imgs.forEach(img=>{
+          if(img.dataset.model === selectedModel) {
+            gsap.to(img, {opacity:1, duration:0.51, ease:'power2.out'});
           } else {
-            // Close all others
-            document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = '0px');
-            document.querySelectorAll('.accordion-toggle .accordion-icon').forEach(ic => ic.innerHTML = '<i class="fa-solid fa-plus"></i>');
-            content.style.maxHeight = content.scrollHeight + 30 + 'px';
-            icon.innerHTML = '<i class="fa-solid fa-minus"></i>';
+            gsap.to(img, {opacity:0, duration:0.38, ease:'power2.in'});
           }
         });
       });
+    });
 
-      // ===================== Newsletter Validation =====================
-      const newsletterForm = document.getElementById('newsletter-form');
-      const newsletterFeedback = document.getElementById('newsletter-feedback');
-      newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const emailInp = document.getElementById('newsletter-email');
-        const email = emailInp.value.trim();
-        const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        if (!isEmail) {
-          newsletterFeedback.textContent = "Please enter a valid email address.";
-          newsletterFeedback.className = "mt-2 text-sm text-red-700 animate-pulse";
-          gsap.fromTo(newsletterFeedback, {x:-6}, {x:0, duration:0.18, yoyo:true, repeat:2});
-          return;
+    // ========== FAQ ACCORDION ===========
+    document.querySelectorAll('.faq-toggle').forEach(btn=>{
+      btn.addEventListener('click', function(){
+        const panel = btn.parentElement.querySelector('.faq-panel');
+        const icon = btn.querySelector('.faq-icon');
+        const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+        document.querySelectorAll('.faq-panel').forEach(p=>p.style.maxHeight='0');
+        document.querySelectorAll('.faq-icon').forEach(i=>i.innerHTML='<i class="fa-solid fa-plus"></i>');
+        if(!isOpen) {
+          panel.style.maxHeight = panel.scrollHeight + 24 + "px";
+          icon.innerHTML = '<i class="fa-solid fa-minus"></i>';
         }
-        newsletterFeedback.textContent = "Thank you! You’ve joined the KRONOS Circle.";
-        newsletterFeedback.className = "mt-2 text-sm text-[#c5a880]";
-        emailInp.value = '';
-        setTimeout(() => newsletterFeedback.textContent = '', 3500);
       });
+    });
 
-      // ===================== Accessibility: Focus Ring Show on Tab Only =====================
-      function handleFirstTab(e) {
-        if (e.key === 'Tab') {
-          document.body.classList.add('user-is-tabbing');
-          window.removeEventListener('keydown', handleFirstTab);
-          window.addEventListener('mousedown', handleMouseDownOnce);
-        }
+    // ========== NEWSLETTER VALIDATION ==========
+    document.getElementById('newsletter-form').addEventListener('submit',function(e){
+      e.preventDefault();
+      const inp = document.getElementById('newsletter-email');
+      const val = inp.value.trim();
+      const feedback = document.getElementById('newsletter-feedback');
+      if (!/^[\w\-.]+@([\w-]+\.)+[\w-]{2,}$/.test(val)) {
+        feedback.textContent = "Enter a valid email address.";
+        feedback.className = "ml-2 text-sm text-red-600 animate-pulse";
+        gsap.fromTo(feedback, {x:-6},{x:0, duration:0.16, yoyo:true, repeat:2});
+      } else {
+        feedback.textContent = "Thank you for subscribing!";
+        feedback.className="ml-2 text-sm gold";
+        inp.value="";
+        setTimeout(()=>{feedback.textContent=''},2500);
       }
-      function handleMouseDownOnce() {
-        document.body.classList.remove('user-is-tabbing');
-        window.removeEventListener('mousedown', handleMouseDownOnce);
-        window.addEventListener('keydown', handleFirstTab);
-      }
-      window.addEventListener('keydown', handleFirstTab);
+    });
 
-      // ===================== Animations for Cards on Hover =====================
-      document.querySelectorAll('.group').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-          gsap.to(card, {y: -9, scale: 1.04, boxShadow: "0 22px 56px 0 #90795014, 0 2px 12px #ac8e5b21", duration: .18});
-        });
-        card.addEventListener('mouseleave', () => {
-          gsap.to(card, {y: 0, scale: 1, boxShadow: "0 8px 40px 0 #f4f4f4,0 2px 6px #b6aa95", duration: .23});
-        });
+    // ========== GSAP ANIMATIONS ===========
+
+    // Hero section anims
+    gsap.to("#gsap-hero-heading-1", {opacity:1, y:0, duration:.85, delay:0.2, ease:"power3.out"});
+    gsap.to("#gsap-hero-heading-2", {opacity:1, y:0, duration:.85, delay:0.45, ease:"power3.out"});
+    gsap.to("#gsap-hero-desc", {opacity:1, y:0, duration:.95, delay:0.7, ease:"power3.out"});
+    gsap.to("#gsap-hero-cta", {opacity:1, y:0, duration:1, delay:1.05, ease:"power3.out"});
+    gsap.to("#gsap-hero-ring", {opacity:1, delay:.45, duration:.61, y:0, ease:"power2.out"});
+    gsap.fromTo("#gsap-hero-ring", {rotate:0}, {
+      rotate:360, repeat:-1, duration:36, ease:"linear", transformOrigin:'center center'
+    });
+
+    gsap.fromTo("#gsap-hero-img",
+      {opacity:0,scale:0.78,rotate:45,y:60},
+      {opacity:1,scale:1,rotate:0,y:0,duration:1.3,ease:"bounce.out",delay:.7});
+
+    // Heritage
+    ScrollTrigger.create({
+      trigger:"#heritage",
+      start:"top 85%",
+      once:true,
+      onEnter:()=>{
+        gsap.to("#gsap-heritage-img", {opacity:1, x:0, duration:.98, ease:"power2.out"});
+        gsap.to("#gsap-heritage-txt", {opacity:1, x:0, duration:.98, delay:.22, ease:"power2.out"});
+      }
+    });
+
+    // Collection Cards On Scroll
+    ScrollTrigger.create({
+      trigger:"#collection",
+      start:"top 85%",
+      once:true,
+      onEnter:()=>{
+        gsap.to("#gsap-collection-heading",{opacity:1,y:0,duration:.85, ease:"power3.out"});
+        gsap.to("#gsap-col1",{opacity:1,y:0,duration:.97, delay:.16, ease:"power3.out"});
+        gsap.to("#gsap-col2",{opacity:1,y:0,duration:.97, delay:.32, ease:"power3.out"});
+        gsap.to("#gsap-col3",{opacity:1,y:0,duration:.97, delay:.48, ease:"power3.out"});
+      }
+    });
+
+    // Collection hover
+    document.querySelectorAll('.group').forEach(card => {
+      const img = card.querySelector('img');
+      card.addEventListener('mouseenter',()=>{
+        gsap.to(card, {boxShadow: "0px 24px 60px #ffe0b77a, 0 2px 9px #c5a88014", scale:1.045, y:-11, duration:.19});
+        gsap.to(img, {scale:1.12, rotate:img.classList.contains('group-hover:-rotate-3')?-3:img.classList.contains('group-hover:rotate-3')?3:2, duration:.5});
       });
-    </script>
-    <style>
-      /* Animate SlideIn Left for Mobile Drawer */
-      @keyframes slideInLeft {
-        0% { transform: translateX(100%);}
-        85% { transform: translateX(-8px);}
-        100% { transform: translateX(0);}
+      card.addEventListener('mouseleave',()=>{
+        gsap.to(card, {boxShadow:"0 8px 28px 0 #ffe7be36, 0 1.5px 5px #c5a88018", scale:1, y:0, duration:.23});
+        gsap.to(img, {scale:1, rotate:0, duration:.35});
+      });
+    });
+
+    // Specs grid anims
+    ScrollTrigger.create({
+      trigger:"#specs",
+      start:"top 80%",
+      once:true,
+      onEnter:()=>{
+        gsap.to("#gsap-specs-heading",{opacity:1,y:0,duration:.8, ease:"power3.out",});
+        [1,2,3,4].forEach((i,idx)=>{
+          gsap.to(`#gsap-spec${i}`,{opacity:1,y:0,duration:.92,delay:.19*(idx+1),ease:"power2.out"});
+        });
+        gsap.to("#gsap-spec-movement",{opacity:1,scale:1,duration:.91, delay:.26, ease:"power2.out"});
       }
-      .animate-slideInLeft {
-        animation: slideInLeft 0.22s cubic-bezier(0.4, 0.2, 0.2, 1);
+    });
+    gsap.to("#gsap-spec-movement",{
+      rotate: 360,
+      duration: 24,
+      repeat: -1,
+      transformOrigin:'50% 50%',
+      ease: "linear"
+    });
+
+    // Customizer in
+    ScrollTrigger.create({
+      trigger:"#customizer",
+      start:"top 80%",
+      once:true,
+      onEnter:()=>{
+        gsap.to("#gsap-customizer-heading",{opacity:1,y:0,duration:.83,ease:"power3.out"});
       }
-      /* Accordion */
-      .accordion-content {
-        max-height: 0px;
-        transition: max-height 0.4s cubic-bezier(.46,.03,.52,.96);
+    });
+
+    // FAQ in
+    ScrollTrigger.create({
+      trigger:"#faq",
+      start:"top 80%",
+      once:true,
+      onEnter:()=>{
+        gsap.to("#gsap-faq-heading",{opacity:1,y:0,duration:.7,ease:"power3.out"});
       }
-      .accordion-toggle .fa-minus, .accordion-toggle .fa-plus {
-        transition: transform 0.22s;
-      }
-      /* Add to Cart Toast bounce */
-      @keyframes bounceShort {
-        0%,100%{transform:translateY(0);}
-        65%{transform:translateY(-7px);}
-        85%{transform:translateY(3px);}
-      }
-      .animate-bounce-short {animation: bounceShort 1.8s cubic-bezier(.86,0,.07,1) 2;}
-      /* Card hover gold shadow */
-      .hover\:shadow-gold:hover {
-        box-shadow: 0 19px 52px -3px #c5a88072, 0 4px 16px #c5a88039, 0 2px 6px #eaddc5;
-      }
-      /* Customizer selections */
-      .selected {
-        box-shadow: 0 0 0 3px #c5a88099 !important;
-        border-color: #c5a880 !important;
-      }
-      /* Remove tap highlight */
-      * { -webkit-tap-highlight-color: transparent; }
-      /* User selects */
-      user-select: none;
-      img, button { user-select: none; }
-      .glass {backdrop-filter:blur(15px);}
-    </style>
-  </body>
+    });
+
+  </script>
+</body>
 </html>
