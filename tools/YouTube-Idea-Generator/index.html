@@ -229,10 +229,12 @@
             submitBtn.classList.add('opacity-60');
 
             try {
+                // Hits the absolute path directly matching Vercel configurations
                 const response = await fetch('/api/generate', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify({
                         topic: topicInput,
@@ -246,25 +248,77 @@
                     const rawOutput = data.output;
                     let ideasArray = [];
 
-                    if(rawOutput.includes('\n')) {
-                        ideasArray = rawOutput.split('\n').filter(line => line.trim().length > 2);
-                    } else if(rawOutput.includes('\n\n')) {
-                        ideasArray = rawOutput.split('\n\n').filter(line => line.trim().length > 2);
-                    } else {
-                        ideasArray = rawOutput.split(/\d+\.\s+/).filter(line => line.trim().length > 2);
+                    // Handles string response dynamically by isolating lines regardless of string escape formatting
+                    if (typeof rawOutput === 'string') {
+                        // Regular expression splits on number patterns like "1. ", "2. " or simple line breaks
+                        const patternSplit = rawOutput.split(/\r?\n|\d+\.\s+/);
+                        ideasArray = patternSplit.map(line => line.trim()).filter(line => line.length > 5);
                     }
 
-                    if(ideasArray.length === 0 || (ideasArray.length === 1 && ideasArray[0].length > 300)) {
+                    // Fallback to absolute raw if formatting differs
+                    if (ideasArray.length === 0) {
                         ideasArray = [rawOutput];
                     }
 
                     ideasArray.forEach((idea, index) => {
-                        let cleanIdea = idea.replace(/^\d+\.\s*/, '').replace(/^[\*\-\+\•]\s*/, '').trim();
-                        if(!cleanIdea) return;
+                        // Strips markdown artifacts like bold tags (**), asterisks (*), etc.
+                        let cleanIdea = idea.replace(/^[\*\-\+\•\s]+/, '').replace(/\*\*/g, '').trim();
+                        if(!cleanIdea || cleanIdea === "") return;
 
                         const card = document.createElement('div');
                         card.className = "p-4 bg-gray-50 border border-gray-100 rounded-xl relative hover:border-blue-300 transition-all flex justify-between items-start gap-4";
                         card.innerHTML = `
                             <div class="flex-1">
                                 <span class="inline-block text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded mb-2">Idea #${index + 1}</span>
-                                <p class="text-gray-800 font-medium text-base leading-rel
+                                <p class="text-gray-800 font-medium text-base leading-relaxed">${cleanIdea}</p>
+                            </div>
+                            <button type="button" onclick="copyToClipboard(this, \`${cleanIdea.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`)" class="flex-shrink-0 text-gray-400 hover:text-blue-600 p-2 bg-white border border-gray-100 rounded-lg hover:shadow-sm transition-all" title="Copy Idea">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        `;
+                        ideasGrid.appendChild(card);
+                    });
+
+                    if(ideasGrid.children.length > 0) {
+                        resultContainer.classList.remove('hidden');
+                        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        throw new Error("Could not parse explicit clean listing text nodes.");
+                    }
+
+                } else {
+                    throw new Error(data.error || "Invalid response format configuration.");
+                }
+
+            } catch (err) {
+                console.error("API Fetch Error:", err);
+                document.getElementById('errorMessage').innerText = "Unable to fetch content. Please check if your environment keys are properly integrated inside Vercel.";
+                errorState.classList.remove('hidden');
+            } finally {
+                loadingState.classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-60');
+            }
+        });
+
+        function copyToClipboard(button, text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const icon = button.querySelector('i');
+                icon.className = "fa-solid fa-check text-green-500";
+                setTimeout(() => {
+                    icon.className = "fa-regular fa-copy text-gray-400";
+                }, 2000);
+            }).catch(err => {
+                console.error('Clipboard action failed:', err);
+            });
+        }
+
+        function clearResults() {
+            document.getElementById('resultContainer').classList.add('hidden');
+            document.getElementById('ideasGrid').innerHTML = '';
+            document.getElementById('topicInput').value = '';
+            document.getElementById('topicInput').focus();
+        }
+    </script>
+</body>
+</html>
