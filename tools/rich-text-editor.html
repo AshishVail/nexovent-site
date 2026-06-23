@@ -122,7 +122,7 @@
       // Quill's default image handler asks for a URL; this allows local image upload (base64).
       const input = document.createElement('input');
       input.setAttribute('type', 'file');
-      input.setAttribute('accept', 'image/png,image/jpeg,image/jpg,image/gif,image/webp');
+      input.setAttribute('accept', 'image/png,image/jpeg,image/gif,image/webp');
       input.click();
 
       input.onchange = () => {
@@ -184,10 +184,12 @@
       const safeAuthor = escapeHtml(metadata.author);
       const safeCategory = escapeHtml(metadata.category);
       const safeDate = escapeHtml(metadata.formattedDate);
-      const safeDescription = safeTitle ? `Read ${safeTitle} on Nexovent.` : 'Read the latest insight on Nexovent.';
+      const safeLang = escapeHtml(metadata.lang);
+      const rawDescription = metadata.title ? `Read ${metadata.title} on Nexovent.` : 'Read the latest insight on Nexovent.';
+      const safeDescription = escapeHtml(rawDescription);
 
       return `<!doctype html>
-<html lang="${metadata.lang}">
+<html lang="${safeLang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -224,6 +226,7 @@
       <h1>${safeTitle}</h1>
       <div class="meta">By ${safeAuthor} • ${safeDate}</div>
       <div class="content">${contentHtml}</div>
+      <!-- Intentionally render Quill HTML directly to preserve rich formatting in output. -->
     </article>
 
     <footer>
