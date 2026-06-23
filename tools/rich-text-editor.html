@@ -142,7 +142,7 @@
           quill.setSelection(index + 1, 0);
           showMessage('Image inserted successfully.', 'success');
         };
-        reader.onerror = () => showMessage('Unable to read selected image. The file may be corrupted or too large.');
+        reader.onerror = () => showMessage('Unable to read selected image. Please ensure the file is not corrupted and is under 5MB.');
         reader.readAsDataURL(file);
       };
     }
@@ -226,7 +226,7 @@
       <h1>${safeTitle}</h1>
       <div class="meta">By ${safeAuthor} • ${safeDate}</div>
       <div class="content">${contentHtml}</div>
-      <!-- Intentionally render Quill HTML directly to preserve rich formatting in output. -->
+      <!-- Sanitized editor HTML is rendered directly to preserve rich formatting in output. -->
     </article>
 
     <footer>
@@ -240,7 +240,7 @@
     function wrapInBlogTemplate() {
       clearMessage();
       const metadata = getMetadata();
-      const contentHtml = quill.root.innerHTML.trim();
+      const contentHtml = sanitizeEditorHtml(quill.root.innerHTML.trim());
       const plainText = quill.getText().trim();
 
       if (!metadata.title) {
@@ -257,6 +257,24 @@
       document.getElementById('htmlOutput').value = wrappedHtml;
       showMessage('HTML wrapped successfully.', 'success');
       return wrappedHtml;
+    }
+
+    function sanitizeEditorHtml(html) {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const blockedTags = ['script', 'style', 'iframe', 'object', 'embed'];
+      blockedTags.forEach((tag) => doc.querySelectorAll(tag).forEach((node) => node.remove()));
+
+      doc.querySelectorAll('*').forEach((el) => {
+        [...el.attributes].forEach((attr) => {
+          const name = attr.name.toLowerCase();
+          const value = attr.value.trim().toLowerCase();
+          if (name.startsWith('on') || value.startsWith('javascript:')) {
+            el.removeAttribute(attr.name);
+          }
+        });
+      });
+
+      return doc.body.innerHTML;
     }
 
     function previewOutput() {
