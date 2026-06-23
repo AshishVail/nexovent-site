@@ -93,6 +93,7 @@
   <script>
     let quill;
     let wrappedHtml = '';
+    const DATE_FORMAT_OPTIONS = { year: 'numeric', month: 'long', day: 'numeric' };
 
     function escapeHtml(text) {
       return String(text || '')
@@ -139,7 +140,7 @@
           quill.setSelection(range.index + 1, 0);
           showMessage('Image inserted successfully.', 'success');
         };
-        reader.onerror = () => showMessage('Unable to read selected image. Try another file.');
+        reader.onerror = () => showMessage('Unable to read selected image. The file may be corrupted or too large.');
         reader.readAsDataURL(file);
       };
     }
@@ -165,8 +166,8 @@
       const lang = document.getElementById('contentLang').value;
 
       const formattedDate = dateValue
-        ? new Date(dateValue + 'T00:00:00').toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })
-        : new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
+        ? new Date(dateValue + 'T00:00:00').toLocaleDateString('en-IN', DATE_FORMAT_OPTIONS)
+        : new Date().toLocaleDateString('en-IN', DATE_FORMAT_OPTIONS);
 
       return { title, author, category, lang, formattedDate, dateValue };
     }
@@ -258,7 +259,7 @@
     function slugify(text) {
       const slug = String(text || '')
         .toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/[^\p{Letter}\p{Number}\s-]/gu, '')
         .trim()
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-');
@@ -271,7 +272,7 @@
 
       const title = document.getElementById('blogTitle').value;
       const filename = `${slugify(title)}.html`;
-      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const blob = new Blob([html], { type: 'text/html; charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
