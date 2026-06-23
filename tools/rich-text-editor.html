@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexovent Rich Text Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Noto Sans Devanagari", sans-serif; }
+    #editor { min-height: 280px; }
+    .ql-editor { font-size: 1rem; line-height: 1.8; }
+    .ql-editor img { max-width: 100%; height: auto; border-radius: 0.5rem; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <main class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+    <header class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6">
+      <h1 class="text-2xl sm:text-3xl font-bold">Nexovent Rich Text Editor</h1>
+      <p class="mt-2 text-sm text-slate-600">Write in हिंदी + English. Use your keyboard language switch for bilingual typing.</p>
+    </header>
+
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6 space-y-4">
+      <div id="messageBox" class="hidden rounded-lg px-3 py-2 text-sm"></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <label class="block text-sm font-medium">Blog Title
+          <input id="blogTitle" type="text" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter blog title" />
+        </label>
+        <label class="block text-sm font-medium">Author
+          <input id="blogAuthor" type="text" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500" placeholder="Nexovent Editorial" />
+        </label>
+        <label class="block text-sm font-medium">Date
+          <input id="blogDate" type="date" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500" />
+        </label>
+        <label class="block text-sm font-medium">Category/Tags (optional)
+          <input id="blogCategory" type="text" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500" placeholder="AI, Automation" />
+        </label>
+      </div>
+      <label class="block text-sm font-medium">Content Language
+        <select id="contentLang" class="mt-1 w-full sm:w-64 rounded-lg border border-slate-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+          <option value="en-IN" selected>Bilingual (Hindi + English)</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6 space-y-4">
+      <div id="toolbar">
+        <span class="ql-formats">
+          <select class="ql-header"><option selected></option><option value="1"></option><option value="2"></option></select>
+          <select class="ql-font"></select>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-bold"></button>
+          <button class="ql-italic"></button>
+          <button class="ql-underline"></button>
+          <button class="ql-strike"></button>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-list" value="ordered"></button>
+          <button class="ql-list" value="bullet"></button>
+          <button class="ql-blockquote"></button>
+          <button class="ql-code-block"></button>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-link"></button>
+          <button class="ql-image"></button>
+          <button class="ql-clean"></button>
+        </span>
+      </div>
+      <div id="editor" class="bg-white"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <button id="wrapBtn" class="w-full rounded-lg bg-blue-600 text-white px-4 py-2.5 font-medium hover:bg-blue-700">Wrap in Blog Template</button>
+        <button id="previewBtn" class="w-full rounded-lg bg-slate-900 text-white px-4 py-2.5 font-medium hover:bg-slate-800">Preview HTML</button>
+        <button id="downloadBtn" class="w-full rounded-lg bg-emerald-600 text-white px-4 py-2.5 font-medium hover:bg-emerald-700">Download HTML</button>
+      </div>
+    </section>
+
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6 space-y-4">
+      <h2 class="text-lg font-semibold">Generated HTML</h2>
+      <textarea id="htmlOutput" class="w-full min-h-[180px] rounded-lg border border-slate-300 p-3 font-mono text-xs" readonly></textarea>
+    </section>
+
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6 space-y-4">
+      <h2 class="text-lg font-semibold">Preview</h2>
+      <iframe id="previewFrame" class="w-full h-[420px] rounded-lg border border-slate-300 bg-white" title="HTML Preview"></iframe>
+    </section>
+  </main>
+
+  <script>
+    let quill;
+    let wrappedHtml = '';
+    const DATE_FORMAT_OPTIONS = { year: 'numeric', month: 'long', day: 'numeric' };
+    const SLUG_INVALID_CHAR_REGEX = /[^\p{Letter}\p{Number}\s-]/gu;
+    const ISO_DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
+    const BLOCKED_HTML_TAGS = ['script', 'style', 'iframe', 'object', 'embed', 'svg', 'math', 'form', 'input', 'button', 'textarea', 'select'];
+    const ALLOWED_HTML_TAGS = new Set(['P', 'BR', 'STRONG', 'EM', 'U', 'S', 'A', 'OL', 'UL', 'LI', 'BLOCKQUOTE', 'PRE', 'CODE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'IMG', 'SPAN', 'DIV']);
+    const MAX_IMAGE_MB = 5;
+    const MAX_IMAGE_BYTES = MAX_IMAGE_MB * 1024 * 1024;
+
+    function escapeHtml(text) {
+      return String(text || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function showMessage(message, type = 'error') {
+      const box = document.getElementById('messageBox');
+      box.className = 'rounded-lg px-3 py-2 text-sm';
+      box.classList.add(type === 'error' ? 'bg-red-50' : 'bg-emerald-50');
+      box.classList.add(type === 'error' ? 'text-red-700' : 'text-emerald-700');
+      box.textContent = message;
+      box.classList.remove('hidden');
+    }
+
+    function clearMessage() {
+      document.getElementById('messageBox').classList.add('hidden');
+    }
+
+    function insertImage() {
+      // Quill's default image handler asks for a URL; this allows local image upload (base64).
+      const input = document.createElement('input');
+      input.setAttribute('type', 'file');
+      input.setAttribute('accept', 'image/png,image/jpeg,image/gif,image/webp');
+      input.click();
+
+      input.onchange = () => {
+        const file = input.files && input.files[0];
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+          showMessage('Please select a valid image file.');
+          return;
+        }
+        if (file.size > MAX_IMAGE_BYTES) {
+          showMessage(`Please select an image under ${MAX_IMAGE_MB}MB.`);
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const range = quill.getSelection(true);
+          const index = range ? range.index : quill.getLength();
+          quill.insertEmbed(index, 'image', event.target.result, 'user');
+          quill.setSelection(index + 1, 0);
+          showMessage('Image inserted successfully.', 'success');
+        };
+        reader.onerror = () => showMessage('Unable to read selected image. Please ensure the file is not corrupted and is under 5MB.');
+        reader.readAsDataURL(file);
+      };
+    }
+
+    function initEditor() {
+      quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+          toolbar: {
+            container: '#toolbar',
+            handlers: { image: insertImage }
+          }
+        },
+        placeholder: 'Start writing your blog here... हिंदी और English में लिखें।'
+      });
+    }
+
+    function getMetadata() {
+      const title = document.getElementById('blogTitle').value.trim();
+      const author = document.getElementById('blogAuthor').value.trim() || 'Nexovent Editorial';
+      const dateValue = document.getElementById('blogDate').value;
+      const category = document.getElementById('blogCategory').value.trim();
+      const lang = document.getElementById('contentLang').value;
+      const parseIsoDateLocal = (inputDate) => {
+        if (!ISO_DATE_REGEX.test(inputDate)) return new Date();
+        const [year, month, day] = inputDate.split('-').map(Number);
+        return new Date(year, month - 1, day);
+      };
+
+      const formattedDate = dateValue
+        ? parseIsoDateLocal(dateValue).toLocaleDateString('en-IN', DATE_FORMAT_OPTIONS)
+        : new Date().toLocaleDateString('en-IN', DATE_FORMAT_OPTIONS);
+
+      return { title, author, category, lang, formattedDate, dateValue };
+    }
+
+    function buildTemplate(contentHtml, metadata) {
+      // Escape metadata so user input cannot break output template/head tags.
+      const safeTitle = escapeHtml(metadata.title);
+      const safeAuthor = escapeHtml(metadata.author);
+      const safeCategory = escapeHtml(metadata.category);
+      const safeDate = escapeHtml(metadata.formattedDate);
+      const safeLang = escapeHtml(metadata.lang);
+      const rawDescription = metadata.title ? `Read ${metadata.title} on Nexovent.` : 'Read the latest insight on Nexovent.';
+      const safeDescription = escapeHtml(rawDescription);
+
+      return `<!doctype html>
+<html lang="${safeLang}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${safeTitle} | Nexovent</title>
+  <meta name="description" content="${safeDescription}">
+  <style>
+    :root { --accent:#2563eb; --text:#0f172a; --muted:#475569; --border:#e2e8f0; --bg:#f8fafc; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Noto Sans Devanagari", sans-serif; color:var(--text); background:var(--bg); line-height:1.8; }
+    .wrap { max-width:860px; margin:0 auto; padding:1.2rem; }
+    header, footer { background:#fff; border:1px solid var(--border); border-radius:1rem; padding:1rem 1.2rem; }
+    .brand { font-weight:800; letter-spacing:-0.02em; font-size:1.2rem; }
+    .brand span { color:var(--accent); }
+    article { background:#fff; border:1px solid var(--border); border-radius:1rem; margin-top:1rem; padding:1.2rem; }
+    h1 { line-height:1.25; margin:0.2rem 0 0.75rem; }
+    .meta { color:var(--muted); font-size:0.92rem; margin-bottom:1rem; }
+    .badge { display:inline-block; background:#eff6ff; color:#1d4ed8; border-radius:999px; padding:0.2rem 0.65rem; font-size:0.75rem; font-weight:600; margin-bottom:0.7rem; }
+    .content img { max-width:100%; height:auto; border-radius:0.65rem; }
+    .content pre { overflow:auto; background:#0f172a; color:#e2e8f0; padding:0.8rem; border-radius:0.6rem; }
+    .content blockquote { margin:1rem 0; padding-left:0.9rem; border-left:4px solid #cbd5e1; color:#334155; }
+    footer { margin:1rem 0; font-size:0.86rem; color:var(--muted); text-align:center; }
+    @media (min-width: 768px) { .wrap { padding:2rem; } header, article, footer { padding:1.4rem 1.6rem; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">NEXOVENT<span>.</span></div>
+      <div style="margin-top:0.25rem;color:var(--muted);font-size:0.92rem;">Insights for builders • AI • Automation • Growth</div>
+    </header>
+
+    <article>
+      ${safeCategory ? `<div class="badge">${safeCategory}</div>` : ''}
+      <h1>${safeTitle}</h1>
+      <div class="meta">By ${safeAuthor} • ${safeDate}</div>
+      <div class="content">${contentHtml}</div>
+      <!-- Sanitized editor HTML is rendered directly to preserve rich formatting in output. -->
+    </article>
+
+    <footer>
+      © ${new Date().getFullYear()} Nexovent. Crafted with clarity for Hindi + English readers.
+    </footer>
+  </div>
+</body>
+</html>`;
+    }
+
+    function wrapInBlogTemplate() {
+      clearMessage();
+      const metadata = getMetadata();
+      const contentHtml = sanitizeEditorHtml(quill.root.innerHTML.trim());
+      const plainText = quill.getText().trim();
+
+      if (!metadata.title) {
+        showMessage('Please enter a blog title before generating HTML.');
+        return null;
+      }
+
+      if (!plainText) {
+        showMessage('Editor content is empty. Please write your blog content first.');
+        return null;
+      }
+
+      wrappedHtml = buildTemplate(contentHtml, metadata);
+      document.getElementById('htmlOutput').value = wrappedHtml;
+      showMessage('HTML wrapped successfully.', 'success');
+      return wrappedHtml;
+    }
+
+    function sanitizeEditorHtml(html) {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      BLOCKED_HTML_TAGS.forEach((tag) => doc.querySelectorAll(tag).forEach((node) => node.remove()));
+
+      doc.querySelectorAll('*').forEach((el) => {
+        if (!ALLOWED_HTML_TAGS.has(el.tagName)) {
+          el.replaceWith(...el.childNodes);
+          return;
+        }
+
+        const allowedAttrs = new Set(['class']);
+        if (el.tagName === 'A') ['href', 'target', 'rel'].forEach((a) => allowedAttrs.add(a));
+        if (el.tagName === 'IMG') ['src', 'alt'].forEach((a) => allowedAttrs.add(a));
+
+        [...el.attributes].forEach((attr) => {
+          const name = attr.name.toLowerCase();
+          const value = attr.value.trim().toLowerCase();
+          if (!allowedAttrs.has(name)) {
+            el.removeAttribute(attr.name);
+            return;
+          }
+          if (name.startsWith('on') || value.startsWith('javascript:')) {
+            el.removeAttribute(attr.name);
+          }
+          if (name === 'href') {
+            const isSafeHref = /^(https?:|mailto:|tel:|#|\/)/.test(value);
+            if (!isSafeHref) el.removeAttribute(attr.name);
+          }
+          if (name === 'src') {
+            const isImageSource = el.tagName === 'IMG' && /^(https?:|data:image\/|\/)/.test(value);
+            if (!isImageSource) el.removeAttribute(attr.name);
+          }
+        });
+      });
+
+      return doc.body.innerHTML;
+    }
+
+    function previewOutput() {
+      const html = wrappedHtml || wrapInBlogTemplate();
+      if (!html) return;
+      document.getElementById('previewFrame').srcdoc = html;
+    }
+
+    function slugify(text) {
+      const slug = String(text || '')
+        .toLowerCase()
+        .replace(SLUG_INVALID_CHAR_REGEX, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-+|-+$/g, '');
+      return slug || 'nexovent-blog-post';
+    }
+
+    function downloadHtml() {
+      const html = wrappedHtml || wrapInBlogTemplate();
+      if (!html) return;
+
+      const title = document.getElementById('blogTitle').value;
+      const filename = `${slugify(title)}.html`;
+      const blob = new Blob([html], { type: 'text/html; charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      link.click();
+      URL.revokeObjectURL(url);
+      showMessage('HTML downloaded successfully.', 'success');
+    }
+
+    document.getElementById('wrapBtn').addEventListener('click', wrapInBlogTemplate);
+    document.getElementById('previewBtn').addEventListener('click', previewOutput);
+    document.getElementById('downloadBtn').addEventListener('click', downloadHtml);
+
+    document.getElementById('blogDate').value = new Date().toISOString().slice(0, 10);
+    initEditor();
+  </script>
+</body>
+</html>
