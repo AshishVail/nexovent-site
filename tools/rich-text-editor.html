@@ -95,7 +95,11 @@
     let wrappedHtml = '';
     const DATE_FORMAT_OPTIONS = { year: 'numeric', month: 'long', day: 'numeric' };
     const SLUG_INVALID_CHAR_REGEX = /[^\p{Letter}\p{Number}\s-]/gu;
-    const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+    const ISO_DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
+    const BLOCKED_HTML_TAGS = ['script', 'style', 'iframe', 'object', 'embed', 'svg', 'math', 'form', 'input', 'button', 'textarea', 'select'];
+    const ALLOWED_HTML_TAGS = new Set(['P', 'BR', 'STRONG', 'EM', 'U', 'S', 'A', 'OL', 'UL', 'LI', 'BLOCKQUOTE', 'PRE', 'CODE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'IMG', 'SPAN', 'DIV']);
+    const MAX_IMAGE_MB = 5;
+    const MAX_IMAGE_BYTES = MAX_IMAGE_MB * 1024 * 1024;
 
     function escapeHtml(text) {
       return String(text || '')
@@ -135,7 +139,7 @@
           return;
         }
         if (file.size > MAX_IMAGE_BYTES) {
-          showMessage('Please select an image under 5MB.');
+          showMessage(`Please select an image under ${MAX_IMAGE_MB}MB.`);
           return;
         }
 
@@ -172,6 +176,7 @@
       const category = document.getElementById('blogCategory').value.trim();
       const lang = document.getElementById('contentLang').value;
       const parseIsoDateLocal = (inputDate) => {
+        if (!ISO_DATE_REGEX.test(inputDate)) return new Date();
         const [year, month, day] = inputDate.split('-').map(Number);
         return new Date(year, month - 1, day);
       };
@@ -266,12 +271,10 @@
 
     function sanitizeEditorHtml(html) {
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      const blockedTags = ['script', 'style', 'iframe', 'object', 'embed', 'svg', 'math', 'form', 'input', 'button', 'textarea', 'select'];
-      const allowedTags = new Set(['P', 'BR', 'STRONG', 'EM', 'U', 'S', 'A', 'OL', 'UL', 'LI', 'BLOCKQUOTE', 'PRE', 'CODE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'IMG', 'SPAN', 'DIV']);
-      blockedTags.forEach((tag) => doc.querySelectorAll(tag).forEach((node) => node.remove()));
+      BLOCKED_HTML_TAGS.forEach((tag) => doc.querySelectorAll(tag).forEach((node) => node.remove()));
 
       doc.querySelectorAll('*').forEach((el) => {
-        if (!allowedTags.has(el.tagName)) {
+        if (!ALLOWED_HTML_TAGS.has(el.tagName)) {
           el.replaceWith(...el.childNodes);
           return;
         }
@@ -291,11 +294,11 @@
             el.removeAttribute(attr.name);
           }
           if (name === 'href') {
-            const isSafeHref = /^(https?:|mailto:|tel:|#|\/|\.)/.test(value);
+            const isSafeHref = /^(https?:|mailto:|tel:|#|\/)/.test(value);
             if (!isSafeHref) el.removeAttribute(attr.name);
           }
           if (name === 'src') {
-            const isImageSource = el.tagName === 'IMG' && /^(https?:|data:image\/|\/|\.)/.test(value);
+            const isImageSource = el.tagName === 'IMG' && /^(https?:|data:image\/|\/)/.test(value);
             if (!isImageSource) el.removeAttribute(attr.name);
           }
         });
